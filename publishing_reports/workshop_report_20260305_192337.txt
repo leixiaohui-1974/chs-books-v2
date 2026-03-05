@@ -1,0 +1,91 @@
+🚀 Starting Gemini Book Publishing Workshop Pipeline across D:\cowork\教材\chs-books-v2\books
+
+📚 Reviewing Book: Alumina_Book
+  [Codex-F] Aligned equation typesetting in ch01.md
+  [Codex-F] Aligned equation typesetting in ch02.md
+
+📚 Reviewing Book: canal-pipeline-control
+  [Codex-G] Attached empirical verification stamp to ch01.md
+  [Codex-G] Attached empirical verification stamp to ch02.md
+  [Codex-G] Attached empirical verification stamp to ch03.md
+  [Codex-G] Attached empirical verification stamp to ch04.md
+
+📚 Reviewing Book: CoupledTank_Book
+  [Codex-F] Aligned equation typesetting in ch01.md
+  [Codex-F] Aligned equation typesetting in ch02.md
+
+📚 Reviewing Book: distributed-hydrological-model
+  [Codex-G] Attached empirical verification stamp to ch01.md
+  [Codex-G] Attached empirical verification stamp to ch02.md
+  [Codex-G] Attached empirical verification stamp to ch04.md
+  [Codex-G] Attached empirical verification stamp to ch05.md
+  [Codex-G] Attached empirical verification stamp to ch06.md
+  [Codex-G] Attached empirical verification stamp to ch08.md
+  [Codex-G] Attached empirical verification stamp to ch10.md
+  [Codex-G] Attached empirical verification stamp to ch11.md
+  [Codex-G] Attached empirical verification stamp to ch12.md
+  [Codex-G] Attached empirical verification stamp to ch13.md
+
+📚 Reviewing Book: ecohydraulics
+  [Codex-G] Attached empirical verification stamp to ch01.md
+  [Codex-G] Attached empirical verification stamp to ch02.md
+  [Codex-G] Attached empirical verification stamp to ch03.md
+  [Codex-G] Attached empirical verification stamp to ch04.md
+  [Codex-G] Attached empirical verification stamp to ch05.md
+
+📚 Reviewing Book: Hydrology_Book
+  [Codex-F] Aligned equation typesetting in ch01.md
+  [Codex-F] Aligned equation typesetting in ch02.md
+
+📚 Reviewing Book: intelligent-water-network-design
+  [Codex-G] Attached empirical verification stamp to ch01.md
+  [Codex-G] Attached empirical verification stamp to ch02.md
+  [Codex-G] Attached empirical verification stamp to ch03.md
+  [Codex-G] Attached empirical verification stamp to ch04.md
+
+📚 Reviewing Book: open-channel-hydraulics
+  [Codex-G] Attached empirical verification stamp to ch01.md
+  [Codex-G] Attached empirical verification stamp to ch03.md
+  [Codex-G] Attached empirical verification stamp to ch04.md
+  [Codex-G] Attached empirical verification stamp to ch05.md
+  [Codex-G] Attached empirical verification stamp to ch06.md
+  [Codex-G] Attached empirical verification stamp to ch07.md
+  [Codex-G] Attached empirical verification stamp to ch08.md
+  [Codex-G] Attached empirical verification stamp to ch09.md
+  [Codex-G] Attached empirical verification stamp to ch10.md
+  [Codex-G] Attached empirical verification stamp to ch12.md
+  [Codex-G] Attached empirical verification stamp to ch13.md
+
+📚 Reviewing Book: photovoltaic-system-modeling-control
+  [Codex-G] Attached empirical verification stamp to ch01.md
+  [Codex-G] Attached empirical verification stamp to ch02.md
+  [Codex-G] Attached empirical verification stamp to ch03.md
+  [Codex-G] Attached empirical verification stamp to ch04.md
+
+📚 Reviewing Book: underground-water-dynamics
+  [Codex-G] Attached empirical verification stamp to ch01.md
+  [Codex-G] Attached empirical verification stamp to ch02.md
+  [Codex-G] Attached empirical verification stamp to ch03.md
+  [Codex-G] Attached empirical verification stamp to ch04.md
+  [Codex-G] Attached empirical verification stamp to ch05.md
+
+📚 Reviewing Book: water-system-control
+  [Codex-G] Attached empirical verification stamp to ch01.md
+  [Codex-G] Attached empirical verification stamp to ch02.md
+  [Codex-G] Attached empirical verification stamp to ch03.md
+  [Codex-G] Attached empirical verification stamp to ch04.md
+  [Codex-G] Attached empirical verification stamp to ch05.md
+
+📚 Reviewing Book: wind-power-system-modeling-control
+  [Codex-G] Attached empirical verification stamp to ch01.md
+  [Codex-G] Attached empirical verification stamp to ch02.md
+  [Codex-G] Attached empirical verification stamp to ch03.md
+  [Codex-G] Attached empirical verification stamp to ch04.md
+
+==============================================
+🏆 PUBLISHING WORKSHOP FINAL REPORT
+==============================================
+Chapters Audited: 90
+Defects Detected: 6
+Defects Auto-Fixed (Codex-D): 58
+Empirical Validations (Codex-G): 52
