@@ -1,0 +1,13 @@
+{
+  "run_label": "20260305_223020",
+  "persona": "Gemini图书出版工坊 Integrator/Rewriter (Codex-D)",
+  "books_discovered": 12,
+  "files_discovered": 90,
+  "context_blocks_discovered": 205,
+  "target_blocks": 205,
+  "skipped_already_done": 0,
+  "rewritten_success": 0,
+  "rewritten_failed": 205,
+  "dry_run": false,
+  "state_file": "D:/cowork/教材/chs-books-v2/publishing_reports/context_enrichment_state.jsonl"
+}
