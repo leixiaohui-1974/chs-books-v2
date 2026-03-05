@@ -1,0 +1,59 @@
+{
+  "book_name": "underground-water-dynamics",
+  "source_dir": "D:\\cowork\\chs-knowledge-platform\\books\\underground-water-dynamics",
+  "generated_at_utc": "2026-03-05T09:04:09.215352+00:00",
+  "engine_mode": "placeholder",
+  "chapters": [
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\underground-water-dynamics\\ch01.md",
+      "target": "ch01.md",
+      "case_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\underground-water-dynamics\\ch02.md",
+      "target": "ch02.md",
+      "case_numbers": [
+        6,
+        7,
+        8,
+        9,
+        10
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\underground-water-dynamics\\ch03.md",
+      "target": "ch03.md",
+      "case_numbers": [
+        11,
+        12,
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\underground-water-dynamics\\ch04.md",
+      "target": "ch04.md",
+      "case_numbers": [
+        16,
+        17,
+        18
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\underground-water-dynamics\\ch05.md",
+      "target": "ch05.md",
+      "case_numbers": [
+        19,
+        20
+      ]
+    }
+  ],
+  "case_count": 20
+}

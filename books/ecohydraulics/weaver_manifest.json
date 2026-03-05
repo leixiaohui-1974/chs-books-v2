@@ -1,0 +1,71 @@
+{
+  "book_name": "ecohydraulics",
+  "source_dir": "D:\\cowork\\chs-knowledge-platform\\books\\ecohydraulics",
+  "generated_at_utc": "2026-03-05T09:04:09.128016+00:00",
+  "engine_mode": "placeholder",
+  "chapters": [
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\ecohydraulics\\ch01.md",
+      "target": "ch01.md",
+      "case_numbers": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\ecohydraulics\\ch02.md",
+      "target": "ch02.md",
+      "case_numbers": [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\ecohydraulics\\ch03.md",
+      "target": "ch03.md",
+      "case_numbers": [
+        17,
+        18,
+        21
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\ecohydraulics\\ch04.md",
+      "target": "ch04.md",
+      "case_numbers": [
+        29,
+        30,
+        31,
+        32
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\ecohydraulics\\ch05.md",
+      "target": "ch05.md",
+      "case_numbers": [
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41
+      ]
+    }
+  ],
+  "case_count": 32
+}

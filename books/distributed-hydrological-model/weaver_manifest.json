@@ -1,0 +1,108 @@
+{
+  "book_name": "distributed-hydrological-model",
+  "source_dir": "D:\\cowork\\chs-knowledge-platform\\books\\distributed-hydrological-model",
+  "generated_at_utc": "2026-03-05T09:04:09.095364+00:00",
+  "engine_mode": "placeholder",
+  "chapters": [
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\distributed-hydrological-model\\ch01.md",
+      "target": "ch01.md",
+      "case_numbers": [
+        1,
+        2
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\distributed-hydrological-model\\ch02.md",
+      "target": "ch02.md",
+      "case_numbers": [
+        3
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\distributed-hydrological-model\\ch03.md",
+      "target": "ch03.md",
+      "case_numbers": []
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\distributed-hydrological-model\\ch04.md",
+      "target": "ch04.md",
+      "case_numbers": [
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\distributed-hydrological-model\\ch05.md",
+      "target": "ch05.md",
+      "case_numbers": [
+        7
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\distributed-hydrological-model\\ch06.md",
+      "target": "ch06.md",
+      "case_numbers": [
+        8
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\distributed-hydrological-model\\ch07.md",
+      "target": "ch07.md",
+      "case_numbers": []
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\distributed-hydrological-model\\ch08.md",
+      "target": "ch08.md",
+      "case_numbers": [
+        11,
+        12
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\distributed-hydrological-model\\ch09.md",
+      "target": "ch09.md",
+      "case_numbers": []
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\distributed-hydrological-model\\ch10.md",
+      "target": "ch10.md",
+      "case_numbers": [
+        15
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\distributed-hydrological-model\\ch11.md",
+      "target": "ch11.md",
+      "case_numbers": [
+        16
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\distributed-hydrological-model\\ch12.md",
+      "target": "ch12.md",
+      "case_numbers": [
+        17,
+        18,
+        19,
+        20,
+        21,
+        22
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\distributed-hydrological-model\\ch13.md",
+      "target": "ch13.md",
+      "case_numbers": [
+        9,
+        10,
+        14,
+        23,
+        24,
+        25
+      ]
+    }
+  ],
+  "case_count": 24
+}

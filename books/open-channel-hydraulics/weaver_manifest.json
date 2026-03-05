@@ -1,0 +1,115 @@
+{
+  "book_name": "open-channel-hydraulics",
+  "source_dir": "D:\\cowork\\chs-knowledge-platform\\books\\open-channel-hydraulics",
+  "generated_at_utc": "2026-03-05T09:04:09.171177+00:00",
+  "engine_mode": "placeholder",
+  "chapters": [
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\open-channel-hydraulics\\ch01.md",
+      "target": "ch01.md",
+      "case_numbers": [
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\open-channel-hydraulics\\ch02.md",
+      "target": "ch02.md",
+      "case_numbers": []
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\open-channel-hydraulics\\ch03.md",
+      "target": "ch03.md",
+      "case_numbers": [
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\open-channel-hydraulics\\ch04.md",
+      "target": "ch04.md",
+      "case_numbers": [
+        8,
+        9
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\open-channel-hydraulics\\ch05.md",
+      "target": "ch05.md",
+      "case_numbers": [
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\open-channel-hydraulics\\ch06.md",
+      "target": "ch06.md",
+      "case_numbers": [
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\open-channel-hydraulics\\ch07.md",
+      "target": "ch07.md",
+      "case_numbers": [
+        16,
+        17
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\open-channel-hydraulics\\ch08.md",
+      "target": "ch08.md",
+      "case_numbers": [
+        18,
+        19,
+        20
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\open-channel-hydraulics\\ch09.md",
+      "target": "ch09.md",
+      "case_numbers": [
+        21,
+        22,
+        23,
+        24
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\open-channel-hydraulics\\ch10.md",
+      "target": "ch10.md",
+      "case_numbers": [
+        25,
+        26,
+        27,
+        28
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\open-channel-hydraulics\\ch11.md",
+      "target": "ch11.md",
+      "case_numbers": []
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\open-channel-hydraulics\\ch12.md",
+      "target": "ch12.md",
+      "case_numbers": [
+        29
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\open-channel-hydraulics\\ch13.md",
+      "target": "ch13.md",
+      "case_numbers": [
+        30
+      ]
+    }
+  ],
+  "case_count": 31
+}

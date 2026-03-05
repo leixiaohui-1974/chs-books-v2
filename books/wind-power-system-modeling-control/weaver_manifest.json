@@ -1,0 +1,53 @@
+{
+  "book_name": "wind-power-system-modeling-control",
+  "source_dir": "D:\\cowork\\chs-knowledge-platform\\books\\wind-power-system-modeling-control",
+  "generated_at_utc": "2026-03-05T09:04:09.246878+00:00",
+  "engine_mode": "placeholder",
+  "chapters": [
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\wind-power-system-modeling-control\\ch01.md",
+      "target": "ch01.md",
+      "case_numbers": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\wind-power-system-modeling-control\\ch02.md",
+      "target": "ch02.md",
+      "case_numbers": [
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\wind-power-system-modeling-control\\ch03.md",
+      "target": "ch03.md",
+      "case_numbers": [
+        9,
+        10,
+        11,
+        12
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\wind-power-system-modeling-control\\ch04.md",
+      "target": "ch04.md",
+      "case_numbers": [
+        13,
+        14,
+        15
+      ]
+    },
+    {
+      "source": "D:\\cowork\\chs-knowledge-platform\\books\\wind-power-system-modeling-control\\ch05.md",
+      "target": "ch05.md",
+      "case_numbers": []
+    }
+  ],
+  "case_count": 15
+}
