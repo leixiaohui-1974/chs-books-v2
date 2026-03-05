@@ -1,0 +1,48 @@
+**P0（致命）**
+1. RLS核心推导公式存在实质性错误/缺项，会直接误导教学与实现。  
+[代价函数缺少误差项](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:115)、[增益公式写错/排版坍塌](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:129)、[协方差更新公式不完整](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:137)。
+2. 文中宣称“完整、可运行代码”，但多处MATLAB语句不可执行。  
+[“完整、可运行”声明](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:25)、[`figure(...,'Position', );`语法错误](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:527)、[同类错误2](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:1139)、[同类错误3](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:1543)、[同类错误4](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:1787)、[`ylim()`空参数](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:1811)。
+3. EKF闸门案例关键求解器被“省略+占位符”替代，不可复现实证结论。  
+[省略关键代码](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:1189)、[占位符函数声明](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:1197)。
+4. `saint_venant_solver` 的方程组组装逻辑高风险，维度与变量排列可疑，可能导致数值结果不可信。  
+[边界系统组装](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:785)、[矩阵构造](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:787)、[增量重排](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:799)。
+
+**P1（重要）**
+1. Kalman/EKF理论表述“概念对、推导弱”：EKF只给雅可比定义，未完整写出非线性预测/更新方程与噪声协方差传播细节。  
+[EKF段落](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:185)、[“与KF类似”略写](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:191)。
+2. 曼宁糙率在线辨识案例不完整：存在“同模型造数+同模型辨识”的逆问题偏乐观设置，缺独立验证、误差指标与不确定性分析。  
+[造数方式](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:291)、[在线辨识主循环](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:423)、[结果讨论仅定性](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:875)。
+3. “本报告”体例明显，不符合教材章体。  
+[本报告1](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:13)、[本报告2](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:29)、[本报告3](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:1863)。
+4. 图表不完整：仅有“表题”，缺实体表格/编号体系；图仅代码生成，无教材插图说明。  
+[表1](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:33)、[表2](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:259)、[表3](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:327)、[表4](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:909)。
+5. 参考文献体系不闭合：正文是编号引用，但章末没有对应参考文献列表。  
+[示例引用](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:1911)。
+6. 与 T2a ch11 重叠风险中高（推断约 35%-45%）：KF/EKF/EnKF、状态估计与数据融合主线重合。当前文档未给出“本章与ch11边界”。  
+[重叠核心段](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:153)、[重叠核心段2](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:877)。  
+说明：仓库中未找到 T2a ch11 原文，无法做文本级相似度计算，此处为基于目录与内容主题的推断。
+
+**P2（建议）**
+1. 公式与Markdown排版有较多断裂/错配，影响可读性与可复制性。  
+[示例1](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:215)、[示例2](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:229)、[示例3](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:1247)、[示例4](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:1851)。
+2. 代码块标识不规范（`Matlab`裸词），建议统一为 fenced code block。  
+[位置1](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:1299)、[位置2](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:1671)。
+3. 曼宁参数恢复处用 `abs(theta_hat)` 规避负值，掩盖辨识失稳而非解决。建议改为参数投影/有界RLS。  
+[位置](D:/cowork/教材/github_books/books/水系统现代控制/md/ch06_参数辨识与数据同化.md:505)。
+
+**8维评分（1-10）**
+1. 内容准确性：6  
+2. 水利针对性：8  
+3. 数学公式：4  
+4. 代码示例：3  
+5. 差异化：6  
+6. 教学适用性：5  
+7. 图表完整性：2  
+8. 参考文献：5
+
+**你关心的4点结论**
+1. Kalman/EKF推导：概念基本正确，但推导不完整、符号与公式排版问题较多，达不到“可教学复现”标准。  
+2. 曼宁糙率在线辨识案例：框架有，但“可复现性+验证完整性”不足，不算完整工程级案例。  
+3. “本报告”体例问题：存在且频繁，建议全章替换为“本章”。  
+4. 与T2a ch11重叠：按主题推断为中高重叠（约35%-45%），需明确边界（本章偏“参数辨识+工程案例”，ch11偏“状态估计/数据融合体系化”）。

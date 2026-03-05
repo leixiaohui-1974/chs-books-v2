@@ -1,0 +1,49 @@
+**重点结论（对应你要求的4项）**
+1. `MRAC/AMPC` 理论推导：不通过。存在核心公式写错/排版损坏与关键条件缺失。  
+2. 明渠自适应MPC案例完整性：不通过。参数表、约束边界、可复现实验链条不完整。  
+3. MATLAB代码完整性：不通过。存在大量截断与语法错误，当前代码整体不可运行。  
+4. Lyapunov稳定性推导完整性：不通过。仅给候选函数与更新律，缺少完整闭环证明链。
+
+**P0（致命）**
+- 核心模型公式损坏或方向错误，直接影响理论正确性：IDZ传函表达错误、线性化传函写反/失真、参考模型公式失真  
+  ([ch04_自适应控制.md#L175](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L175), [#L785](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L785), [#L799](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L799), [#L861](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L861))。
+- 明渠案例代码块大量语法截断，无法执行：`tf(...,)`、`idpoly(...,,,...)`、`set_param(,...)`、`figure(...,'Position', )`  
+  ([#L359](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L359), [#L363](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L363), [#L367](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L367), [#L405](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L405), [#L511](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L511), [#L535](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L535))。
+- MRAC/水库/泵站代码同样不可运行：`tf(Kp,)`、`nlmpcmove(... y,, options)`、`End`、`gamultiobj(...,,,,,)`  
+  ([#L1013](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L1013), [#L1513](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L1513), [#L1591](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L1591), [#L1969](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L1969))。
+- 泵站示例含非MATLAB语法与断裂语句：三元运算符`?:`、断裂逻辑表达式、变量名被换行打断  
+  ([#L2097](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L2097), [#L2157](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L2157), [#L2043](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L2043))。
+
+**P1（重要）**
+- Lyapunov推导不完整：缺少误差动力学显式式、`V̇`完整代入消项过程、收敛结论条件（PE/Barbalat/匹配条件）  
+  ([#L815](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L815)-[#L831](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L831))。
+- 稳定性表述过强：直接声称“全局稳定+渐近收敛”，但未给出必要假设与证明边界  
+  ([#L831](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L831))。
+- 明渠AMPC案例不完整：关键物理参数表缺失、控制约束上下限缺值、性能指标缺少定量结果（如IAE/ITAE/约束违反率）  
+  ([#L211](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L211), [#L239](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L239), [#L327](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L327))。
+- RLS到状态空间转换描述不足且实现不一致（`rls_params.Ts`未定义、MIMO `idpoly`构造缺项）  
+  ([#L489](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L489), [#L745](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L745))。
+- 图表与正文不匹配：多处“如图所示/表x.x”但未给出实际图表内容  
+  ([#L199](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L199), [#L851](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L851), [#L1269](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L1269), [#L1773](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L1773))。
+- 引文只有编号占位，无章节参考文献清单，无法核验来源  
+  ([#L69](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L69) 等全章)。
+
+**P2（建议）**
+- 章节编号不连贯（如`3.3.2`后直接`3.4.3`），影响教学阅读路径  
+  ([#L857](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L857), [#L875](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L875))。
+- 公式与单位表达可再规范（如流量变化率单位、符号统一性）  
+  ([#L241](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch04_自适应控制.md#L241))。
+- 若作为教材，建议补“学习目标/例题步骤/习题/本章小结”显式教学构件。
+- 建议把“可运行代码”移到独立`.m`文件并在文中仅保留关键片段，避免排版破坏。
+
+**8维评分（1-10）**
+- 内容准确性：`4/10`
+- 水利针对性：`7/10`
+- 数学公式：`3/10`
+- 代码示例：`2/10`
+- 差异化：`6/10`
+- 教学适用性：`5/10`
+- 图表完整性：`2/10`
+- 参考文献：`2/10`
+
+如果你需要，我可以下一步直接给出“可发布版修订清单”（逐条到公式与代码行），并产出一版可运行的 `AMPC/MRAC` 最小复现实例。

@@ -1,0 +1,26 @@
+**P0（致命）**
+1. “TD误差是优势函数无偏估计”的核心证明不可审阅，关键公式整段缺失为空行，当前无法判断推导是否成立。见 [ch09_ActorCritic框架与策略梯度重构.md:599](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch09_ActorCritic框架与策略梯度重构.md:599)、[ch09_ActorCritic框架与策略梯度重构.md:601](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch09_ActorCritic框架与策略梯度重构.md:601)、[ch09_ActorCritic框架与策略梯度重构.md:625](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch09_ActorCritic框架与策略梯度重构.md:625)。
+2. “优势函数降方差的严格数学推导”同样缺少关键公式，最优基准求导与闭式解无法验证，章节核心论证链断裂。见 [ch09_ActorCritic框架与策略梯度重构.md:671](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch09_ActorCritic框架与策略梯度重构.md:671)、[ch09_ActorCritic框架与策略梯度重构.md:707](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch09_ActorCritic框架与策略梯度重构.md:707)、[ch09_ActorCritic框架与策略梯度重构.md:723](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch09_ActorCritic框架与策略梯度重构.md:723)。
+
+**P1（重要）**
+1. 重点检查1结论：TD误差与优势函数关系表述不够严格，缺少明确条件化写法（应强调 `E[δ_t | s_t,a_t] = A^π(s_t,a_t)` 且需 `V_w≈V^π`/`V_w=V^π` 条件）。见 [ch09_ActorCritic框架与策略梯度重构.md:593](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch09_ActorCritic框架与策略梯度重构.md:593)、[ch09_ActorCritic框架与策略梯度重构.md:639](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch09_ActorCritic框架与策略梯度重构.md:639)。
+2. 重点检查2结论：偏差-方差分析不完整，缺少可操作的量化比较（如 n-step/GAE(λ) 连续谱、MSE 分解、不同估计器的方差项来源）。见 [ch09_ActorCritic框架与策略梯度重构.md:777](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch09_ActorCritic框架与策略梯度重构.md:777)、[ch09_ActorCritic框架与策略梯度重构.md:801](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch09_ActorCritic框架与策略梯度重构.md:801)。
+3. 重点检查3结论：变体对比覆盖面不够，缺少结构化对照（on/off-policy、是否用GAE、是否重放、约束机制、适用动作空间、稳定化技巧、计算代价）。见 [ch09_ActorCritic框架与策略梯度重构.md:803](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch09_ActorCritic框架与策略梯度重构.md:803)。
+4. 重点检查4结论：水利场景偏泛化，缺少可落地任务建模（状态/动作/约束/奖励）与典型工况（汛限水位、生态流量、闸门速率约束、多库耦合、预报误差）。见 [ch09_ActorCritic框架与策略梯度重构.md:5](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch09_ActorCritic框架与策略梯度重构.md:5)、[ch09_ActorCritic框架与策略梯度重构.md:847](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch09_ActorCritic框架与策略梯度重构.md:847)。
+5. 数学排版和符号一致性较差，`$$$$`、符号丢失和乱码式公式并存，影响教学可用性。见 [ch09_ActorCritic框架与策略梯度重构.md:39](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch09_ActorCritic框架与策略梯度重构.md:39)、[ch09_ActorCritic框架与策略梯度重构.md:49](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch09_ActorCritic框架与策略梯度重构.md:49)。
+6. 无参考文献与引用锚点，无法支撑“严格证明”和“现代算法比较”的学术可核查性（本章末未给文献节）。见 [ch09_ActorCritic框架与策略梯度重构.md:835](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch09_ActorCritic框架与策略梯度重构.md:835)。
+
+**P2（建议）**
+1. 教学结构可再完善：缺“学习目标/例题/习题/拓展阅读”，不利于课程交付与考核闭环。
+2. 代码示例缺失，建议至少补 PyTorch 版 A2C/PPO 核心更新伪代码与一段水库调度训练脚本。
+3. 文字细节有小错误，如“长期累"积”“缓慢的收日志”等。见 [ch09_ActorCritic框架与策略梯度重构.md:9](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch09_ActorCritic框架与策略梯度重构.md:9)、[ch09_ActorCritic框架与策略梯度重构.md:303](/D:/cowork/教材/github_books/books/水系统现代控制/md/ch09_ActorCritic框架与策略梯度重构.md:303)。
+
+**8维评分（1-10）**
+1. 内容准确性：`6`
+2. 水利针对性：`4`
+3. 数学公式：`3`
+4. 代码示例：`2`
+5. 差异化：`5`
+6. 教学适用性：`5`
+7. 图表完整性：`3`
+8. 参考文献：`1`

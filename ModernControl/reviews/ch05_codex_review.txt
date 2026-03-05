@@ -1,0 +1,32 @@
+**问题分级**
+
+**P0（致命）**
+- 代码存在大量截断/占位符，当前版本无法运行与复现：`Bi =;`、`set_param(,...)`、`constraints =;`、`D_forecast = ;`、`plot(,...)`（[ch05_鲁棒控制.md:535](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:535), [ch05_鲁棒控制.md:1035](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:1035), [ch05_鲁棒控制.md:1621](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:1621), [ch05_鲁棒控制.md:1963](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:1963), [ch05_鲁棒控制.md:1693](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:1693)）。
+- Tube MPC 在线优化核心约束缺失（状态递推未写入 constraints），鲁棒可行性结论不成立（[ch05_鲁棒控制.md:1629](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:1629)）。
+- YALMIP 鲁棒优化建模不完整：不确定集未定义/未施加边界却直接 `uncertain(w_d)`，模型在数学上不闭合（[ch05_鲁棒控制.md:2009](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:2009), [ch05_鲁棒控制.md:2059](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:2059)）。
+- SMC 函数依赖 `plant_params.h1_current`，但脚本未赋值该字段，运行会直接报错（[ch05_鲁棒控制.md:1211](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:1211), [ch05_鲁棒控制.md:963](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:963)）。
+
+**P1（重要）**
+- SMC 理论与代码控制律符号不一致：理论写 `u=ueq-K·sat(s/Φ)`，代码实现为 `u=ueq+u_sw` 且正号切换项，收敛性与到达条件无法对应（[ch05_鲁棒控制.md:919](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:919), [ch05_鲁棒控制.md:1265](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:1265), [ch05_鲁棒控制.md:1277](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:1277)）。
+- H∞案例中糙率不确定性作用方向与注释冲突：注释称“糙率增大增益降低”，但 `k_factor=(n/n0)^2` 会放大增益（[ch05_鲁棒控制.md:353](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:353)）。
+- Tube MPC 说明中将 `x̄(k)=x(k)` 并使辅助项趋零，实质弱化了“管束”思想（[ch05_鲁棒控制.md:1771](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:1771)）。
+- MPT3 用法高风险：`sys_err.W = W; Z = sys_err.invariantSet();` 与常见鲁棒不变集建模流程不一致，结果可信度不足（[ch05_鲁棒控制.md:1563](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:1563), [ch05_鲁棒控制.md:1565](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:1565)）。
+- 关键公式多处损坏/未闭合，H∞/SMC/RMPC 推导不可审查（[ch05_鲁棒控制.md:55](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:55), [ch05_鲁棒控制.md:833](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:833), [ch05_鲁棒控制.md:1371](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:1371)）。
+- 水利案例“完整性”不足：多处示意图仍是占位链接，缺实测/工程参数表与可复现实验配置（[ch05_鲁棒控制.md:243](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:243), [ch05_鲁棒控制.md:733](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:733), [ch05_鲁棒控制.md:1779](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:1779)）。
+
+**P2（建议）**
+- 教材化要素不足：未见“学习目标/习题/拓展阅读/参考文献”章节，不利于课程使用。
+- 章节编号与结构混乱（同文件内出现“第5章”与重复小节编号），影响读者导航（[ch05_鲁棒控制.md:1793](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:1793), [ch05_鲁棒控制.md:1733](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:1733), [ch05_鲁棒控制.md:2195](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:2195)）。
+- 求解器写死 `gurobi`，建议给出无商业求解器回退方案（如 `quadprog`/`cplex`）与版本说明（[ch05_鲁棒控制.md:1643](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:1643), [ch05_鲁棒控制.md:2057](D:/cowork/教材/github_books/books/水系统现代控制/md/ch05_鲁棒控制.md:2057)）。
+
+**8维评分（1-10）**
+- 内容准确性：4
+- 水利针对性：7
+- 数学公式：3
+- 代码示例：2
+- 差异化：6
+- 教学适用性：4
+- 图表完整性：2
+- 参考文献：2
+
+如果你需要，我可以下一步直接给出“可运行修订清单”（先修 P0）并按 `H∞/SMC/Tube MPC/YALMIP-MPT3` 四块给出逐行替换稿。
