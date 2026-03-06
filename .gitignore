@@ -1,0 +1,12 @@
+# Temporary files
+_tri_output/
+__pycache__/
+*.pyc
+*.log
+*_expanded.md
+expand_prompt.txt
+format_check.txt
+dispatch_log.json
+gen_nano_*.py
+*.bak
+tri_engine.py
