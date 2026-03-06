@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint
 
@@ -53,3 +55,4 @@ ax.grid(True, alpha=0.5)
 
 save_path = r'D:/cowork/教材/chs-books-v2/books/water-system-control/assets/ch04/coupled_tanks_sim.png'
 plt.savefig(save_path, dpi=300, bbox_inches='tight')
+

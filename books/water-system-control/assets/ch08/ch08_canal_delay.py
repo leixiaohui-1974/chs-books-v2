@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 dt = 1.0
@@ -50,3 +52,4 @@ ax2.grid(True, alpha=0.4)
 plt.suptitle('Figure 8.1: PI Control Failure in Long Canal with Transport Delay', fontsize=14, fontweight='bold')
 plt.tight_layout()
 plt.savefig(r'D:/cowork/教材/chs-books-v2/books/water-system-control/assets/ch08/canal_delay_sim.png', dpi=300)
+

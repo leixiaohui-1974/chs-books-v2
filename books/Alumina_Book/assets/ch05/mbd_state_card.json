@@ -1,0 +1,37 @@
+{
+    "System_State": {
+        "Storage_Nodes": [
+            {
+                "node_type": "storage_node",
+                "node_id": "Evaporator_Tank_1",
+                "capacity_percent": 45.2,
+                "quality_index": 145.0,
+                "risk_status": "SAFE"
+            }
+        ],
+        "Control_Equipment": [
+            {
+                "equipment_type": "control_equipment",
+                "equipment_id": "Main_Steam_Valve",
+                "current_action_state": 78.5,
+                "flow_rate": 65.0,
+                "constraint_status": "FLEXIBLE"
+            }
+        ]
+    },
+    "AI_Agent_Diagnosis": {
+        "Voice_Command_Parsed": {
+            "intent": "OPTIMIZE_STEAM_CONSUMPTION",
+            "detected_disturbances": [
+                {
+                    "parameter": "feed_concentration",
+                    "value": 130.0,
+                    "unit": "g/L"
+                }
+            ],
+            "target_equipment": "Main_Steam_Valve",
+            "action_direction": "DECREASE"
+        },
+        "Action_Proposal": "Detected Feed Conc drop to 130.0 g/L. Current Valve is at 78.5%. Recommending calling SQP Optimizer to calculate new target to DECREASE steam flow."
+    }
+}

@@ -1,0 +1,101 @@
+# 三引擎评审合并报告: ch07
+生成时间: 2026-03-06 15:19
+---
+
+## Reviewer B (Gemini — 工程实践型)
+这是一份基于水利工程CTO（工程实践型）视角的评审报告：
+
+## 八维度评分
+1. 理论深度与准确性：8/10（核心概念如滚动优化、约束处理解释得很到位）
+2. 工程案例真实性与可复现性：9/10（长距离渠道水位控制+电机速率限制是非常经典的工业痛点，参数设置合理）
+3. 代码可运行性与数据正确性：10/10（代码完美运行，表格数据与代码输出完全一致）
+4. 图表排版与规范性：8/10（图表说明清晰，对比直观）
+5. 公式推导与数学严谨性：7/10（状态差分离散方程正确，但缺少系统的矩阵形式推导）
+6. 教学适用性与难度梯度：7/10（“望远镜”的比喻极佳，但缺乏课后练习闭环）
+7. 参考文献规范与完整性：0/10（完全缺失）
+8. 行文语言与学术规范性：3/10（严重失范，文风违背学术严谨性）
+
+---
+
+## 工程问题清单
+
+### Critical（致命问题）
+1. **学术语言极度失范**：正文充斥大量网络流行语和过度拟人/口语化表达（如“终极杀器”、“降维打击”、“盲人摸象”、“致命的‘醉汉’”、“疯狂计算”、“绝不”等），并滥用了 Emoji（🌟🎯💡💻📊🚀）。这严重违背了工科教材的客观性与严谨性要求，必须全面重写为正式的书面学术语言（例如将“降维打击”修改为“显著性能优势”）。
+2. **完全缺失参考文献与课后习题**：作为一门高阶现代控制理论章节，没有引用任何 MPC 领域的经典文献，也没有提供供学生巩固理论推导或代码仿真的课后习题，不符合教材的基本出版规范。
+
+### Major（严重问题）
+1. **理论与代码实现脱节（QP硬约束 vs 非线性软约束）**：
+   正文理论部分信誓旦旦地强调 MPC 使用“二次规划（QP）求解器”，并声称“绝不违反大坝的安全约束”（暗指硬约束）。但在 `ch07_mpc_control.py` 的代码实现中，作者采用的是 `scipy.optimize.minimize` 的 `L-BFGS-B` 非线性优化算法，且对阀门绝对幅值限制（`u_max`, `u_min`）采用的是**惩罚函数法（Soft Constraint，施加了权重 `1e5` 的惩罚项）**，这并不是真正的 QP 硬约束处理方式。
+   *建议*：要么在代码中引入 `cvxpy` 或 `OSQP` 求解器展示真正的标准二次规划，要么在文本中实事求是地说明工程上“为了简化求解器，可将绝对边界约束转化为代价函数中的高额惩罚（软约束）”。
+2. **PI 控制器的对比存在“稻草人谬误”**：
+   代码中为了凸显 MPC 的优势，设定的 PI 参数（$K_p=1.5, K_i=0.1$）在面对高达 4 秒的纯滞后系统时本就会导致震荡。在实际工业界，如果必须用 PI 控制大滞后系统，工程师会大幅压低 PI 增益（Detuning）或者外挂 Smith 预估器。直接将其描述为“彻底瘫痪”有些取巧。建议在文中补充：“即使是极其保守整定的传统 PI 控制器，在面对设定值突变时也会面临响应极其迟缓的困境，而 MPC 则能……”
+
+### Minor（一般问题）
+1. **缺少求解器热启动（Warm Start）说明**：
+   在实际工业 MPC 部署中，为了满足毫秒级的控制周期，通常会将上一时刻的最优控制序列前移一步，作为当前求解的初始猜测（Warm Start）。代码中每一步都重置为零（`du_guess = np.zeros(M)`），虽然在简单仿真中可行，但在《工业部署与运行建议》小节中应当提及 Warm Start 这一核心工程技巧。
+2. **离散化方程表述前提**：
+   模型预测离散化方程 `y[k] = a * y[k-1] + b * u[k-1-L]` 成立的隐含前提是：物理纯滞后时间 $L$ 恰好是控制周期 $dt$ 的整数倍。工程应用中如果不是整数倍，需要引入分数迟滞近似，建议在教材中用括号加以说明。
+
+---
+
+## 参考文献审查
+- **现状：缺失**（本章节结尾完全没有参考文献列表）。
+- **修改建议（必须增补）**：作为学术教材，必须添加该领域的基础与经典文献。建议补充以下几条：
+  1. Maciejowski, J. M. (2002). *Predictive control: with constraints*. Pearson education. （约束MPC经典教材）
+  2. Camacho, E. F., & Alba, C. B. (2013). *Model predictive control*. Springer Science & Business Media.
+  3. Cutler, C. R., & Ramaker, B. L. (1980). Dynamic matrix control—A computer control algorithm. In *Joint automatic control conference* (Vol. 17, pp. 72-80). （工业MPC的起源文献）
+
+---
+
+## 综合评分: 6.5/10
+**评审总结**：
+从技术内核来看，这是一篇非常优秀的教学材料。“望远镜开汽车”的比喻直击 MPC 的灵魂，代码仿真逻辑严密，结果数据非常完美地展现了 MPC 抗大迟滞的“预见性”。
+然而，文本包裹着一层厚厚的**“技术自媒体”外衣**。过度轻浮的语气、emoji 的滥用、以及为了突出 MPC 而刻意贬低 PI 的行文逻辑，完全拉低了本书作为一本“学术教材”的严肃性。此外，软硬件约束在理论与代码中的偏差也需要打磨。对文风进行“彻底脱水”并补齐教辅元素（习题、参考文献）后，本章有潜力达到 9 分以上的极高水准。
+
+## Reviewer C (Codex — 代码验证型)
+*执行失败: OpenAI Codex v0.107.0 (research preview)
+--------
+workdir: D:\cowork\教材\chs-books-v2\books\water-system-control
+model: gpt-5.4
+provider: openai
+approval: never
+sandbox: danger-full-access
+reasoning effort: high
+reasoning summaries: none
+session id: 019cc1ff-7fa3-7d32-81aa-6d66616ccb55
+--------
+user
+请阅读文件 C:\Users\lxh\AppData\Local\Temp\tri_i6jo16rq.md 的全部内容，按其中的要求完成任务，输出完整结果。
+mcp: figma starting
+mcp: notion starting
+2026-03-06T07:14:35.981531Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer realm=\"OAuth\", error=\"invalid_token\", error_description=\"Missing or invalid access token\"" })
+mcp: notion failed: The notion MCP server is not logged in. Run `codex mcp login notion`.
+2026-03-06T07:14:35.989901Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: "Bearer resource_metadata=\"https://mcp.figma.com/.well-known/oauth-protected-resource\",scope=\"mcp:connect\",authorization_uri=\"https://api.figma.com/.well-known/oauth-authorization-server\"" })
+mcp: figma failed: The figma MCP server is not logged in. Run `codex mcp login figma`.
+mcp startup: failed: notion, figma
+2026-03-06T07:14:36.590492Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: "{\"turn_id\":\"\",\"workspaces\":{\"D:\\cowork\\\xe6\x95\x99\xe6\x9d\x90\\chs-books-v2\":{\"associated_remote_urls\":{\"origin\":\"https://github.com/leixiaohui-1974/chs-books-v2.git\"},\"latest_git_commit_hash\":\"3e8742f9f66d54028bb076a207a55122e8eed2d4\",\"has_changes\":true}},\"sandbox\":\"none\"}", url: wss://chatgpt.com/backend-api/codex/responses
+2026-03-06T07:14:37.605252Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: "{\"turn_id\":\"019cc1ff-8702-78c3-8bdf-3c52190dc809\",\"workspaces\":{\"D:\\cowork\\\xe6\x95\x99\xe6\x9d\x90\\chs-books-v2\":{\"associated_remote_urls\":{\"origin\":\"https://github.com/leixiaohui-1974/chs-books-v2.git\"},\"latest_git_commit_hash\":\"3e8742f9f66d54028bb076a207a55122e8eed2d4\",\"has_changes\":true}},\"sandbox\":\"none\"}", url: wss://chatgpt.com/backend-api/codex/responses
+2026-03-06T07:14:38.421322Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: "{\"turn_id\":\"019cc1ff-8702-78c3-8bdf-3c52190dc809\",\"workspaces\":{\"D:\\cowork\\\xe6\x95\x99\xe6\x9d\x90\\chs-books-v2\":{\"associated_remote_urls\":{\"origin\":\"https://github.com/leixiaohui-1974/chs-books-v2.git\"},\"latest_git_commit_hash\":\"3e8742f9f66d54028bb076a207a55122e8eed2d4\",\"has_changes\":true}},\"sandbox\":\"none\"}", url: wss://chatgpt.com/backend-api/codex/responses
+Reconnecting... 2/5 (stream disconnected before completion: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: "{\"turn_id\":\"019cc1ff-8702-78c3-8bdf-3c52190dc809\",\"workspaces\":{\"D:\\cowork\\\xe6\x95\x99\xe6\x9d\x90\\chs-books-v2\":{\"associated_remote_urls\":{\"origin\":\"https://github.com/leixiaohui-1974/chs-books-v2.git\"},\"latest_git_commit_hash\":\"3e8742f9f66d54028bb076a207a55122e8eed2d4\",\"has_changes\":true}},\"sandbox\":\"none\"}")
+2026-03-06T07:14:39.515508Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: "{\"turn_id\":\"019cc1ff-8702-78c3-8bdf-3c52190dc809\",\"workspaces\":{\"D:\\cowork\\\xe6\x95\x99\xe6\x9d\x90\\chs-books-v2\":{\"associated_remote_urls\":{\"origin\":\"https://github.com/leixiaohui-1974/chs-books-v2.git\"},\"latest_git_commit_hash\":\"3e8742f9f66d54028bb076a207a55122e8eed2d4\",\"has_changes\":true}},\"sandbox\":\"none\"}", url: wss://chatgpt.com/backend-api/codex/responses
+Reconnecting... 3/5 (stream disconnected before completion: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: "{\"turn_id\":\"019cc1ff-8702-78c3-8bdf-3c52190dc809\",\"workspaces\":{\"D:\\cowork\\\xe6\x95\x99\xe6\x9d\x90\\chs-books-v2\":{\"associated_remote_urls\":{\"origin\":\"https://github.com/leixiaohui-1974/chs-books-v2.git\"},\"latest_git_commit_hash\":\"3e8742f9f66d54028bb076a207a55122e8eed2d4\",\"has_changes\":true}},\"sandbox\":\"none\"}")
+2026-03-06T07:14:41.040902Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: "{\"turn_id\":\"019cc1ff-8702-78c3-8bdf-3c52190dc809\",\"workspaces\":{\"D:\\cowork\\\xe6\x95\x99\xe6\x9d\x90\\chs-books-v2\":{\"associated_remote_urls\":{\"origin\":\"https://github.com/leixiaohui-1974/chs-books-v2.git\"},\"latest_git_commit_hash\":\"3e8742f9f66d54028bb076a207a55122e8eed2d4\",\"has_changes\":true}},\"sandbox\":\"none\"}", url: wss://chatgpt.com/backend-api/codex/responses
+Reconnecting... 4/5 (stream disconnected before completion: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: "{\"turn_id\":\"019cc1ff-8702-78c3-8bdf-3c52190dc809\",\"workspaces\":{\"D:\\cowork\\\xe6\x95\x99\xe6\x9d\x90\\chs-books-v2\":{\"associated_remote_urls\":{\"origin\":\"https://github.com/leixiaohui-1974/chs-books-v2.git\"},\"latest_git_commit_hash\":\"3e8742f9f66d54028bb076a207a55122e8eed2d4\",\"has_changes\":true}},\"sandbox\":\"none\"}")
+2026-03-06T07:14:43.390806Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: "{\"turn_id\":\"019cc1ff-8702-78c3-8bdf-3c52190dc809\",\"workspaces\":{\"D:\\cowork\\\xe6\x95\x99\xe6\x9d\x90\\chs-books-v2\":{\"associated_remote_urls\":{\"origin\":\"https://github.com/leixiaohui-1974/chs-books-v2.git\"},\"latest_git_commit_hash\":\"3e8742f9f66d54028bb076a207a55122e8eed2d4\",\"has_changes\":true}},\"sandbox\":\"none\"}", url: wss://chatgpt.com/backend-api/codex/responses
+Reconnecting... 5/5 (stream disconnected before completion: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: "{\"turn_id\":\"019cc1ff-8702-78c3-8bdf-3c52190dc809\",\"workspaces\":{\"D:\\cowork\\\xe6\x95\x99\xe6\x9d\x90\\chs-books-v2\":{\"associated_remote_urls\":{\"origin\":\"https://github.com/leixiaohui-1974/chs-books-v2.git\"},\"latest_git_commit_hash\":\"3e8742f9f66d54028bb076a207a55122e8eed2d4\",\"has_changes\":true}},\"sandbox\":\"none\"}")
+2026-03-06T07:14:47.746060Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: "{\"turn_id\":\"019cc1ff-8702-78c3-8bdf-3c52190dc809\",\"workspaces\":{\"D:\\cowork\\\xe6\x95\x99\xe6\x9d\x90\\chs-books-v2\":{\"associated_remote_urls\":{\"origin\":\"https://github.com/leixiaohui-1974/chs-books-v2.git\"},\"latest_git_commit_hash\":\"3e8742f9f66d54028bb076a207a55122e8eed2d4\",\"has_changes\":true}},\"sandbox\":\"none\"}", url: wss://chatgpt.com/backend-api/codex/responses
+warning: Falling back from WebSockets to HTTPS transport. stream disconnected before completion: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: "{\"turn_id\":\"019cc1ff-8702-78c3-8bdf-3c52190dc809\",\"workspaces\":{\"D:\\cowork\\\xe6\x95\x99\xe6\x9d\x90\\chs-books-v2\":{\"associated_remote_urls\":{\"origin\":\"https://github.com/leixiaohui-1974/chs-books-v2.git\"},\"latest_git_commit_hash\":\"3e8742f9f66d54028bb076a207a55122e8eed2d4\",\"has_changes\":true}},\"sandbox\":\"none\"}"
+ERROR: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at Mar 12th, 2026 5:38 AM.
+Warning: no last agent message; wrote empty content to _tri_output\ch07\review_codex.md
+*
+
+## Reviewer A (Claude — 理论严谨型)
+*等待Claude Code会话中执行*
+
+---
+## 综合处理建议
+请在Claude Code中执行以下操作：
+1. 阅读三引擎评审意见
+2. Claude补充理论评审（如尚未执行）
+3. 合并Critical+Major问题，生成修改清单
+4. 调用 `python tri_engine.py revise` 执行修改

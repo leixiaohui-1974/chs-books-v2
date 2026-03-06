@@ -1,0 +1,122 @@
+[
+  {
+    "timestamp": "15:26:25",
+    "file": "ch01.md",
+    "task": "format",
+    "engine": "gemini",
+    "engine_name": "Gemini 2.5 Pro",
+    "success": true,
+    "output": "_tri_output\\ch01\\format_gemini.md",
+    "elapsed": 128.6,
+    "cost": 0.0158,
+    "savings": 0.2116
+  },
+  {
+    "timestamp": "15:28:00",
+    "file": "ch02.md",
+    "task": "format",
+    "engine": "gemini",
+    "engine_name": "Gemini 2.5 Pro",
+    "success": true,
+    "output": "_tri_output\\ch02\\format_gemini.md",
+    "elapsed": 95.4,
+    "cost": 0.0094,
+    "savings": 0.1252
+  },
+  {
+    "timestamp": "15:30:14",
+    "file": "ch03.md",
+    "task": "format",
+    "engine": "gemini",
+    "engine_name": "Gemini 2.5 Pro",
+    "success": true,
+    "output": "_tri_output\\ch03\\format_gemini.md",
+    "elapsed": 134.0,
+    "cost": 0.0105,
+    "savings": 0.1413
+  },
+  {
+    "timestamp": "15:32:02",
+    "file": "ch04.md",
+    "task": "format",
+    "engine": "gemini",
+    "engine_name": "Gemini 2.5 Pro",
+    "success": true,
+    "output": "_tri_output\\ch04\\format_gemini.md",
+    "elapsed": 107.8,
+    "cost": 0.0111,
+    "savings": 0.1494
+  },
+  {
+    "timestamp": "15:34:11",
+    "file": "ch05.md",
+    "task": "format",
+    "engine": "codex",
+    "engine_name": "Codex gpt-5.4",
+    "success": false,
+    "output": "OpenAI Codex v0.107.0 (research preview)\n--------\nworkdir: D:\\cowork\\教材\\chs-books-v2\\books\\water-system-control\nmodel: gpt-5.4\nprovider: openai\napproval: never\nsandbox: danger-full-access\nreasoning effort: high\nreasoning summaries: none\nsession id: 019cc210-bdaf-7750-a86d-c9169864191e\n--------\nuser\n请阅读文件 C:\\Users\\lxh\\AppData\\Local\\Temp\\tri_54rxnvkp.md 的全部内容，按其中的要求完成任务，输出完整结果。\nmcp: figma starting\nmcp: notion starting\n2026-03-06T07:33:25.852824Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: \"Bearer resource_metadata=\\\"https://mcp.figma.com/.well-known/oauth-protected-resource\\\",scope=\\\"mcp:connect\\\",authorization_uri=\\\"https://api.figma.com/.well-known/oauth-authorization-server\\\"\" })\nmcp: figma failed: The figma MCP server is not logged in. Run `codex mcp login figma`.\n2026-03-06T07:33:25.879935Z ERROR rmcp::transport::worker: worker quit with fatal: Transport channel closed, when AuthRequired(AuthRequiredError { www_authenticate_header: \"Bearer realm=\\\"OAuth\\\", error=\\\"invalid_token\\\", error_description=\\\"Missing or invalid access token\\\"\" })\nmcp: notion failed: The notion MCP server is not logged in. Run `codex mcp login notion`.\nmcp startup: failed: figma, notion\n2026-03-06T07:33:26.539838Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: \"{\\\"turn_id\\\":\\\"\\\",\\\"workspaces\\\":{\\\"D:\\\\cowork\\\\\\xe6\\x95\\x99\\xe6\\x9d\\x90\\\\chs-books-v2\\\":{\\\"associated_remote_urls\\\":{\\\"origin\\\":\\\"https://github.com/leixiaohui-1974/chs-books-v2.git\\\"},\\\"latest_git_commit_hash\\\":\\\"3e8742f9f66d54028bb076a207a55122e8eed2d4\\\",\\\"has_changes\\\":true}},\\\"sandbox\\\":\\\"none\\\"}\", url: wss://chatgpt.com/backend-api/codex/responses\n2026-03-06T07:33:27.312926Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: \"{\\\"turn_id\\\":\\\"019cc210-c3e8-7683-be26-4ba85dfb51df\\\",\\\"workspaces\\\":{\\\"D:\\\\cowork\\\\\\xe6\\x95\\x99\\xe6\\x9d\\x90\\\\chs-books-v2\\\":{\\\"associated_remote_urls\\\":{\\\"origin\\\":\\\"https://github.com/leixiaohui-1974/chs-books-v2.git\\\"},\\\"latest_git_commit_hash\\\":\\\"3e8742f9f66d54028bb076a207a55122e8eed2d4\\\",\\\"has_changes\\\":true}},\\\"sandbox\\\":\\\"none\\\"}\", url: wss://chatgpt.com/backend-api/codex/responses\n2026-03-06T07:33:28.304168Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: \"{\\\"turn_id\\\":\\\"019cc210-c3e8-7683-be26-4ba85dfb51df\\\",\\\"workspaces\\\":{\\\"D:\\\\cowork\\\\\\xe6\\x95\\x99\\xe6\\x9d\\x90\\\\chs-books-v2\\\":{\\\"associated_remote_urls\\\":{\\\"origin\\\":\\\"https://github.com/leixiaohui-1974/chs-books-v2.git\\\"},\\\"latest_git_commit_hash\\\":\\\"3e8742f9f66d54028bb076a207a55122e8eed2d4\\\",\\\"has_changes\\\":true}},\\\"sandbox\\\":\\\"none\\\"}\", url: wss://chatgpt.com/backend-api/codex/responses\nReconnecting... 2/5 (stream disconnected before completion: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: \"{\\\"turn_id\\\":\\\"019cc210-c3e8-7683-be26-4ba85dfb51df\\\",\\\"workspaces\\\":{\\\"D:\\\\cowork\\\\\\xe6\\x95\\x99\\xe6\\x9d\\x90\\\\chs-books-v2\\\":{\\\"associated_remote_urls\\\":{\\\"origin\\\":\\\"https://github.com/leixiaohui-1974/chs-books-v2.git\\\"},\\\"latest_git_commit_hash\\\":\\\"3e8742f9f66d54028bb076a207a55122e8eed2d4\\\",\\\"has_changes\\\":true}},\\\"sandbox\\\":\\\"none\\\"}\")\n2026-03-06T07:33:29.329700Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: \"{\\\"turn_id\\\":\\\"019cc210-c3e8-7683-be26-4ba85dfb51df\\\",\\\"workspaces\\\":{\\\"D:\\\\cowork\\\\\\xe6\\x95\\x99\\xe6\\x9d\\x90\\\\chs-books-v2\\\":{\\\"associated_remote_urls\\\":{\\\"origin\\\":\\\"https://github.com/leixiaohui-1974/chs-books-v2.git\\\"},\\\"latest_git_commit_hash\\\":\\\"3e8742f9f66d54028bb076a207a55122e8eed2d4\\\",\\\"has_changes\\\":true}},\\\"sandbox\\\":\\\"none\\\"}\", url: wss://chatgpt.com/backend-api/codex/responses\nReconnecting... 3/5 (stream disconnected before completion: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: \"{\\\"turn_id\\\":\\\"019cc210-c3e8-7683-be26-4ba85dfb51df\\\",\\\"workspaces\\\":{\\\"D:\\\\cowork\\\\\\xe6\\x95\\x99\\xe6\\x9d\\x90\\\\chs-books-v2\\\":{\\\"associated_remote_urls\\\":{\\\"origin\\\":\\\"https://github.com/leixiaohui-1974/chs-books-v2.git\\\"},\\\"latest_git_commit_hash\\\":\\\"3e8742f9f66d54028bb076a207a55122e8eed2d4\\\",\\\"has_changes\\\":true}},\\\"sandbox\\\":\\\"none\\\"}\")\n2026-03-06T07:33:30.876861Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: \"{\\\"turn_id\\\":\\\"019cc210-c3e8-7683-be26-4ba85dfb51df\\\",\\\"workspaces\\\":{\\\"D:\\\\cowork\\\\\\xe6\\x95\\x99\\xe6\\x9d\\x90\\\\chs-books-v2\\\":{\\\"associated_remote_urls\\\":{\\\"origin\\\":\\\"https://github.com/leixiaohui-1974/chs-books-v2.git\\\"},\\\"latest_git_commit_hash\\\":\\\"3e8742f9f66d54028bb076a207a55122e8eed2d4\\\",\\\"has_changes\\\":true}},\\\"sandbox\\\":\\\"none\\\"}\", url: wss://chatgpt.com/backend-api/codex/responses\nReconnecting... 4/5 (stream disconnected before completion: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: \"{\\\"turn_id\\\":\\\"019cc210-c3e8-7683-be26-4ba85dfb51df\\\",\\\"workspaces\\\":{\\\"D:\\\\cowork\\\\\\xe6\\x95\\x99\\xe6\\x9d\\x90\\\\chs-books-v2\\\":{\\\"associated_remote_urls\\\":{\\\"origin\\\":\\\"https://github.com/leixiaohui-1974/chs-books-v2.git\\\"},\\\"latest_git_commit_hash\\\":\\\"3e8742f9f66d54028bb076a207a55122e8eed2d4\\\",\\\"has_changes\\\":true}},\\\"sandbox\\\":\\\"none\\\"}\")\n2026-03-06T07:33:33.286640Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: \"{\\\"turn_id\\\":\\\"019cc210-c3e8-7683-be26-4ba85dfb51df\\\",\\\"workspaces\\\":{\\\"D:\\\\cowork\\\\\\xe6\\x95\\x99\\xe6\\x9d\\x90\\\\chs-books-v2\\\":{\\\"associated_remote_urls\\\":{\\\"origin\\\":\\\"https://github.com/leixiaohui-1974/chs-books-v2.git\\\"},\\\"latest_git_commit_hash\\\":\\\"3e8742f9f66d54028bb076a207a55122e8eed2d4\\\",\\\"has_changes\\\":true}},\\\"sandbox\\\":\\\"none\\\"}\", url: wss://chatgpt.com/backend-api/codex/responses\nReconnecting... 5/5 (stream disconnected before completion: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: \"{\\\"turn_id\\\":\\\"019cc210-c3e8-7683-be26-4ba85dfb51df\\\",\\\"workspaces\\\":{\\\"D:\\\\cowork\\\\\\xe6\\x95\\x99\\xe6\\x9d\\x90\\\\chs-books-v2\\\":{\\\"associated_remote_urls\\\":{\\\"origin\\\":\\\"https://github.com/leixiaohui-1974/chs-books-v2.git\\\"},\\\"latest_git_commit_hash\\\":\\\"3e8742f9f66d54028bb076a207a55122e8eed2d4\\\",\\\"has_changes\\\":true}},\\\"sandbox\\\":\\\"none\\\"}\")\n2026-03-06T07:33:37.630215Z ERROR codex_api::endpoint::responses_websocket: failed to connect to websocket: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: \"{\\\"turn_id\\\":\\\"019cc210-c3e8-7683-be26-4ba85dfb51df\\\",\\\"workspaces\\\":{\\\"D:\\\\cowork\\\\\\xe6\\x95\\x99\\xe6\\x9d\\x90\\\\chs-books-v2\\\":{\\\"associated_remote_urls\\\":{\\\"origin\\\":\\\"https://github.com/leixiaohui-1974/chs-books-v2.git\\\"},\\\"latest_git_commit_hash\\\":\\\"3e8742f9f66d54028bb076a207a55122e8eed2d4\\\",\\\"has_changes\\\":true}},\\\"sandbox\\\":\\\"none\\\"}\", url: wss://chatgpt.com/backend-api/codex/responses\nwarning: Falling back from WebSockets to HTTPS transport. stream disconnected before completion: UTF-8 encoding error: failed to convert header to a str for header name 'x-codex-turn-metadata' with value: \"{\\\"turn_id\\\":\\\"019cc210-c3e8-7683-be26-4ba85dfb51df\\\",\\\"workspaces\\\":{\\\"D:\\\\cowork\\\\\\xe6\\x95\\x99\\xe6\\x9d\\x90\\\\chs-books-v2\\\":{\\\"associated_remote_urls\\\":{\\\"origin\\\":\\\"https://github.com/leixiaohui-1974/chs-books-v2.git\\\"},\\\"latest_git_commit_hash\\\":\\\"3e8742f9f66d54028bb076a207a55122e8eed2d4\\\",\\\"has_changes\\\":true}},\\\"sandbox\\\":\\\"none\\\"}\"\nERROR: You've hit your usage limit. Upgrade to Pro (https://chatgpt.com/explore/pro), visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at Mar 12th, 2026 5:38 AM.\nWarning: no last agent message; wrote empty content to _tri_output\\ch05\\format_codex.md\n",
+    "elapsed": 77.5,
+    "cost": 0.0177,
+    "savings": 0.1412
+  },
+  {
+    "timestamp": "15:35:52",
+    "file": "ch06.md",
+    "task": "format",
+    "engine": "gemini",
+    "engine_name": "Gemini 2.5 Pro",
+    "success": true,
+    "output": "_tri_output\\ch06\\format_gemini.md",
+    "elapsed": 100.9,
+    "cost": 0.0101,
+    "savings": 0.1354
+  },
+  {
+    "timestamp": "15:38:56",
+    "file": "ch07.md",
+    "task": "format",
+    "engine": "gemini",
+    "engine_name": "Gemini 2.5 Pro",
+    "success": true,
+    "output": "_tri_output\\ch07\\format_gemini.md",
+    "elapsed": 183.9,
+    "cost": 0.0112,
+    "savings": 0.1501
+  },
+  {
+    "timestamp": "15:40:27",
+    "file": "ch08.md",
+    "task": "format",
+    "engine": "gemini",
+    "engine_name": "Gemini 2.5 Pro",
+    "success": true,
+    "output": "_tri_output\\ch08\\format_gemini.md",
+    "elapsed": 91.2,
+    "cost": 0.0088,
+    "savings": 0.1174
+  },
+  {
+    "timestamp": "15:43:15",
+    "file": "ch09.md",
+    "task": "format",
+    "engine": "gemini",
+    "engine_name": "Gemini 2.5 Pro",
+    "success": true,
+    "output": "_tri_output\\ch09\\format_gemini.md",
+    "elapsed": 167.7,
+    "cost": 0.0109,
+    "savings": 0.1454
+  },
+  {
+    "timestamp": "15:44:56",
+    "file": "ch10.md",
+    "task": "format",
+    "engine": "gemini",
+    "engine_name": "Gemini 2.5 Pro",
+    "success": true,
+    "output": "_tri_output\\ch10\\format_gemini.md",
+    "elapsed": 101.2,
+    "cost": 0.0114,
+    "savings": 0.1523
+  }
+]
