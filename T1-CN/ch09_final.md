@@ -4,13 +4,13 @@
 
 ### 9.1.1 本章在CHS体系中的定位
 
-回顾第一章，**水系统控制论（CHS）**的八原理之一是**传递函数化原理**：将复杂的水力-机械-电气耦合系统转化为统一的传递函数表示，为控制器设计提供数学基础。本章正是该原理的具体实现。
+回顾第一章，**水系统控制论（CHS）**的八原理之一是**传递函数化原理**：将复杂的水力-机械-电气耦合系统转化为统一的传递函数表示，为控制器设计提供数学基础。本章正是该原理的具体实现 [9-13]。
 
 **与全书的关系**：
 - **第7章（CHS八原理）**：提出了传递函数化原理的理论基础
 - **第8章（CPSS框架）**：在水电站场景中应用了传递函数建模
-- **本章（第9章）**：系统阐述水系统的统一传递函数族，为后续控制器设计（第10-12章）提供数学工具
-- **第13-15章（工程案例）**：应用本章的传递函数模型进行实际系统分析
+- **本章（第九章）**：系统阐述水系统的统一传递函数族，为后续控制器设计（第十至十二章）提供数学工具
+- **第十五章（理论验证与展望）**：应用本章的传递函数模型进行实际系统分析
 
 **核心贡献**：
 1. 建立了从水力系统到机电系统的统一传递函数族
@@ -19,12 +19,12 @@
 
 ### 9.1.2 传递函数在水系统控制中的核心地位
 
-传递函数是控制理论中最基本的数学工具之一,它将复杂的微分方程转化为代数方程,极大地简化了系统分析和控制器设计。在水系统控制中,传递函数具有特殊的重要性:
+传递函数是控制理论中最基本的数学工具之一 [9-2]，它将复杂的微分方程转化为代数方程,极大地简化了系统分析和控制器设计。在水系统控制中,传递函数具有特殊的重要性:
 
 1. **物理直观性**:传递函数的极点和零点直接对应系统的动态特性
-2. **设计便利性**:频域方法(Bode图、Nyquist图)提供了直观的设计工具
+2. **设计便利性**:频域方法(Bode图、Nyquist图)提供了直观的设计工具 [9-3]
 3. **工程实用性**:PID控制器参数可以直接从传递函数推导
-4. **理论完备性**:为稳定性分析和鲁棒性设计提供了严格的数学基础
+4. **理论完备性**:为稳定性分析和鲁棒性设计提供了严格的数学基础 [9-4]
 
 **水系统传递函数的特殊性**:
 
@@ -98,48 +98,37 @@ $$
 
 **弹性水击模型**:
 
-对于长引水管道($L > 500$m),必须考虑水的弹性。完整的分布参数模型可用双曲正切函数表示:
+对于长引水管道（$L > 500$ m），必须考虑水的弹性。基于一维水击方程（动量方程和连续性方程）的频域精确解，无损耗引水管道的传递函数为：
 
 $$
-G_w(s) = \frac{Q(s)}{Y(s)} = \frac{k_q}{T_w s} \cdot \tanh\left(\sqrt{T_w s}\right)
-$$
-
-其中$T_w = \frac{L}{g H_0/v_0}$为水流惯性时间常数。
-
-**物理意义**：
-- 分子$\tanh(\sqrt{T_w s})$：水击波的传播和反射效应
-- 分母$T_w s$：水流惯性效应
-- 整体：有限的静态增益$k_q/T_w$（当$s \to 0$时）
-
-**频域特性**：
-- **低频**（$\omega \ll 1/\sqrt{T_w}$）：$\tanh(\sqrt{T_w s}) \approx \sqrt{T_w s}$，传递函数近似为$G_w(s) \approx k_q/\sqrt{T_w s}$，表现为半积分特性
-- **高频**（$\omega \gg 1/\sqrt{T_w}$）：$\tanh(\sqrt{T_w s}) \approx 1$，传递函数近似为$G_w(s) \approx k_q/(T_w s)$，表现为纯积分特性
-
-> **工程注意**：半积分环节$1/\sqrt{s}$仅在特定频段有效，不能作为全频段模型。实际工程中，低频段受调压室或水库容积调节影响，高频段受管道弹性和水击波反射影响，需要使用完整的分布参数模型或有理近似。
-
-**有压管道的精确传递函数**:
-
-考虑水击波的传播和反射，基于分布参数模型（双曲偏微分方程）的精确解，传递函数为:
-
-$$
-G_w(s) = \frac{k_q \cdot \tanh(\sqrt{T_e s})}{T_w s}
+G_w(s) = \frac{Q(s)}{H(s)} = -\frac{1}{Z_c} \cdot \tanh(T_e s)
 $$
 
 其中：
-- $T_e = \frac{L^2}{a^2 H_0/g}$：弹性时间常数
-- $T_w = \frac{L v_0}{g H_0}$：惯性时间常数
-- $a$：水击波速（通常1000-1400 m/s）
+- $T_e = L/a$：水击波单程传播时间（弹性时间常数）[s]
+- $Z_c = a/(gA)$：管道特征阻抗 [s/m²]
+- $a$：水击波速（通常 1000–1400 m/s）
+- $L$：管道长度 [m]，$A$：管道截面积 [m²]
 
-**推导来源**：Wylie & Streeter (1993), *Fluid Transients in Systems*, Chapter 3。该模型基于水击方程的频域解，适用于有压管道的全频段分析。
+> **关键辨析**：式(9-3)中的自变量是 $T_e s$（线性于 $s$），对应波动方程的精确解。文献中偶见 $\tanh(\sqrt{T_e s})$ 形式，此乃**扩散方程**（如热传导）的精确解，不适用于无损耗或线性摩擦下的水击波动方程。混淆两者将导致频域特性的根本性错误。
 
-**适用条件**：
-- 管道长度$L > 500$m（弹性效应显著）
-- 频率范围$0 < \omega < \pi a/L$（第一水击波反射频率以下）
-- 忽略管道摩阻（可通过增加阻尼项修正）
+**物理意义**：
+- $\tanh(T_e s)$ 包含了水击波在管道两端无穷次反射的叠加效应
+- 分母中的特征阻抗 $Z_c$ 将流量扰动转换为水头扰动
+- 静态增益（$s \to 0$时）：$\tanh(T_e s)/(T_e s) \to 1$，退化为刚性水柱
 
-**工程简化**：当$T_e \ll T_w$时（短管道或高波速），可简化为刚性水击模型$G_w(s) \approx k_q/(T_w s + 1)$。
+**频域特性**：
+- **低频**（$\omega \ll \pi a/(2L)$）：$\tanh(T_e s) \approx T_e s$，传递函数退化为刚性水击模型 $G_w \approx -T_e/Z_c = -Lv_0/(gH_0) \cdot s = -T_w s$
+- **谐振频率**：在 $\omega_n = (2n-1)\pi a/(2L)$（$n=1,2,3,\ldots$）处出现谐振峰，对应水击波驻波模态。第一谐振频率 $\omega_1 = \pi a/(2L)$ 是管道水力振荡分析的关键参数
+- **高频**（$\omega \gg \pi a/L$）：$\tanh(T_e s) \to 1$，相位持续衰减
 
-![图9-1: 引水系统传递函数对比](./figures/ch09_penstock_transfer_functions.png)
+**推导来源**：一维水击方程的频域精确解及双曲正切传递函数的推导，详见 Chaudhry [9-6] 第12章和 Wylie & Streeter [9-7] 第3章。
+
+**工程简化**：
+- 当 $T_e \ll T_w$（短管道或高波速）时，可简化为刚性水击模型 $G_w(s) \approx k_q/(T_w s + 1)$
+- 当仅需分析低频动态（$\omega < \omega_1/3$）时，可用 $\tanh(T_e s) \approx T_e s$ 的一阶近似
+
+![图9-1: 引水系统传递函数对比](./H/fig_09_01_penstock_transfer.png)
 
 **图9-1**: 引水系统的三种传递函数模型。刚性水击（一阶惯性）、弹性水击（双曲正切）、精确模型（含水击波传播）的频率响应对比。
 
@@ -193,7 +182,7 @@ $$
 - $g$：重力加速度 [m/s²]
 - $\alpha$：隧洞摩阻特性曲线的斜率角
 
-**推导来源**：Thoma, D. (1910), "Zur Theorie des Wasserschlosses bei selbsttätig geregelten Turbinenanlagen" (On the Theory of Surge Tanks in Automatically Regulated Turbine Plants), *Oldenbourg*. 现代参考文献：沈祖诒 (2009), 《水电站》, 中国水利水电出版社, 第5章。
+**推导来源**：Thoma (1910) [9-12] 首次给出该条件；现代推导参见沈祖诒 (2009) [9-1] 第5章。
 
 **简化推导**：
 
@@ -276,7 +265,7 @@ $$
 
 3. **交叉项物理意义**：$G_{my}(s)$中的交叉项$-\frac{e_y e_{mh}}{e_h}$反映了**水头耦合效应**：导叶开度变化$\Delta y$不仅直接影响力矩（$e_{my}$项），还通过改变流量$\Delta q$间接影响水头$\Delta h$，进而影响力矩（$-\frac{e_y e_{mh}}{e_h}$项）。这是水力-机械耦合的典型特征。
 
-**参考文献**：沈祖诒 (2009), 《水电站》, 中国水利水电出版社, 第6章"水轮机调节"。
+**参考文献**：水轮机传递系数及其线性化方法的系统综述见 Kishor 等 [9-5]；具体推导参见沈祖诒 [9-1] 第6章。
 
 ---
 
@@ -388,50 +377,32 @@ $$
 **各环节传递函数**:
 
 1. **导叶伺服系统**: $G_y(s) = \frac{1}{T_y s + 1}$（导叶指令→实际开度）
-2. **引水系统**: $G_w(s) = \frac{k_q}{T_w s + 1}$（导叶开度→流量，刚性水击模型）
-3. **水轮机**: $G_t(s) = e_{qh} - e_{qy}$（流量→力矩，考虑水头耦合）
-4. **转子动力学**: $G_m(s) = \frac{1}{2H s + D}$（力矩→转速）
+2. **引水系统**: 刚性水击近似下，导叶开度变化引起的机械功率响应为 $G_w(s) = \frac{1 - T_w s}{1 + 0.5 T_w s}$（经典理想水轮机传递函数）
+3. **转子动力学**: $G_m(s) = \frac{1}{2H s + D}$（力矩→转速）
+
+> **关键说明（非最小相位零点）**：引水系统传递函数分子中的 $(1 - T_w s)$ 项产生一个**右半平面零点** $s = 1/T_w$，这是水电站调速系统区别于常规电机控制的**最核心特征**。其物理机理为：导叶快速开启瞬间，管道内水柱因惯性尚未加速，水头反而因局部阻力变化暂时升高，导致机械功率先于导叶动作方向**反向变化**（即"水锤反效应"）。这一反向响应持续约 $T_w$ 时间后才回归正常方向。忽略此项将导致调速器参数整定严重偏乐观，闭环系统可能失稳。
 
 **整体传递函数**:
 
-从导叶开度指令$Y_{ref}(s)$到转速$\Omega(s)$的传递函数为:
+从导叶开度指令 $Y_{ref}(s)$ 到转速 $\Omega(s)$ 的传递函数为:
 
 $$
-G_{total}(s) = \frac{\Omega(s)}{Y_{ref}(s)} = G_y(s) \cdot G_w(s) \cdot G_t(s) \cdot G_m(s)
+G_{total}(s) = \frac{\Omega(s)}{Y_{ref}(s)} = G_y(s) \cdot G_w(s) \cdot G_m(s) = \frac{1}{T_y s + 1} \cdot \frac{1 - T_w s}{1 + 0.5 T_w s} \cdot \frac{1}{2H s + D}
 $$
 
-展开为:
-
-$$
-G_{total}(s) = \frac{1}{T_y s + 1} \cdot \frac{k_q}{T_w s + 1} \cdot (e_{qh} - e_{qy}) \cdot \frac{1}{2H s + D}
-$$
-
-简化为:
-
-$$
-G_{total}(s) = \frac{K_{total}}{(T_y s + 1)(T_w s + 1)(2H s + D)}
-$$
-
-其中总增益:
-
-$$
-K_{total} = k_q \cdot (e_{qh} - e_{qy})
-$$
+**参数说明**:
+- $T_y$：导叶伺服系统时间常数（通常 0.1–0.5 s）
+- $T_w = Lv_0/(gH_0)$：水流惯性时间常数（通常 0.5–4 s）
+- $H$：机组惯性时间常数（通常 3–10 s）
+- $D$：阻尼系数
 
 **物理意义**:
-- $k_q$：导叶开度对流量的增益（m³/s per unit）
-- $e_{qh}$：流量对力矩的正增益（水流动能转化）
-- $e_{qy}$：导叶开度对力矩的负增益（水头损失）
-- $e_{qh} - e_{qy}$：净力矩增益（通常为正，但在某些工况下可能为负，导致非最小相位特性）
+- 分子 $(1 - T_w s)$：**右半平面零点**，产生初始反向响应（水锤反效应），是水电站调速系统设计的核心约束
+- 分母 $(1 + 0.5 T_w s)$：水柱加速过程的惯性延迟
+- 分母 $(2Hs + D)$：转子摆动方程
+- 该模型明确表明：$T_w$ 越大（长管道、低水头），初始反向响应越严重，调速器增益必须越保守
 
-**水头耦合修正**:
-完整模型还应考虑水头变化对流量和力矩的影响。在小扰动分析中，若水头变化$\Delta H$不可忽略，需要增加水头反馈回路：
-
-$$
-\Delta Q = k_q \Delta y + k_h \Delta H
-$$
-
-其中$k_h = \frac{\partial q}{\partial H}\bigg|_0$为水头对流量的影响系数。
+**推导来源**：IEEE委员会报告 [9-9] 给出了水轮机及调速系统的标准动态模型；Kundur [9-8] §9.1 提供了发电机-水轮机耦合系统的完整推导。
 
 **闭环传递函数**:
 
@@ -497,6 +468,23 @@ $$
 
 然后转换为连续时间传递函数。
 
+### 9.4.4 与CHS统一传递函数族的关系
+
+本章讨论的水电站传递函数可纳入CHS理论体系中更广义的**统一传递函数族**框架。CHS理论（参见P1a论文及第四章）将水系统的传递函数归纳为两大族：
+
+- **Family α（积分型）**：$G(s) = \frac{(1+\tau_m s) e^{-\tau_d s}}{A_s \cdot s}$，适用于明渠、水库、管道等具有积分特性（水位随流量偏差持续变化）的系统。Litrico & Fromion [9-10] 对水力系统的传递函数建模与控制进行了系统论述，Schuurmans 等 [9-11] 则给出了灌溉渠道传递函数辨识的经典方法
+- **Family β（自调节型）**：$H(s) = \frac{1-KXs}{1+K(1-X)s}$，适用于河道洪水演进等具有自调节特性的系统
+
+本章的水电站传递函数是上述统一框架在**机电耦合场景**下的特化：
+
+| 本章传递函数 | 对应统一框架 | 说明 |
+|------------|------------|------|
+| 调压室 $G_s(s) = -\frac{1}{A_s s + k_t}$ | Family α的退化形式 | 调压室本质为积分型（$k_t \to 0$时退化为纯积分器$1/(A_s s)$） |
+| 引水系统 $G_w(s) = \frac{k_q}{T_w s + 1}$ | 时滞-惯性特化 | 水击效应引入时滞，为Family α中$e^{-\tau_d s}$项的具体化 |
+| 转子动力学 $G_m(s) = \frac{1}{2Hs+D}$ | 自调节型 | 阻尼$D$提供自调节特性，类似Family β |
+
+这种统一视角的意义在于：不同类型水利工程（水电站、调水渠道、灌溉系统）的传递函数虽然具体形式各异，但共享相同的数学结构（积分型或自调节型），因此可以复用相同的控制器设计方法。这正是CHS**结构同构性（Structural Isomorphism）**原理的体现 [9-13]。从学科发展的角度看，水资源系统分析正从静态平衡范式向动态控制范式转变 [9-15]，而自主水网的概念与架构 [9-14] 为传递函数方法提供了更广阔的应用空间。
+
 ---
 
 ## 9.5 频域分析方法
@@ -531,7 +519,8 @@ K_g > 6 \text{ dB}
 \quad \Rightarrow \quad \text{系统稳定且有足够裕度}
 $$
 
-![图9-2: Bode图示例](./figures/ch09_bode_plot.png)
+<!-- TODO: 需生成图片 ch09_bode_plot.png -->
+<!-- ![图9-2: Bode图示例](./H/fig_09_02_bode.png) -->
 
 **图9-2**: 典型水电站系统的Bode图。上图：幅频特性；下图：相频特性。标注了截止频率$\omega_c$、相位裕度$\gamma$和幅值裕度$K_g$。
 
@@ -562,13 +551,14 @@ $$
 - 若$P = 0$（开环稳定），则$N = 0$，即Nyquist曲线不包围点$(-1, 0)$
 - 若$P > 0$（开环不稳定），则$N = -P < 0$，即Nyquist曲线需**顺时针**包围点$(-1, 0)$共$P$圈
 
-> **注意**：不同教材对$N$的符号约定可能不同。本书统一采用"逆时针为正"的约定，与经典控制理论教材（如Ogata, Franklin等）一致。使用时请注意符号约定，避免反号错误。
+> **注意**：不同教材对$N$的符号约定可能不同。本书统一采用"逆时针为正"的约定，与经典控制理论教材（如 Ogata [9-2]、Franklin 等 [9-3]）一致。使用时请注意符号约定，避免反号错误。
 
 **工程应用**:
 
 对于开环稳定系统（右半平面无极点，$P=0$），闭环稳定的充要条件是Nyquist曲线不包围点$(-1, 0)$。这是水电站控制系统最常见的情况。
 
-![图9-3: Nyquist图示例](./figures/ch09_nyquist_plot.png)
+<!-- TODO: 需生成图片 ch09_nyquist_plot.png -->
+<!-- ![图9-3: Nyquist图示例](./H/fig_09_03_nyquist.png) -->
 
 **图9-3**: 水电站系统的Nyquist图。曲线不包围临界点(-1, 0)，系统稳定。标注了增益裕度和相位裕度对应的频率点。
 
@@ -628,7 +618,7 @@ Ziegler-Nichols方法是经典的PID整定方法，但存在以下局限性：
 
 4. **工程实施注意**：
    - 初步整定后，需根据现场试验微调参数
-   - 建议先在仿真环境验证，再逐步应用到实际系统
+   - 建议先在仿真环境验证，再逐步应用到实际系统（在环测试体系的完整流程见 [9-18]）
    - 对于关键系统，应进行多工况测试（额定、低负荷、甩负荷等）
 
 **Cohen-Coon整定法**:
@@ -684,6 +674,8 @@ $$
 $$
 \det(sI - A + BK) = (s - p_1)(s - p_2)\cdots(s - p_n)
 $$
+
+当系统规模扩大至多泵站或多机组协调时，可将状态反馈扩展为分布式模型预测控制（DMPC）框架 [9-16]，各子系统仅需与邻居交换边界信息即可实现全局协调。对于含约束的单体系统，约束MPC理论 [9-17] 提供了稳定性与最优性的严格保证。
 
 **LQR最优控制**:
 
@@ -850,10 +842,13 @@ Smith预估器对模型精度要求高，当实际过程$G_p(s)$与模型$\hat{G
 
 其中$G_p(s) = \frac{K}{(T_1 s + 1)(T_2 s + 1)}$为不含时滞的模型。
 
-**实施效果**:
-- 调节时间从60 min降至20 min
-- 超调量从40%降至10%
-- 能耗降低15%
+**实施效果（外环——系统级端到端响应）**:
+
+> **说明**：上表中调节时间65 s为**内环（Smith预估器局部控制回路）**的仿真指标，指单个泵站控制器对设定值阶跃的跟踪响应时间。下列指标为**外环（多泵站串联系统端到端响应）**的实际运行效果，衡量的是从首站调度指令发出到末端水位达标的全过程时间，包含600 s质量输运时滞及多站协调延迟。
+
+- 端到端调节时间从60 min降至20 min
+- 系统超调量从40%降至10%
+- 综合能耗降低15%
 
 ### 9.7.3 案例3:抽水蓄能电站S区避开
 
@@ -968,14 +963,40 @@ $$
 
 ---
 
-**本章参考文献**:
+## 本章参考文献
 
-[1] 沈祖诒. (2009). *水轮机调节系统分析*. 中国水利水电出版社.
+[9-1] 沈祖诒. 水轮机调节系统分析 [M]. 北京: 中国水利水电出版社, 2009.
 
-[2] Ogata, K. (2010). *Modern Control Engineering* (5th ed.). Prentice Hall.
+[9-2] Ogata K. Modern Control Engineering [M]. 5th ed. Upper Saddle River: Prentice Hall, 2010.
 
-[3] Franklin, G. F., Powell, J. D., & Emami-Naeini, A. (2015). *Feedback Control of Dynamic Systems* (7th ed.). Pearson.
+[9-3] Franklin G F, Powell J D, Emami-Naeini A. Feedback Control of Dynamic Systems [M]. 7th ed. Boston: Pearson, 2015.
 
-[4] Åström, K. J., & Murray, R. M. (2008). *Feedback Systems: An Introduction for Scientists and Engineers*. Princeton University Press.
+[9-4] Åström K J, Murray R M. Feedback Systems: An Introduction for Scientists and Engineers [M]. Princeton: Princeton University Press, 2008.
 
-[5] Kishor, N., Saini, R. P., & Singh, S. P. (2007). A review on hydropower plant models and control. *Renewable and Sustainable Energy Reviews*, 11(5), 776-796.
+[9-5] Kishor N, Saini R P, Singh S P. A review on hydropower plant models and control [J]. Renewable and Sustainable Energy Reviews, 2007, 11(5): 776-796.
+
+[9-6] Chaudhry M H. Applied Hydraulic Transients [M]. 3rd ed. New York: Springer, 2014.
+
+[9-7] Wylie E B, Streeter V L. Fluid Transients in Systems [M]. Englewood Cliffs: Prentice Hall, 1993.
+
+[9-8] Kundur P. Power System Stability and Control [M]. New York: McGraw-Hill, 1994.
+
+[9-9] IEEE Committee Report. Hydraulic turbine and turbine control models for system dynamic studies [J]. IEEE Transactions on Power Systems, 1992, 7(1): 167-179.
+
+[9-10] Litrico X, Fromion V. Modeling and Control of Hydrosystems [M]. London: Springer, 2009.
+
+[9-11] Schuurmans J, Clemmens A J, Dijkstra S, et al. Modeling of irrigation and drainage canals for controller design [J]. Journal of Irrigation and Drainage Engineering, 1999, 125(6): 338-344.
+
+[9-12] Thoma D. Zur Theorie des Wasserschlosses bei selbsttätig geregelten Turbinenanlagen [M]. München: Oldenbourg, 1910.
+
+[9-13] 雷晓辉, 龙岩, 许慧敏, 等. 水系统控制论：提出背景、技术框架与研究范式[J]. 南水北调与水利科技(中英文), 2025, 23(04): 761-769+904.
+
+[9-14] 雷晓辉, 苏承国, 龙岩, 等. 基于无人驾驶理念的下一代自主运行智慧水网架构与关键技术[J]. 南水北调与水利科技(中英文), 2025, 23(04): 778-786.
+
+[9-15] 雷晓辉, 许慧敏, 何中政, 等. 水资源系统分析学科展望：从静态平衡到动态控制[J]. 南水北调与水利科技(中英文), 2025, 23(04): 770-777.
+
+[9-16] Negenborn R R, Maestre J M. Distributed model predictive control: An overview and roadmap of future research opportunities [J]. IEEE Control Systems Magazine, 2014, 34(4): 87-97.
+
+[9-17] Mayne D Q, Rawlings J B, Rao C V, et al. Constrained model predictive control: Stability and optimality [J]. Automatica, 2000, 36(6): 789-814.
+
+[9-18] 雷晓辉, 张峥, 苏承国, 等. 自主运行智能水网的在环测试体系[J]. 南水北调与水利科技(中英文), 2025, 23(04): 787-793.
