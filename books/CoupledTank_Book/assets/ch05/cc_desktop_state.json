@@ -1,0 +1,39 @@
+{
+    "Semantic_State": {
+        "System_Type": "Coupled_Water_Tank_Network",
+        "Nodes": [
+            {
+                "id": "Tank_1_Upstream",
+                "current_level_m": 4.8,
+                "capacity_limit_m": 5.0,
+                "status": "CRITICAL_HIGH"
+            },
+            {
+                "id": "Tank_2_Downstream",
+                "current_level_m": 1.2,
+                "capacity_limit_m": 5.0,
+                "status": "LOW"
+            }
+        ],
+        "Actuators": [
+            {
+                "id": "Main_Inlet_Pump",
+                "running_freq_hz": 45.0,
+                "max_freq_hz": 50.0
+            }
+        ]
+    },
+    "Human_Input": "二号水箱怎么快见底了？马上给我把二号水箱的水位拉到 3 米去！别管一号水箱，抽快点！",
+    "LLM_Extracted_Intent": {
+        "action": "set_target_level",
+        "target_node": "Tank_2_Downstream",
+        "target_value": 3.0,
+        "urgency": "HIGH",
+        "user_override_safety": true
+    },
+    "Agent_Decision": {
+        "execution": "DENIED",
+        "reason": "Physical Constraint Violation: Tank 1 is currently at 4.8m. Pumping more water will cause immediate OVERFLOW (Limit: 5.0m).",
+        "counter_proposal": "Executing MPC optimization to slowly raise Tank 2 while strictly holding Tank 1 below 5.0m."
+    }
+}
