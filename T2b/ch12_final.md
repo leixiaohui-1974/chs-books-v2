@@ -672,7 +672,7 @@ Hollnagel et al.（2006）在韧性工程框架中强调的"预见"（anticipati
 
 [12-24] SAE International (2021). *Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles* (SAE Standard J3016_202104).
 
-[12-25] 雷晓辉, 许慧敏, 何中政, 张峥. 水资源系统分析学科展望：从静态平衡到动态控制[J]. 南水北调与水利科技(中英文), 2025, 23(04): 770-777.
+[12-25] 雷晓辉, 许慧敏, 何中政, 等. 水资源系统分析学科展望：从静态平衡到动态控制[J]. 南水北调与水利科技(中英文), 2025, 23(04): 770-777.
 [12-26] 山东省胶东调水局. 胶东调水工程技术手册[M]. 济南: 山东科学技术出版社, 2020.
 
 [12-27] 山东省胶东调水局. 胶东调水工程SCADA系统运行评估报告[R]. 济南, 2023.
