@@ -98,7 +98,7 @@ CHS理论将水利系统统一描述为六元受控系统 $\Sigma = (P, A, S, D,
 
 #### (c) CPSS与WNAL的关系
 
-**水网自主等级（WNAL, Water Network Autonomy Level）**[8-2]是CHS提出的六级分类体系（L0-L5），类似自动驾驶的SAE分级。CPSS框架支持水电站从L1向L3跨越：
+**水网自主等级（WNAL, Water Network Autonomy Level）**[8-2]是CHS提出的分级分类体系（L0-L5），类似自动驾驶的SAE分级。CPSS框架支持水电站从L1向L3跨越：
 
 | WNAL等级 | 控制模式 | CPSS实现程度 |
 |---------|---------|-------------|

@@ -444,9 +444,9 @@ MBD 框架与 CHS 八原理是互补关系：
 | **在环验证** | X-in-the-Loop Verification | MIL/SIL/HIL 逐级验证控制策略可信性的方法体系 | §3.6 |
 | **认知增强** | Cognitive Augmentation | 使系统具备语义理解、因果推理和策略解释能力的 AI 层 | §3.7 |
 | **人机共融** | Human-Machine Teaming | 按自主等级动态配置人机权限和接管机制的协作范式 | §3.8 |
-| **全生命周期自主演进** | Autonomous Evolution | 系统在安全约束下通过数据/模型/策略三重闭环持续升级 | §3.10 |
+| **全生命周期自主演进** | Autonomous Evolution | 系统在安全约束下通过数据/模型/策略三重闭环持续升级 | §3.9 |
 | 设计锁定效应 | Design Lock-in Effect | 物理/信息/社会三维度参数建成后难以修改的矛盾 | §3.10 |
-| **灰度发布** | Shadow/Canary Deployment | 新旧模型并行运行、对比验证后再切换的部署策略 | §3.10 |
+| **灰度验证** | Shadow/Canary Deployment | 新旧模型并行运行、对比验证后再切换的部署策略 | §3.9 |
 
 ---
 
