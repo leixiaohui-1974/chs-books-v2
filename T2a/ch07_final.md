@@ -1509,7 +1509,7 @@ MPC上线前必须通过以下检查清单：
 
 ---
 
-## 参考文献
+## 本章参考文献
 
 [7-1] Richalet, J., Rault, A., Testud, J.L., & Papon, J. (1978). Model predictive heuristic control: Applications to industrial processes [J]. *Automatica*, 14(5): 413-428.
 

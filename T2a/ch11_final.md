@@ -841,7 +841,7 @@ $$
 
 ---
 
-## 参考文献
+## 本章参考文献
 
 [1] Litrico X, Fromion V. Modeling and Control of Hydrosystems[M]. London: Springer, 2009.
 

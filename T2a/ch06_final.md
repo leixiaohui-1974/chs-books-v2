@@ -1322,7 +1322,7 @@ $$
 
 ---
 
-## 参考文献
+## 本章参考文献
 
 [6-1] Anderson, B.D.O., & Moore, J.B. (1990). *Optimal Control: Linear Quadratic Methods* [M]. Englewood Cliffs: Prentice Hall. ISBN: 978-0-13-638560-8.
 
