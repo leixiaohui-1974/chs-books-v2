@@ -1667,7 +1667,7 @@ $$
 
 [2-20] 雷晓辉, 龙岩, 许慧敏, 等 (2025a). 水系统控制论：提出背景、技术框架与研究范式 [J]. 南水北调与水利科技(中英文), 2025, 23(04): 761-769+904. DOI: 10.13476/j.cnki.nsbdqk.2025.0077.
 
-[2-21] 雷晓辉, 苏承国, 龙岩, 等 (2025d). 基于无人驾驶理念的下一代自主运行智慧水网架构与关键技术 [J]. 南水北调与水利科技(中英文), 2025, 23(04): 778-786. DOI: 10.13476/j.cnki.nsbdqk.2025.0079.
+[2-21] 雷晓辉, 苏承国, 龙岩, 等 (2025b). 基于无人驾驶理念的下一代自主运行智慧水网架构与关键技术 [J]. 南水北调与水利科技(中英文), 2025, 23(04): 778-786. DOI: 10.13476/j.cnki.nsbdqk.2025.0079.
 
 [2-22] Strelkoff, T.S., Clemmens, A.J., & Perea, H. (2006). Accurate closed-form approximations of zero-inertia equations [J]. *Journal of Irrigation and Drainage Engineering*, ASCE, 132(4): 331-337. DOI: 10.1061/(ASCE)0733-9437(2006)132:4(331).
 
@@ -1691,4 +1691,4 @@ $$
 
 [2-32] Baume, J.P., Malaterre, P.O., Belaud, G., & Le Guennec, B. (2005). SIC: a 1D hydrodynamic model for river and irrigation canal modeling and regulation [C]. In: *Métodos Numéricos en Ingeniería 2005*, Granada, Spain.
 
-[2-33] 雷晓辉, 张峥, 苏承国, 等 (2025b). 自主运行智能水网的在环测试体系 [J]. 南水北调与水利科技(中英文), 2025, 23(04): 787-793. DOI: 10.13476/j.cnki.nsbdqk.2025.0080.
+[2-33] 雷晓辉, 张峥, 苏承国, 等 (2025c). 自主运行智能水网的在环测试体系 [J]. 南水北调与水利科技(中英文), 2025, 23(04): 787-793. DOI: 10.13476/j.cnki.nsbdqk.2025.0080.

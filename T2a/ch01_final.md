@@ -719,7 +719,7 @@ $$J = \underbrace{\sum_{k=0}^{N_p-1} \|\mathbf{y}(k) - \mathbf{r}(k)\|^2_Q}_{\te
 
 [1-3] 雷晓辉, 龙岩, 许慧敏, 等 (2025a). 水系统控制论：提出背景、技术框架与研究范式 [J]. 南水北调与水利科技(中英文), 2025, 23(04): 761-769+904. DOI: 10.13476/j.cnki.nsbdqk.2025.0077.
 
-[1-4] 雷晓辉, 苏承国, 龙岩, 等 (2025d). 基于无人驾驶理念的下一代自主运行智慧水网架构与关键技术 [J]. 南水北调与水利科技(中英文), 2025, 23(04): 778-786. DOI: 10.13476/j.cnki.nsbdqk.2025.0079.
+[1-4] 雷晓辉, 苏承国, 龙岩, 等 (2025b). 基于无人驾驶理念的下一代自主运行智慧水网架构与关键技术 [J]. 南水北调与水利科技(中英文), 2025, 23(04): 778-786. DOI: 10.13476/j.cnki.nsbdqk.2025.0079.
 
 [1-5] Litrico, X., & Fromion, V. (2009). *Modeling and Control of Hydrosystems* [M]. London: Springer. ISBN: 978-1-84882-623-6. DOI: 10.1007/978-1-84882-624-3.
 
@@ -735,9 +735,9 @@ $$J = \underbrace{\sum_{k=0}^{N_p-1} \|\mathbf{y}(k) - \mathbf{r}(k)\|^2_Q}_{\te
 
 [1-11] SAE International (2021). *Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles* [S]. SAE J3016_202104.
 
-[1-12] 雷晓辉, 张峥, 苏承国, 等 (2025b). 自主运行智能水网的在环测试体系 [J]. 南水北调与水利科技(中英文), 2025, 23(04): 787-793. DOI: 10.13476/j.cnki.nsbdqk.2025.0080.
+[1-12] 雷晓辉, 张峥, 苏承国, 等 (2025c). 自主运行智能水网的在环测试体系 [J]. 南水北调与水利科技(中英文), 2025, 23(04): 787-793. DOI: 10.13476/j.cnki.nsbdqk.2025.0080.
 
-[1-13] 雷晓辉, 许慧敏, 何中政, 等 (2025c). 水资源系统分析学科展望：从静态平衡到动态控制 [J]. 南水北调与水利科技(中英文), 2025, 23(04): 770-777. DOI: 10.13476/j.cnki.nsbdqk.2025.0078.
+[1-13] 雷晓辉, 许慧敏, 何中政, 等 (2025d). 水资源系统分析学科展望：从静态平衡到动态控制 [J]. 南水北调与水利科技(中英文), 2025, 23(04): 770-777. DOI: 10.13476/j.cnki.nsbdqk.2025.0078.
 
 [1-14] Clemmens, A.J., Kacerek, T.F., Grawitz, B., & Schuurmans, W. (1998). Test cases for canal control algorithms [J]. *Journal of Irrigation and Drainage Engineering*, ASCE, 124(1): 23-30. DOI: 10.1061/(ASCE)0733-9437(1998)124:1(23).
 
