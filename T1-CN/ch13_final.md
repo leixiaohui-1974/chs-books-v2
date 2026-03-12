@@ -882,7 +882,7 @@ HydroOS 是 CHS 的软件实现，与 WNAL 等级存在明确映射关系：
 
 ---
 
-## 参考文献
+## 本章参考文献
 
 [13-1] Avizienis A, Laprie J C, Randell B, et al. Basic concepts and taxonomy of dependable and secure computing [J]. IEEE Transactions on Dependable and Secure Computing, 2004, 1(1): 11-33.
 

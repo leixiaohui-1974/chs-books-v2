@@ -1218,7 +1218,7 @@ DAL 将控制指令翻译为各设备的本地协议格式下发执行。PAI 持
 
 ---
 
-## 参考文献
+## 本章参考文献
 
 [14-1] Airbus. A320 Flight Crew Operating Manual (FCOM): Flight Control Laws and Envelope Protections[M]. Blagnac: Airbus SAS, 2019.
 
