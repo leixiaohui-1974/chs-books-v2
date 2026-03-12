@@ -1,0 +1,23 @@
+**P0**
+- 式(2-2b)里 `h` 的物理含义写混了。定位：式(2-2b)，[ch02_final.md:132](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L132)、[ch02_final.md:134](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L134)。按当前方程写法，左侧是 `gA ∂h/∂x`，右侧又单列了 `gA(S0-Sf)`，这时 `h` 应解释为“水深”而不是“水面高程”。如果 `h` 表示水面高程/水位高程，则床坡 `S0` 已隐含在高程梯度中，右侧再写 `S0` 会重复计入。现在正文把 `h` 解释成“水位”，对控制和水力读者都会造成歧义，必须改成明确的“水深”或重写方程。
+- 参考文献 `[2-19]` 存在实质性冲突。定位：[ch02_final.md:81](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L81)、[ch02_final.md:660](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L660)。正文同一处把 Wylie 和 Cantoni 都指到了 `[2-19]`，而文末 `[2-19]` 实际只对应 Wylie 1969；Cantoni 的 `Proceedings of the IEEE` 综述条目在本章参考文献中缺失。这会直接破坏引文可追溯性，属于出版前必须修。
+- §2.8 对 IDZ 的使用有硬错误。定位：[ch02_final.md:475](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L475)、式(2-3) [ch02_final.md:142](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L142)。文中说“前馈增益根据 IDZ 模型的静态增益计算”，但 IDZ 传递函数含积分环节 `1/s`，严格说不存在有限静态增益。这里不能直接按“静态增益”算前馈；要么改成基于扰动通道模型/稳态质量平衡的前馈设计，要么改成经验性前馈并删去 IDZ 静态增益的表述。
+
+**P1**
+- 从式(2-2)到式(2-3)的“推导”表述过度简化。定位：[ch02_final.md:140](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L140)、[ch02_final.md:142](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L142)。线性化本身并不能直接得到单输入单输出的 IDZ 传递函数；中间至少还需要说明运行点、边界条件、输入输出选取、拉普拉斯域近似/低频近似以及为什么可以从 Saint-Venant 传递矩阵退化为 IDZ。现在写成“线性化后得到(2-3)”会让读者误以为这一步是直接等价变换。
+- IDZ 符号与标准记号不一致，但文中未声明映射关系。定位：式(2-3)及其解释，[ch02_final.md:142](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L142)、[ch02_final.md:144](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L144)、[ch02_final.md:150](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L150)。`ch02` 确实用了不同符号：`p_z` 对应你指出的 `τ_m`，`τ` 对应 `τ_d`。这不是数学错误，但如果本书希望与 WRR/P1a 记号对齐，至少应在式后明确写出 `p_z ≡ τ_m, τ ≡ τ_d`，否则跨文献阅读会混淆。
+- 关于大时滞系统的稳定条件表述不准确。定位：[ch02_final.md:209](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L209)。文中称对 `G(s)=e^{-τs}/(A_s s)` 加比例控制时，闭环稳定的“充分必要条件”是 `K < A_s/τ`。若按该模型直接推，稳定边界应为 `K < πA_s/(2τ)`。书中这个式子若只是保守经验界，应明说“保守判据”或“工程经验式”，不能写成“充分必要条件”。
+- §2.8 的操作约束写法前后不一致。定位：[ch02_final.md:439](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L439)、[ch02_final.md:495](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L495)。目标写的是“每8小时启停不超过6次”，而策略C真正纳入 MPC 的却是“最小启停间隔 30 min”。这两个约束不等价；30 分钟最小间隔理论上允许 8 小时内远超 6 次启停。若要对齐，应改成混合逻辑/计数约束，或把正文目标同步改成最小间隔约束。
+
+**P2**
+- “五个控制本质”有启发性，但不够完整也不够正交。定位：[ch02_final.md:191](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L191)、[ch02_final.md:195](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L195)、[ch02_final.md:543](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L543)。当前五项把“对象物理属性”（大时滞、强耦合、强约束、强不确定）与“治理属性”（人机共治）放在同一层级，但遗漏了水系统最根本的“分布参数/空间分布性”。严格说，大时滞和强耦合更像它的后果，而不是最底层本质。
+- §2.8 的时滞参数偏乐观，建议给出处或加“说明性设定”解释。定位：[ch02_final.md:439](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L439)。35 km 对应 45 min、25 km 对应 30 min，等效传播速度约 13–14 m/s；对多数缓坡长距离调水明渠而言，这个量级偏高。不是绝对不可能，但需要补充“基于某一高流量工况/波速公式”的说明，否则读者会质疑算例参数的工程合理性。
+- 对 IDZ 参数来源的表述略过强。定位：[ch02_final.md:144](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L144)、[ch02_final.md:150](D:/cowork/教材/chs-books-v2/T1-CN/ch02_final.md#L150)。文中说三参数“完全由渠池物理尺寸决定，不需要反复实验调整”。这会弱化运行点依赖性。实际 `A_s、τ_d/τ、τ_m/p_z` 通常还受稳态流量、下游控制方式和回水工况影响，工程上常需要按工况重算或校准。
+
+总评：式(2-1)、式(2-4)、式(2-5a/b) 作为章节级框架公式基本可接受；主要硬问题集中在式(2-2)变量定义、式(2-2)到式(2-3)的叙述严谨性、IDZ 符号漂移，以及 §2.8 对 IDZ 和操作约束的使用。
+
+外部核对链接：
+- Cantoni 等 `Proceedings of the IEEE` 综述元数据：https://cris.technion.ac.il/en/publications/control-of-large-scale-irrigation-networks/
+- Litrico & Fromion 关于 IDZ 的公开摘要：https://www.sciencedirect.com/science/article/pii/S0307904X0300221X
+
+如果你需要，我可以下一步直接把这些问题整理成“可改稿清单”，按“原句-建议改法-推荐替代表述”三栏给出。
