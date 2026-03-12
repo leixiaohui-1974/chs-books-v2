@@ -1,0 +1,25 @@
+# Phase 4 自引率统计报告
+
+| 书名 | 章节 | 总参考文献 | Lei自引 | 自引率 | 评级 |
+|------|------|-----------|---------|--------|------|
+| reservoir-operation-optimization | 8 | 32 | 8 | 25.0% | [TOO HIGH] |
+| flood-forecasting-control | 8 | 32 | 8 | 25.0% | [TOO HIGH] |
+| dam-safety-monitoring | 6 | 18 | 6 | 33.3% | [TOO HIGH] |
+| river-sediment-dynamics | 6 | 24 | 6 | 25.0% | [TOO HIGH] |
+| inland-waterway-navigation | 6 | 18 | 6 | 33.3% | [TOO HIGH] |
+| ship-lock-automation | 5 | 15 | 5 | 33.3% | [TOO HIGH] |
+| water-energy-food-nexus | 6 | 24 | 6 | 25.0% | [TOO HIGH] |
+| digital-twin-river-basin | 8 | 32 | 8 | 25.0% | [TOO HIGH] |
+| ai-for-water-engineering | 10 | 40 | 10 | 25.0% | [TOO HIGH] |
+| **总计** | **63** | **235** | **63** | **26.8%** | - |
+
+## 详细分析
+
+- 总章节数: 63
+- 总参考文献: 235
+- Lei自引总数: 63
+- 平均自引率: 26.8%
+- 目标自引率: 10-15%
+
+[WARNING] Need adjustment: Current rate(26.8%) exceeds target(10-15%)
+   Suggest reducing 28 Lei citations
