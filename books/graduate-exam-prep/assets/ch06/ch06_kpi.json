@@ -1,0 +1,37 @@
+{
+  "root_locus": {
+    "open_zeros": [
+      -2
+    ],
+    "open_poles": [
+      0,
+      -1,
+      -4
+    ],
+    "asymptote_center": -1.5,
+    "asymptote_angles": [
+      90.0,
+      270.0
+    ],
+    "all_K_stable": true,
+    "K_design": 10.0,
+    "closed_loop_poles": [
+      "(-1.2107049309310762+2.508061000061941j)",
+      "(-1.2107049309310762-2.508061000061941j)",
+      "(-2.57859013813785+0j)"
+    ],
+    "overshoot_pct": 29.96,
+    "settling_time_s": 2.982,
+    "Kv": 5.0,
+    "ess_ramp": 0.2
+  },
+  "power_flow_short_circuit": {
+    "V1_pu": 1.05,
+    "V2_pu": 1.0,
+    "delta_deg": 5.465,
+    "P_transfer_pu": 0.5,
+    "Q_transfer_pu": 0.2261,
+    "I_sc_pu": 3.5,
+    "S_sc_MVA": 350.0
+  }
+}

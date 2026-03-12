@@ -1,0 +1,24 @@
+{
+  "rlc_params": {
+    "R": 2.0,
+    "L": 1.0,
+    "C": 0.5,
+    "wn": 1.4142,
+    "zeta": 0.7071
+  },
+  "step_response": {
+    "steady_state": 1.0,
+    "overshoot_pct": 4.32,
+    "peak_time_s": 3.1503,
+    "settling_time_2pct_s": 4.2084
+  },
+  "mason_verification": {
+    "block_diagram_gain": 4.898,
+    "mason_formula_gain": 4.898,
+    "error": "8.88e-16"
+  },
+  "poles": [
+    "(-0.9999999999999996+1j)",
+    "(-0.9999999999999996-1j)"
+  ]
+}

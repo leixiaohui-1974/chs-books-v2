@@ -1,0 +1,30 @@
+  1474→1. **三目标叙述与后文实现严重不一致（最高优先级）**  
+  1475→   章节主线是三目标 NSGA-II（`F1,F2,F3` + `SBX/Polynomial Mutation`），但后半“仿真代码解读”变成双目标，且算子改为算术交叉+高斯变异，导致“算法描述准确性”被破坏。  
+  1476→   参考：[ch03.md:96](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:96) [ch03.md:98](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:98) [ch03.md:280](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:280) [ch03.md:285](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:285) [ch03.md:286](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:286) [ch03.md:390](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:390) [ch03.md:400](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:400) [ch03.md:563](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:563)
+  1477→
+  1478→2. **Pareto理论与目标方向未统一，数学表述不闭合**  
+  1479→   先定义“最小化问题”的 Pareto 支配，再直接给出 `max F1`，后文又用 `(F1,-F2,-F3)` 表达；但未明确统一变换（如 `f1=-F1`）。这会影响支配关系与实现一致性。  
+  1480→   参考：[ch03.md:17](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:17) [ch03.md:45](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:45) [ch03.md:124](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:124) [ch03.md:308](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:308)
+  1481→
+  1482→3. **多目标函数变量定义存在耦合歧义**  
+  1483→   `F1` 使用发电流量 `Q_t^e`，`F2/F3` 使用总下泄 `Q_t`，水量平衡又含 `Q_t` 与弃水 `S_t`，但未给出变量分解关系（如 `Q_t = Q_t^e + Q_t^{eco} + Q_t^{spill}` 或等价关系），模型严谨性不足。  
+  1484→   参考：[ch03.md:45](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:45) [ch03.md:52](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:52) [ch03.md:59](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:59) [ch03.md:69](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:69)
+  1485→
+  1486→4. **约束处理“宣称可行”与“实际做法”不一致**  
+  1487→   文本称 Repair 后“始终可行”，但未形式化修复算子；后文实现实际通过终库容惩罚项处理，属于软约束，不等于严格可行性维持。  
+  1488→   参考：[ch03.md:34](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:34) [ch03.md:87](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:87) [ch03.md:283](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:283) [ch03.md:285](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:285)
+  1489→
+  1490→5. **需要补充“规范伪代码”**  
+  1491→   当前是流程性文字，缺少可复现级伪代码（输入/输出、排序与拥挤度计算公式、比较器、复杂度、终止与输出定义）。建议在 3.2.3 后补 Algorithm 框。  
+  1492→   参考：[ch03.md:91](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:91) [ch03.md:100](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch03.md:100)
+  1493→
+  1494→**评分（10分制）**  
+  1495→1. NSGA-II描述完整性与准确性：`5.5/10`  
+  1496→2. Pareto理论数学严谨性：`6.0/10`  
+  1497→3. 多目标函数合理性：`6.0/10`  
+  1498→4. 约束处理正确性：`5.0/10`  
+  1499→5. 伪代码完备性：`4.0/10`  
+  1500→**综合：`5.3/10`**
+  1501→
+  1502→（另：文中称脚本在 `assets/ch03/`，但该目录当前不存在，建议一并修正。）
+  1503→

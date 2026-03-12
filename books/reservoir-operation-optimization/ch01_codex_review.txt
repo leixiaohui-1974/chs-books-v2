@@ -1,0 +1,21 @@
+**主要问题（按严重度）**
+1. 高: 保证出力线包络方向疑似反了。文中写“取下外包线”会降低安全裕度，通常应取各枯水序列所需最低水位的“上包络”（逐时段最大值）才满足保证约束。见 [ch01.md:71](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch01.md:71)。
+2. 高: 逆时序隐式方程推导不严谨，通式里把下一时段状态固定成 `V_dead`，且把尾水位函数与水头损失简化掉，前后定义不一致。见 [ch01.md:64](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch01.md:64)、[ch01.md:70](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch01.md:70)。
+3. 高: “允许水位阶段性高于汛限水位”的表述有合规风险，需明确仅在经批复的动态汛限规则与风险约束下实施，否则容易误导工程实践。见 [ch01.md:161](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch01.md:161)。
+4. 中: 水量平衡方程前后不一致。前文含渗漏项 `S`，后续逆推与优化模型均省略且未声明假设条件。见 [ch01.md:34](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch01.md:34)、[ch01.md:68](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch01.md:68)、[ch01.md:81](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch01.md:81)。
+5. 中: 出力公式常数与单位体系未闭合。`A_c≈9.81` 与 `N(MW)` 直接相乘易引起量纲错误，应给出 `ρg/10^6` 等完整换算。见 [ch01.md:63](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch01.md:63)、[ch01.md:119](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch01.md:119)。
+6. 中: DP部分缺少终端条件、状态离散与插值误差说明；“可获得全局最优”应限定为“离散网格上的全局最优”。见 [ch01.md:98](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch01.md:98)、[ch01.md:99](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch01.md:99)。
+7. 中: 现代控制衔接有过度泛化表述，如“完全同构”“降维打击”，建议替换为可验证条件（时滞、约束耦合、可达域、稳定性条件）。见 [ch01.md:174](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch01.md:174)。
+8. 中: 仿真可复现性不足。50年旬尺度案例与后文3年月尺度代码示例口径不一致，易造成“结果表1-2”不可复现。见 [ch01.md:122](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch01.md:122)、[ch01.md:136](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch01.md:136)、[ch01.md:215](D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch01.md:215)。
+
+**按你关注的5点结论**
+1. 控制理论应用: 框架方向正确（状态-控制-扰动），但严格性不足，尤其在可达性/稳定性条件与约束处理上。
+2. 优化算法完整性: 目标与约束列得较全，但缺关键求解细节（离散粒度、边界条件、收敛与复杂度）。
+3. 动态规划推导严谨性: 目前是“概念级DP”，非“可复现DP”；逆推方程和包络线逻辑需修正。
+4. 与现代控制衔接: 有良好切入（MPC、前馈-反馈），但工程化条件和合规边界需补齐。
+5. 技术细节准确性: 存在量纲、符号一致性、术语与口径一致性问题，建议统一符号表+单位表+假设清单。
+
+**建议优先修订顺序**
+1. 先修正 `1.2.1` 的包络线方向与逆推方程。  
+2. 再补 `1.2.3` 的终端条件、离散策略、最优性表述边界。  
+3. 最后修正工程建议与现代控制段落的合规与条件化表述。

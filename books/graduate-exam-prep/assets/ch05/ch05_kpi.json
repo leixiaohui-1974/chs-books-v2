@@ -1,0 +1,66 @@
+{
+  "dc_motor_params": {
+    "R": 1.0,
+    "L": 0.5,
+    "Kt": 0.01,
+    "Ke": 0.01,
+    "J": 0.01,
+    "b": 0.1
+  },
+  "A_matrix": [
+    [
+      -2.0,
+      -0.02
+    ],
+    [
+      1.0,
+      -10.0
+    ]
+  ],
+  "B_matrix": [
+    2.0,
+    0.0
+  ],
+  "open_loop_poles": [
+    "-2.0025007817386626",
+    "-9.997499218261337"
+  ],
+  "controllability": {
+    "rank": 2,
+    "det": 4.0,
+    "is_controllable": true
+  },
+  "observability": {
+    "rank": 2,
+    "det": -1.0,
+    "is_observable": true
+  },
+  "pole_placement": {
+    "desired_poles": [
+      -5.0,
+      -10.0
+    ],
+    "K_gain": [
+      1.5,
+      -0.00999999999999801
+    ],
+    "achieved_poles": [
+      -5.0,
+      -10.0
+    ]
+  },
+  "observer": {
+    "desired_poles": [
+      -25.0,
+      -50.0
+    ],
+    "L_gain": [
+      1103.98,
+      63.0
+    ],
+    "achieved_poles": [
+      -25.0,
+      -50.0
+    ]
+  }
+}

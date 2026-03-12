@@ -1,0 +1,206 @@
+# -*- coding: utf-8 -*-
+# 教材：《水-能源-粮食纽带关系》
+# 章节：第3章 水-粮耦合建模（3.1 基本概念与理论框架）
+# 功能：构建“水资源分配-粮食生产-需求反馈”耦合仿真，输出KPI并绘图
+
+import numpy as np
+from scipy.optimize import minimize_scalar
+import matplotlib
+matplotlib.use('Agg')  # 禁用GUI
+import matplotlib.pyplot as plt
+
+# =========================
+# 1) 关键参数（可调）
+# =========================
+YEARS = 30
+START_YEAR = 2025
+np.random.seed(42)
+
+# 人口与粮食需求参数
+pop0 = 5.0e6                 # 初始人口（人）
+pop_growth = 0.008           # 人口年增长率
+food_per_capita = 420.0      # 人均粮食需求（kg/人/年）
+food_loss_rate = 0.05        # 粮食损耗率
+
+# 水资源参数
+inflow_mean = 1.25e9         # 年均来水（m3/年）
+inflow_amp = 0.22            # 周期波动幅度
+inflow_noise = 0.10          # 随机扰动强度
+eco_min = 2.1e8              # 生态需水底线（m3/年）
+domestic_per_capita = 48.0   # 居民生活用水（m3/人/年）
+
+# 农业生产参数
+area0 = 3.0e5                # 初始耕地面积（ha）
+area_min, area_max = 2.4e5, 3.6e5
+area_adjust_speed = 0.03     # 耕地调整速度（受缺粮反馈影响）
+yield_max = 9200.0           # 单位面积理论最高产量（kg/ha）
+water_prod_coeff = 0.0012    # 水分生产函数系数（1/(m3/ha)）
+tech_trend = 0.004           # 年技术进步率
+
+# 分水决策与惩罚参数
+alpha_base = 0.72            # 农业分水基础比例
+feedback_gain = 0.18         # 缺粮反馈增益
+stress_penalty = 0.35        # 高水压力惩罚系数
+
+# =========================
+# 2) 状态变量初始化
+# =========================
+years = np.arange(START_YEAR, START_YEAR + YEARS)
+
+pop = np.zeros(YEARS)
+inflow = np.zeros(YEARS)
+area = np.zeros(YEARS)
+irri_water = np.zeros(YEARS)
+domestic_water = np.zeros(YEARS)
+water_stress = np.zeros(YEARS)
+
+production = np.zeros(YEARS)
+demand = np.zeros(YEARS)
+food_gap = np.zeros(YEARS)
+ssr = np.zeros(YEARS)       # 自给率
+wue = np.zeros(YEARS)       # 水分利用效率（kg/m3）
+alpha_opt = np.zeros(YEARS) # 优化得到的农业分水比例
+
+pop[0] = pop0
+area[0] = area0
+
+# =========================
+# 3) 年度耦合仿真
+# =========================
+for t in range(YEARS):
+    if t > 0:
+        pop[t] = pop[t - 1] * (1 + pop_growth)
+
+        # 根据上一年缺粮率调整耕地（反馈机制）
+        prev_gap_ratio = max(0.0, food_gap[t - 1] / max(demand[t - 1], 1.0))
+        area[t] = np.clip(
+            area[t - 1] * (1 + area_adjust_speed * (prev_gap_ratio - 0.02)),
+            area_min,
+            area_max,
+        )
+
+    # 来水 = 周期项 + 随机项
+    seasonal = 1 + inflow_amp * np.sin(2 * np.pi * t / 7)
+    random_term = 1 + inflow_noise * np.random.randn()
+    inflow[t] = max(0.55 * inflow_mean, inflow_mean * seasonal * random_term)
+
+    domestic_water[t] = pop[t] * domestic_per_capita
+    available_for_alloc = max(0.0, inflow[t] - eco_min - domestic_water[t])
+
+    # 粮食需求
+    demand[t] = pop[t] * food_per_capita
+
+    # 缺粮反馈到分水上限：缺粮越大，农业分水上限越高
+    if t == 0:
+        alpha_cap = min(0.95, alpha_base + 0.05)
+    else:
+        gap_ratio = max(0.0, food_gap[t - 1] / max(demand[t - 1], 1.0))
+        alpha_cap = np.clip(alpha_base + feedback_gain * gap_ratio, 0.35, 0.95)
+
+    # 使用 scipy 优化农业分水比例 alpha
+    def objective(alpha):
+        agri_w = alpha * available_for_alloc
+        water_per_ha = agri_w / max(area[t], 1.0)
+
+        # 灌溉-产量边际递减函数
+        tech_factor = (1 + tech_trend) ** t
+        y_ha = yield_max * (1 - np.exp(-water_prod_coeff * water_per_ha)) * tech_factor
+        q = y_ha * area[t]
+
+        # 目标：缺粮最小 + 高水压力惩罚
+        shortage = max(0.0, demand[t] - q)
+        total_withdrawal = eco_min + domestic_water[t] + agri_w
+        stress = total_withdrawal / max(inflow[t], 1.0)
+
+        return shortage / 1e6 + stress_penalty * max(0.0, stress - 0.85) ** 2
+
+    res = minimize_scalar(objective, bounds=(0.1, alpha_cap), method="bounded")
+    alpha_star = float(res.x)
+    alpha_opt[t] = alpha_star
+
+    # 计算本年结果
+    irri_water[t] = alpha_star * available_for_alloc
+    water_per_ha = irri_water[t] / max(area[t], 1.0)
+
+    tech_factor = (1 + tech_trend) ** t
+    y_ha = yield_max * (1 - np.exp(-water_prod_coeff * water_per_ha)) * tech_factor
+    production[t] = y_ha * area[t] * (1 - food_loss_rate)
+
+    food_gap[t] = demand[t] - production[t]
+    ssr[t] = production[t] / demand[t] if demand[t] > 0 else np.nan
+    wue[t] = production[t] / max(irri_water[t], 1.0)
+
+    total_withdrawal = eco_min + domestic_water[t] + irri_water[t]
+    water_stress[t] = total_withdrawal / max(inflow[t], 1.0)
+
+# =========================
+# 4) KPI结果表格
+# =========================
+kpi = {
+    "平均粮食自给率": np.mean(ssr),
+    "粮食供给可靠度(SSR>=1)": np.mean(ssr >= 1.0),
+    "平均水压力指数": np.mean(water_stress),
+    "高水压年份占比(>0.9)": np.mean(water_stress > 0.9),
+    "平均水分利用效率(kg/m3)": np.mean(wue),
+    "年均缺粮量(万吨)": np.mean(np.maximum(food_gap, 0.0)) / 1e7,
+}
+
+print("\n" + "=" * 64)
+print("水-粮耦合模型 KPI 结果")
+print("=" * 64)
+print(f"{'指标':<34}{'数值':>20}")
+print("-" * 64)
+for name, value in kpi.items():
+    if ("占比" in name) or ("可靠度" in name) or ("自给率" in name):
+        print(f"{name:<34}{value:>19.2%}")
+    elif "水压力指数" in name:
+        print(f"{name:<34}{value:>20.3f}")
+    else:
+        print(f"{name:<34}{value:>20.3f}")
+print("=" * 64)
+
+# =========================
+# 5) matplotlib 绘图
+# =========================
+fig, axes = 
+# 中文字体配置
+plt.rcParams['font.sans-serif'] = ['SimHei', 'Microsoft YaHei', 'Arial Unicode MS']
+plt.rcParams['axes.unicode_minus'] = False
+plt.subplots(2, 2, figsize=(12, 8), dpi=120)
+
+axes[0, 0].plot(years, inflow / 1e8, label="可利用来水")
+axes[0, 0].plot(years, irri_water / 1e8, label="农业灌溉用水")
+axes[0, 0].set_title("水资源供给与农业取水")
+axes[0, 0].set_ylabel("亿 m3")
+axes[0, 0].legend()
+axes[0, 0].grid(alpha=0.3)
+
+axes[0, 1].plot(years, demand / 1e6, label="粮食需求")
+axes[0, 1].plot(years, production / 1e6, label="粮食产量")
+axes[0, 1].set_title("粮食供需演化")
+axes[0, 1].set_ylabel("百万 kg")
+axes[0, 1].legend()
+axes[0, 1].grid(alpha=0.3)
+
+axes[1, 0].plot(years, ssr, label="自给率 SSR")
+axes[1, 0].axhline(1.0, color="r", ls="--", lw=1, label="供需平衡线")
+axes[1, 0].set_title("粮食自给率")
+axes[1, 0].set_ylim(0.6, max(1.2, np.max(ssr) + 0.05))
+axes[1, 0].legend()
+axes[1, 0].grid(alpha=0.3)
+
+axes[1, 1].plot(years, water_stress, label="水压力指数")
+axes[1, 1].plot(years, alpha_opt, label="农业分水比例 alpha")
+axes[1, 1].axhline(0.9, color="r", ls="--", lw=1, label="高水压阈值")
+axes[1, 1].set_title("耦合反馈：水压力与分水决策")
+axes[1, 1].legend()
+axes[1, 1].grid(alpha=0.3)
+
+for ax in axes.flat:
+    ax.set_xlabel("年份")
+
+fig.suptitle("第3章 水-粮耦合建模仿真结果", fontsize=14)
+fig.tight_layout()
+
+plt.savefig('ch03_simulation_result.png', bbox_inches="tight")
+# plt.show()  # 禁用弹窗

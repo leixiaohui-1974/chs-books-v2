@@ -1,0 +1,21 @@
+1. **SDP递推式的状态定义不闭合（高优先级）**  
+在SDP方程中，期望项用了 \(p_{jk}^t\) ，但式内未显式绑定“当前处于 \(I_t=i^j\)”；同时决策域写成 \(\Omega_R(S_t)\)，未体现对当前来水状态 \(I_t\) 的依赖。严格写法应是 \(\Omega_R(S_t,I_t)\) 或 \(\Omega_R(S_t,i^j)\)。见 [ch02.md:92](/D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch02.md:92), [ch02.md:85](/D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch02.md:85)。
+
+2. **折现型Bellman与“平均收益漂移判据”混用（高优先级）**  
+文中先给了 \(\alpha\in(0,1]\) 的折现型SDP，再用含 \(\Delta F\) 的稳态漂移收敛判据；后者通常对应平均收益/相对价值框架（常见于 \(\alpha=1\) 特例），两套理论未分场景说明，严格性不足。见 [ch02.md:95](/D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch02.md:95), [ch02.md:97](/D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch02.md:97), [ch02.md:99](/D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch02.md:99)。
+
+3. **“逆向水量平衡”仅部分完成（中优先级）**  
+你现在的前向平衡式量纲与符号方向是正确的（这点已修复并可确认）；但文中没有把逆向形式 \(R_t=f(S_t,S_{t+1},I_t,\dots)\) 显式写出，也未给出隐式项 \(E_t(S_t,S_{t+1})\) 的数值求解闭环（唯一性/迭代停止准则）如何嵌入DP。见 [ch02.md:38](/D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch02.md:38), [ch02.md:45](/D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch02.md:45)。
+
+4. **\(R_t\)、\(Q_{spill,t}\)、\(R_{max}\) 语义边界仍有歧义（中优先级）**  
+状态方程写成 \(R_t+Q_{spill,t}\) 同时扣减，但收益项又写 \(\min(R_t,R_{max})\) 且“超出 \(R_{max}\) 作为弃水”，容易导致“\(R_t\) 是总下泄还是仅可控下泄”的双重解释。建议统一为“可控泄量/过机流量/溢流”三变量。见 [ch02.md:38](/D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch02.md:38), [ch02.md:44](/D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch02.md:44), [ch02.md:52](/D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch02.md:52), [ch02.md:58](/D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch02.md:58)。
+
+5. **算法表达建议补“伪代码层”，且当前实现与公式有一处不一致（中优先级）**  
+章节有长代码块，但缺少教材友好的“算法伪代码（输入/状态/循环/终止）”。另外SDP公式含 \(\alpha\)，示例实现却是 `val = reward + exp_future`（未乘 \(\alpha\)）。见 [ch02.md:179](/D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch02.md:179), [figures/ch02_simulation.py:179](/D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/figures/ch02_simulation.py:179), [ch02.md:92](/D:/cowork/教材/chs-books-v2/books/reservoir-operation-optimization/ch02.md:92)。
+
+**评分（控制理论严谨性）**  
+- 逆向水量平衡方程数学正确性：**7.5/10**（前向式正确，但逆向闭环未写全）  
+- 动态规划算法完整性：**6.0/10**  
+- 状态转移方程严谨性：**6.5/10**  
+- 符号一致性：**5.5/10**  
+- 综合评分：**6.4/10（64/100）**

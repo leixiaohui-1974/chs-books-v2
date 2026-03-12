@@ -1,0 +1,39 @@
+{
+  "base_values": {
+    "SB_MVA": 100,
+    "VB_kV": 110,
+    "IB_kA": 0.5249
+  },
+  "sequence_impedance": {
+    "X1_pu": 0.3,
+    "X2_pu": 0.3,
+    "X0_pu": 0.6
+  },
+  "fault_summary": [
+    {
+      "type": "三相短路",
+      "current_pu": 3.3333,
+      "current_kA": 1.7495,
+      "ratio_to_3ph": 1.0
+    },
+    {
+      "type": "单相接地",
+      "current_pu": 2.5,
+      "current_kA": 1.3122,
+      "ratio_to_3ph": 0.75
+    },
+    {
+      "type": "两相短路",
+      "current_pu": 2.8868,
+      "current_kA": 1.5152,
+      "ratio_to_3ph": 0.866
+    },
+    {
+      "type": "两相接地",
+      "current_pu": 3.0551,
+      "current_kA": 1.6035,
+      "ratio_to_3ph": 0.9165
+    }
+  ],
+  "impulse_current_kA": 4.4536
+}

@@ -1,0 +1,72 @@
+{
+  "system": "G(s) = K / [s(s+1)(s+5)]",
+  "routh_critical_K": 30.0,
+  "stable_range": "0 < K < 30",
+  "results": [
+    {
+      "K": 5.0,
+      "phase_margin_deg": 43.21,
+      "gain_margin_dB": 15.56,
+      "is_stable": true,
+      "Kv": 1.0,
+      "ess_ramp": 1.0,
+      "poles": [
+        "-5.226+0.000j",
+        "-0.387+0.898j",
+        "-0.387-0.898j"
+      ]
+    },
+    {
+      "K": 10.0,
+      "phase_margin_deg": 25.39,
+      "gain_margin_dB": 9.54,
+      "is_stable": true,
+      "Kv": 2.0,
+      "ess_ramp": 0.5,
+      "poles": [
+        "-5.418+0.000j",
+        "-0.291+1.327j",
+        "-0.291-1.327j"
+      ]
+    },
+    {
+      "K": 20.0,
+      "phase_margin_deg": 8.91,
+      "gain_margin_dB": 3.52,
+      "is_stable": true,
+      "Kv": 4.0,
+      "ess_ramp": 0.25,
+      "poles": [
+        "-5.736+0.000j",
+        "-0.132+1.863j",
+        "-0.132-1.863j"
+      ]
+    },
+    {
+      "K": 30.0,
+      "phase_margin_deg": 0,
+      "gain_margin_dB": 0.0,
+      "is_stable": false,
+      "Kv": 6.0,
+      "ess_ramp": 0.1667,
+      "poles": [
+        "-6.000+0.000j",
+        "0.000+2.236j",
+        "0.000-2.236j"
+      ]
+    },
+    {
+      "K": 50.0,
+      "phase_margin_deg": -10.53,
+      "gain_margin_dB": -4.44,
+      "is_stable": false,
+      "Kv": 10.0,
+      "ess_ramp": 0.1,
+      "poles": [
+        "-6.431+0.000j",
+        "0.216+2.780j",
+        "0.216-2.780j"
+      ]
+    }
+  ]
+}

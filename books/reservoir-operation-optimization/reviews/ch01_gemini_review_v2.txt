@@ -1,0 +1,2 @@
+/c/Users/lxh/AppData/Roaming/npm/gemini: line 15: /c/Program Files/nodejs/node: Argument list too long
+/c/Users/lxh/AppData/Roaming/npm/gemini: line 15: /c/Program Files/nodejs/node: No error
