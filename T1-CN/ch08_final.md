@@ -141,7 +141,7 @@ CHS理论将水利系统统一描述为六元受控系统 $\Sigma = (P, A, S, D,
 
 ![图8-1: CPSS三层架构图](./H/fig_08_01_cpss_architecture.png)
 
-**图8-1**: CPSS框架的三层架构。Cyber层（数字控制算法）、Physical层（物理过程建模）、Social层（社会需求优化）通过统一的数学语言有机融合。
+> 图8-1: CPSS框架的三层架构。Cyber层（数字控制算法）、Physical层（物理过程建模）、Social层（社会需求优化）通过统一的数学语言有机融合。
 
 ### 8.1.4 本章结构
 
@@ -410,7 +410,7 @@ $$
 其中$J$为转动惯量,$\alpha = d\omega/dt$为角加速度,$\sum T$为合力矩。合力矩包括:
 - $T_m$:机械力矩(水轮机输出)
 - $T_e$:电磁力矩(发电机负载)
-- $-D_m \omega$:阻尼力矩(轴承摩擦、风阻等)
+- $-D_m \omega$:阻尼力矩(轴承摩擦、风阻等，此处为绝对量形式；标幺化后等效为 $-D\Delta\omega$，见式8.3.2耦合模型)
 
 **物理参数**:
 - $J = J_t + J_g$:总转动惯量(水轮机转轮$J_t$ + 发电机转子$J_g$)
@@ -492,11 +492,11 @@ $$
 **励磁系统**:
 
 $$
-T_e \frac{dE_{fd}}{dt} = K_e(V_{ref} - V_s) - E_{fd}
+T_{ex} \frac{dE_{fd}}{dt} = K_e(V_{ref} - V_s) - E_{fd}
 $$
 
 其中:
-- $T_e$:励磁系统时间常数(约0.5-2秒)
+- $T_{ex}$:励磁系统时间常数(约0.5-2秒)
 - $K_e$:励磁增益(约20-400)
 - $V_{ref}$:电压参考值
 
@@ -524,7 +524,7 @@ $$
 \frac{1}{T_y}(y_{ref} - y) \\
 \omega - \omega_0 \\
 \frac{1}{T_{d0}'}(E_{fd} - E_q' - (X_d - X_d')I_d) \\
-\frac{1}{T_e}(K_e(V_{ref} - V_s) - E_{fd})
+\frac{1}{T_{ex}}(K_e(V_{ref} - V_s) - E_{fd})
 \end{bmatrix}
 $$
 
@@ -541,13 +541,13 @@ $$
 - 水力系统:$T_w \sim 1$秒(水锤波传播)
 - 机械系统:$2H \sim 5$秒(转子惯性)
 - 电气暂态:$T_{d0}' \sim 8$秒(磁链变化)
-- 励磁系统:$T_e \sim 1$秒(电压调节)
+- 励磁系统:$T_{ex} \sim 1$秒(电压调节)
 
 多时间尺度特性使得系统分析和控制设计具有挑战性。
 
 ![图8-2: 多物理场耦合示意图](./H/fig_08_02_multiphysics_coupling.png)
 
-**图8-2**: 水利系统的多物理场耦合。水力系统（蓝色）、机械系统（绿色）、电气系统（橙色）通过状态变量相互耦合，形成统一的7阶动态系统。
+> 图8-2: 水利系统的多物理场耦合。水力系统（蓝色）、机械系统（绿色）、电气系统（橙色）通过状态变量相互耦合，形成统一的7阶动态系统。
 
 ---
 
@@ -695,34 +695,34 @@ $$
 对于线性化系统$\dot{\mathbf{x}} = \mathbf{A}\mathbf{x} + \mathbf{B}\mathbf{u}$, $\mathbf{y} = \mathbf{C}\mathbf{x}$,设计观测器:
 
 $$
-\dot{\\hat{\\mathbf{x}}} = \\mathbf{A}\\hat{\\mathbf{x}} + \\mathbf{B}\\mathbf{u} + \\mathbf{L}(\\mathbf{y} - \\mathbf{C}\\hat{\\mathbf{x}})
+\dot{\hat{\mathbf{x}}} = \mathbf{A}\hat{\mathbf{x}} + \mathbf{B}\mathbf{u} + \mathbf{L}(\mathbf{y} - \mathbf{C}\hat{\mathbf{x}})
 $$
 
-- $\\hat{\\mathbf{x}}$: 状态估计
-- $\\mathbf{L}$: 观测器增益矩阵
+- $\hat{\mathbf{x}}$: 状态估计
+- $\mathbf{L}$: 观测器增益矩阵
 
 **定理8.3**（观测器收敛性）:
-若选择$\\mathbf{L}$使得$(\\mathbf{A} - \\mathbf{LC})$为Hurwitz矩阵（所有特征值实部为负）,则估计误差$\\tilde{\\mathbf{x}} = \\mathbf{x} - \\hat{\\mathbf{x}}$指数收敛到零。
+若选择$\mathbf{L}$使得$(\mathbf{A} - \mathbf{LC})$为Hurwitz矩阵（所有特征值实部为负）,则估计误差$\tilde{\mathbf{x}} = \mathbf{x} - \hat{\mathbf{x}}$指数收敛到零。
 
-**增益设计**:可通过极点配置或LQR方法选择$\\mathbf{L}$。
+**增益设计**:可通过极点配置或LQR方法选择$\mathbf{L}$。
 
 #### (b) 自适应观测器（参数未知情况）
 
-当系统参数$\\theta$（如水击波速$a$、管道摩阻$f$）未知或时变时,设计自适应观测器:
+当系统参数$\theta$（如水击波速$a$、管道摩阻$f$）未知或时变时,设计自适应观测器:
 
 $$
 \begin{cases}
 \dot{\hat{\mathbf{x}}} = \mathbf{f}(\hat{\mathbf{x}}, \mathbf{u}, \hat{\theta}) + \mathbf{L}(\mathbf{y} - \hat{\mathbf{y}}) \\
-\dot{\hat{\theta}} = -\Gamma \mathbf{\Phi}^T(\hat{\mathbf{x}}, \mathbf{u}) (\mathbf{y} - \hat{\mathbf{y}})
+\dot{\hat{\theta}} = -\Gamma \boldsymbol{\Phi}^T(\hat{\mathbf{x}}, \mathbf{u}) (\mathbf{y} - \hat{\mathbf{y}})
 \end{cases}
 $$
 
 - $\hat{\theta}$: 参数估计
 - $\Gamma > 0$: 自适应增益矩阵
-- $\mathbf{\Phi}(\hat{\mathbf{x}}, \mathbf{u})$: 回归矩阵（满足$\mathbf{y} = \mathbf{\Phi}^T \theta + \epsilon$）
+- $\boldsymbol{\Phi}(\hat{\mathbf{x}}, \mathbf{u})$: 回归矩阵（满足$\mathbf{y} = \boldsymbol{\Phi}^T \theta + \epsilon$）
 
 **收敛条件**:
-1. **持续激励(PE)条件**:存在$T_0, \alpha > 0$使得$\int_t^{t+T_0} \mathbf{\Phi}(\tau)\mathbf{\Phi}^T(\tau) d\tau \geq \alpha \mathbf{I}$
+1. **持续激励(PE)条件**:存在$T_0, \alpha > 0$使得$\int_t^{t+T_0} \boldsymbol{\Phi}(\tau)\boldsymbol{\Phi}^T(\tau) d\tau \geq \alpha \mathbf{I}$
 2. **Lyapunov稳定性**:构造$V = \tilde{\mathbf{x}}^T P \tilde{\mathbf{x}} + \tilde{\theta}^T \Gamma^{-1} \tilde{\theta}$,可证$\dot{V} \leq 0$
 
 **工程应用**:水电系统中常用递推最小二乘(RLS)或扩展卡尔曼滤波(EKF)实现在线参数辨识[8-18]。
@@ -1106,7 +1106,7 @@ $$
 
 ![图8-3: 三层融合控制流程图](./H/fig_08_03_fusion_control.png)
 
-**图8-3**: CPSS框架的三层融合控制流程。顶层（Social）生成最优功率轨迹，中层（Cyber）计算控制指令，底层（Physical）执行并反馈，形成完整的闭环控制系统。
+> 图8-3: CPSS框架的三层融合控制流程。顶层（Social）生成最优功率轨迹，中层（Cyber）计算控制指令，底层（Physical）执行并反馈，形成完整的闭环控制系统。
 
 ---
 
@@ -1264,7 +1264,7 @@ $$
 
 ![图8-4: 性能对比曲线](./H/fig_08_04_performance.png)
 
-**图8-4**: 传统PID控制、现代控制(LQR)与CPSS框架的性能对比。左图：频率响应曲线；右图：功率跟踪曲线。CPSS框架显著降低了超调量和调节时间,同时提高了鲁棒性。
+> 图8-4: 传统PID控制、现代控制(LQR)与CPSS框架的性能对比。左图：频率响应曲线；右图：功率跟踪曲线。CPSS框架显著降低了超调量和调节时间,同时提高了鲁棒性。
 
 ---
 
