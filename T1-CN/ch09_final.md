@@ -567,8 +567,7 @@ K_g > 6 \text{ dB}
 \quad \Rightarrow \quad \text{系统稳定且有足够裕度}
 $$
 
-<!-- TODO: 需生成图片 ch09_bode_plot.png -->
-<!-- ![图9-2: Bode图示例](./H/fig_09_02_bode.png) -->
+![图9-2: Bode图示例](./H/fig_09_02_bode.png)
 
 **图9-2**: 典型水电站系统的Bode图。上图：幅频特性；下图：相频特性。标注了截止频率$\omega_c$、相位裕度$\gamma$和幅值裕度$K_g$。
 
@@ -605,8 +604,7 @@ $$
 
 对于开环稳定系统（右半平面无极点，$P=0$），闭环稳定的充要条件是Nyquist曲线不包围点$(-1, 0)$。这是水电站控制系统最常见的情况。
 
-<!-- TODO: 需生成图片 ch09_nyquist_plot.png -->
-<!-- ![图9-3: Nyquist图示例](./H/fig_09_03_nyquist.png) -->
+![图9-3: Nyquist图示例](./H/fig_09_03_nyquist.png)
 
 **图9-3**: 水电站系统的Nyquist图。曲线不包围临界点(-1, 0)，系统稳定。标注了增益裕度和相位裕度对应的频率点。
 
