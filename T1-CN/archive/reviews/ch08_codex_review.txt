@@ -1,0 +1,74 @@
+**评审范围**
+本轮已重点审查与你要求最相关的 3 个文件：`ch08_final.md`、`ch09_final.md`、`ch11_final.md`（含滑模/自适应/MPC、Lyapunov、CBF、水轮机与发电机、案例数据）。
+
+**总体结论**
+存在多处“可导致技术误导”的问题，主要集中在：水力传函物理合理性、Nyquist/Smith表述严谨性、CBF相对阶处理、以及案例数据缺少可追溯来源。
+
+**问题清单与修改建议（按严重度）**
+
+1. [严重] 弹性水击传函导致 DC 增益发散，不符合物理。见 [ch09_final.md:81](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:81), [ch09_final.md:93](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:93)。  
+建议：改为有有限静态增益的水力-水击模型（分布参数或其有理近似），避免 `1/sqrt(s)` 直接作为“导叶→流量”主模型。
+
+2. [严重] “精确传函”形式可疑且维度/结构不清。见 [ch09_final.md:103](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:103)。  
+建议：明确该式来源（文献+推导），或改用工程常见形式（如水击阻抗 `tanh(T_es)` 相关模型）并给出适用频段。
+
+3. [严重] 总传函链路漏掉关键增益/耦合，前后不一致。见 [ch09_final.md:299](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:299), [ch09_final.md:305](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:305), [ch09_final.md:317](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:317)。  
+建议：统一从 `G_w = k_q/(T_ws+1)` 出发，显式保留 `k_q` 与水头耦合项，重写 `K_total`。
+
+4. [严重] Nyquist 记号约定存在歧义，易引发符号反号错误。见 [ch09_final.md:432](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:432), [ch09_final.md:438](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:438), [ch09_final.md:443](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:443)。  
+建议：在文中固定约定（顺/逆时针正负号），并写成同一标准式（如 `N=Z-P`）。
+
+5. [严重] Smith 预估器公式写法不是标准控制器结构表达。见 [ch09_final.md:618](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:618)。  
+建议：改成“结构图+闭环等效传函”表述，区分 `C0(s)`、`Gp(s)`、`e^{-τs}` 在前馈/反馈中的位置。
+
+6. [严重] CBF 变化率约束用了二阶导，但按一阶 CBF 写法处理，理论不完整。见 [ch11_final.md:1157](D:/cowork/教材/chs-books-v2/T1-CN/ch11_final.md:1157), [ch11_final.md:1163](D:/cowork/教材/chs-books-v2/T1-CN/ch11_final.md:1163), [ch11_final.md:1197](D:/cowork/教材/chs-books-v2/T1-CN/ch11_final.md:1197)。  
+建议：明确使用 HOCBF（或增广状态）并给出对应相对阶推导。
+
+7. [严重] 泵站压力模型单位不一致，导致后续约束区间维度可疑。见 [ch11_final.md:1284](D:/cowork/教材/chs-books-v2/T1-CN/ch11_final.md:1284), [ch11_final.md:1287](D:/cowork/教材/chs-books-v2/T1-CN/ch11_final.md:1287), [ch11_final.md:1309](D:/cowork/教材/chs-books-v2/T1-CN/ch11_final.md:1309)。  
+建议：统一 SI 单位（Pa、m³/s），给出 `C_h` 的物理量纲与数值来源，再重算区间系数。
+
+8. [中] 发电机电磁转矩模型过度简化，忽略同步转矩主项。见 [ch09_final.md:256](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:256)。  
+建议：至少加入 `Δδ` 项或明确“忽略功角动态”的假设边界。
+
+9. [中] Thoma 条件公式未给出来源与适用前提，工程可复核性弱。见 [ch09_final.md:149](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:149)。  
+建议：补引用与符号定义，给出量纲检查。
+
+10. [中] MPC 目标函数缺终端项/终端约束，稳定性论证不足。见 [ch08_final.md:575](D:/cowork/教材/chs-books-v2/T1-CN/ch08_final.md:575)。  
+建议：补 `x_N^TPx_N` 与 `x_N∈X_f`，或声明“仅性能型 MPC，不保证闭环稳定”。
+
+11. [中] 自适应观测器公式与后续 Hurwitz 收敛定理不匹配。见 [ch08_final.md:609](D:/cowork/教材/chs-books-v2/T1-CN/ch08_final.md:609), [ch08_final.md:620](D:/cowork/教材/chs-books-v2/T1-CN/ch08_final.md:620)。  
+建议：拆成“线性 Luenberger”与“自适应观测器”两节，后者补 PE 条件和 Lyapunov 推导。
+
+12. [中] 一致性证明缺图结构前提（无向/权重平衡等）。见 [ch08_final.md:759](D:/cowork/教材/chs-books-v2/T1-CN/ch08_final.md:759), [ch08_final.md:765](D:/cowork/教材/chs-books-v2/T1-CN/ch08_final.md:765), [ch08_final.md:768](D:/cowork/教材/chs-books-v2/T1-CN/ch08_final.md:768)。  
+建议：补充必要假设，否则结论改为“在给定拓扑条件下成立”。
+
+13. [中] CBF 符号复用（`h` 既是水位又是屏障函数）可读性和严谨性差。见 [ch11_final.md:1111](D:/cowork/教材/chs-books-v2/T1-CN/ch11_final.md:1111)。  
+建议：水位改 `z`，屏障函数统一 `b_i(x)`。
+
+14. [中] 分区 `α_i` 分段切换未讨论连续性，可能引入切换抖动。见 [ch11_final.md:1249](D:/cowork/教材/chs-books-v2/T1-CN/ch11_final.md:1249)。  
+建议：用平滑过渡函数（如 sigmoid/blending）或补混杂系统稳定性说明。
+
+15. [中] CBF-QP 复杂度 `O(n^2m)` 过于武断。见 [ch11_final.md:1255](D:/cowork/教材/chs-books-v2/T1-CN/ch11_final.md:1255)。  
+建议：改成“与决策变量/约束规模和求解器实现相关”，给实测耗时区间更稳妥。
+
+16. [中] `\nexists ... => Emergency Shutdown` 公式不可直接工程落地。见 [ch11_final.md:1268](D:/cowork/教材/chs-books-v2/T1-CN/ch11_final.md:1268)。  
+建议：改为“QP infeasible 标志 + 降级控制状态机”。
+
+17. [中] 案例 1 参数自洽性可疑：`L=200m,H=80m,Tw=2.5s` 推回流速约 `9.8m/s`。见 [ch09_final.md:57](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:57), [ch09_final.md:577](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:577), [ch09_final.md:578](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:578)。  
+建议：补 `v0` 与工况来源，或修正 `Tw`。
+
+18. [中] 案例 2 `50km` 却 `τ=10min` 缺物理解释。见 [ch09_final.md:603](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:603), [ch09_final.md:604](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:604)。  
+建议：明确是“质量输运时滞”还是“压力波传播时滞”，并给计算依据。
+
+19. [中] 多个效果数据无可追溯证据。见 [ch09_final.md:624](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:624), [ch09_final.md:625](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:625), [ch09_final.md:626](D:/cowork/教材/chs-books-v2/T1-CN/ch09_final.md:626), [ch11_final.md:1318](D:/cowork/教材/chs-books-v2/T1-CN/ch11_final.md:1318)。  
+建议：给仿真配置、扰动脚本、评价窗口、随机种子和复现实验链接。
+
+20. [中] `2025年8月胶东调水工程` 叙事含精确概率（78%）但无公开出处。见 [ch11_final.md:11](D:/cowork/教材/chs-books-v2/T1-CN/ch11_final.md:11)。  
+建议：若无可公开验证来源，改为“匿名化仿真场景”并标注“示例数据”。
+
+21. [低] 章节参考含自动驾驶分类标准，和水系统案例证据链衔接不足。见 [ch11_final.md:1365](D:/cowork/教材/chs-books-v2/T1-CN/ch11_final.md:1365)。  
+建议：补充水电/泵站安全控制标准与行业报告，降低跨域引用跳跃感。
+
+---
+
+如果你愿意，我可以下一步直接给出“逐条可替换文本版本”（每个问题对应一段可粘贴到原文的修订稿）。
