@@ -409,6 +409,87 @@ $$
 
 ---
 
+### 13.4.5 步长内仿控紧耦合：从数字孪生到 L3 自主控制
+
+前面四节讨论的数字孪生，无论是离线仿真（§13.2）、准实时预报（§13.2）还是在线孪生（§13.2），都处于**松耦合模式**：数字孪生定期更新预测状态（如每分钟一次），控制器（MPC）读取最新的预测结果做决策。两者通过数据库或消息队列交互，不共享时间步，不存在串行依赖。
+
+这种松耦合架构对于 WNAL L1–L2 的规划调度场景已经足够。但当系统目标升级到 **WNAL L3（有条件自主运行）**，以及关键控制对象的响应时间缩短到秒级（如渠系节制闸控制、水电站调速器），需要一种根本不同的耦合架构：**步长内仿控紧耦合（Intra-Timestep Tight Coupling，ITTC）**。
+
+#### (a) 紧耦合的定义与动机
+
+**定义 13-5**（步长内仿控紧耦合）：预报模型与 MPC 控制器在同一个控制步长 $\Delta t$ 内**串行执行、共享状态向量**，构成同步紧耦合回路。其执行顺序为：
+
+$$
+\underbrace{\text{孪生预测}[t, t+\Delta t]}_{\text{Step 1}} \rightarrow \underbrace{\text{MPC 求解}[t, t+\Delta t]}_{\text{Step 2}} \rightarrow \underbrace{\text{指令下发}}_{\text{Step 3}} \rightarrow \underbrace{\text{传感器采集}[t+\Delta t]}_{\text{Step 4}} \rightarrow \text{重复}
+$$
+
+所有四步必须在单个 $\Delta t$ 内完成。特别地，Step 1（孪生预测）的输出状态向量 $\hat{\mathbf{x}}(t+\Delta t | t)$ 直接作为 Step 2（MPC 求解）的初始条件——二者不经过消息队列中转，不存在异步等待。
+
+**动机**：松耦合架构中，MPC 控制器使用的是“上一步”的预测结果做决策，而物理系统已经向前演进了 $\Delta t$。当 $\Delta t$ 较大（如 10 分钟）时，这种“一步滞后”的误差可以接受；当 $\Delta t$ 缩短到 60 s（渠系控制）或 1 s（水电调速），且物理过程动态较快（如水击效应时间常数 $T_w \approx 2.5$ s），一步滞后会导致 MPC 基于严重过时的预测做决策，控制效果急剧劣化。
+
+#### (b) 数学表述
+
+设系统离散状态方程（来自 Saint-Venant/IDZ 模型离散化，参见 ch04 §4.3）：
+
+$$
+\mathbf{x}_{k+1} = \mathbf{f}(\mathbf{x}_k, \mathbf{u}_k, \boldsymbol{\theta}_k)
+$$
+
+松耦合模式下，MPC 在 $t_k$ 时刻求解时，使用的预测模型初始状态来自上一个 $\Delta t$ 的预测输出 $\hat{\mathbf{x}}_k^{(\text{prev})}$（已有 $\Delta t$ 的滞后）：
+
+$$
+\min_{\mathbf{u}} J = \sum_{j=0}^{N_p} \| \mathbf{y}_{k+j} - \mathbf{y}^{\text{ref}} \|^2_Q + \| \mathbf{u}_{k+j} \|^2_R
+\quad \text{s.t.} \quad \mathbf{x}_{k+j+1} = \mathbf{f}(\mathbf{x}_{k+j}, \mathbf{u}_{k+j}, \hat{\boldsymbol{\theta}})
+$$
+
+**紧耦合模式**下，孪生预测 Step 1 首先利用最新传感器数据 $\mathbf{y}_k^{\text{obs}}$（EnKF 同化，见 §13.5）更新状态估计 $\hat{\mathbf{x}}_k$，然后 MPC 立即使用 $\hat{\mathbf{x}}_k$（同一时刻的当前状态，无滞后）作为初始条件求解：
+
+$$
+\hat{\mathbf{x}}_k = \text{EnKF}(\hat{\mathbf{x}}_{k-1}, \mathbf{u}_{k-1}, \mathbf{y}_k^{\text{obs}}, \boldsymbol{\theta}_k) \xrightarrow{\text{同 }\Delta t \text{ 内}} \text{MPC}(\hat{\mathbf{x}}_k) \rightarrow \mathbf{u}_k^*
+$$
+
+消除了 $\Delta t$ 级别的状态滞后。当 $\Delta t = 60$ s、水位变化率为 5 mm/min 时，消除一步滞后可将预测误差降低约 5 mm，对于 ±50 mm 控制精度要求的渠系，这是显著的改善。
+
+#### (c) Δt 内计算预算约束
+
+紧耦合的关键挑战是 **Δt 内的计算时间预算**。设 $T_{\text{compute}}$ 为 Step 1 + Step 2 + Step 3 的总计算时间，必须满足：
+
+$$
+T_{\text{compute}} \leq \beta \cdot \Delta t, \quad \beta \in [0.3, 0.5]
+$$
+
+（$\beta$ 为计算裕度系数，剩余 $(1-\beta)\Delta t$ 用于传感器采集等待、I/O 传输和安全校验。）
+
+| 场景 | 典型 $\Delta t$ | 预算 $\beta \cdot \Delta t$ | 可用模型 |
+|------|--------------|--------------------------|---------|
+| 大型渠系（30 渠池） | 60 s | 18–30 s | IDZ 传递函数（单步 < 0.001 s），EnKF（< 1 s） |
+| 中型渠系（10 渠池） | 30 s | 9–15 s | IDZ + 部分 Saint-Venant（单步 0.01 s） |
+| 水电调速 | 1 s | 0.3–0.5 s | 纯积分/简化传递函数 |
+
+当计算时间超预算时（如集合成员数过多导致 EnKF 超时），系统必须自动降级：跳过当前步的 EnKF 同化，使用上一步的状态估计继续推进，并将该步标记为“降精度”。连续 3 步降精度触发系统降级到松耦合模式（WNAL L3→L2 自动降级）。
+
+#### (d) 在数字孪生平台中的实现位置
+
+步长内仿控紧耦合在数字孪生平台的软件架构中处于如下位置：
+
+```
+传感器数据 → [EnKF 状态同化] → 状态估计 x̂_k
+                                    │
+                              Δt 内共推进
+                                    ↓
+                           [MPC 滚动优化] → 控制指令 u*_k
+                                    │
+                              Δt 内完成
+                                    ↓
+                           [安全包络校验] → 下发 or 拒绝
+```
+
+其中，EnKF 状态同化（§13.5）和 MPC 滚动优化（ch07 §7.4）分别独立设计，但通过**共享状态接口（SharedStateInterface）**在同一个实时计算周期内串行调用。SharedStateInterface 是一块共享内存区域（而非数据库或消息队列），确保状态向量的读写延迟 < 1 ms，不影响 Δt 内的计算时序。
+
+这一架构与 HydroOS（T4 卷第 4 章）步长级仿控耦合机制在接口层完全对齐：数字孪生平台输出的 $\hat{\mathbf{x}}_k$ 通过 OPC-UA 标准接口（T4 卷第 5 章）传递给 HydroOS 的 HydroCore 引擎，HydroCore 完成 MPC 求解后将控制指令 $\mathbf{u}_k^*$ 写回数字孪生的“反事实通道”，用于下一步的预测初始化。
+
+> **V&V 要求**：步长内仿控紧耦合系统在上线前，必须完成 HIL（硬件在环）测试，验证在计算超时、EnKF 发散、传感器数据缺失等极端场景下，系统能够正确触发降级机制，不出现状态向量“NaN 传播”（即一步计算的 NaN 扩散到下一步导致全局崩溃）。这是 WNAL L3 认证的技术门禁之一（详见 T3 卷第四篇）。
+
 ## 13.5 在线校正与数据同化
 
 在线数字孪生的核心能力是**持续自我校正**——通过比较模型预测与实测数据的偏差，自动调整模型参数，使数字孪生始终与物理系统保持一致。
