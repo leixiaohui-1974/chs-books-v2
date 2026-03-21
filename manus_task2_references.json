@@ -1,0 +1,30 @@
+WARNING: credit usage 57 exceeds limit 50
+WARNING: credit usage 66 exceeds limit 50
+WARNING: credit usage 75 exceeds limit 50
+WARNING: credit usage 85 exceeds limit 50
+WARNING: credit usage 90 exceeds limit 50
+WARNING: credit usage 101 exceeds limit 50
+WARNING: credit usage 112 exceeds limit 50
+WARNING: credit usage 117 exceeds limit 50
+WARNING: credit usage 129 exceeds limit 50
+WARNING: credit usage 135 exceeds limit 50
+WARNING: credit usage 147 exceeds limit 50
+WARNING: credit usage 160 exceeds limit 50
+WARNING: credit usage 167 exceeds limit 50
+WARNING: credit usage 180 exceeds limit 50
+WARNING: credit usage 187 exceeds limit 50
+WARNING: credit usage 194 exceeds limit 50
+WARNING: credit usage 208 exceeds limit 50
+WARNING: credit usage 208 exceeds limit 50
+WARNING: credit usage 215 exceeds limit 50
+WARNING: credit usage 230 exceeds limit 50
+WARNING: credit usage 237 exceeds limit 50
+{
+  "success": true,
+  "task_id": "Y9sxD5goKoLFgFA5TXERNt",
+  "task_url": "https://manus.im/app/Y9sxD5goKoLFgFA5TXERNt",
+  "status": "completed",
+  "credit_usage": 237,
+  "model": "manus-1.6-adaptive",
+  "result": "我已经为您搜集并整理了这4本水利/控制工程教材的核心参考文献。所有文献均已通过学术数据库验证其真实性，并严格按照GB/T 7714-2015格式进行了编排。\n\n整理好的文献已保存为Markdown文件，并已提交到本地Git仓库中，文件名为 `Hydraulic_Control_References.md`。\n\n您可以直接查看附件中的文件内容。如果您需要进一步补充其他文献或调整格式，请随时告诉我！"
+}

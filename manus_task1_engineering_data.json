@@ -1,0 +1,20 @@
+WARNING: credit usage 56 exceeds limit 50
+WARNING: credit usage 61 exceeds limit 50
+WARNING: credit usage 66 exceeds limit 50
+WARNING: credit usage 71 exceeds limit 50
+WARNING: credit usage 71 exceeds limit 50
+WARNING: credit usage 71 exceeds limit 50
+WARNING: credit usage 71 exceeds limit 50
+WARNING: credit usage 76 exceeds limit 50
+WARNING: credit usage 82 exceeds limit 50
+WARNING: credit usage 82 exceeds limit 50
+WARNING: credit usage 82 exceeds limit 50
+WARNING: credit usage 82 exceeds limit 50
+WARNING: credit usage 82 exceeds limit 50
+{
+  "success": false,
+  "task_id": "LEPBvncHxC9CgwtmgsDu2E",
+  "task_url": "https://manus.im/app/LEPBvncHxC9CgwtmgsDu2E",
+  "status": "timeout",
+  "error": "timeout after 300s, check https://manus.im/app/LEPBvncHxC9CgwtmgsDu2E"
+}
