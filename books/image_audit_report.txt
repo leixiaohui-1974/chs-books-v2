@@ -1,0 +1,329 @@
+================================================================================
+图片审计报告
+生成时间：2026-03-21 07:33:17
+扫描目录：Z:\research\chs-books-v2\books
+================================================================================
+
+【全局汇总】
+  扫描书籍数: 26
+  断链图片: 1 处
+  孤儿图片: 123 个
+  空 alt 文本: 0 处
+  路径格式问题: 0 处
+  文件大小异常: 6 个
+  无图片章节: 63 个
+
+--------------------------------------------------------------------------------
+书籍: ai-for-water-engineering
+  [孤儿图片] 4 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\ai-for-water-engineering\figures\ch02_architecture.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\ai-for-water-engineering\figures\ch02_concept.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\ai-for-water-engineering\figures\ch02_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\ai-for-water-engineering\figures\ch04_simulation_result.png
+  [无图片章节] 9 个
+    ch02.md
+    ch03.md
+    ch04.md
+    ch05.md
+    ch06.md
+    ch07.md
+    ch08.md
+    ch09.md
+    ch10.md
+
+--------------------------------------------------------------------------------
+书籍: Alumina_Book
+  [孤儿图片] 6 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\Alumina_Book\assets\ch01\concept_evaporation_pain.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\Alumina_Book\assets\ch02\concept_heat_mass_balance.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\Alumina_Book\assets\ch03\concept_intelligent_control.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\Alumina_Book\assets\ch06\concept_three_modes.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\Alumina_Book\assets\ch07\concept_result_dashboard.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\Alumina_Book\assets\ch08\concept_structural_isomorphism.png
+
+--------------------------------------------------------------------------------
+书籍: canal-pipeline-control
+  [孤儿图片] 5 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\canal-pipeline-control\assets\ch01\concept_canal_pid_crisis.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\canal-pipeline-control\assets\ch02\concept_cascade_feedforward.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\canal-pipeline-control\assets\ch03\concept_dmc_data_driven.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\canal-pipeline-control\assets\ch04\concept_canal_pump_coupling.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\canal-pipeline-control\assets\ch05\concept_mixed_flow_coupling.png
+  [无图片章节] 1 个
+    ch06.md
+
+--------------------------------------------------------------------------------
+书籍: CoupledTank_Book
+  [孤儿图片] 6 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\CoupledTank_Book\assets\ch01\concept_level_control_challenges.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\CoupledTank_Book\assets\ch02\concept_coupled_tank_model.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\CoupledTank_Book\assets\ch04\concept_l0_to_l4_stack.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\CoupledTank_Book\assets\ch05\concept_cc_desktop.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\CoupledTank_Book\assets\ch07\concept_data_to_decision.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\CoupledTank_Book\assets\ch08\concept_scale_up_isomorphism.png
+
+--------------------------------------------------------------------------------
+书籍: dam-safety-monitoring
+  [孤儿图片] 4 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\dam-safety-monitoring\figures\ch01_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\dam-safety-monitoring\figures\ch04_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\dam-safety-monitoring\figures\ch06_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\dam-safety-monitoring\figures\dam_seepage_sim.png
+  [无图片章节] 6 个
+    ch01.md
+    ch02.md
+    ch03.md
+    ch04.md
+    ch05.md
+    ch06.md
+
+--------------------------------------------------------------------------------
+书籍: digital-twin-river-basin
+  [孤儿图片] 7 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\digital-twin-river-basin\figures\ch01_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\digital-twin-river-basin\figures\ch02_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\digital-twin-river-basin\figures\ch03_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\digital-twin-river-basin\figures\ch04_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\digital-twin-river-basin\figures\ch06_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\digital-twin-river-basin\figures\ch07_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\digital-twin-river-basin\figures\ch08_simulation_result.png
+  [无图片章节] 8 个
+    ch01.md
+    ch02.md
+    ch03.md
+    ch04.md
+    ch05.md
+    ch06.md
+    ch07.md
+    ch08.md
+
+--------------------------------------------------------------------------------
+书籍: distributed-hydrological-model
+  [孤儿图片] 3 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\distributed-hydrological-model\assets\ch05\concept_river_network_parallel.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\distributed-hydrological-model\assets\ch06\concept_calibration_optimization.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\distributed-hydrological-model\assets\ch12\concept_reservoir_scheduling.png
+
+--------------------------------------------------------------------------------
+书籍: ecohydraulics
+  [孤儿图片] 1 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\ecohydraulics\assets\ch01\concept_baseflow_threshold.png
+
+--------------------------------------------------------------------------------
+书籍: energy-storage-system-modeling-control
+  [孤儿图片] 8 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\energy-storage-system-modeling-control\assets\ch02\problem_nano.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\energy-storage-system-modeling-control\assets\ch02\thevenin_model_sim.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\energy-storage-system-modeling-control\assets\ch03\ekf_soc_estimation_sim.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\energy-storage-system-modeling-control\assets\ch03\problem_nano.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\energy-storage-system-modeling-control\assets\ch05\bms_balancing_sim.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\energy-storage-system-modeling-control\assets\ch05\problem_nano.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\energy-storage-system-modeling-control\assets\ch06\dispatch_and_droop_sim.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\energy-storage-system-modeling-control\assets\ch06\problem_nano.png
+
+--------------------------------------------------------------------------------
+书籍: flood-forecasting-control
+  [孤儿图片] 6 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\flood-forecasting-control\figures\ch01_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\flood-forecasting-control\figures\ch02_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\flood-forecasting-control\figures\ch03_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\flood-forecasting-control\figures\ch05_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\flood-forecasting-control\figures\ch07_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\flood-forecasting-control\figures\ch08_simulation_result.png
+  [无图片章节] 8 个
+    ch01.md
+    ch02.md
+    ch03.md
+    ch04.md
+    ch05.md
+    ch06.md
+    ch07.md
+    ch08.md
+
+--------------------------------------------------------------------------------
+书籍: graduate-exam-prep
+  [孤儿图片] 3 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\graduate-exam-prep\assets\ch02\bode_step_sim.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\graduate-exam-prep\assets\ch02\problem_nano.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\graduate-exam-prep\assets\ch06\ch06_exam_problems.png
+  [文件大小异常] 1 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\graduate-exam-prep\assets\ch01\ch01_transfer_function.png  ->  < 1 KB (0 bytes), 可能损坏
+
+--------------------------------------------------------------------------------
+书籍: Hydrology_Book
+  [断链图片] 1 处
+    ch07.md:141  ->  assets/ch07/problem_nano.png
+      原因: 文件不存在
+  [文件大小异常] 2 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\Hydrology_Book\assets\ch07\api_load_sim.png  ->  < 1 KB (132 bytes), 可能损坏
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\Hydrology_Book\assets\ch09\skill_workflow_sim.png  ->  < 1 KB (132 bytes), 可能损坏
+
+--------------------------------------------------------------------------------
+书籍: inland-waterway-navigation
+  [孤儿图片] 4 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\inland-waterway-navigation\figures\ch01_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\inland-waterway-navigation\figures\ch03_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\inland-waterway-navigation\figures\chapter2_navigation_dispatch.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\inland-waterway-navigation\figures\chapter5_dispatch.png
+  [无图片章节] 6 个
+    ch01.md
+    ch02.md
+    ch03.md
+    ch04.md
+    ch05.md
+    ch06.md
+
+--------------------------------------------------------------------------------
+书籍: integrated-energy-system-simulation-optimization
+  [孤儿图片] 1 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\integrated-energy-system-simulation-optimization\assets\ch04\problem_nano.png
+  [文件大小异常] 2 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\integrated-energy-system-simulation-optimization\assets\ch02\device_models_sim.png  ->  < 1 KB (132 bytes), 可能损坏
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\integrated-energy-system-simulation-optimization\assets\ch03\storage_network_sim.png  ->  < 1 KB (0 bytes), 可能损坏
+
+--------------------------------------------------------------------------------
+书籍: intelligent-water-network-design
+  [孤儿图片] 5 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\intelligent-water-network-design\assets\ch01\concept_digital_foundation.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\intelligent-water-network-design\assets\ch02\concept_edge_iot.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\intelligent-water-network-design\assets\ch03\concept_cloud_edge_device.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\intelligent-water-network-design\assets\ch04\concept_disaster_recovery.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\intelligent-water-network-design\assets\ch05\concept_hil_sil_testing.png
+
+--------------------------------------------------------------------------------
+书籍: open-channel-hydraulics
+  [孤儿图片] 4 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\open-channel-hydraulics\assets\ch07\problem_nano.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\open-channel-hydraulics\assets\ch08\problem_nano.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\open-channel-hydraulics\assets\ch09\problem_nano.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\open-channel-hydraulics\assets\ch10\problem_nano.png
+
+--------------------------------------------------------------------------------
+书籍: photovoltaic-system-modeling-control
+  [孤儿图片] 2 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\photovoltaic-system-modeling-control\assets\ch03\concept_inverter_grid_control.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\photovoltaic-system-modeling-control\assets\ch05\concept_hydro_solar_complement.png
+
+--------------------------------------------------------------------------------
+书籍: renewable-energy-system-identification-testing
+  [孤儿图片] 3 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\renewable-energy-system-identification-testing\assets\ch02\problem_nano.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\renewable-energy-system-identification-testing\assets\ch02\rls_pmsm_sim.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\renewable-energy-system-identification-testing\assets\ch04\concept_hil_testing.png
+
+--------------------------------------------------------------------------------
+书籍: reservoir-operation-optimization
+  [孤儿图片] 4 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\reservoir-operation-optimization\figures\ch01_reservoir_dispatch_simulation.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\reservoir-operation-optimization\figures\ch02_architecture.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\reservoir-operation-optimization\figures\ch05_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\reservoir-operation-optimization\figures\ch07_simulation_result.png
+  [无图片章节] 8 个
+    ch01.md
+    ch02.md
+    ch03.md
+    ch04.md
+    ch05.md
+    ch06.md
+    ch07.md
+    ch08.md
+
+--------------------------------------------------------------------------------
+书籍: river-sediment-dynamics
+  [孤儿图片] 6 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\river-sediment-dynamics\figures\ch01_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\river-sediment-dynamics\figures\ch03_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\river-sediment-dynamics\figures\ch04_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\river-sediment-dynamics\figures\ch05_bed_evolution.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\river-sediment-dynamics\figures\ch05_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\river-sediment-dynamics\figures\ch06_simulation_result.png
+  [无图片章节] 6 个
+    ch01.md
+    ch02.md
+    ch03.md
+    ch04.md
+    ch05.md
+    ch06.md
+
+--------------------------------------------------------------------------------
+书籍: ship-lock-automation
+  [孤儿图片] 4 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\ship-lock-automation\figures\ch01_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\ship-lock-automation\figures\ch02_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\ship-lock-automation\figures\ch03_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\ship-lock-automation\figures\ch04_simulation_result.png
+  [无图片章节] 5 个
+    ch01.md
+    ch02.md
+    ch03.md
+    ch04.md
+    ch05.md
+
+--------------------------------------------------------------------------------
+书籍: underground-water-dynamics
+  [孤儿图片] 5 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\underground-water-dynamics\assets\ch01\concept_groundwater_fundamentals.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\underground-water-dynamics\assets\ch02\concept_parameter_calibration.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\underground-water-dynamics\assets\ch03\concept_sw_gw_coupling.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\underground-water-dynamics\assets\ch04\concept_human_impact.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\underground-water-dynamics\assets\ch05\concept_intelligent_digital_twin.png
+
+--------------------------------------------------------------------------------
+书籍: water-energy-food-nexus
+  [孤儿图片] 5 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-energy-food-nexus\figures\ch01_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-energy-food-nexus\figures\ch02_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-energy-food-nexus\figures\ch04_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-energy-food-nexus\figures\ch05_simulation_result.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-energy-food-nexus\figures\ch06_simulation_result.png
+  [无图片章节] 6 个
+    ch01.md
+    ch02.md
+    ch03.md
+    ch04.md
+    ch05.md
+    ch06.md
+
+--------------------------------------------------------------------------------
+书籍: water-resource-planning-management
+  [孤儿图片] 2 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-resource-planning-management\assets\ch03\concept_dp_reservoir.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-resource-planning-management\assets\ch03\problem_nano.png
+
+--------------------------------------------------------------------------------
+书籍: water-system-control
+  [孤儿图片] 22 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch01\tank_diagram.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch01\tank_nano_diagram.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch01\tank_nano_diagram_v2.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch01\tank_nano_diagram_v3.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch02\tank_windup_diagram.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch02\tank_windup_diagram_nano.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch03\problem_nano.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch04\coupled_tanks_nano.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch04\coupled_tanks_sim.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch04\problem_nano.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch05\kalman_nano.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch06\lqr_diagram.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch06\lqr_nano_diagram.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch06\lqr_sim.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch07\mpc_diagram.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch07\mpc_sim.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch08\canal_delay_sim.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch08\canal_nano_diagram.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch09\smc_diagram.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch09\smc_sim.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch10\problem_nano.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch10\rl_learning_curve.png
+  [文件大小异常] 1 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\water-system-control\assets\ch08\smith_predictor_sim.png  ->  < 1 KB (0 bytes), 可能损坏
+
+--------------------------------------------------------------------------------
+书籍: wind-power-system-modeling-control
+  [孤儿图片] 3 个
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\wind-power-system-modeling-control\assets\ch03\concept_full_converter_pmsg.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\wind-power-system-modeling-control\assets\ch04\concept_wake_cooperative.png
+    \\file.hydrosis.heiyu.space\rainfields-automount\research\chs-books-v2\books\wind-power-system-modeling-control\assets\ch05\concept_wind_hydro_dispatch.png
+
+================================================================================
+报告结束

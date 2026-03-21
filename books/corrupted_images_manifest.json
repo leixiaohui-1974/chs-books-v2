@@ -1,0 +1,58 @@
+[
+  {
+    "path": "Z:/research/chs-books-v2/books/Hydrology_Book/assets/ch07/problem_nano.png",
+    "book": "Hydrology_Book",
+    "chapter": "ch07",
+    "referenced_in": "Z:/research/chs-books-v2/books/Hydrology_Book/ch07.md:141",
+    "context": "断链图片（文件不存在）。第7章案例：洪水事件下同步vs异步API生死压测。图片标题为物理场景与问题概化图，位于问题描述（同步架构4线程/处理耗时2-5s/队列上限50 vs 异步架构8 Worker/50ms即时ACK）与解题思路之间，上下文合理，应生成。",
+    "prompt": "学术教材插图，简洁白底，API架构对比场景概化图。左侧用波浪箭头表示请求流突增到达（常态2 req/s，洪峰30 req/s），中间分上下两栏：上栏为架构A同步阻塞，包含4个串行线程方块、队列缓冲区（上限50）、超出部分标注丢弃红叉；下栏为架构B异步解耦，API层立即返回ACK（50ms），消息队列连接8个后台Worker。右侧标注两种架构核心KPI差异。浅蓝/浅橙配色，中文标注，学术教材风格。"
+  },
+  {
+    "path": "Z:/research/chs-books-v2/books/Hydrology_Book/assets/ch07/api_load_sim.png",
+    "book": "Hydrology_Book",
+    "chapter": "ch07",
+    "referenced_in": "Z:/research/chs-books-v2/books/Hydrology_Book/ch07.md:159",
+    "context": "损坏图片（132字节）。标题：洪水事件请求风暴下同步阻塞vs异步应答的全息压测图。仿真脚本ch07_api_load.py生成，四子图：请求到达率时序（洪水期t=100-200s峰值约30 req/s），同步vs异步响应延迟对比（红色同步延迟峰值25s超SLO红线5s，绿色异步始终50ms），同步队列积压深度（洪水期满载截断至50），累计丢弃请求数（同步2102个，异步0）。仿真时长300s，时间步长1s，随机种子42。",
+    "prompt": "学术教材仿真结果四子图（2x2布局），白底，中文标注，matplotlib风格。子图1（左上）请求到达率时序折线图，横轴时间0-300s，纵轴req/s，t=100-200s区间灰色阴影标注洪水突发事件，峰值约30 req/s，其余约2 req/s。子图2（右上）响应延迟对比，红色虚线同步架构延迟洪水期飙升至25秒以上，绿色实线异步ACK延迟始终贴近0.05s，橙色水平虚线标注SLO红线5s。子图3（左下）队列深度对比，同步队列洪水期堆积至50上限截断，异步队列持续增长但不丢弃。子图4（右下）累计丢弃请求数，同步累计约2102个，异步为0。蓝/红/绿配色，添加图例，学术出版品质。"
+  },
+  {
+    "path": "Z:/research/chs-books-v2/books/Hydrology_Book/assets/ch09/skill_workflow_sim.png",
+    "book": "Hydrology_Book",
+    "chapter": "ch09",
+    "referenced_in": "Z:/research/chs-books-v2/books/Hydrology_Book/ch09.md:157",
+    "context": "损坏图片（132字节）。标题：确定性Skill与概率性LLM在异常预报复核中的全维度对比图。仿真脚本ch09_skill_workflow.py生成，对50个洪水预报事件（正常50%、模型高估20%、传感器漂移15%、真实极端事件15%，随机种子42）分别走确定性Skill流程和LLM临场判断。KPI：准确率Skill 94% vs LLM 74%；传感器漂移检测率Skill 100% vs LLM 40%；误报次数Skill 5 vs LLM 3；漏报极端事件Skill 0 vs LLM 4。",
+    "prompt": "学术教材仿真对比图，白底，中文标注，matplotlib风格，三子图布局。子图1（左）50个预报事件类别分布条形图（正常/模型高估/传感器漂移/极端事件）标注各类数量。子图2（中）综合KPI分组柱状图，对比准确率、传感器漂移检测率、误报次数、极端事件漏报四个指标，Skill蓝色，LLM橙色，漏报极端事件一栏红色高亮强调Skill零漏报关键优势（Skill 0 vs LLM 4）。子图3（右）两种方法的混淆矩阵热力图（4类事件），Skill矩阵对角线集中，LLM矩阵在传感器漂移和极端事件分类上偏差明显。整体强调确定性规则在安全关键水文预报场景的优越性，学术出版品质。"
+  },
+  {
+    "path": "Z:/research/chs-books-v2/books/graduate-exam-prep/assets/ch01/ch01_transfer_function.png",
+    "book": "graduate-exam-prep",
+    "chapter": "ch01",
+    "referenced_in": "Z:/research/chs-books-v2/books/graduate-exam-prep/ch01.md:261",
+    "context": "损坏图片（0字节）。标题：阶跃响应与极点分布。仿真脚本ch01_transfer_function.py生成。案例：RLC串联电路G(s)=1/(LCs^2+RCs+1)，参数R=2欧、L=1H、C=0.5F，自然频率wn=sqrt(2) rad/s，阻尼比zeta=0.707（欠阻尼）。验证梅森增益公式结果4.8980与直接化简完全一致（误差8.88e-16）。包含阶跃响应曲线和极点分布两个子图。",
+    "prompt": "学术教材控制系统仿真图，白底，中文标注，matplotlib风格，左右两子图布局。左图（阶跃响应）：横轴时间0-10s，纵轴电容电压输出归一化至稳态1.0，绘制二阶欠阻尼系统（zeta=0.707）阶跃响应曲线，显示适度超调约4.3%和快速收敛，标注稳态值1.0水平虚线和峰值时刻，图题RLC电路阶跃响应，添加参数标注框：R=2欧、L=1H、C=0.5F、wn=sqrt(2)、zeta=0.707。右图（极点分布）：复平面s域图，横轴实部sigma，纵轴虚部jw，两个共轭极点约-1+-j1用蓝色X标记，绘制左半平面阴影区表示稳定域，标注wn和zeta角度，图题极点分布（s平面）。研究生考试辅导教材风格，学术出版品质。"
+  },
+  {
+    "path": "Z:/research/chs-books-v2/books/integrated-energy-system-simulation-optimization/assets/ch02/device_models_sim.png",
+    "book": "integrated-energy-system-simulation-optimization",
+    "chapter": "ch02",
+    "referenced_in": "Z:/research/chs-books-v2/books/integrated-energy-system-simulation-optimization/ch02.md:171",
+    "context": "损坏图片（132字节）。标题：Device Models Simulation，综合能源系统五类设备部分负荷性能曲线，由ch02_device_models.py生成。负荷率10%-100%的50个离散点扫描：CHP电效率（额定0.35，低负荷剧烈衰减）、CHP热效率（额定0.45，余热回收稳定）、燃气锅炉效率（额定0.92，极平稳0.851-0.920）、热泵COP（基准3.5，范围2.45-3.5）、吸收式制冷COP（基准0.70，范围0.49-0.70）、电压缩制冷COP（基准5.0，范围4.06-5.00）。在25%/50%/75%/100%四个关键工况点抽样输出KPI表。",
+    "prompt": "学术教材综合能源系统设备性能曲线图，白底，中英双语标注，matplotlib风格，上下两子图布局。上图（主图）：六条部分负荷性能曲线，横轴负荷率10%-100%，主纵轴效率0-1，副纵轴COP 0-6，包含CHP电效率（蓝实线低负荷明显下降）、CHP热效率（蓝虚线较平稳）、燃气锅炉效率（橙线极平稳0.85-0.92）、热泵COP（绿线副轴2.45-3.5）、吸收式制冷COP（紫线副轴0.49-0.70）、电压缩制冷COP（红线副轴4.06-5.00），在25%/50%/75%/100%处用空心圆标注数据点，添加图例，标注锅炉高度稳定和电制冷COP最高等关键特征。下图（辅图）：25%/50%/75%/100%四工况点各设备效率/COP分组柱状图，便于数值精确对比。学术出版品质。"
+  },
+  {
+    "path": "Z:/research/chs-books-v2/books/integrated-energy-system-simulation-optimization/assets/ch03/storage_network_sim.png",
+    "book": "integrated-energy-system-simulation-optimization",
+    "chapter": "ch03",
+    "referenced_in": "Z:/research/chs-books-v2/books/integrated-energy-system-simulation-optimization/ch03.md:147",
+    "context": "损坏图片（0字节）。标题：Storage & Network Simulation，四子图仿真结果，由ch03_storage_network.py生成。包含：(1)SOC轨迹，电池储能荷电状态0.1-0.9随时间变化，低价0.4元/kWh充电，高价0.8元/kWh（i>=10）放电，P_max=500kW；(2)功率-电价联动，基础负荷与电池功率叠加及分时电价；(3)成本对比，有/无储能每日电费（无10472元 vs 有10193元，节省2.7%），峰值需求900/1050kW；(4)供温延迟响应，热网传输延时1333s（约22.2分钟），管道温降0.07摄氏度，大流量约294 kg/s。",
+    "prompt": "学术教材综合能源系统仿真四子图（2x2布局），白底，中文标注，matplotlib风格。子图1（左上）电池SOC日轨迹：横轴24小时时段，纵轴SOC（0.1-0.9），蓝色曲线显示低价充电高价放电锯齿状轨迹，标注上下限虚线，浅黄色背景标注高电价时段。子图2（右上）功率调度与电价联动：主轴功率（kW），灰色填充基础负荷，蓝色柱充电功率，橙色柱放电功率，右轴分时电价折线（0.4/0.8元/kWh方波）。子图3（左下）储能经济效益：分组柱状图，有储能10193元（蓝）和无储能10472元（灰）日电费对比，标注节省2.7%，旁添加峰值需求对比900 vs 1050 kW。子图4（右下）热力管网传输延时：横轴时间0-2500s，上游供温t=0阶跃变化，下游温度在t=1333s后跟随上升，灰色阴影标注延时区间，标注温降0.07摄氏度。学术出版品质。"
+  },
+  {
+    "path": "Z:/research/chs-books-v2/books/water-system-control/assets/ch08/smith_predictor_sim.png",
+    "book": "water-system-control",
+    "chapter": "ch08",
+    "referenced_in": "Z:/research/chs-books-v2/books/water-system-control/ch08.md:139",
+    "context": "损坏图片（0字节）。标题：标准PI与史密斯预估器的水位响应对比图。仿真脚本ch08_smith_predictor.py生成。物理场景：灌溉干渠末端水位控制，渠道800m，纯滞后L=400s（波速2m/s），惯性时间常数T=500s，稳态增益K=1.0，预测模型完美匹配。死区期间（t=200-600s）标准PI输出持续爬升至9.4（积分饱和），史密斯预估器凭借内部无延迟模型将输出控制在3.7并开始回落。学习提示：观察灰色阴影区内两种控制器的输出差异。",
+    "prompt": "学术教材控制系统仿真对比图，白底，中文标注，matplotlib风格，上下两子图布局。子图1（上）水位响应对比：横轴时间0-1200s，纵轴水位（归一化），绿色虚线参考设定值阶跃至1.0，蓝色实线史密斯预估器水位响应（平稳收敛），红色虚线标准PI水位响应（超调明显），灰色阴影标注死区期t=200-600s（纯滞后区间），图题水位响应对比。子图2（下）控制器输出对比：同横轴，纵轴控制器操纵量，红色虚线标准PI输出在死区内持续爬升至峰值9.4（积分饱和），蓝色实线史密斯预估器输出控制在3.7附近，灰色阴影相同死区，死区期间两者差异极为鲜明，图题控制器输出对比（积分饱和vs史密斯补偿）。添加图例，标注关键数值9.4和3.7，适合水利控制教材使用，学术出版品质。"
+  }
+]

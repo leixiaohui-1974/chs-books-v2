@@ -1,0 +1,674 @@
+[
+  {
+    "book": "ai-for-water-engineering",
+    "chapter": "ch03",
+    "chapter_title": "大语言模型（LLM）原理",
+    "image_type": "concept",
+    "target_path": "ai-for-water-engineering/figures/ch03_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示大语言模型工作原理：输入文本分词后进入嵌入层，经多层Transformer编码器（多头自注意力机制）处理，输出水利工程领域文本的概率分布。各模块用圆角矩形表示，箭头连接，关键参数（嵌入维度、注意力头数）标注，蓝灰渐变配色，中文标注，学术风格。"
+  },
+  {
+    "book": "ai-for-water-engineering",
+    "chapter": "ch03",
+    "chapter_title": "大语言模型（LLM）原理",
+    "image_type": "simulation_result",
+    "target_path": "ai-for-water-engineering/figures/ch03_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为词元注意力热图（行列均为水利领域词汇，颜色深浅表示注意力权重强弱）；右图为最小LLM仿真中预测下一词元的Top-10概率分布柱状图。中文坐标轴，学术图表风格。"
+  },
+  {
+    "book": "ai-for-water-engineering",
+    "chapter": "ch04",
+    "chapter_title": "Prompt Engineering提示词工程",
+    "image_type": "concept",
+    "target_path": "ai-for-water-engineering/figures/ch04_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。中心为LLM模型，周围辐射六种提示技巧：零样本（水位预报示例）、少样本（给出2个洪水案例）、思维链CoT（逐步推理调度决策）、角色扮演（扮演水文工程师）、结构化输出（JSON格式水质报告）、检索增强（查询规范文件），蓝绿配色，圆圈布局，中文标注。"
+  },
+  {
+    "book": "ai-for-water-engineering",
+    "chapter": "ch04",
+    "chapter_title": "Prompt Engineering提示词工程",
+    "image_type": "simulation_result",
+    "target_path": "ai-for-water-engineering/figures/ch04_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为零样本/少样本/CoT三种提示策略在水利专业问答准确率的柱状图对比（y轴准确率，三组并排）；右图为提示词长度（x轴tokens）与模型响应质量评分（y轴）的散点关系图（含趋势线）。蓝橙配色，中文坐标轴，学术图表风格。"
+  },
+  {
+    "book": "ai-for-water-engineering",
+    "chapter": "ch05",
+    "chapter_title": "RAG与知识库",
+    "image_type": "concept",
+    "target_path": "ai-for-water-engineering/figures/ch05_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示检索增强生成（RAG）系统架构：左侧水利工程知识库（规范文档、水文数据、历史报告）经向量嵌入存入向量数据库；用户提问经检索器获取相关片段，与问题拼接后输入LLM，生成专业答案。各模块不同颜色区分，流程图形式，中文标注。"
+  },
+  {
+    "book": "ai-for-water-engineering",
+    "chapter": "ch05",
+    "chapter_title": "RAG与知识库",
+    "image_type": "simulation_result",
+    "target_path": "ai-for-water-engineering/figures/ch05_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为相似度检索准确率（y轴）随向量库规模（x轴，文档数）变化的折线图；右图为普通LLM与RAG增强LLM在水利专业问答准确率对比柱状图（两组）。蓝橙配色，中文坐标轴，学术图表风格。"
+  },
+  {
+    "book": "ai-for-water-engineering",
+    "chapter": "ch06",
+    "chapter_title": "Agent与MCP协议",
+    "image_type": "concept",
+    "target_path": "ai-for-water-engineering/figures/ch06_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示AI Agent与MCP协议水利控制架构：上层LLM推理核心，通过MCP协议标准化接口连接水利工业控制系统（SCADA、IoT传感器网络、闸门控制器、水文预报模块）。中间层展示感知-规划-行动闭环，通信协议双向箭头，蓝绿工业风，中文标注。"
+  },
+  {
+    "book": "ai-for-water-engineering",
+    "chapter": "ch06",
+    "chapter_title": "Agent与MCP协议",
+    "image_type": "simulation_result",
+    "target_path": "ai-for-water-engineering/figures/ch06_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为Agent调度策略下水库水位时间序列与传统规则策略的对比（x轴时间/h，y轴水位/m，两条曲线）；右图为MCP协议通信延迟分布直方图（x轴延迟/ms，y轴频次）。中文坐标轴，学术图表风格。"
+  },
+  {
+    "book": "ai-for-water-engineering",
+    "chapter": "ch07",
+    "chapter_title": "计算机视觉：大坝裂缝/水位识别/遥感",
+    "image_type": "concept",
+    "target_path": "ai-for-water-engineering/figures/ch07_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示计算机视觉水利三大应用：左侧大坝裂缝检测（图像→CNN→裂缝分割掩码），中间水尺水位识别（摄像头→目标检测框→水位读数），右侧卫星遥感（多光谱图像→语义分割→洪水淹没范围标注）。三个分支从顶部深度学习视觉模型汇出，蓝绿配色，中文标注。"
+  },
+  {
+    "book": "ai-for-water-engineering",
+    "chapter": "ch07",
+    "chapter_title": "计算机视觉：大坝裂缝/水位识别/遥感",
+    "image_type": "simulation_result",
+    "target_path": "ai-for-water-engineering/figures/ch07_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为大坝裂缝检测混淆矩阵热图（2x2，正/负样本，颜色深浅表示数量）；右图为水位识别误差分布箱线图（x轴光照条件：晴天/阴天/夜晚，y轴误差/cm）。蓝橙配色，中文标注，学术图表风格。"
+  },
+  {
+    "book": "ai-for-water-engineering",
+    "chapter": "ch08",
+    "chapter_title": "时序预测：洪水/水质/负荷预报",
+    "image_type": "concept",
+    "target_path": "ai-for-water-engineering/figures/ch08_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示时序预测框架：横向时间轴上历史观测序列进入LSTM/Transformer编码器，输出带置信区间的未来预测。三行分别对应三种应用（洪水流量预报/m3/s，水质COD指标/mg/L，水电负荷/MW），各行标注预见期。蓝绿配色，中文标注。"
+  },
+  {
+    "book": "ai-for-water-engineering",
+    "chapter": "ch08",
+    "chapter_title": "时序预测：洪水/水质/负荷预报",
+    "image_type": "simulation_result",
+    "target_path": "ai-for-water-engineering/figures/ch08_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。上图为洪水流量预报时间序列（实测值黑线、LSTM预测值蓝线、90%置信区间灰色区域，x轴时间/h，y轴流量/m3/s）；下图为预报RMSE随预见期增加的变化折线（LSTM/GRU/Transformer三条曲线对比）。中文轴标，学术图表风格。"
+  },
+  {
+    "book": "ai-for-water-engineering",
+    "chapter": "ch09",
+    "chapter_title": "强化学习：水库调度/闸门控制",
+    "image_type": "concept",
+    "target_path": "ai-for-water-engineering/figures/ch09_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示强化学习水库调度闭环：中心为水库-电站环境模型（状态：当前水位H、入库流量Q、电网需电量D），Actor-Critic智能体输出下泄流量动作，获得奖励R（发电收益+供水满足-防洪违约惩罚），循环箭头构成闭环，旁注贝尔曼方程简式，蓝绿配色，中文标注。"
+  },
+  {
+    "book": "ai-for-water-engineering",
+    "chapter": "ch09",
+    "chapter_title": "强化学习：水库调度/闸门控制",
+    "image_type": "simulation_result",
+    "target_path": "ai-for-water-engineering/figures/ch09_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为RL智能体训练收敛曲线（x轴训练回合数，y轴平均累积奖励，含滑动平均线）；右图为RL策略与传统调度图策略的年度KPI对比柱状图（年发电量/亿kWh和供水保证率两指标，两组并排）。蓝橙配色，中文坐标轴，学术图表风格。"
+  },
+  {
+    "book": "ai-for-water-engineering",
+    "chapter": "ch10",
+    "chapter_title": "AI工程化：从实验室到SCADA部署",
+    "image_type": "concept",
+    "target_path": "ai-for-water-engineering/figures/ch10_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示AI模型工程化部署全流程：数据准备（水文传感器/历史数据库）→模型训练（GPU集群）→模型评估（交叉验证/性能指标）→容器化打包（Docker/Kubernetes）→REST API服务→SCADA系统集成→实时预测与运维监控。流程框图，配CI/CD反馈环箭头，蓝色工业风，中文标注。"
+  },
+  {
+    "book": "ai-for-water-engineering",
+    "chapter": "ch10",
+    "chapter_title": "AI工程化：从实验室到SCADA部署",
+    "image_type": "simulation_result",
+    "target_path": "ai-for-water-engineering/figures/ch10_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为AI模型在线推理延迟分布直方图（x轴延迟/ms，不同部署方式：本地GPU/边缘服务器/云端，三色柱对比）；右图为系统上线后模型预测精度随时间变化折线图（x轴运行月数，y轴RMSE，含模型漂移检测报警阈值虚线）。中文标注，学术图表风格。"
+  },
+  {
+    "book": "canal-pipeline-control",
+    "chapter": "ch06",
+    "chapter_title": "胶东调水工程——长距离水网的自主运行探索",
+    "image_type": "concept",
+    "target_path": "canal-pipeline-control/assets/ch06/concept_jiaodong_waterway.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示胶东调水工程（571km长距离调水）自主运行系统三层架构：顶层数字孪生平台（三维河网可视化），中层自动控制层（串级MPC控制器、前馈补偿模块、水力响应预测单元），底层571km渠道示意断面图（含明渠段、管道段、倒虹吸结构），右侧闸群联动控制逻辑框图，标注水位偏差控制目标（小于5cm），蓝色水利工程风格，中文标注。"
+  },
+  {
+    "book": "canal-pipeline-control",
+    "chapter": "ch06",
+    "chapter_title": "胶东调水工程——长距离水网的自主运行探索",
+    "image_type": "simulation_result",
+    "target_path": "canal-pipeline-control/assets/ch06/simulation_result_jiaodong.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。展示胶东调水工程停水工况切换仿真：上图为571km渠道沿程水位响应曲线（x轴沿渠距离/km，y轴水位/m，自主控制蓝线vs人工操作橙线对比）；下图为三个关键控制节点水位偏差时间序列（x轴时间/min，y轴偏差/cm，自主控制偏差控制在正负5cm以内）。中文轴标，蓝绿配色，学术图表风格。"
+  },
+  {
+    "book": "dam-safety-monitoring",
+    "chapter": "ch02",
+    "chapter_title": "渗流渗压监测与分析",
+    "image_type": "concept",
+    "target_path": "dam-safety-monitoring/figures/ch02_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示土石坝渗流渗压监测体系：坝体纵剖面（含防渗心墙），绘制渗流流网（等势线和流线交织成网格），布置渗压计（菱形符号）位置和量水堰，右侧标注渗透破坏机制（管涌和流土发生路径）。下方给出达西定律公式框（q=kiA）。蓝色渐变表示水头分布，中文标注，学术教材风格。"
+  },
+  {
+    "book": "dam-safety-monitoring",
+    "chapter": "ch02",
+    "chapter_title": "渗流渗压监测与分析",
+    "image_type": "simulation_result",
+    "target_path": "dam-safety-monitoring/figures/ch02_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为坝体横截面渗流场云图（颜色渐变表示孔隙水压力分布，叠加等势线）；右图为双纵轴折线图（左纵轴：坝趾渗流量/L/min，右纵轴：上游水库水位/m，x轴时间/年，含管涌风险预警阈值水平虚线）。蓝绿配色，中文轴标，学术图表风格。"
+  },
+  {
+    "book": "dam-safety-monitoring",
+    "chapter": "ch03",
+    "chapter_title": "应力应变监测",
+    "image_type": "concept",
+    "target_path": "dam-safety-monitoring/figures/ch03_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示混凝土坝应力应变监测系统：左侧坝体纵剖面标注埋入式应变计（圆形符号）和无应力计布置位置；右上角三向应变玫瑰图（应变花）示意；右下角应力-温度-时效（HST）分离模型框图；底部热传导方程简式框。红橙渐变表示应力集中区，中文标注，学术风格。"
+  },
+  {
+    "book": "dam-safety-monitoring",
+    "chapter": "ch03",
+    "chapter_title": "应力应变监测",
+    "image_type": "simulation_result",
+    "target_path": "dam-safety-monitoring/figures/ch03_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为混凝土坝横断面二维应力场云图（颜色表示主应力大小，叠加应力矢量箭头）；右图为典型测点应变时间序列：实测值（散点）与HST模型拟合值（曲线）对比，灰色带为残差区间，x轴时间/年，y轴应变/με。蓝橙配色，学术图表风格。"
+  },
+  {
+    "book": "dam-safety-monitoring",
+    "chapter": "ch05",
+    "chapter_title": "机器学习异常检测",
+    "image_type": "concept",
+    "target_path": "dam-safety-monitoring/figures/ch05_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示大坝监测机器学习异常检测流程：左侧多源监测数据（位移/渗流/应力传感器时间序列）到特征工程提取，再到机器学习模型（Isolation Forest/Autoencoder/LSTM-AE三选一），到异常评分，到阈值判断，最终三级告警（绿色正常/黄色异常/红色危险）。右侧展示二维特征空间正常点（蓝色）与异常点（红色）散点图。中文标注，蓝绿配色。"
+  },
+  {
+    "book": "dam-safety-monitoring",
+    "chapter": "ch05",
+    "chapter_title": "机器学习异常检测",
+    "image_type": "simulation_result",
+    "target_path": "dam-safety-monitoring/figures/ch05_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。上图为坝顶水平位移时间序列：正常段（蓝色）和植入异常段（橙色标注，含异常触发标记点），x轴时间/年，y轴位移/mm；下图为异常评分随时间变化曲线，含检测阈值虚线和报警时刻竖线标注，x轴时间/年，y轴异常评分。蓝橙配色，学术图表风格。"
+  },
+  {
+    "book": "digital-twin-river-basin",
+    "chapter": "ch01",
+    "chapter_title": "数字孪生流域总体架构",
+    "image_type": "concept",
+    "target_path": "digital-twin-river-basin/figures/ch01_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示数字孪生流域四层架构：底层物理感知层（遥感卫星/水文站/IoT传感器网络）→数据传输层（通信网络/边缘计算节点）→数字孪生核心层（水文-水动力模型/数据同化/仿真引擎）→顶层应用服务层（防洪调度/水资源配置/生态流量管控界面）。各层不同颜色横带，层间数据流箭头，蓝绿色系，中文标注。"
+  },
+  {
+    "book": "digital-twin-river-basin",
+    "chapter": "ch02",
+    "chapter_title": "多源数据融合(遥感/IoT)",
+    "image_type": "concept",
+    "target_path": "digital-twin-river-basin/figures/ch02_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示多源数据融合框架：左侧三类数据源（卫星遥感影像/地面IoT传感器/雷达测雨）分别经预处理和特征提取，汇入中心融合引擎（卡尔曼滤波/深度学习融合）；输出统一时空格网数据产品，右侧配融合后流域降雨-径流分布示意图。中文标注，蓝绿配色，学术风格。"
+  },
+  {
+    "book": "digital-twin-river-basin",
+    "chapter": "ch03",
+    "chapter_title": "水文-水动力耦合模型",
+    "image_type": "concept",
+    "target_path": "digital-twin-river-basin/figures/ch03_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示水文-水动力双向耦合模型：上半部分流域水文模型（降雨→产流→汇流，子流域分布图）；下半部分河道水动力模型（圣维南方程，一维河网示意）；中间耦合接口双向箭头（上传流量边界/下传水位边界）；旁注耦合时间步长和空间分辨率。蓝绿配色，流域轮廓背景，中文标注。"
+  },
+  {
+    "book": "digital-twin-river-basin",
+    "chapter": "ch04",
+    "chapter_title": "模型自动校准与同化",
+    "image_type": "concept",
+    "target_path": "digital-twin-river-basin/figures/ch04_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示自动校准与数据同化流程：左侧参数空间（糙率n/蒸发系数Kc等）经SCE-UA/粒子群算法搜索最优值（等值线图）；右侧集合卡尔曼滤波（EnKF）同化框图（预报步→观测更新步→后验状态，方程简式）；底部目标函数纳什效率系数（NSE）公式框。蓝色渐变，中文标注，学术教材风格。"
+  },
+  {
+    "book": "digital-twin-river-basin",
+    "chapter": "ch05",
+    "chapter_title": "可视化与交互式推演",
+    "image_type": "concept",
+    "target_path": "digital-twin-river-basin/figures/ch05_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示数字孪生流域交互推演系统：中心三维流域地形渲染区（河网/水库/城市叠加，WebGL技术标注）；左侧控制面板（调度方案参数滑块输入）；右侧结果面板（洪水演进时序帧/淹没面积实时统计）；底部时间轴播放控制条（含播放/暂停/倍速按钮）。蓝绿科技风，中文标注。"
+  },
+  {
+    "book": "digital-twin-river-basin",
+    "chapter": "ch05",
+    "chapter_title": "可视化与交互式推演",
+    "image_type": "simulation_result",
+    "target_path": "digital-twin-river-basin/figures/ch05_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为洪水过境时流域淹没面积随时间变化折线（x轴时间/h，y轴淹没面积/km2，调度方案A蓝线与无干预橙线对比）；右图为典型防洪控制断面洪峰流量对比柱状图（自然洪水/调度后两组，y轴流量/m3/s）。蓝橙配色，中文坐标轴，学术图表风格。"
+  },
+  {
+    "book": "digital-twin-river-basin",
+    "chapter": "ch06",
+    "chapter_title": "xIL验证流程",
+    "image_type": "concept",
+    "target_path": "digital-twin-river-basin/figures/ch06_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示数字孪生xIL验证流程（从左到右）：需求定义→软件在环SIL（纯仿真验证，绿色通过/红色返工箭头）→处理器在环PIL（嵌入式代码验证）→硬件在环HIL（真实控制器加仿真被控对象）→现场集成验证。各阶段方框连接，通过准则简述，绿色/红色反馈环，蓝灰配色，中文标注。"
+  },
+  {
+    "book": "digital-twin-river-basin",
+    "chapter": "ch07",
+    "chapter_title": "平台工程化（微服务）",
+    "image_type": "concept",
+    "target_path": "digital-twin-river-basin/figures/ch07_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示数字孪生流域平台微服务架构：顶部API网关；下方六个独立微服务（数据接入服务/水文模型服务/水动力模型服务/可视化服务/告警服务/用户管理服务，不同颜色方块）；通过Kafka消息总线通信；底部Kubernetes容器编排和分布式存储。蓝灰工程配色，中文标注。"
+  },
+  {
+    "book": "digital-twin-river-basin",
+    "chapter": "ch08",
+    "chapter_title": "案例：典型流域数字孪生",
+    "image_type": "concept",
+    "target_path": "digital-twin-river-basin/figures/ch08_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示典型流域数字孪生工程案例架构：左侧流域示意地图（标注主要水库/水文站/城市节点）；中间数字孪生平台界面框图（三维地形加实时数据叠加）；右侧关键性能指标板（洪水预报精度/系统响应时间/并发用户数）；底部建设时间线。蓝绿色系，中文标注，学术报告风格。"
+  },
+  {
+    "book": "flood-forecasting-control",
+    "chapter": "ch01",
+    "chapter_title": "洪水成因与暴雨设计",
+    "image_type": "concept",
+    "target_path": "flood-forecasting-control/figures/ch01_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示洪水成因与暴雨设计体系：顶部降雨输入（短历时/长历时设计暴雨雨型曲线，P-III型频率分析示意）；中部产流-汇流流程（流域下垫面图→土壤下渗→坡面汇流→河道汇流，箭头串联）；底部洪水过程线（标注洪峰流量/洪量/历时）。蓝色系，方框流程图，中文标注。"
+  },
+  {
+    "book": "flood-forecasting-control",
+    "chapter": "ch02",
+    "chapter_title": "水文预报模型",
+    "image_type": "concept",
+    "target_path": "flood-forecasting-control/figures/ch02_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示水文预报模型分类体系树状图：根节点为水文预报模型，三个分支：概念性模型（新安江三水源模型结构：蒸散发/产流/汇流三层）、数据驱动模型（LSTM网络简图：输入门/遗忘门/输出门）、物理分布式模型（子流域网格划分示意图），各分支配适用场景说明文字。蓝绿配色，中文标注。"
+  },
+  {
+    "book": "flood-forecasting-control",
+    "chapter": "ch03",
+    "chapter_title": "洪水预报实时校正",
+    "image_type": "concept",
+    "target_path": "flood-forecasting-control/figures/ch03_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示洪水预报实时校正闭环：左侧实时雨量/水位观测输入预报模型；预报模型输出含预报误差；通过误差校正模块（误差AR模型/卡尔曼滤波/机器学习校正三选一）修正；右侧输出校正后预报过程线（含不确定性置信区间），循环反馈箭头表示实时滚动更新。蓝色系，中文标注。"
+  },
+  {
+    "book": "flood-forecasting-control",
+    "chapter": "ch04",
+    "chapter_title": "防洪调度模型与约束",
+    "image_type": "concept",
+    "target_path": "flood-forecasting-control/figures/ch04_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示防洪调度优化模型框架：上部决策变量（水库各时段泄量过程矩形图）；中部约束集合（水量平衡/最大泄洪能力/防洪库容/下游安全泄量，红色虚线框标注）；下部目标函数（削峰率最大化/淹没损失最小化）；右侧动态规划求解流程（时段递推网格图，最优路径标注）。蓝橙配色，中文标注，学术风格。"
+  },
+  {
+    "book": "flood-forecasting-control",
+    "chapter": "ch04",
+    "chapter_title": "防洪调度模型与约束",
+    "image_type": "simulation_result",
+    "target_path": "flood-forecasting-control/figures/ch04_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。上图为流量过程线：入库洪水（红色）与优化调度下泄流量（蓝色）对比，x轴时间/h，y轴流量/m3/s，含下游安全泄量水平虚线；下图为水库水位过程线，x轴时间/h，y轴水位/m，标注汛限水位和校核水位两条参考线。蓝绿配色，中文轴标，学术图表风格。"
+  },
+  {
+    "book": "flood-forecasting-control",
+    "chapter": "ch06",
+    "chapter_title": "洪水风险图与预警系统",
+    "image_type": "concept",
+    "target_path": "flood-forecasting-control/figures/ch06_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示洪水风险图编制与预警系统：左侧风险图编制流程（水动力仿真→淹没范围提取→财产暴露度评估→脆弱性分析→风险等级分区色带，五步串联箭头）；右侧分级预警系统（实时水文监测→风险评估模型→四级预警发布（蓝/黄/橙/红）→疏散决策支持）；中间风险矩阵（频率乘后果二维表）。蓝橙配色，中文标注。"
+  },
+  {
+    "book": "flood-forecasting-control",
+    "chapter": "ch06",
+    "chapter_title": "洪水风险图与预警系统",
+    "image_type": "simulation_result",
+    "target_path": "flood-forecasting-control/figures/ch06_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为不同重现期洪水（10年一遇/50年一遇/100年一遇三条曲线）淹没面积累积分布函数（x轴淹没水深/m，y轴累积面积比例）；右图为典型防洪区域预警评分雷达图（三轴：致灾因子强度/暴露度/脆弱性，三个子区域叠加对比）。蓝橙配色，中文轴标，学术图表风格。"
+  },
+  {
+    "book": "flood-forecasting-control",
+    "chapter": "ch07",
+    "chapter_title": "蓄滞洪区启用决策",
+    "image_type": "concept",
+    "target_path": "flood-forecasting-control/figures/ch07_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示蓄滞洪区启用决策框架：左侧实时预报（洪水水位/流量超标判断）→触发条件评估（超标水量/启用顺序/经济损失权衡）→启用决策（哪个蓄滞洪区/何时启用/启用量）→效果评估（下游水位降低/滞洪容量）。右侧蓄滞洪区地图示意（含若干蓄滞洪区分区色块，优先级标注）。蓝绿橙配色，中文标注，学术教材风格。"
+  },
+  {
+    "book": "flood-forecasting-control",
+    "chapter": "ch08",
+    "chapter_title": "案例：流域防洪调度",
+    "image_type": "concept",
+    "target_path": "flood-forecasting-control/figures/ch08_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示流域防洪调度案例系统架构（以淮河/汉江为背景）：流域地图（标注控制水库/分洪区/主要城市防洪保护区）；中部调度决策支持系统框图（洪水预报→实时调度优化→方案评估→指令下达）；右侧防洪效益指标板（削峰率/保护区面积/减淹损失）。蓝绿色系，中文标注，学术报告风格。"
+  },
+  {
+    "book": "inland-waterway-navigation",
+    "chapter": "ch01",
+    "chapter_title": "航道水力学基础",
+    "image_type": "concept",
+    "target_path": "inland-waterway-navigation/figures/ch01_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示内河航道水力学基础：上部河道横断面（宽浅形，标注水面宽B/水深h/湿周χ）；中部明渠三种流态分区示意（缓流Fr<1/临界流Fr=1/急流Fr>1，弗劳德数范围标注）；下部弯道横断面环流结构（二次流离心力→螺旋流箭头）；右侧圣维南方程组简式框。蓝色水流色系，中文标注，学术教材风格。"
+  },
+  {
+    "book": "inland-waterway-navigation",
+    "chapter": "ch02",
+    "chapter_title": "通航水位保障与流量调配",
+    "image_type": "concept",
+    "target_path": "inland-waterway-navigation/figures/ch02_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示通航水位保障与流量调配系统：河段纵向剖面（上游控制水库→调节闸→通航河段→下游控制断面），标注最低通航水位（MSW）水平线和保证率要求（95%）；右侧流量调配决策树（预报流量小于阈值Q0→启动补水调度→计算通航保证率）；底部双y轴图（流量-通航水深关系曲线）。蓝绿配色，中文标注。"
+  },
+  {
+    "book": "inland-waterway-navigation",
+    "chapter": "ch02",
+    "chapter_title": "通航水位保障与流量调配",
+    "image_type": "simulation_result",
+    "target_path": "inland-waterway-navigation/figures/ch02_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768（对应figures中孤儿图chapter2_navigation_dispatch.png的标准命名版本）。左图为关键断面水位时间序列（x轴时间/h，y轴水位/m，调配前橙线/调配后蓝线/最低通航水位虚线三条）；右图为年内各月通航保证率柱状图（调配前/后两组并排，y轴保证率%）。蓝绿配色，中文轴标，学术图表风格。"
+  },
+  {
+    "book": "inland-waterway-navigation",
+    "chapter": "ch03",
+    "chapter_title": "船舶阻力与航速",
+    "image_type": "concept",
+    "target_path": "inland-waterway-navigation/figures/ch03_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示内河船舶阻力与航速分析：左图船舶纵向轮廓（标注摩擦阻力Rf/压差阻力Rp/浅水附加阻力Rs三个分力箭头）；中图阻力-航速曲线（深水曲线vs浅水曲线两条，标注兴波阻力急增的临界速度Vk）；右图推进功率-航速曲线（可用功率线与所需功率曲线交点=航行工作点）；底部浅水修正系数公式框。蓝灰配色，中文标注。"
+  },
+  {
+    "book": "inland-waterway-navigation",
+    "chapter": "ch04",
+    "chapter_title": "航道渐变流与通航安全",
+    "image_type": "concept",
+    "target_path": "inland-waterway-navigation/figures/ch04_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示航道渐变流与通航安全耦合分析：上部河道纵剖面（水面线从控制断面逐步计算，标注缓坡/陡坡段）；中部Manning公式计算节点框（糙率n/水力半径R/坡度i→计算水深h）；下部通航安全判断（UKC=实测水深h减去吃水T再减去安全余量delta，绿色UKC充足/红色UKC不足区域色块）。蓝绿配色，中文标注，学术教材风格。"
+  },
+  {
+    "book": "inland-waterway-navigation",
+    "chapter": "ch04",
+    "chapter_title": "航道渐变流与通航安全",
+    "image_type": "simulation_result",
+    "target_path": "inland-waterway-navigation/figures/ch04_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。上图为沿程水深分布（x轴距离/km，y轴水深/m，计算值曲线加最小通航水深虚线加UKC富余区间灰色填充）；下图为弗劳德数沿程分布（x轴距离/km，y轴Fr，含Fr=1临界流参考水平线）。蓝色渐变配色，中文轴标，学术图表风格。"
+  },
+  {
+    "book": "inland-waterway-navigation",
+    "chapter": "ch05",
+    "chapter_title": "航运与防洪/发电协调",
+    "image_type": "concept",
+    "target_path": "inland-waterway-navigation/figures/ch05_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示航运-防洪-发电多目标协调框架：中心水库-航道综合调度系统，三个方向辐射：防洪目标（削峰率最大、下游安全泄量约束）、发电目标（年发电量最大、调峰容量满足）、航运目标（通航流量保证率、最低通航水深满足）。三目标间画制约/协调双向箭头。右侧三目标Pareto前沿二维投影散点图示意。蓝绿橙三色，中文标注。"
+  },
+  {
+    "book": "inland-waterway-navigation",
+    "chapter": "ch05",
+    "chapter_title": "航运与防洪/发电协调",
+    "image_type": "simulation_result",
+    "target_path": "inland-waterway-navigation/figures/ch05_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768（对应figures中孤儿图chapter5_dispatch.png的标准命名版本）。左图为防洪削峰率（x轴）与年发电量（y轴）的Pareto前沿散点图（含航运约束满足的解用蓝色/不满足用灰色区分）；右图为三组典型调度方案KPI对比柱状图（发电量/亿kWh、通航保证率/%、洪峰消减率/%三指标三组并排）。蓝绿橙配色，中文轴标，学术图表风格。"
+  },
+  {
+    "book": "inland-waterway-navigation",
+    "chapter": "ch06",
+    "chapter_title": "案例：长江航道/运河",
+    "image_type": "concept",
+    "target_path": "inland-waterway-navigation/figures/ch06_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示长江中下游航道/京杭运河通航保障案例：左侧长江中下游航道示意图（标注三峡/葛洲坝水库位置，武汉/南京重要通航控制断面）；右侧京杭运河水量调度示意（南水北调东线补水节点标注）；中部通航水位实时监控与调度决策系统界面框图（数据采集→预报→决策→下达）。蓝色水系风格，中文标注，学术教材风格。"
+  },
+  {
+    "book": "inland-waterway-navigation",
+    "chapter": "ch06",
+    "chapter_title": "案例：长江航道/运河",
+    "image_type": "simulation_result",
+    "target_path": "inland-waterway-navigation/figures/ch06_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为三峡水库调度前后宜昌站枯水期（11月至次年3月）月均流量对比（折线图，x轴月份，y轴流量/m3/s，含最低通航流量虚线）；右图为京杭运河补水流量与通航水深的相关性散点图（x轴补水量/m3/s，y轴实测水深/m，含线性回归直线）。蓝绿配色，中文轴标，学术图表风格。"
+  },
+  {
+    "book": "reservoir-operation-optimization",
+    "chapter": "ch01",
+    "chapter_title": "水库调度基础与调度图",
+    "image_type": "concept",
+    "target_path": "reservoir-operation-optimization/figures/ch01_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示水库调度图：纵轴水库蓄水量（从底到顶：死库容区/兴利库容区/防洪库容区，蓝绿橙分区色块），横轴月份（1至12月），绘制三条关键控制线（正常蓄水位线/汛限水位线/死水位线，不同线型区分），标注各分区调度规则（加大供水/正常供水/压缩供水），图例清晰，学术规范图表风格，中文标注。"
+  },
+  {
+    "book": "reservoir-operation-optimization",
+    "chapter": "ch01",
+    "chapter_title": "水库调度基础与调度图",
+    "image_type": "simulation_result",
+    "target_path": "reservoir-operation-optimization/figures/ch01_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768（figures目录中已有ch01_reservoir_dispatch_simulation.png为孤儿图片，本图为标准命名版本）。上图为全年水库蓄水量轨迹叠加在调度图分区背景上（蓝色折线，x轴月份，y轴库容/亿m3）；下图为月度供水量（蓝柱）与计划需水量（橙虚线）对比，缺水月份柱子用红色填充。中文轴标，学术图表风格。"
+  },
+  {
+    "book": "reservoir-operation-optimization",
+    "chapter": "ch02",
+    "chapter_title": "单库DP/SDP优化",
+    "image_type": "concept",
+    "target_path": "reservoir-operation-optimization/figures/ch02_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768（figures目录中已有ch02_architecture.png，本图为概念方法类型补充）。左侧DP状态转移网格（x轴时段/月，y轴蓄水量离散状态，红色粗线标注最优调度路径）；右侧SDP随机过渡矩阵热图（行/列为流量等级，颜色表示转移概率）；底部贝尔曼最优性方程框。蓝橙配色，中文标注，学术教材风格。"
+  },
+  {
+    "book": "reservoir-operation-optimization",
+    "chapter": "ch02",
+    "chapter_title": "单库DP/SDP优化",
+    "image_type": "simulation_result",
+    "target_path": "reservoir-operation-optimization/figures/ch02_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为DP最优调度策略下月度下泄流量折线（x轴月份，y轴下泄/m3/s）与入库流量对比；右图为确定性DP与随机SDP多年平均KPI对比柱状图（年发电量/亿kWh和供水保证率两指标，两组并排）。蓝橙配色，中文轴标，学术图表风格。"
+  },
+  {
+    "book": "reservoir-operation-optimization",
+    "chapter": "ch03",
+    "chapter_title": "多目标优化(NSGA-II)",
+    "image_type": "concept",
+    "target_path": "reservoir-operation-optimization/figures/ch03_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示NSGA-II算法在水库调度的应用：左侧NSGA-II流程框图（随机初始化种群→非支配排序Rank→拥挤度距离计算→锦标赛选择/单点交叉/多项式变异→下一代，循环箭头）；右侧水库调度两目标Pareto前沿散点图（x轴年发电量/亿kWh，y轴供水保证率，非支配解蓝色/被支配解灰色）。蓝绿橙配色，中文标注。"
+  },
+  {
+    "book": "reservoir-operation-optimization",
+    "chapter": "ch03",
+    "chapter_title": "多目标优化(NSGA-II)",
+    "image_type": "simulation_result",
+    "target_path": "reservoir-operation-optimization/figures/ch03_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为NSGA-II迭代收敛过程（多代Pareto前沿轮廓从浅到深演化叠加），x轴发电量，y轴供水保证率；右图为第200代最终Pareto前沿（标注三个典型方案：偏重发电/均衡/偏重供水）。蓝橙配色，中文轴标，学术图表风格。"
+  },
+  {
+    "book": "reservoir-operation-optimization",
+    "chapter": "ch04",
+    "chapter_title": "梯级水库联合优化",
+    "image_type": "concept",
+    "target_path": "reservoir-operation-optimization/figures/ch04_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示三库串联梯级联合优化框架：三个水库图标（梯形坝体，上库/中库/下库从上到下布置），标注各库蓄水量状态变量S1/S2/S3、区间入流Q1/Q2/Q3、下泄流量决策q1/q2/q3；下部联合目标函数框（总发电收益加供水保证率加防洪约束）；右侧维数诅咒示意（状态空间从单库2D到三库6D指数膨胀示意图）。蓝绿色系，中文标注。"
+  },
+  {
+    "book": "reservoir-operation-optimization",
+    "chapter": "ch04",
+    "chapter_title": "梯级水库联合优化",
+    "image_type": "simulation_result",
+    "target_path": "reservoir-operation-optimization/figures/ch04_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。上图为三个水库全年蓄水量变化曲线（三条颜色不同的折线，x轴月份，y轴库容/亿m3，各库正常蓄水位水平虚线）；下图为三库联合调度vs单库独立调度vs无优化基准的总发电量对比柱状图（y轴亿kWh）。蓝绿橙配色，中文轴标，学术图表风格。"
+  },
+  {
+    "book": "reservoir-operation-optimization",
+    "chapter": "ch06",
+    "chapter_title": "入库预报不确定性",
+    "image_type": "concept",
+    "target_path": "reservoir-operation-optimization/figures/ch06_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示预报不确定性分析与鲁棒调度框架：左侧集合预报扇形展开图（中位数加90%置信区间，越远越宽，表示预见期增加不确定性增大）；中部鲁棒优化决策树框图（Minimax准则：最小化最坏情景下损失）；右侧情景树（三个分支：偏枯/正常/偏丰来水，各含概率标注P=0.25/0.5/0.25）。蓝色渐变，中文标注，学术风格。"
+  },
+  {
+    "book": "reservoir-operation-optimization",
+    "chapter": "ch06",
+    "chapter_title": "入库预报不确定性",
+    "image_type": "simulation_result",
+    "target_path": "reservoir-operation-optimization/figures/ch06_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为不同预报精度（x轴RMSE/m3/s三个等级）下调度缺水天数箱线图（展示均值/四分位数/异常值）；右图为确定性预报驱动调度与集合预报驱动调度的年发电量概率密度函数对比（两条钟形曲线，标注各自均值和标准差）。蓝橙配色，中文轴标，学术图表风格。"
+  },
+  {
+    "book": "reservoir-operation-optimization",
+    "chapter": "ch08",
+    "chapter_title": "案例：多水库联合调度",
+    "image_type": "concept",
+    "target_path": "reservoir-operation-optimization/figures/ch08_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示多水库联合调度工程案例架构（三峡-葛洲坝/雅砻江梯级为背景）：左侧流域图标注各水库位置和特征库容；中部联合调度决策支持系统框图（信息采集层→模型计算层→方案优选层→指令下达层，四层架构）；右侧实时调度运行KPI仪表盘（年发电量/防洪削峰率/供水保证率，三个表盘）。蓝绿色系，中文标注，学术报告风格。"
+  },
+  {
+    "book": "reservoir-operation-optimization",
+    "chapter": "ch08",
+    "chapter_title": "案例：多水库联合调度",
+    "image_type": "simulation_result",
+    "target_path": "reservoir-operation-optimization/figures/ch08_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为典型丰水年各水库蓄放水过程曲线（三库蓄水量折线，x轴月份，y轴库容/亿m3，含梯级区间入流量面积图）；右图为联合调度vs独立调度的综合效益雷达图（四轴：年发电量/供水保证率/防洪削峰率/生态基流满足率，两个多边形轮廓对比）。蓝绿橙配色，中文标注，学术图表风格。"
+  },
+  {
+    "book": "river-sediment-dynamics",
+    "chapter": "ch01",
+    "chapter_title": "泥沙运动力学基础",
+    "image_type": "concept",
+    "target_path": "river-sediment-dynamics/figures/ch01_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示泥沙运动力学基础：左图河道横断面（蓝色水流，底部床面，推移质颗粒滚动/跳跃运动箭头，悬移质颗粒随水流悬浮箭头）；中图泥沙粒径分级曲线（x轴粒径/mm对数坐标，y轴累积百分比，黏土/粉砂/细砂/中砂/粗砂分界线）；右图希尔兹曲线（x轴泥沙雷诺数Re*，y轴无量纲切应力θcr，起动曲线上下区域标注）。蓝棕配色，中文标注。"
+  },
+  {
+    "book": "river-sediment-dynamics",
+    "chapter": "ch02",
+    "chapter_title": "推移质/悬移质输沙公式",
+    "image_type": "concept",
+    "target_path": "river-sediment-dynamics/figures/ch02_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示推移质与悬移质输沙公式体系：上半部分推移质（床面颗粒受力示意图：拖曳力/重力分量/上举力；MPM公式框；适用范围d=0.4-28mm）；下半部分悬移质（垂线含沙量分布曲线，Rouse数Z=ws/κu*）；两部分间标注推悬比分类（Z>2.5推移为主/Z<1.2悬移为主）。蓝棕配色，中文标注，学术风格。"
+  },
+  {
+    "book": "river-sediment-dynamics",
+    "chapter": "ch02",
+    "chapter_title": "推移质/悬移质输沙公式",
+    "image_type": "simulation_result",
+    "target_path": "river-sediment-dynamics/figures/ch02_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为悬移质含沙量垂向分布仿真（x轴含沙量/C/Ca，y轴相对水深z/h，不同Rouse数Z=0.5/1.0/2.0三条曲线对比，Rouse分布解析解）；右图为MPM推移质输沙率随床面切应力变化曲线（x轴无量纲切应力θ，y轴无量纲输沙率Φ，对数坐标，实测数据散点叠加）。蓝棕配色，中文轴标，学术图表风格。"
+  },
+  {
+    "book": "river-sediment-dynamics",
+    "chapter": "ch03",
+    "chapter_title": "一维河床演变数值模拟",
+    "image_type": "concept",
+    "target_path": "river-sediment-dynamics/figures/ch03_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示一维河床演变数值模拟框架：上部三个控制方程框（连续性方程/圣维南动量方程/Exner河床变形方程）；中部有限差分离散格网示意（河道纵向分成N段，标注节点xi、计算步长Δx、时间步长Δt）；下部计算主程序流程图（初始条件→时间循环→水流→输沙→床面更新→输出→循环）。蓝棕配色，中文标注，学术风格。"
+  },
+  {
+    "book": "river-sediment-dynamics",
+    "chapter": "ch04",
+    "chapter_title": "水库淤积与排沙",
+    "image_type": "concept",
+    "target_path": "river-sediment-dynamics/figures/ch04_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示水库淤积与排沙机理：左图水库纵剖面（含三角洲淤积形态：顶坡段/前坡段/底坡段，标注异重流潜入点，水下坡面泥沙密流运动路径）；中图排沙方式对比（蓄清排浑/异重流排沙/机械清淤三种流程框图，简箭头串联）；右图库容-年限曲线（x轴运行年数，y轴剩余有效库容比，含泥沙淤积量累积曲线）。蓝棕色系，中文标注。"
+  },
+  {
+    "book": "river-sediment-dynamics",
+    "chapter": "ch05",
+    "chapter_title": "河床演变预测",
+    "image_type": "concept",
+    "target_path": "river-sediment-dynamics/figures/ch05_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示河床演变预测方法体系：左侧经验分析法（水面宽-流量幂函数W=aQ^b散点图加拟合线，断面形态稳定指标ξ）；中侧数值仿真法（二维水沙数学模型网格划分图，色块表示冲淤量）；右侧数据驱动法（水文时间序列→LSTM/XGBoost→冲淤量预测折线图）；下方三种方法适用场景对比简表。蓝棕配色，中文标注，学术教材风格。"
+  },
+  {
+    "book": "river-sediment-dynamics",
+    "chapter": "ch06",
+    "chapter_title": "案例：黄河/长江泥沙",
+    "image_type": "concept",
+    "target_path": "river-sediment-dynamics/figures/ch06_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示黄河/长江泥沙治理典型案例：左侧黄河流域简图（标注上游来沙区（黄色）/中游黄土高原强侵蚀区（棕色）/下游地上悬河段（蓝色），黄沙示意）；右侧长江三峡泥沙效应剖面图（蓄水后：库区淤积三角洲向上延伸，坝下清水冲刷河床下切箭头）；中部对比表（两流域年均输沙量/治理措施/近年变化趋势）。棕黄蓝配色，中文标注，学术教材风格。"
+  },
+  {
+    "book": "ship-lock-automation",
+    "chapter": "ch01",
+    "chapter_title": "船闸水力学(充泄水)",
+    "image_type": "concept",
+    "target_path": "ship-lock-automation/figures/ch01_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示船闸充泄水水力学：上部船闸纵剖面图（上闸首人字门/闸室/下闸首人字门，标注输水廊道位置和阀门开度图标）；下部两个子图：左子图为充水Q-t过程线（流量先增大后减小，t0开阀→t1最大流量→t2结束）；右子图为水位-时间h-t曲线（闸室水位从下游水位升至上游水位，S形曲线）。旁注廊道过流公式框。蓝色水工建筑风格，中文标注。"
+  },
+  {
+    "book": "ship-lock-automation",
+    "chapter": "ch02",
+    "chapter_title": "船闸输水系统设计",
+    "image_type": "concept",
+    "target_path": "ship-lock-automation/figures/ch02_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示船闸输水系统三种设计方案对比：左图顶部廊道输水（适用水头H小于8m，闸顶开孔直接进水，水面波动大）；中图集中输水（适用H=8-15m，短廊道集中出水口，次波较小）；右图分散输水（适用H大于15m大型船闸，闸底纵向廊道分布孔口均匀布水，波动最小）。三种方案均绘制闸室横断面示意，标注水头范围和分布孔位置，蓝色水工结构风格，中文标注。"
+  },
+  {
+    "book": "ship-lock-automation",
+    "chapter": "ch03",
+    "chapter_title": "船闸调度优化（排队论）",
+    "image_type": "concept",
+    "target_path": "ship-lock-automation/figures/ch03_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示船闸调度M/G/1排队系统：左图排队系统示意（船舶流量λ泊松到达→等待队列（3艘船图标排队）→船闸服务台（闸室图标）→服务完成离开）；中图服务时间分布图（充水时间t1+移船时间t2+泄水时间t3叠加柱状图，总服务时间Ts分布）；右图性能指标框（平均等待时间Wq/闸室利用率ρ=λTs/系统吞吐量）。蓝绿配色，中文标注，学术教材风格。"
+  },
+  {
+    "book": "ship-lock-automation",
+    "chapter": "ch05",
+    "chapter_title": "案例：三峡/南水北调船闸",
+    "image_type": "concept",
+    "target_path": "ship-lock-automation/figures/ch05_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示两大工程案例对比：左侧三峡双线五级船闸纵剖面示意图（五个闸室级差，总水头H=113m，闸室尺寸280m乘以34m，箭头标注水位逐级降低）；右侧南水北调东线某泵站船闸平面布置图（泵站与船闸结合布置，标注通航方向）；中间对比指标表格（过坝一次时间/单次过闸船舶数/年过闸货运量/自动化等级）。蓝灰工程配色，中文标注。"
+  },
+  {
+    "book": "ship-lock-automation",
+    "chapter": "ch05",
+    "chapter_title": "案例：三峡/南水北调船闸",
+    "image_type": "simulation_result",
+    "target_path": "ship-lock-automation/figures/ch05_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为批量放行策略权衡曲线（x轴批次放行间隔/min，左y轴日过闸船舶数/艘次，右y轴平均等待时间/min，两条曲线方向相反形成权衡关系）；右图为典型日24小时船闸过闸船舶数分布直方图（x轴时间/h，y轴过闸船舶数，优化前灰柱/优化后蓝柱对比，夜间空闲时段标注）。蓝绿配色，中文轴标，学术图表风格。"
+  },
+  {
+    "book": "water-energy-food-nexus",
+    "chapter": "ch01",
+    "chapter_title": "WEF纽带概念框架",
+    "image_type": "concept",
+    "target_path": "water-energy-food-nexus/figures/ch01_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示水-能源-粮食（WEF）纽带关系概念框架：等边三角形布局，三顶点分别为水（蓝色水滴图标）/能源（黄色闪电图标）/粮食（绿色麦穗图标），三条边双向依赖关系（水→能源：水力发电/冷却水；能源→水：抽水灌溉/净化处理；水→粮食：农业灌溉；粮食→水：耗水蒸散；能源→粮食：化肥/农业机械；粮食→能源：生物质燃料），三角形外圈标注驱动力（气候变化/人口增长/城镇化）。蓝绿黄三色，中文标注。"
+  },
+  {
+    "book": "water-energy-food-nexus",
+    "chapter": "ch01",
+    "chapter_title": "WEF纽带概念框架",
+    "image_type": "simulation_result",
+    "target_path": "water-energy-food-nexus/figures/ch01_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为典型流域水-能-粮三系统年度投入产出桑基图（流量带宽度正比于流量量，颜色对应三系统，节点为水库/电站/灌区/农田）；右图为WEF系统压力指数时序折线图（x轴1990-2030年，含历史实测和预测段，三条折线分别为水压力指数/能源压力指数/粮食压力指数）。蓝绿黄配色，中文轴标，学术图表风格。"
+  },
+  {
+    "book": "water-energy-food-nexus",
+    "chapter": "ch02",
+    "chapter_title": "水-能耦合建模",
+    "image_type": "concept",
+    "target_path": "water-energy-food-nexus/figures/ch02_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示水-能耦合模型：左侧水系统（水库蓄水量S→水量平衡方程→下泄流量分配：灌溉Qi+城市Qu+工业Qp+发电Qe）；右侧能源系统（水电出力方程P=η·ρ·g·Q·H框，泵站耗电方程P=γQH/η框）；中间耦合接口双向箭头（发电流量Qe/泵站抽水流量Qp作为耦合变量）；底部联立方程求解示意。蓝黄配色，中文标注，学术教材风格。"
+  },
+  {
+    "book": "water-energy-food-nexus",
+    "chapter": "ch03",
+    "chapter_title": "水-粮耦合建模",
+    "image_type": "concept",
+    "target_path": "water-energy-food-nexus/figures/ch03_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示水-粮耦合建模框架：左侧农业水文模型（降雨→土壤水含量SW→作物蒸散发ET（Penman-Monteith公式框）→土壤水消耗）；中部灌溉决策模块（灌溉水量-作物产量响应函数曲线，临界灌溉水量标注，水分亏缺减产系数Ky）；右侧粮食安全评估（人均热量供给量/热量自给率指标）；三模块箭头串联，蓝绿配色，中文标注，学术教材风格。"
+  },
+  {
+    "book": "water-energy-food-nexus",
+    "chapter": "ch03",
+    "chapter_title": "水-粮耦合建模",
+    "image_type": "simulation_result",
+    "target_path": "water-energy-food-nexus/figures/ch03_simulation_result.png",
+    "prompt": "学术教材仿真结果图，白色背景，1024x768。左图为水分生产函数仿真曲线（x轴灌溉供水量/mm，y轴作物产量/kg·hm-2，三条曲线分别对应水稻/小麦/玉米，含充分灌溉/适度亏缺/严重亏缺三个区域分界线）；右图为全年逐月灌溉需水量（蓝柱）与有效降雨量（绿柱）对比直方图（x轴月份，y轴水量/mm，缺水月份柱顶红色标注缺口量）。蓝绿配色，中文轴标，学术图表风格。"
+  },
+  {
+    "book": "water-energy-food-nexus",
+    "chapter": "ch04",
+    "chapter_title": "能-粮耦合建模",
+    "image_type": "concept",
+    "target_path": "water-energy-food-nexus/figures/ch04_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示能-粮耦合建模框架：左侧粮食系统全生命周期能耗分析（种植/收割/加工/储运/消费五环节能耗占比饼图，单位MJ/kg粮食）；右侧生物质能转化路径（秸秆→厌氧发酵→沼气→发电；秸秆→气化→合成气→液体燃料，两条并行路径）；中部能-粮转换效率矩阵表（行：能源类型，列：对应粮食产量变化）；底部优化目标框。黄绿配色，中文标注，学术教材风格。"
+  },
+  {
+    "book": "water-energy-food-nexus",
+    "chapter": "ch05",
+    "chapter_title": "多系统耦合优化建模",
+    "image_type": "concept",
+    "target_path": "water-energy-food-nexus/figures/ch05_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示水-能-粮三系统耦合多目标优化建模框架：中心多目标优化引擎（NSGA-III算法图标）；左侧水系统输入（水量平衡约束/最小生态流量/用水保证率）；上侧能源系统输入（装机容量/调峰需求/最小出力）；右侧粮食系统输入（灌溉保证率/粮食产量安全线）；输出三维Pareto前沿散点图（三轴：水供应量/发电量/粮食产量）。蓝黄绿三色，中文标注，学术教材风格。"
+  },
+  {
+    "book": "water-energy-food-nexus",
+    "chapter": "ch06",
+    "chapter_title": "案例：流域WEF综合管理",
+    "image_type": "concept",
+    "target_path": "water-energy-food-nexus/figures/ch06_concept.png",
+    "prompt": "学术教材概念图，白色背景，扁平矢量风格，1024x768。展示流域WEF综合管理案例架构（黄河流域背景）：左侧流域简图（标注龙羊峡/刘家峡水库、宁夏/河套灌区、电站节点、城市用水节点）；右侧WEF综合决策支持系统框图（实时监测数据采集→WEF纽带模型→多目标优化→方案评估→管理政策建议）；底部KPI指标仪表盘（灌溉水利用系数/水电装机容量/粮食产量/缺水量）。蓝绿黄配色，中文标注，学术报告风格。"
+  }
+]

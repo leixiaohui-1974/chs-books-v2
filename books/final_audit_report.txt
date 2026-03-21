@@ -1,0 +1,191 @@
+﻿============================================================
+chs-books-v2 图片质检最终报告
+审计时间: 2026-03-21
+============================================================
+
+[汇总数据]
+  图片文件总数:          570
+  图片引用总数:          504
+    - 本地引用:          496
+    - 外链引用(http):    8
+  断链引用（本地）:      4
+  外链引用数:            8
+  孤儿图片数:            87
+  损坏文件（0字节）:     0
+  小文件（<5KB）:        4
+  无图片章节(ch*.md):    82
+  有图片章节(ch*.md):    168
+
+[断链引用详情（本地）]
+  [hydropower-generation-control/ch09.md] -> ./H/fig_13_03_safety_envelope.png
+  [hydropower-generation-control/ch09.md] -> ./H/fig_15_04_load_declaration_flow.png
+  [hydropower-generation-control/ch09.md] -> ./H/fig_13_01_pai_cai_workflow.png
+  [hydropower-generation-control/ch09.md] -> ./H/fig_13_02_before_after.png
+
+[外链引用详情（http/https）]
+  [canal-pipeline-control/ch06.md] -> https://raw.githubusercontent.com/leixiaohui-1974/books/main/books/T1-CN/H/fig_17_01.png
+  [canal-pipeline-control/ch06.md] -> https://raw.githubusercontent.com/leixiaohui-1974/books/main/books/T1-CN/H/fig_17_02.png
+  [canal-pipeline-control/ch06.md] -> https://raw.githubusercontent.com/leixiaohui-1974/books/main/books/T1-CN/H/fig_17_04.png
+  [canal-pipeline-control/ch06.md] -> https://raw.githubusercontent.com/leixiaohui-1974/books/main/books/T1-CN/H/fig_17_03.png
+  [cascade-hydropower-scheduling/ch07.md] -> https://raw.githubusercontent.com/leixiaohui-1974/books/main/books/T1-CN/H/fig_16_01.png
+  [cascade-hydropower-scheduling/ch07.md] -> https://raw.githubusercontent.com/leixiaohui-1974/books/main/books/T1-CN/H/fig_16_02.png
+  [cascade-hydropower-scheduling/ch07.md] -> https://raw.githubusercontent.com/leixiaohui-1974/books/main/books/T1-CN/H/fig_16_03.png
+  [cascade-hydropower-scheduling/ch07.md] -> https://raw.githubusercontent.com/leixiaohui-1974/books/main/books/T1-CN/H/fig_16_04.png
+
+[损坏文件（0字节）详情]
+  无损坏文件
+
+[小文件（<5KB）详情]
+  Z:\research\chs-books-v2\books\graduate-exam-prep\assets\ch02\problem_nano.png (4043 bytes)
+  Z:\research\chs-books-v2\books\integrated-energy-system-simulation-optimization\assets\ch04\problem_nano.png (4436 bytes)
+  Z:\research\chs-books-v2\books\renewable-energy-system-identification-testing\assets\ch02\problem_nano.png (4428 bytes)
+  Z:\research\chs-books-v2\books\water-resource-planning-management\assets\ch03\problem_nano.png (4965 bytes)
+
+[孤儿图片列表]
+  Z:\research\chs-books-v2\books\ai-for-water-engineering\figures\ch03_concept.png
+  Z:\research\chs-books-v2\books\ai-for-water-engineering\figures\ch03_simulation_result.png
+  Z:\research\chs-books-v2\books\ai-for-water-engineering\figures\ch04_concept.png
+  Z:\research\chs-books-v2\books\ai-for-water-engineering\figures\ch05_concept.png
+  Z:\research\chs-books-v2\books\ai-for-water-engineering\figures\ch05_simulation_result.png
+  Z:\research\chs-books-v2\books\ai-for-water-engineering\figures\ch06_concept.png
+  Z:\research\chs-books-v2\books\ai-for-water-engineering\figures\ch06_simulation_result.png
+  Z:\research\chs-books-v2\books\ai-for-water-engineering\figures\ch07_concept.png
+  Z:\research\chs-books-v2\books\ai-for-water-engineering\figures\ch07_simulation_result.png
+  Z:\research\chs-books-v2\books\ai-for-water-engineering\figures\ch08_concept.png
+  Z:\research\chs-books-v2\books\ai-for-water-engineering\figures\ch08_simulation_result.png
+  Z:\research\chs-books-v2\books\ai-for-water-engineering\figures\ch09_concept.png
+  Z:\research\chs-books-v2\books\ai-for-water-engineering\figures\ch09_simulation_result.png
+  Z:\research\chs-books-v2\books\ai-for-water-engineering\figures\ch10_concept.png
+  Z:\research\chs-books-v2\books\ai-for-water-engineering\figures\ch10_simulation_result.png
+  Z:\research\chs-books-v2\books\canal-pipeline-control\assets\ch06\concept_jiaodong_waterway.png
+  Z:\research\chs-books-v2\books\canal-pipeline-control\assets\ch06\simulation_result_jiaodong.png
+  Z:\research\chs-books-v2\books\dam-safety-monitoring\figures\ch02_concept.png
+  Z:\research\chs-books-v2\books\dam-safety-monitoring\figures\ch02_simulation_result.png
+  Z:\research\chs-books-v2\books\dam-safety-monitoring\figures\ch03_concept.png
+  Z:\research\chs-books-v2\books\dam-safety-monitoring\figures\ch03_simulation_result.png
+  Z:\research\chs-books-v2\books\dam-safety-monitoring\figures\ch05_concept.png
+  Z:\research\chs-books-v2\books\dam-safety-monitoring\figures\ch05_simulation_result.png
+  Z:\research\chs-books-v2\books\dam-safety-monitoring\figures\dam_seepage_sim.png
+  Z:\research\chs-books-v2\books\digital-twin-river-basin\figures\ch01_concept.png
+  Z:\research\chs-books-v2\books\digital-twin-river-basin\figures\ch02_concept.png
+  Z:\research\chs-books-v2\books\digital-twin-river-basin\figures\ch03_concept.png
+  Z:\research\chs-books-v2\books\digital-twin-river-basin\figures\ch04_concept.png
+  Z:\research\chs-books-v2\books\digital-twin-river-basin\figures\ch05_concept.png
+  Z:\research\chs-books-v2\books\digital-twin-river-basin\figures\ch05_simulation_result.png
+  Z:\research\chs-books-v2\books\digital-twin-river-basin\figures\ch06_concept.png
+  Z:\research\chs-books-v2\books\digital-twin-river-basin\figures\ch07_concept.png
+  Z:\research\chs-books-v2\books\digital-twin-river-basin\figures\ch08_concept.png
+  Z:\research\chs-books-v2\books\flood-forecasting-control\figures\ch01_concept.png
+  Z:\research\chs-books-v2\books\flood-forecasting-control\figures\ch02_concept.png
+  Z:\research\chs-books-v2\books\flood-forecasting-control\figures\ch03_concept.png
+  Z:\research\chs-books-v2\books\flood-forecasting-control\figures\ch04_concept.png
+  Z:\research\chs-books-v2\books\flood-forecasting-control\figures\ch04_simulation_result.png
+  Z:\research\chs-books-v2\books\flood-forecasting-control\figures\ch06_concept.png
+  Z:\research\chs-books-v2\books\flood-forecasting-control\figures\ch06_simulation_result.png
+  Z:\research\chs-books-v2\books\flood-forecasting-control\figures\ch07_concept.png
+  Z:\research\chs-books-v2\books\flood-forecasting-control\figures\ch08_concept.png
+  Z:\research\chs-books-v2\books\inland-waterway-navigation\figures\ch01_concept.png
+  Z:\research\chs-books-v2\books\inland-waterway-navigation\figures\ch02_concept.png
+  Z:\research\chs-books-v2\books\inland-waterway-navigation\figures\ch02_simulation_result.png
+  Z:\research\chs-books-v2\books\inland-waterway-navigation\figures\ch03_concept.png
+  Z:\research\chs-books-v2\books\inland-waterway-navigation\figures\ch04_concept.png
+  Z:\research\chs-books-v2\books\inland-waterway-navigation\figures\ch04_simulation_result.png
+  Z:\research\chs-books-v2\books\inland-waterway-navigation\figures\ch05_concept.png
+  Z:\research\chs-books-v2\books\inland-waterway-navigation\figures\ch05_simulation_result.png
+  Z:\research\chs-books-v2\books\inland-waterway-navigation\figures\ch06_concept.png
+  Z:\research\chs-books-v2\books\inland-waterway-navigation\figures\ch06_simulation_result.png
+  Z:\research\chs-books-v2\books\inland-waterway-navigation\figures\chapter2_navigation_dispatch.png
+  Z:\research\chs-books-v2\books\inland-waterway-navigation\figures\chapter5_dispatch.png
+  Z:\research\chs-books-v2\books\reservoir-operation-optimization\figures\ch01_concept.png
+  Z:\research\chs-books-v2\books\reservoir-operation-optimization\figures\ch01_reservoir_dispatch_simulation.png
+  Z:\research\chs-books-v2\books\reservoir-operation-optimization\figures\ch01_simulation_result.png
+  Z:\research\chs-books-v2\books\reservoir-operation-optimization\figures\ch02_concept.png
+  Z:\research\chs-books-v2\books\reservoir-operation-optimization\figures\ch02_simulation_result.png
+  Z:\research\chs-books-v2\books\reservoir-operation-optimization\figures\ch03_concept.png
+  ... 共 87 个，仅展示前60条
+
+[无图片章节列表]
+  ai-for-water-engineering/ch00.md
+  ai-for-water-engineering/ch03.md
+  ai-for-water-engineering/ch05.md
+  ai-for-water-engineering/ch06.md
+  ai-for-water-engineering/ch07.md
+  ai-for-water-engineering/ch08.md
+  ai-for-water-engineering/ch09.md
+  ai-for-water-engineering/ch10.md
+  ai-for-water-engineering/ch10_codex_v2.md
+  cascade-hydropower-scheduling/ch00.md
+  cascade-hydropower-scheduling/ch01.md
+  cascade-hydropower-scheduling/ch02.md
+  cascade-hydropower-scheduling/ch03.md
+  cascade-hydropower-scheduling/ch04.md
+  cascade-hydropower-scheduling/ch05.md
+  cascade-hydropower-scheduling/ch06.md
+  dam-safety-monitoring/ch00.md
+  dam-safety-monitoring/ch02.md
+  dam-safety-monitoring/ch03.md
+  dam-safety-monitoring/ch05.md
+  digital-twin-river-basin/ch00.md
+  digital-twin-river-basin/ch05.md
+  flood-forecasting-control/ch00.md
+  flood-forecasting-control/ch04.md
+  flood-forecasting-control/ch06.md
+  hydropower-generation-control/ch00.md
+  hydropower-generation-control/ch01.md
+  hydropower-generation-control/ch02.md
+  hydropower-generation-control/ch03.md
+  hydropower-generation-control/ch04.md
+  hydropower-generation-control/ch05.md
+  hydropower-generation-control/ch06.md
+  hydropower-generation-control/ch07.md
+  hydropower-generation-control/ch08.md
+  inland-waterway-navigation/ch00.md
+  inland-waterway-navigation/ch02.md
+  inland-waterway-navigation/ch04.md
+  inland-waterway-navigation/ch05.md
+  inland-waterway-navigation/ch06.md
+  pumped-storage-hydropower/ch00.md
+  pumped-storage-hydropower/ch01.md
+  pumped-storage-hydropower/ch02.md
+  pumped-storage-hydropower/ch03.md
+  pumped-storage-hydropower/ch04.md
+  pumped-storage-hydropower/ch05.md
+  pumped-storage-hydropower/ch06.md
+  reservoir-operation-optimization/ch00.md
+  reservoir-operation-optimization/ch01.md
+  reservoir-operation-optimization/ch03.md
+  reservoir-operation-optimization/ch04.md
+  reservoir-operation-optimization/ch06.md
+  reservoir-operation-optimization/ch08.md
+  reservoir-operation-optimization/ch08_codex_v2.md
+  river-sediment-dynamics/ch00.md
+  river-sediment-dynamics/ch02.md
+  ship-lock-automation/ch00.md
+  ship-lock-automation/ch05.md
+  urban-flood-sponge-city/ch00.md
+  urban-flood-sponge-city/ch01.md
+  urban-flood-sponge-city/ch02.md
+  urban-flood-sponge-city/ch03.md
+  urban-flood-sponge-city/ch04.md
+  urban-flood-sponge-city/ch05.md
+  urban-flood-sponge-city/ch06.md
+  urban-water-distribution/ch00.md
+  urban-water-distribution/ch01.md
+  urban-water-distribution/ch02.md
+  urban-water-distribution/ch03.md
+  urban-water-distribution/ch04.md
+  urban-water-distribution/ch05.md
+  urban-water-distribution/ch06.md
+  urban-water-distribution/ch07.md
+  urban-water-distribution/ch08.md
+  wastewater-treatment-control/ch00.md
+  wastewater-treatment-control/ch01.md
+  wastewater-treatment-control/ch02.md
+  wastewater-treatment-control/ch03.md
+  wastewater-treatment-control/ch04.md
+  wastewater-treatment-control/ch05.md
+  wastewater-treatment-control/ch06.md
+  water-energy-food-nexus/ch00.md
+  water-energy-food-nexus/ch03.md
+
+============================================================

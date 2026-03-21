@@ -1,0 +1,326 @@
+2026-03-21 08:47:29 [INFO] ========== 批量图片生成开始 2026-03-21 08:47:29 ==========
+2026-03-21 08:47:29 [INFO] 参数：dry_run=True, start=0, limit=None, method=auto
+2026-03-21 08:47:29 [INFO] 加载 corrupted 清单：7 条
+2026-03-21 08:47:29 [INFO] 加载 missing 清单：84 条
+2026-03-21 08:47:29 [INFO] 合并后总任务数：91
+2026-03-21 08:47:29 [INFO] 使用方式：openai
+2026-03-21 08:47:29 [INFO] 本次处理范围：0 ~ 90，共 91 条
+2026-03-21 08:47:29 [INFO] ------------------------------------------------------------
+2026-03-21 08:47:29 [INFO] [  1/91] DRY    corrupted  Hydrology_Book\assets\ch07\problem_nano.png
+2026-03-21 08:47:29 [INFO] [  2/91] DRY    corrupted  Hydrology_Book\assets\ch07\api_load_sim.png
+2026-03-21 08:47:29 [INFO] [  3/91] DRY    corrupted  Hydrology_Book\assets\ch09\skill_workflow_sim.png
+2026-03-21 08:47:29 [INFO] [  4/91] DRY    corrupted  graduate-exam-prep\assets\ch01\ch01_transfer_function.png
+2026-03-21 08:47:29 [INFO] [  5/91] DRY    corrupted  integrated-energy-system-simulation-optimization\assets\ch02\device_models_sim.png
+2026-03-21 08:47:29 [INFO] [  6/91] DRY    corrupted  integrated-energy-system-simulation-optimization\assets\ch03\storage_network_sim.png
+2026-03-21 08:47:29 [INFO] [  7/91] DRY    corrupted  water-system-control\assets\ch08\smith_predictor_sim.png
+2026-03-21 08:47:29 [INFO] [  8/91] DRY    missing    ai-for-water-engineering\figures\ch03_concept.png
+2026-03-21 08:47:29 [INFO] [  9/91] DRY    missing    ai-for-water-engineering\figures\ch03_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 10/91] DRY    missing    ai-for-water-engineering\figures\ch04_concept.png
+2026-03-21 08:47:29 [INFO] [ 11/91] SKIP   ai-for-water-engineering\figures\ch04_simulation_result.png  (已存在)
+2026-03-21 08:47:29 [INFO] [ 12/91] DRY    missing    ai-for-water-engineering\figures\ch05_concept.png
+2026-03-21 08:47:29 [INFO] [ 13/91] DRY    missing    ai-for-water-engineering\figures\ch05_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 14/91] DRY    missing    ai-for-water-engineering\figures\ch06_concept.png
+2026-03-21 08:47:29 [INFO] [ 15/91] DRY    missing    ai-for-water-engineering\figures\ch06_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 16/91] DRY    missing    ai-for-water-engineering\figures\ch07_concept.png
+2026-03-21 08:47:29 [INFO] [ 17/91] DRY    missing    ai-for-water-engineering\figures\ch07_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 18/91] DRY    missing    ai-for-water-engineering\figures\ch08_concept.png
+2026-03-21 08:47:29 [INFO] [ 19/91] DRY    missing    ai-for-water-engineering\figures\ch08_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 20/91] DRY    missing    ai-for-water-engineering\figures\ch09_concept.png
+2026-03-21 08:47:29 [INFO] [ 21/91] DRY    missing    ai-for-water-engineering\figures\ch09_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 22/91] DRY    missing    ai-for-water-engineering\figures\ch10_concept.png
+2026-03-21 08:47:29 [INFO] [ 23/91] DRY    missing    ai-for-water-engineering\figures\ch10_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 24/91] DRY    missing    canal-pipeline-control\assets\ch06\concept_jiaodong_waterway.png
+2026-03-21 08:47:29 [INFO] [ 25/91] DRY    missing    canal-pipeline-control\assets\ch06\simulation_result_jiaodong.png
+2026-03-21 08:47:29 [INFO] [ 26/91] DRY    missing    dam-safety-monitoring\figures\ch02_concept.png
+2026-03-21 08:47:29 [INFO] [ 27/91] DRY    missing    dam-safety-monitoring\figures\ch02_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 28/91] DRY    missing    dam-safety-monitoring\figures\ch03_concept.png
+2026-03-21 08:47:29 [INFO] [ 29/91] DRY    missing    dam-safety-monitoring\figures\ch03_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 30/91] DRY    missing    dam-safety-monitoring\figures\ch05_concept.png
+2026-03-21 08:47:29 [INFO] [ 31/91] DRY    missing    dam-safety-monitoring\figures\ch05_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 32/91] DRY    missing    digital-twin-river-basin\figures\ch01_concept.png
+2026-03-21 08:47:29 [INFO] [ 33/91] DRY    missing    digital-twin-river-basin\figures\ch02_concept.png
+2026-03-21 08:47:29 [INFO] [ 34/91] DRY    missing    digital-twin-river-basin\figures\ch03_concept.png
+2026-03-21 08:47:29 [INFO] [ 35/91] DRY    missing    digital-twin-river-basin\figures\ch04_concept.png
+2026-03-21 08:47:29 [INFO] [ 36/91] DRY    missing    digital-twin-river-basin\figures\ch05_concept.png
+2026-03-21 08:47:29 [INFO] [ 37/91] DRY    missing    digital-twin-river-basin\figures\ch05_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 38/91] DRY    missing    digital-twin-river-basin\figures\ch06_concept.png
+2026-03-21 08:47:29 [INFO] [ 39/91] DRY    missing    digital-twin-river-basin\figures\ch07_concept.png
+2026-03-21 08:47:29 [INFO] [ 40/91] DRY    missing    digital-twin-river-basin\figures\ch08_concept.png
+2026-03-21 08:47:29 [INFO] [ 41/91] DRY    missing    flood-forecasting-control\figures\ch01_concept.png
+2026-03-21 08:47:29 [INFO] [ 42/91] DRY    missing    flood-forecasting-control\figures\ch02_concept.png
+2026-03-21 08:47:29 [INFO] [ 43/91] DRY    missing    flood-forecasting-control\figures\ch03_concept.png
+2026-03-21 08:47:29 [INFO] [ 44/91] DRY    missing    flood-forecasting-control\figures\ch04_concept.png
+2026-03-21 08:47:29 [INFO] [ 45/91] DRY    missing    flood-forecasting-control\figures\ch04_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 46/91] DRY    missing    flood-forecasting-control\figures\ch06_concept.png
+2026-03-21 08:47:29 [INFO] [ 47/91] DRY    missing    flood-forecasting-control\figures\ch06_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 48/91] DRY    missing    flood-forecasting-control\figures\ch07_concept.png
+2026-03-21 08:47:29 [INFO] [ 49/91] DRY    missing    flood-forecasting-control\figures\ch08_concept.png
+2026-03-21 08:47:29 [INFO] [ 50/91] DRY    missing    inland-waterway-navigation\figures\ch01_concept.png
+2026-03-21 08:47:29 [INFO] [ 51/91] DRY    missing    inland-waterway-navigation\figures\ch02_concept.png
+2026-03-21 08:47:29 [INFO] [ 52/91] DRY    missing    inland-waterway-navigation\figures\ch02_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 53/91] DRY    missing    inland-waterway-navigation\figures\ch03_concept.png
+2026-03-21 08:47:29 [INFO] [ 54/91] DRY    missing    inland-waterway-navigation\figures\ch04_concept.png
+2026-03-21 08:47:29 [INFO] [ 55/91] DRY    missing    inland-waterway-navigation\figures\ch04_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 56/91] DRY    missing    inland-waterway-navigation\figures\ch05_concept.png
+2026-03-21 08:47:29 [INFO] [ 57/91] DRY    missing    inland-waterway-navigation\figures\ch05_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 58/91] DRY    missing    inland-waterway-navigation\figures\ch06_concept.png
+2026-03-21 08:47:29 [INFO] [ 59/91] DRY    missing    inland-waterway-navigation\figures\ch06_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 60/91] DRY    missing    reservoir-operation-optimization\figures\ch01_concept.png
+2026-03-21 08:47:29 [INFO] [ 61/91] DRY    missing    reservoir-operation-optimization\figures\ch01_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 62/91] DRY    missing    reservoir-operation-optimization\figures\ch02_concept.png
+2026-03-21 08:47:29 [INFO] [ 63/91] DRY    missing    reservoir-operation-optimization\figures\ch02_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 64/91] DRY    missing    reservoir-operation-optimization\figures\ch03_concept.png
+2026-03-21 08:47:29 [INFO] [ 65/91] DRY    missing    reservoir-operation-optimization\figures\ch03_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 66/91] DRY    missing    reservoir-operation-optimization\figures\ch04_concept.png
+2026-03-21 08:47:29 [INFO] [ 67/91] DRY    missing    reservoir-operation-optimization\figures\ch04_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 68/91] DRY    missing    reservoir-operation-optimization\figures\ch06_concept.png
+2026-03-21 08:47:29 [INFO] [ 69/91] DRY    missing    reservoir-operation-optimization\figures\ch06_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 70/91] DRY    missing    reservoir-operation-optimization\figures\ch08_concept.png
+2026-03-21 08:47:29 [INFO] [ 71/91] DRY    missing    reservoir-operation-optimization\figures\ch08_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 72/91] DRY    missing    river-sediment-dynamics\figures\ch01_concept.png
+2026-03-21 08:47:29 [INFO] [ 73/91] DRY    missing    river-sediment-dynamics\figures\ch02_concept.png
+2026-03-21 08:47:29 [INFO] [ 74/91] DRY    missing    river-sediment-dynamics\figures\ch02_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 75/91] DRY    missing    river-sediment-dynamics\figures\ch03_concept.png
+2026-03-21 08:47:29 [INFO] [ 76/91] DRY    missing    river-sediment-dynamics\figures\ch04_concept.png
+2026-03-21 08:47:29 [INFO] [ 77/91] DRY    missing    river-sediment-dynamics\figures\ch05_concept.png
+2026-03-21 08:47:29 [INFO] [ 78/91] DRY    missing    river-sediment-dynamics\figures\ch06_concept.png
+2026-03-21 08:47:29 [INFO] [ 79/91] DRY    missing    ship-lock-automation\figures\ch01_concept.png
+2026-03-21 08:47:29 [INFO] [ 80/91] DRY    missing    ship-lock-automation\figures\ch02_concept.png
+2026-03-21 08:47:29 [INFO] [ 81/91] DRY    missing    ship-lock-automation\figures\ch03_concept.png
+2026-03-21 08:47:29 [INFO] [ 82/91] DRY    missing    ship-lock-automation\figures\ch05_concept.png
+2026-03-21 08:47:29 [INFO] [ 83/91] DRY    missing    ship-lock-automation\figures\ch05_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 84/91] DRY    missing    water-energy-food-nexus\figures\ch01_concept.png
+2026-03-21 08:47:29 [INFO] [ 85/91] SKIP   water-energy-food-nexus\figures\ch01_simulation_result.png  (已存在)
+2026-03-21 08:47:29 [INFO] [ 86/91] DRY    missing    water-energy-food-nexus\figures\ch02_concept.png
+2026-03-21 08:47:29 [INFO] [ 87/91] DRY    missing    water-energy-food-nexus\figures\ch03_concept.png
+2026-03-21 08:47:29 [INFO] [ 88/91] DRY    missing    water-energy-food-nexus\figures\ch03_simulation_result.png
+2026-03-21 08:47:29 [INFO] [ 89/91] DRY    missing    water-energy-food-nexus\figures\ch04_concept.png
+2026-03-21 08:47:29 [INFO] [ 90/91] DRY    missing    water-energy-food-nexus\figures\ch05_concept.png
+2026-03-21 08:47:29 [INFO] [ 91/91] DRY    missing    water-energy-food-nexus\figures\ch06_concept.png
+2026-03-21 08:47:29 [INFO] ============================================================
+2026-03-21 08:47:29 [INFO] DRY-RUN 完成：共 91 条待处理（start=0）
+2026-03-21 08:47:29 [INFO] 日志文件：Z:\research\chs-books-v2\books\batch_gen_log.txt
+2026-03-21 08:47:39 [INFO] ========== 批量图片生成开始 2026-03-21 08:47:39 ==========
+2026-03-21 08:47:39 [INFO] 参数：dry_run=False, start=0, limit=3, method=auto
+2026-03-21 08:47:39 [INFO] 加载 corrupted 清单：7 条
+2026-03-21 08:47:39 [INFO] 加载 missing 清单：84 条
+2026-03-21 08:47:39 [INFO] 合并后总任务数：91
+2026-03-21 08:47:39 [INFO] 使用方式：openai
+2026-03-21 08:47:39 [INFO] 本次处理范围：0 ~ 2，共 3 条
+2026-03-21 08:47:39 [INFO] ------------------------------------------------------------
+2026-03-21 08:47:41 [WARNING] OpenAI API HTTP 错误：401
+2026-03-21 08:47:41 [INFO] OpenAI 失败，降级到 Gemini
+2026-03-21 08:47:46 [WARNING] Gemini API 错误：[WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2026-03-21 08:47:46 [INFO] Gemini 失败，降级到占位图
+2026-03-21 08:47:47 [INFO] [  1/3] OK     Hydrology_Book\assets\ch07\problem_nano.png  (7.4s)
+2026-03-21 08:47:51 [WARNING] OpenAI API HTTP 错误：401
+2026-03-21 08:47:51 [INFO] OpenAI 失败，降级到 Gemini
+2026-03-21 08:47:53 [WARNING] Gemini API 错误：[WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2026-03-21 08:47:53 [INFO] Gemini 失败，降级到占位图
+2026-03-21 08:47:53 [INFO] [  2/3] OK     Hydrology_Book\assets\ch07\api_load_sim.png  (3.2s)
+2026-03-21 08:47:57 [WARNING] OpenAI API HTTP 错误：401
+2026-03-21 08:47:57 [INFO] OpenAI 失败，降级到 Gemini
+2026-03-21 08:47:59 [WARNING] Gemini API 错误：[WinError 10061] 由于目标计算机积极拒绝，无法连接。
+2026-03-21 08:47:59 [INFO] Gemini 失败，降级到占位图
+2026-03-21 08:47:59 [INFO] [  3/3] OK     Hydrology_Book\assets\ch09\skill_workflow_sim.png  (3.1s)
+2026-03-21 08:47:59 [INFO] ============================================================
+2026-03-21 08:47:59 [INFO] 完成：总计=3  成功=3  失败=0  跳过=0
+2026-03-21 08:47:59 [INFO] 日志文件：Z:\research\chs-books-v2\books\batch_gen_log.txt
+2026-03-21 08:48:16 [INFO] ========== 批量图片生成开始 2026-03-21 08:48:16 ==========
+2026-03-21 08:48:16 [INFO] 参数：dry_run=False, start=3, limit=None, method=placeholder
+2026-03-21 08:48:16 [INFO] 加载 corrupted 清单：7 条
+2026-03-21 08:48:16 [INFO] 加载 missing 清单：84 条
+2026-03-21 08:48:16 [INFO] 合并后总任务数：91
+2026-03-21 08:48:16 [INFO] 使用方式：placeholder
+2026-03-21 08:48:16 [INFO] 本次处理范围：3 ~ 90，共 88 条
+2026-03-21 08:48:16 [INFO] ------------------------------------------------------------
+2026-03-21 08:48:17 [INFO] [  4/91] OK     graduate-exam-prep\assets\ch01\ch01_transfer_function.png  (0.2s)
+2026-03-21 08:48:20 [INFO] ========== 批量图片生成开始 2026-03-21 08:48:20 ==========
+2026-03-21 08:48:20 [INFO] 参数：dry_run=False, start=3, limit=None, method=placeholder
+2026-03-21 08:48:20 [INFO] 加载 corrupted 清单：7 条
+2026-03-21 08:48:20 [INFO] 加载 missing 清单：84 条
+2026-03-21 08:48:20 [INFO] 合并后总任务数：91
+2026-03-21 08:48:20 [INFO] 使用方式：placeholder
+2026-03-21 08:48:20 [INFO] 本次处理范围：3 ~ 90，共 88 条
+2026-03-21 08:48:20 [INFO] ------------------------------------------------------------
+2026-03-21 08:48:20 [INFO] [  4/91] SKIP   graduate-exam-prep\assets\ch01\ch01_transfer_function.png  (已存在)
+2026-03-21 08:48:20 [INFO] [  5/91] OK     integrated-energy-system-simulation-optimization\assets\ch02\device_models_sim.png  (0.1s)
+2026-03-21 08:48:20 [INFO] [  5/91] OK     integrated-energy-system-simulation-optimization\assets\ch02\device_models_sim.png  (0.4s)
+2026-03-21 08:48:23 [INFO] [  6/91] OK     integrated-energy-system-simulation-optimization\assets\ch03\storage_network_sim.png  (0.1s)
+2026-03-21 08:48:23 [INFO] [  6/91] SKIP   integrated-energy-system-simulation-optimization\assets\ch03\storage_network_sim.png  (已存在)
+2026-03-21 08:48:23 [INFO] [  7/91] OK     water-system-control\assets\ch08\smith_predictor_sim.png  (0.2s)
+2026-03-21 08:48:26 [INFO] [  7/91] SKIP   water-system-control\assets\ch08\smith_predictor_sim.png  (已存在)
+2026-03-21 08:48:26 [INFO] [  8/91] OK     ai-for-water-engineering\figures\ch03_concept.png  (0.1s)
+2026-03-21 08:48:26 [INFO] [  8/91] SKIP   ai-for-water-engineering\figures\ch03_concept.png  (已存在)
+2026-03-21 08:48:27 [INFO] [  9/91] OK     ai-for-water-engineering\figures\ch03_simulation_result.png  (0.2s)
+2026-03-21 08:48:29 [INFO] [  9/91] SKIP   ai-for-water-engineering\figures\ch03_simulation_result.png  (已存在)
+2026-03-21 08:48:29 [INFO] [ 10/91] OK     ai-for-water-engineering\figures\ch04_concept.png  (0.1s)
+2026-03-21 08:48:30 [INFO] [ 10/91] SKIP   ai-for-water-engineering\figures\ch04_concept.png  (已存在)
+2026-03-21 08:48:30 [INFO] [ 11/91] SKIP   ai-for-water-engineering\figures\ch04_simulation_result.png  (已存在)
+2026-03-21 08:48:30 [INFO] [ 12/91] OK     ai-for-water-engineering\figures\ch05_concept.png  (0.1s)
+2026-03-21 08:48:32 [INFO] [ 11/91] SKIP   ai-for-water-engineering\figures\ch04_simulation_result.png  (已存在)
+2026-03-21 08:48:32 [INFO] [ 12/91] SKIP   ai-for-water-engineering\figures\ch05_concept.png  (已存在)
+2026-03-21 08:48:33 [INFO] [ 13/91] OK     ai-for-water-engineering\figures\ch05_simulation_result.png  (0.1s)
+2026-03-21 08:48:33 [INFO] [ 13/91] SKIP   ai-for-water-engineering\figures\ch05_simulation_result.png  (已存在)
+2026-03-21 08:48:33 [INFO] [ 14/91] OK     ai-for-water-engineering\figures\ch06_concept.png  (0.1s)
+2026-03-21 08:48:36 [INFO] [ 14/91] SKIP   ai-for-water-engineering\figures\ch06_concept.png  (已存在)
+2026-03-21 08:48:36 [INFO] [ 15/91] OK     ai-for-water-engineering\figures\ch06_simulation_result.png  (0.1s)
+2026-03-21 08:48:36 [INFO] [ 15/91] SKIP   ai-for-water-engineering\figures\ch06_simulation_result.png  (已存在)
+2026-03-21 08:48:36 [INFO] [ 16/91] OK     ai-for-water-engineering\figures\ch07_concept.png  (0.1s)
+2026-03-21 08:48:39 [INFO] [ 16/91] SKIP   ai-for-water-engineering\figures\ch07_concept.png  (已存在)
+2026-03-21 08:48:39 [INFO] [ 17/91] OK     ai-for-water-engineering\figures\ch07_simulation_result.png  (0.1s)
+2026-03-21 08:48:39 [INFO] [ 17/91] SKIP   ai-for-water-engineering\figures\ch07_simulation_result.png  (已存在)
+2026-03-21 08:48:39 [INFO] [ 18/91] OK     ai-for-water-engineering\figures\ch08_concept.png  (0.1s)
+2026-03-21 08:48:42 [INFO] [ 18/91] SKIP   ai-for-water-engineering\figures\ch08_concept.png  (已存在)
+2026-03-21 08:48:42 [INFO] [ 19/91] OK     ai-for-water-engineering\figures\ch08_simulation_result.png  (0.1s)
+2026-03-21 08:48:42 [INFO] [ 19/91] SKIP   ai-for-water-engineering\figures\ch08_simulation_result.png  (已存在)
+2026-03-21 08:48:42 [INFO] [ 20/91] OK     ai-for-water-engineering\figures\ch09_concept.png  (0.1s)
+2026-03-21 08:48:45 [INFO] [ 20/91] SKIP   ai-for-water-engineering\figures\ch09_concept.png  (已存在)
+2026-03-21 08:48:45 [INFO] [ 21/91] OK     ai-for-water-engineering\figures\ch09_simulation_result.png  (0.1s)
+2026-03-21 08:48:45 [INFO] [ 21/91] SKIP   ai-for-water-engineering\figures\ch09_simulation_result.png  (已存在)
+2026-03-21 08:48:45 [INFO] [ 22/91] OK     ai-for-water-engineering\figures\ch10_concept.png  (0.1s)
+2026-03-21 08:48:48 [INFO] [ 22/91] SKIP   ai-for-water-engineering\figures\ch10_concept.png  (已存在)
+2026-03-21 08:48:48 [INFO] [ 23/91] OK     ai-for-water-engineering\figures\ch10_simulation_result.png  (0.1s)
+2026-03-21 08:48:48 [INFO] [ 23/91] SKIP   ai-for-water-engineering\figures\ch10_simulation_result.png  (已存在)
+2026-03-21 08:48:49 [INFO] [ 24/91] OK     canal-pipeline-control\assets\ch06\concept_jiaodong_waterway.png  (0.1s)
+2026-03-21 08:48:51 [INFO] [ 24/91] SKIP   canal-pipeline-control\assets\ch06\concept_jiaodong_waterway.png  (已存在)
+2026-03-21 08:48:51 [INFO] [ 25/91] OK     canal-pipeline-control\assets\ch06\simulation_result_jiaodong.png  (0.1s)
+2026-03-21 08:48:52 [INFO] [ 25/91] SKIP   canal-pipeline-control\assets\ch06\simulation_result_jiaodong.png  (已存在)
+2026-03-21 08:48:52 [INFO] [ 26/91] OK     dam-safety-monitoring\figures\ch02_concept.png  (0.1s)
+2026-03-21 08:48:54 [INFO] [ 26/91] SKIP   dam-safety-monitoring\figures\ch02_concept.png  (已存在)
+2026-03-21 08:48:54 [INFO] [ 27/91] OK     dam-safety-monitoring\figures\ch02_simulation_result.png  (0.1s)
+2026-03-21 08:48:55 [INFO] [ 27/91] SKIP   dam-safety-monitoring\figures\ch02_simulation_result.png  (已存在)
+2026-03-21 08:48:55 [INFO] [ 28/91] OK     dam-safety-monitoring\figures\ch03_concept.png  (0.1s)
+2026-03-21 08:48:57 [INFO] [ 28/91] SKIP   dam-safety-monitoring\figures\ch03_concept.png  (已存在)
+2026-03-21 08:48:58 [INFO] [ 29/91] OK     dam-safety-monitoring\figures\ch03_simulation_result.png  (0.1s)
+2026-03-21 08:48:58 [INFO] [ 29/91] SKIP   dam-safety-monitoring\figures\ch03_simulation_result.png  (已存在)
+2026-03-21 08:48:58 [INFO] [ 30/91] OK     dam-safety-monitoring\figures\ch05_concept.png  (0.1s)
+2026-03-21 08:49:01 [INFO] [ 30/91] SKIP   dam-safety-monitoring\figures\ch05_concept.png  (已存在)
+2026-03-21 08:49:01 [INFO] [ 31/91] OK     dam-safety-monitoring\figures\ch05_simulation_result.png  (0.1s)
+2026-03-21 08:49:01 [INFO] [ 31/91] SKIP   dam-safety-monitoring\figures\ch05_simulation_result.png  (已存在)
+2026-03-21 08:49:01 [INFO] [ 32/91] OK     digital-twin-river-basin\figures\ch01_concept.png  (0.1s)
+2026-03-21 08:49:04 [INFO] [ 32/91] SKIP   digital-twin-river-basin\figures\ch01_concept.png  (已存在)
+2026-03-21 08:49:04 [INFO] [ 33/91] OK     digital-twin-river-basin\figures\ch02_concept.png  (0.1s)
+2026-03-21 08:49:04 [INFO] [ 33/91] SKIP   digital-twin-river-basin\figures\ch02_concept.png  (已存在)
+2026-03-21 08:49:04 [INFO] [ 34/91] OK     digital-twin-river-basin\figures\ch03_concept.png  (0.1s)
+2026-03-21 08:49:07 [INFO] [ 34/91] SKIP   digital-twin-river-basin\figures\ch03_concept.png  (已存在)
+2026-03-21 08:49:07 [INFO] [ 35/91] OK     digital-twin-river-basin\figures\ch04_concept.png  (0.1s)
+2026-03-21 08:49:07 [INFO] [ 35/91] SKIP   digital-twin-river-basin\figures\ch04_concept.png  (已存在)
+2026-03-21 08:49:07 [INFO] [ 36/91] OK     digital-twin-river-basin\figures\ch05_concept.png  (0.1s)
+2026-03-21 08:49:10 [INFO] [ 36/91] SKIP   digital-twin-river-basin\figures\ch05_concept.png  (已存在)
+2026-03-21 08:49:10 [INFO] [ 37/91] OK     digital-twin-river-basin\figures\ch05_simulation_result.png  (0.1s)
+2026-03-21 08:49:10 [INFO] [ 37/91] SKIP   digital-twin-river-basin\figures\ch05_simulation_result.png  (已存在)
+2026-03-21 08:49:10 [INFO] [ 38/91] OK     digital-twin-river-basin\figures\ch06_concept.png  (0.1s)
+2026-03-21 08:49:13 [INFO] [ 38/91] SKIP   digital-twin-river-basin\figures\ch06_concept.png  (已存在)
+2026-03-21 08:49:13 [INFO] [ 39/91] OK     digital-twin-river-basin\figures\ch07_concept.png  (0.1s)
+2026-03-21 08:49:13 [INFO] [ 39/91] SKIP   digital-twin-river-basin\figures\ch07_concept.png  (已存在)
+2026-03-21 08:49:13 [INFO] [ 40/91] OK     digital-twin-river-basin\figures\ch08_concept.png  (0.1s)
+2026-03-21 08:49:16 [INFO] [ 40/91] SKIP   digital-twin-river-basin\figures\ch08_concept.png  (已存在)
+2026-03-21 08:49:16 [INFO] [ 41/91] OK     flood-forecasting-control\figures\ch01_concept.png  (0.1s)
+2026-03-21 08:49:16 [INFO] [ 41/91] SKIP   flood-forecasting-control\figures\ch01_concept.png  (已存在)
+2026-03-21 08:49:17 [INFO] [ 42/91] OK     flood-forecasting-control\figures\ch02_concept.png  (0.1s)
+2026-03-21 08:49:19 [INFO] [ 42/91] SKIP   flood-forecasting-control\figures\ch02_concept.png  (已存在)
+2026-03-21 08:49:19 [INFO] [ 43/91] OK     flood-forecasting-control\figures\ch03_concept.png  (0.1s)
+2026-03-21 08:49:20 [INFO] [ 43/91] SKIP   flood-forecasting-control\figures\ch03_concept.png  (已存在)
+2026-03-21 08:49:20 [INFO] [ 44/91] OK     flood-forecasting-control\figures\ch04_concept.png  (0.1s)
+2026-03-21 08:49:22 [INFO] [ 44/91] SKIP   flood-forecasting-control\figures\ch04_concept.png  (已存在)
+2026-03-21 08:49:23 [INFO] [ 45/91] OK     flood-forecasting-control\figures\ch04_simulation_result.png  (0.1s)
+2026-03-21 08:49:23 [INFO] [ 45/91] SKIP   flood-forecasting-control\figures\ch04_simulation_result.png  (已存在)
+2026-03-21 08:49:23 [INFO] [ 46/91] OK     flood-forecasting-control\figures\ch06_concept.png  (0.1s)
+2026-03-21 08:49:26 [INFO] [ 46/91] SKIP   flood-forecasting-control\figures\ch06_concept.png  (已存在)
+2026-03-21 08:49:26 [INFO] [ 47/91] OK     flood-forecasting-control\figures\ch06_simulation_result.png  (0.1s)
+2026-03-21 08:49:26 [INFO] [ 47/91] SKIP   flood-forecasting-control\figures\ch06_simulation_result.png  (已存在)
+2026-03-21 08:49:26 [INFO] [ 48/91] OK     flood-forecasting-control\figures\ch07_concept.png  (0.1s)
+2026-03-21 08:49:29 [INFO] [ 48/91] SKIP   flood-forecasting-control\figures\ch07_concept.png  (已存在)
+2026-03-21 08:49:29 [INFO] [ 49/91] OK     flood-forecasting-control\figures\ch08_concept.png  (0.1s)
+2026-03-21 08:49:29 [INFO] [ 49/91] SKIP   flood-forecasting-control\figures\ch08_concept.png  (已存在)
+2026-03-21 08:49:29 [INFO] [ 50/91] OK     inland-waterway-navigation\figures\ch01_concept.png  (0.1s)
+2026-03-21 08:49:32 [INFO] [ 50/91] SKIP   inland-waterway-navigation\figures\ch01_concept.png  (已存在)
+2026-03-21 08:49:32 [INFO] [ 51/91] OK     inland-waterway-navigation\figures\ch02_concept.png  (0.1s)
+2026-03-21 08:49:32 [INFO] [ 51/91] SKIP   inland-waterway-navigation\figures\ch02_concept.png  (已存在)
+2026-03-21 08:49:32 [INFO] [ 52/91] OK     inland-waterway-navigation\figures\ch02_simulation_result.png  (0.1s)
+2026-03-21 08:49:35 [INFO] [ 52/91] SKIP   inland-waterway-navigation\figures\ch02_simulation_result.png  (已存在)
+2026-03-21 08:49:35 [INFO] [ 53/91] OK     inland-waterway-navigation\figures\ch03_concept.png  (0.1s)
+2026-03-21 08:49:35 [INFO] [ 53/91] SKIP   inland-waterway-navigation\figures\ch03_concept.png  (已存在)
+2026-03-21 08:49:35 [INFO] [ 54/91] OK     inland-waterway-navigation\figures\ch04_concept.png  (0.1s)
+2026-03-21 08:49:38 [INFO] [ 54/91] SKIP   inland-waterway-navigation\figures\ch04_concept.png  (已存在)
+2026-03-21 08:49:38 [INFO] [ 55/91] OK     inland-waterway-navigation\figures\ch04_simulation_result.png  (0.1s)
+2026-03-21 08:49:38 [INFO] [ 55/91] SKIP   inland-waterway-navigation\figures\ch04_simulation_result.png  (已存在)
+2026-03-21 08:49:38 [INFO] [ 56/91] OK     inland-waterway-navigation\figures\ch05_concept.png  (0.1s)
+2026-03-21 08:49:41 [INFO] [ 56/91] SKIP   inland-waterway-navigation\figures\ch05_concept.png  (已存在)
+2026-03-21 08:49:41 [INFO] [ 57/91] OK     inland-waterway-navigation\figures\ch05_simulation_result.png  (0.1s)
+2026-03-21 08:49:41 [INFO] [ 57/91] SKIP   inland-waterway-navigation\figures\ch05_simulation_result.png  (已存在)
+2026-03-21 08:49:42 [INFO] [ 58/91] OK     inland-waterway-navigation\figures\ch06_concept.png  (0.1s)
+2026-03-21 08:49:44 [INFO] [ 58/91] SKIP   inland-waterway-navigation\figures\ch06_concept.png  (已存在)
+2026-03-21 08:49:44 [INFO] [ 59/91] OK     inland-waterway-navigation\figures\ch06_simulation_result.png  (0.1s)
+2026-03-21 08:49:45 [INFO] [ 59/91] SKIP   inland-waterway-navigation\figures\ch06_simulation_result.png  (已存在)
+2026-03-21 08:49:45 [INFO] [ 60/91] OK     reservoir-operation-optimization\figures\ch01_concept.png  (0.1s)
+2026-03-21 08:49:47 [INFO] [ 60/91] SKIP   reservoir-operation-optimization\figures\ch01_concept.png  (已存在)
+2026-03-21 08:49:47 [INFO] [ 61/91] OK     reservoir-operation-optimization\figures\ch01_simulation_result.png  (0.1s)
+2026-03-21 08:49:48 [INFO] [ 61/91] SKIP   reservoir-operation-optimization\figures\ch01_simulation_result.png  (已存在)
+2026-03-21 08:49:48 [INFO] [ 62/91] OK     reservoir-operation-optimization\figures\ch02_concept.png  (0.1s)
+2026-03-21 08:49:50 [INFO] [ 62/91] SKIP   reservoir-operation-optimization\figures\ch02_concept.png  (已存在)
+2026-03-21 08:49:51 [INFO] [ 63/91] OK     reservoir-operation-optimization\figures\ch02_simulation_result.png  (0.1s)
+2026-03-21 08:49:51 [INFO] [ 63/91] SKIP   reservoir-operation-optimization\figures\ch02_simulation_result.png  (已存在)
+2026-03-21 08:49:51 [INFO] [ 64/91] OK     reservoir-operation-optimization\figures\ch03_concept.png  (0.1s)
+2026-03-21 08:49:54 [INFO] [ 64/91] SKIP   reservoir-operation-optimization\figures\ch03_concept.png  (已存在)
+2026-03-21 08:49:54 [INFO] [ 65/91] OK     reservoir-operation-optimization\figures\ch03_simulation_result.png  (0.1s)
+2026-03-21 08:49:54 [INFO] [ 65/91] SKIP   reservoir-operation-optimization\figures\ch03_simulation_result.png  (已存在)
+2026-03-21 08:49:54 [INFO] [ 66/91] OK     reservoir-operation-optimization\figures\ch04_concept.png  (0.1s)
+2026-03-21 08:49:57 [INFO] [ 66/91] SKIP   reservoir-operation-optimization\figures\ch04_concept.png  (已存在)
+2026-03-21 08:49:57 [INFO] [ 67/91] OK     reservoir-operation-optimization\figures\ch04_simulation_result.png  (0.1s)
+2026-03-21 08:49:57 [INFO] [ 67/91] SKIP   reservoir-operation-optimization\figures\ch04_simulation_result.png  (已存在)
+2026-03-21 08:49:57 [INFO] [ 68/91] OK     reservoir-operation-optimization\figures\ch06_concept.png  (0.1s)
+2026-03-21 08:50:00 [INFO] [ 68/91] SKIP   reservoir-operation-optimization\figures\ch06_concept.png  (已存在)
+2026-03-21 08:50:00 [INFO] [ 69/91] OK     reservoir-operation-optimization\figures\ch06_simulation_result.png  (0.1s)
+2026-03-21 08:50:00 [INFO] [ 69/91] SKIP   reservoir-operation-optimization\figures\ch06_simulation_result.png  (已存在)
+2026-03-21 08:50:00 [INFO] [ 70/91] OK     reservoir-operation-optimization\figures\ch08_concept.png  (0.1s)
+2026-03-21 08:50:03 [INFO] [ 70/91] SKIP   reservoir-operation-optimization\figures\ch08_concept.png  (已存在)
+2026-03-21 08:50:03 [INFO] [ 71/91] OK     reservoir-operation-optimization\figures\ch08_simulation_result.png  (0.1s)
+2026-03-21 08:50:03 [INFO] [ 71/91] SKIP   reservoir-operation-optimization\figures\ch08_simulation_result.png  (已存在)
+2026-03-21 08:50:03 [INFO] [ 72/91] OK     river-sediment-dynamics\figures\ch01_concept.png  (0.1s)
+2026-03-21 08:50:06 [INFO] [ 72/91] SKIP   river-sediment-dynamics\figures\ch01_concept.png  (已存在)
+2026-03-21 08:50:06 [INFO] [ 73/91] OK     river-sediment-dynamics\figures\ch02_concept.png  (0.1s)
+2026-03-21 08:50:06 [INFO] [ 73/91] SKIP   river-sediment-dynamics\figures\ch02_concept.png  (已存在)
+2026-03-21 08:50:06 [INFO] [ 74/91] OK     river-sediment-dynamics\figures\ch02_simulation_result.png  (0.1s)
+2026-03-21 08:50:09 [INFO] [ 74/91] SKIP   river-sediment-dynamics\figures\ch02_simulation_result.png  (已存在)
+2026-03-21 08:50:09 [INFO] [ 75/91] OK     river-sediment-dynamics\figures\ch03_concept.png  (0.1s)
+2026-03-21 08:50:10 [INFO] [ 75/91] SKIP   river-sediment-dynamics\figures\ch03_concept.png  (已存在)
+2026-03-21 08:50:10 [INFO] [ 76/91] OK     river-sediment-dynamics\figures\ch04_concept.png  (0.1s)
+2026-03-21 08:50:12 [INFO] [ 76/91] SKIP   river-sediment-dynamics\figures\ch04_concept.png  (已存在)
+2026-03-21 08:50:12 [INFO] [ 77/91] OK     river-sediment-dynamics\figures\ch05_concept.png  (0.1s)
+2026-03-21 08:50:13 [INFO] [ 77/91] SKIP   river-sediment-dynamics\figures\ch05_concept.png  (已存在)
+2026-03-21 08:50:13 [INFO] [ 78/91] OK     river-sediment-dynamics\figures\ch06_concept.png  (0.1s)
+2026-03-21 08:50:15 [INFO] [ 78/91] SKIP   river-sediment-dynamics\figures\ch06_concept.png  (已存在)
+2026-03-21 08:50:16 [INFO] [ 79/91] OK     ship-lock-automation\figures\ch01_concept.png  (0.1s)
+2026-03-21 08:50:16 [INFO] [ 79/91] SKIP   ship-lock-automation\figures\ch01_concept.png  (已存在)
+2026-03-21 08:50:16 [INFO] [ 80/91] OK     ship-lock-automation\figures\ch02_concept.png  (0.1s)
+2026-03-21 08:50:19 [INFO] [ 80/91] SKIP   ship-lock-automation\figures\ch02_concept.png  (已存在)
+2026-03-21 08:50:19 [INFO] [ 81/91] OK     ship-lock-automation\figures\ch03_concept.png  (0.1s)
+2026-03-21 08:50:19 [INFO] [ 81/91] SKIP   ship-lock-automation\figures\ch03_concept.png  (已存在)
+2026-03-21 08:50:19 [INFO] [ 82/91] OK     ship-lock-automation\figures\ch05_concept.png  (0.1s)
+2026-03-21 08:50:22 [INFO] [ 82/91] SKIP   ship-lock-automation\figures\ch05_concept.png  (已存在)
+2026-03-21 08:50:22 [INFO] [ 83/91] OK     ship-lock-automation\figures\ch05_simulation_result.png  (0.1s)
+2026-03-21 08:50:22 [INFO] [ 83/91] SKIP   ship-lock-automation\figures\ch05_simulation_result.png  (已存在)
+2026-03-21 08:50:22 [INFO] [ 84/91] OK     water-energy-food-nexus\figures\ch01_concept.png  (0.1s)
+2026-03-21 08:50:25 [INFO] [ 84/91] SKIP   water-energy-food-nexus\figures\ch01_concept.png  (已存在)
+2026-03-21 08:50:25 [INFO] [ 85/91] SKIP   water-energy-food-nexus\figures\ch01_simulation_result.png  (已存在)
+2026-03-21 08:50:25 [INFO] [ 86/91] OK     water-energy-food-nexus\figures\ch02_concept.png  (0.1s)
+2026-03-21 08:50:25 [INFO] [ 85/91] SKIP   water-energy-food-nexus\figures\ch01_simulation_result.png  (已存在)
+2026-03-21 08:50:25 [INFO] [ 86/91] SKIP   water-energy-food-nexus\figures\ch02_concept.png  (已存在)
+2026-03-21 08:50:25 [INFO] [ 87/91] OK     water-energy-food-nexus\figures\ch03_concept.png  (0.1s)
+2026-03-21 08:50:28 [INFO] [ 87/91] SKIP   water-energy-food-nexus\figures\ch03_concept.png  (已存在)
+2026-03-21 08:50:28 [INFO] [ 88/91] OK     water-energy-food-nexus\figures\ch03_simulation_result.png  (0.1s)
+2026-03-21 08:50:28 [INFO] [ 88/91] SKIP   water-energy-food-nexus\figures\ch03_simulation_result.png  (已存在)
+2026-03-21 08:50:28 [INFO] [ 89/91] OK     water-energy-food-nexus\figures\ch04_concept.png  (0.1s)
+2026-03-21 08:50:31 [INFO] [ 89/91] SKIP   water-energy-food-nexus\figures\ch04_concept.png  (已存在)
+2026-03-21 08:50:31 [INFO] [ 90/91] OK     water-energy-food-nexus\figures\ch05_concept.png  (0.1s)
+2026-03-21 08:50:31 [INFO] [ 90/91] SKIP   water-energy-food-nexus\figures\ch05_concept.png  (已存在)
+2026-03-21 08:50:31 [INFO] [ 91/91] OK     water-energy-food-nexus\figures\ch06_concept.png  (0.1s)
+2026-03-21 08:50:31 [INFO] ============================================================
+2026-03-21 08:50:31 [INFO] 完成：总计=88  成功=43  失败=0  跳过=45
+2026-03-21 08:50:31 [INFO] 日志文件：Z:\research\chs-books-v2\books\batch_gen_log.txt
+2026-03-21 08:50:34 [INFO] [ 91/91] SKIP   water-energy-food-nexus\figures\ch06_concept.png  (已存在)
+2026-03-21 08:50:34 [INFO] ============================================================
+2026-03-21 08:50:34 [INFO] 完成：总计=88  成功=44  失败=0  跳过=44
+2026-03-21 08:50:34 [INFO] 日志文件：Z:\research\chs-books-v2\books\batch_gen_log.txt
