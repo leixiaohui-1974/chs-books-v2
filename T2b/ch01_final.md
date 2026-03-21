@@ -529,3 +529,13 @@ $$
 [1-19] Brunton, S.L. & Kutz, J.N. (2019). *Data-Driven Science and Engineering: Machine Learning, Dynamical Systems, and Control*. Cambridge University Press.
 
 [1-20] García, J. & Fernández, F. (2015). A comprehensive survey on safe reinforcement learning. *Journal of Machine Learning Research*, 16(42), 1437-1480.
+
+## 本章小结
+
+本章作为T2b下册导论，建立了从控制到智能的总体框架，核心要点如下：
+
+- **T2a与T2b的分工衔接**：T2a聚焦"建模—控制—安全—验证—工程"五大物理AI模块，T2b在此基础上叠加认知AI引擎，实现从"算得准"到"想得清"的能力跃迁。
+- **三类范式与混合驱动**：模型驱动、数据驱动与混合驱动三类范式各有边界，CHS主张混合驱动，用物理约束规范数据学习，提升工程可靠性与可解释性。
+- **双引擎协同架构**：物理AI引擎负责状态估计、MPC控制和安全包络等确定性计算；认知AI引擎负责语义理解、异常诊断和决策解释；两者通过冲突仲裁机制协同工作，物理安全约束具有最高优先级。
+- **ODD与Safety Envelope约束**：智能化升级必须受运行设计域和安全包络约束，任何AI组件的输出都不能绕过这两道工程门禁。
+- **WNAL L2→L3跃迁**：从辅助决策迈向条件自主，需要在技术、组织和法规三个维度同步达标，认知AI引擎是实现跃迁的关键使能技术。

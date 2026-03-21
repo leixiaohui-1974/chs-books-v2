@@ -190,6 +190,9 @@ h_{\min} \le h_{k+j|k} \le h_{\max}, \quad 0 \le P_k \le P_{\max}(H_k) \tag{15-8
 $$
 
 $$
+
+**表15-3**
+
 |\Delta P_k / \Delta t| \le \gamma_{P,\max}, \quad |\Delta e_j / \Delta t| \le \gamma_{e,\max} \tag{15-9}
 $$
 
@@ -262,6 +265,9 @@ $$
 [工程意义] 安全裕度的设定考虑了事故切机场景：原始报告分析表明，当运行水位在 552.5–553.5 m 时，事故切机后电站拥有 5–15 分钟的反应时间（在此期间入库继续但发电停止，水位上升）。将黄区上限设为 553.5 m（而非正常蓄水位 554 m），正是为保留这一安全缓冲。
 
 **ODD 的季节性调整**
+
+
+**表15-5**
 
 | 工况 | 入库流量范围 | 水位运行窗口 | 负荷调整余量 | 闸门可用性 |
 |:---|:---|:---|:---|:---|
@@ -413,6 +419,9 @@ $$
 ### 例 15-2：梯级负荷再分配
 
 【例 15-2】电网下达梯级总出力指令增加 500 MW（从 3500 MW 增至 4000 MW）。当前四站运行状态如下：
+
+
+**表15-9**
 
 | 电站 | 当前出力 | 可增出力 | 水位状态 |
 |:---|:---|:---|:---|
@@ -596,6 +605,16 @@ $$
 [15-13] Kundur, P. (1994). *Power System Stability and Control* [M]. New York: McGraw-Hill.
 
 [15-14] Kishor, N., Saini, R. P. & Singh, S. P. (2007). A review on hydropower plant models and control [J]. *Renewable and Sustainable Energy Reviews*, 11(5): 776-796. DOI: 10.1016/j.rser.2005.06.003.
+
+[15-15] Rani, D. & Moreira, M. M. (2010). Simulation–optimization modeling: A survey and potential application in reservoir systems operation [J]. *Water Resources Management*, 24(6): 1107-1138.
+
+[15-16] Maier, H. R., Kapelan, Z., Kasprzyk, J., et al. (2014). Evolutionary algorithms and other metaheuristics in water resources: Current status, research challenges and future directions [J]. *Environmental Modelling & Software*, 62: 271-299.
+
+[15-17] Janga Reddy, M. & Kumar, D. N. (2007). Multi-objective differential evolution with application to reservoir system optimization [J]. *Journal of Computing in Civil Engineering*, 21(2): 136-146.
+
+[15-18] Shapiro, A. (2011). Analysis of stochastic dual dynamic programming method [J]. *European Journal of Operational Research*, 209(1): 1-7.
+
+[15-19] IEEE Power & Energy Society. (2011). *IEEE Guide for the Application of Turbine Governing Systems for Hydroelectric Units* [S]. IEEE Std 1207-2011.
 
 ## 拓展阅读
 

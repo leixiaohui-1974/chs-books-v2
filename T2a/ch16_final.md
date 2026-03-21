@@ -370,6 +370,20 @@ $$RMSE_{pred} = \sqrt{\frac{1}{N}\sum_{k=1}^{N}(h_{pred,k} - h_{meas,k})^2}$$
 
 [16-15] SAE International. (2021). *Taxonomy and Definitions for Terms Related to Driving Automation Systems for On-Road Motor Vehicles* [S]. J3016_202104.
 
+[16-16] Åström, K. J. & Murray, R. M. (2008). *Feedback Systems: An Introduction for Scientists and Engineers* [M]. Princeton University Press.
+
+[16-17] Mayne, D. Q., Rawlings, J. B., Rao, C. V. & Scokaert, P. O. M. (2000). Constrained model predictive control: Stability and optimality [J]. *Automatica*, 36(6): 789-814.
+
+[16-18] Tao, F., Zhang, M., Liu, Y. & Nee, A. Y. C. (2019). Digital twin in industry: State-of-the-art [J]. *Engineering*, 5(4): 653-661.
+
+[16-19] Fuller, A., Fan, Z., Day, C. & Barlow, C. (2020). Digital twin: Enabling technologies, challenges and open research [J]. *IEEE Access*, 8: 108952-108971.
+
+[16-20] Shen, C. (2018). A transdisciplinary review of deep learning research and its relevance for water resources scientists [J]. *Water Resources Research*, 54(11): 8558-8593.
+
+[16-21] Kratzert, F., Klotz, D., Shalev, G., et al. (2018). Rainfall–runoff modelling using Long Short-Term Memory (LSTM) networks [J]. *Hydrology and Earth System Sciences*, 22(11): 6005-6022.
+
+[16-22] Kasprzyk, J. R., Nataraj, S., Reed, P. M. & Lempert, R. J. (2013). Many objective robust decision making for complex environmental systems using the Borg MOEA [J]. *Environmental Modelling & Software*, 42: 55-71.
+
 ## 拓展阅读
 
 1. Litrico, X. & Fromion, V. (2009). *Modeling and Control of Hydrosystems*. ——明渠建模与控制的国际标准参考。

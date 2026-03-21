@@ -546,6 +546,9 @@ $$
 
 **与EKF的比较.**
 
+
+**表6-5**
+
 | 比较维度 | EKF | UKF |
 |---------|-----|-----|
 | 线性化方式 | 显式 Jacobian 矩阵 | Sigma 点隐式传播 |
@@ -718,6 +721,9 @@ LQR/LQG 以统计意义上的期望代价最优为目标，假设扰动和噪声
 
 **参数不确定性的来源.** 水系统中的主要参数不确定性包括：
 
+
+**表6-6**
+
 | 参数 | 标称值范围 | 典型变化幅度 | 变化原因 |
 |------|-----------|-------------|---------|
 | 水面面积 $A_s$ | $10^3 \sim 10^5$ m$^2$ | $\pm 10\%\sim30\%$ | 水位变化导致断面几何变化 |
@@ -744,6 +750,9 @@ $$
 **不确定性权函数 $W(s)$ 的选择.** 对于 IDZ 模型的不确定性，Litrico 与 Fromion（2009）给出了经验指导：
 
 $$
+
+**表6-7**
+
 |W_m(j\omega)| \approx \begin{cases} 0.1 & \omega < 1/\tau_d \text{（低频段，模型较准）} \\ 1.0 & \omega \sim 1/\tau_d \text{（中频段，延迟不确定性主导）} \\ 2.0 & \omega > 10/\tau_d \text{（高频段，降阶误差大）} \end{cases}
 $$
 
@@ -880,6 +889,9 @@ $\mu$ 值越小，系统对结构化不确定性的鲁棒性越强。
 **步骤1：不确定性建模.** 在标称模型 $G_0(s)$ 基础上，从多组参数（$A_s$ 和 $\tau_d$ 各取 $5$ 个值，共 $25$ 个模型）计算乘性不确定性包络：
 
 $$
+
+**表6-10**
+
 |W_m(j\omega)| \geq \max_i \left|\frac{G_i(j\omega) - G_0(j\omega)}{G_0(j\omega)}\right|, \quad \forall \omega
 $$
 
@@ -1017,6 +1029,9 @@ $$
 
 **与自适应控制的区别.**
 
+
+**表6-12**
+
 | 比较维度 | 自适应控制（MRAC/STC） | 增益调度 |
 |---------|---------------------|---------|
 | 参数来源 | 在线辨识 | 离线设计、在线查表 |
@@ -1030,7 +1045,7 @@ $$
 **LPV（线性参数变化）系统视角.** 增益调度的理论基础是线性参数变化（Linear Parameter-Varying, LPV）系统理论。LPV 系统的形式为：
 
 $$
-\dot{\mathbf{x}} = \mathbf{A}(\boldsymbol{\sigma})\mathbf{x} + \mathbf{B}(\boldsymbol{\sigma})\mathbf{u}, \quad \mathbf{y} = \mathbf{C}(\boldsymbol{\sigma})\mathbf{x} \tag{6-52a}
+\dot{\mathbf{x}} = \mathbf{A}(\boldsymbol{\sigma})\mathbf{x} + \mathbf{B}(\boldsymbol{\sigma})\mathbf{u}, \quad \mathbf{y} = \mathbf{C}(\boldsymbol{\sigma})\mathbf{x} \tag{6-53}
 $$
 
 其中 $\boldsymbol{\sigma}(t)$ 为可测的调度变量向量，系统矩阵连续依赖于 $\boldsymbol{\sigma}$。LPV 控制设计可以在保证全参数范围内闭环稳定的前提下，得到一个调度变量相关的控制器——这比逐点设计再插值更严谨，因为它显式保证了参数过渡过程中的稳定性。
@@ -1052,7 +1067,10 @@ $$
 **参数变化率限制.** 对辨识得到的参数施加一阶差分约束：
 
 $$
-|\hat{\theta}_i(k) - \hat{\theta}_i(k-1)| \leq \Delta\theta_{\max,i} \tag{6-53}
+
+**表6-13**
+
+|\hat{\theta}_i(k) - \hat{\theta}_i(k-1)| \leq \Delta\theta_{\max,i} \tag{6-54}
 $$
 
 例如：水面面积辨识值 $\hat{A}_s$ 的每步变化不超过 $1\%$（物理上合理——水面面积不会在一个采样周期内剧变）。
@@ -1060,7 +1078,7 @@ $$
 **参数边界约束.** 辨识参数必须在物理合理范围内：
 
 $$
-\theta_{\min,i} \leq \hat{\theta}_i(k) \leq \theta_{\max,i} \tag{6-54}
+\theta_{\min,i} \leq \hat{\theta}_i(k) \leq \theta_{\max,i} \tag{6-55}
 $$
 
 例如：$A_s \in [20000, 80000]$ m$^2$，$\tau_d \in [300, 900]$ s，$n \in [0.008, 0.060]$。超出范围的辨识结果应被拒绝并触发告警。
@@ -1068,7 +1086,7 @@ $$
 **稳定性监视器.** 在每次参数更新后，实时检查更新后控制器的闭环特征值是否全部在单位圆内（离散系统）或左半平面（连续系统）。若检查不通过，拒绝本次参数更新，保持上一步参数不变：
 
 $$
-\mathbf{K}(k) = \begin{cases} \mathbf{K}_{\text{new}}(k) & \text{若闭环稳定} \\ \mathbf{K}(k-1) & \text{否则（安全回退）} \end{cases} \tag{6-55}
+\mathbf{K}(k) = \begin{cases} \mathbf{K}_{\text{new}}(k) & \text{若闭环稳定} \\ \mathbf{K}(k-1) & \text{否则（安全回退）} \end{cases} \tag{6-56}
 $$
 
 **三级安全机制架构.** 在 CHS 框架下，自适应控制的安全机制应分三级实施：
