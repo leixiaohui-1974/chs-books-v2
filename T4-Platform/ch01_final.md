@@ -1,5 +1,7 @@
 # 第1章 从SCADA到HydroOS：水网平台的演进逻辑
 
+> **本册定位**：本册为水系统控制论（Cybernetics of Hydro Systems, CHS）教材体系的平台开发分册（T4），面向水利信息化平台开发工程师和架构师。内容承接 T2a（建模与控制理论）和 T2b（认知AI工程），聚焦 HydroOS 水网操作系统的工程实现。
+
 > **知识依赖框：本章预设读者已了解……**
 > - 水利工程中的基本对象：河道、渠道、闸门、泵站、管网、水库、量测点
 > - 监测与控制的基础概念：传感器（Sensor）、可编程逻辑控制器（Programmable Logic Controller，PLC）、远程终端单元（Remote Terminal Unit，RTU）、监控与数据采集系统（Supervisory Control And Data Acquisition，SCADA）
