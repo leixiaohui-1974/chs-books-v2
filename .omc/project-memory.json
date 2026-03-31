@@ -1,0 +1,465 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1774917412721,
+  "projectRoot": "/Users/rainfields/hydrosis-local/research/chs-books-v2",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "scripts"
+    ],
+    "gitBranches": {
+      "defaultBranch": "main",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "ModernControl": {
+      "path": "ModernControl",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1774917412710,
+      "keyFiles": [
+        "README.md"
+      ]
+    },
+    "T1-CN": {
+      "path": "T1-CN",
+      "purpose": null,
+      "fileCount": 33,
+      "lastAccessed": 1774917412710,
+      "keyFiles": [
+        "ch01_final.md",
+        "ch01_final.md.bak",
+        "ch02_final.md",
+        "ch02_final.md.bak",
+        "ch03_final.md"
+      ]
+    },
+    "T2-CN": {
+      "path": "T2-CN",
+      "purpose": null,
+      "fileCount": 14,
+      "lastAccessed": 1774917412711,
+      "keyFiles": [
+        "ch00_引子_revised.md",
+        "ch01_五代人生_revised.md",
+        "ch02_为什么难管_revised.md",
+        "ch03_给水网做体检_revised.md",
+        "ch04_八原理_revised.md"
+      ]
+    },
+    "T2a": {
+      "path": "T2a",
+      "purpose": null,
+      "fileCount": 36,
+      "lastAccessed": 1774917412711,
+      "keyFiles": [
+        "ch01_final.md",
+        "ch01_final.md.bak",
+        "ch02_final.md",
+        "ch02_final.md.bak",
+        "ch03_final.md"
+      ]
+    },
+    "T2b": {
+      "path": "T2b",
+      "purpose": null,
+      "fileCount": 27,
+      "lastAccessed": 1774917412711,
+      "keyFiles": [
+        "ch01_final.md",
+        "ch02_final.md",
+        "ch03_final.md",
+        "ch03_final.md.bak",
+        "ch04_final.md"
+      ]
+    },
+    "T3-Engineering": {
+      "path": "T3-Engineering",
+      "purpose": null,
+      "fileCount": 25,
+      "lastAccessed": 1774917412711,
+      "keyFiles": [
+        "ch01.md",
+        "ch01.md.bak",
+        "ch02.md",
+        "ch02.md.bak",
+        "ch03.md"
+      ]
+    },
+    "T4-Platform": {
+      "path": "T4-Platform",
+      "purpose": null,
+      "fileCount": 19,
+      "lastAccessed": 1774917412712,
+      "keyFiles": [
+        "README.md",
+        "ch01_draft.md",
+        "ch01_final.md",
+        "ch02_draft.md",
+        "ch02_final.md"
+      ]
+    },
+    "T5-Intelligence": {
+      "path": "T5-Intelligence",
+      "purpose": null,
+      "fileCount": 25,
+      "lastAccessed": 1774917412712,
+      "keyFiles": [
+        "README.md",
+        "build_ch06.py",
+        "ch01_draft.md",
+        "ch01_final.md",
+        "ch02_draft.md"
+      ]
+    },
+    "__pycache__": {
+      "path": "__pycache__",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1774917412712,
+      "keyFiles": [
+        "batch_convert_docx.cpython-310.pyc",
+        "batch_review_all.cpython-310.pyc"
+      ]
+    },
+    "books": {
+      "path": "books",
+      "purpose": null,
+      "fileCount": 71,
+      "lastAccessed": 1774917412712,
+      "keyFiles": [
+        "BATCH_GENERATION_GUIDE.md",
+        "CHS书籍出版状态总览.md",
+        "FIGURE_GENERATION_FINAL_REPORT.md",
+        "FIGURE_GENERATION_SAMPLE_REPORT.md",
+        "GENERATION_PROGRESS_REPORT.md"
+      ]
+    },
+    "docx_output": {
+      "path": "docx_output",
+      "purpose": null,
+      "fileCount": 2,
+      "lastAccessed": 1774917412713,
+      "keyFiles": [
+        "test_ch01.docx"
+      ]
+    },
+    "publishing_reports": {
+      "path": "publishing_reports",
+      "purpose": null,
+      "fileCount": 4,
+      "lastAccessed": 1774917412713,
+      "keyFiles": [
+        "context_enrichment_state.jsonl",
+        "context_enrichment_summary_20260305_201953.json",
+        "context_enrichment_summary_20260305_223020.json",
+        "workshop_report_20260305_192337.txt"
+      ]
+    },
+    "reviews": {
+      "path": "reviews",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1774917412713,
+      "keyFiles": [
+        "ch01_quality_summary.md"
+      ]
+    },
+    "scripts": {
+      "path": "scripts",
+      "purpose": "Build/utility scripts",
+      "fileCount": 7,
+      "lastAccessed": 1774917412713,
+      "keyFiles": [
+        "ai_content_enricher.py",
+        "book_weaver.py",
+        "chs_bridge_paragraphs.md",
+        "count_words.py",
+        "enrich_pilot.py"
+      ]
+    },
+    "ModernControl/scripts": {
+      "path": "ModernControl/scripts",
+      "purpose": "Build/utility scripts",
+      "fileCount": 12,
+      "lastAccessed": 1774917412713,
+      "keyFiles": [
+        "ch02_state_space_analysis.py",
+        "ch03_mpc_reservoir.py",
+        "ch04_ampc_canal.py"
+      ]
+    },
+    "T2a/assets": {
+      "path": "T2a/assets",
+      "purpose": "Static assets",
+      "fileCount": 0,
+      "lastAccessed": 1774917412714,
+      "keyFiles": []
+    }
+  },
+  "hotPaths": [
+    {
+      "path": "",
+      "accessCount": 53,
+      "lastAccessed": 1774938296842,
+      "type": "directory"
+    },
+    {
+      "path": "T2b/ch10_final.md",
+      "accessCount": 36,
+      "lastAccessed": 1774943170687,
+      "type": "directory"
+    },
+    {
+      "path": "T5-Intelligence/ch05_final.md",
+      "accessCount": 30,
+      "lastAccessed": 1774920848663,
+      "type": "file"
+    },
+    {
+      "path": "T3-Engineering/ch06.md",
+      "accessCount": 29,
+      "lastAccessed": 1774938335849,
+      "type": "file"
+    },
+    {
+      "path": "T2a/ch14_final.md",
+      "accessCount": 27,
+      "lastAccessed": 1774938378059,
+      "type": "file"
+    },
+    {
+      "path": "T3-Engineering/ch14.md",
+      "accessCount": 19,
+      "lastAccessed": 1774943158101,
+      "type": "file"
+    },
+    {
+      "path": "T2a/ch09_final.md",
+      "accessCount": 18,
+      "lastAccessed": 1774930443553,
+      "type": "file"
+    },
+    {
+      "path": "T2a/ch13_final.md",
+      "accessCount": 17,
+      "lastAccessed": 1774938327590,
+      "type": "file"
+    },
+    {
+      "path": "CHS_术语规范_全系列.md",
+      "accessCount": 16,
+      "lastAccessed": 1774920543358,
+      "type": "file"
+    },
+    {
+      "path": "T2a/ch12_final.md",
+      "accessCount": 15,
+      "lastAccessed": 1774927997491,
+      "type": "file"
+    },
+    {
+      "path": "T2b/ch01_final.md",
+      "accessCount": 13,
+      "lastAccessed": 1774924906207,
+      "type": "file"
+    },
+    {
+      "path": "T5-Intelligence/ch06_final.md",
+      "accessCount": 11,
+      "lastAccessed": 1774924901227,
+      "type": "file"
+    },
+    {
+      "path": "T5-Intelligence/ch08_final.md",
+      "accessCount": 11,
+      "lastAccessed": 1774924904043,
+      "type": "file"
+    },
+    {
+      "path": "T3-Engineering/ch05.md",
+      "accessCount": 11,
+      "lastAccessed": 1774943171502,
+      "type": "file"
+    },
+    {
+      "path": "T3-Engineering/ch04.md",
+      "accessCount": 10,
+      "lastAccessed": 1774943181213,
+      "type": "file"
+    },
+    {
+      "path": "T2a/ch15_final.md",
+      "accessCount": 9,
+      "lastAccessed": 1774924845740,
+      "type": "file"
+    },
+    {
+      "path": "T5-Intelligence/ch01_final.md",
+      "accessCount": 9,
+      "lastAccessed": 1774924899228,
+      "type": "file"
+    },
+    {
+      "path": "T1-CN/ch01_final.md",
+      "accessCount": 8,
+      "lastAccessed": 1774930682757,
+      "type": "file"
+    },
+    {
+      "path": ".planning/STATE.md",
+      "accessCount": 5,
+      "lastAccessed": 1774920666578,
+      "type": "file"
+    },
+    {
+      "path": "T3-Engineering/ch01.md",
+      "accessCount": 4,
+      "lastAccessed": 1774918958132,
+      "type": "file"
+    },
+    {
+      "path": "T4-Platform/ch01_final.md",
+      "accessCount": 4,
+      "lastAccessed": 1774918978480,
+      "type": "file"
+    },
+    {
+      "path": "T5-Intelligence/ch02_final.md",
+      "accessCount": 3,
+      "lastAccessed": 1774918652579,
+      "type": "file"
+    },
+    {
+      "path": ".planning/phases/01-t1-cpss-restructure/CONTEXT.md",
+      "accessCount": 3,
+      "lastAccessed": 1774927962386,
+      "type": "file"
+    },
+    {
+      "path": "T2a/ch01_final.md",
+      "accessCount": 2,
+      "lastAccessed": 1774930433091,
+      "type": "file"
+    },
+    {
+      "path": ".planning/REQUIREMENTS.md",
+      "accessCount": 1,
+      "lastAccessed": 1774917499590,
+      "type": "file"
+    },
+    {
+      "path": ".planning/ROADMAP.md",
+      "accessCount": 1,
+      "lastAccessed": 1774917509915,
+      "type": "file"
+    },
+    {
+      "path": "T3-Engineering/ch07.md",
+      "accessCount": 1,
+      "lastAccessed": 1774918212674,
+      "type": "file"
+    },
+    {
+      "path": "T3-Engineering/ch13.md",
+      "accessCount": 1,
+      "lastAccessed": 1774918220772,
+      "type": "file"
+    },
+    {
+      "path": "T1-CN/ch08_final.md",
+      "accessCount": 1,
+      "lastAccessed": 1774918892732,
+      "type": "file"
+    },
+    {
+      "path": "T3-Engineering",
+      "accessCount": 1,
+      "lastAccessed": 1774919647607,
+      "type": "directory"
+    },
+    {
+      "path": "T1-CN/image_gen_prompts.md",
+      "accessCount": 1,
+      "lastAccessed": 1774920750157,
+      "type": "file"
+    },
+    {
+      "path": ".planning/cpss_figure_prompts.txt",
+      "accessCount": 1,
+      "lastAccessed": 1774921133589,
+      "type": "file"
+    },
+    {
+      "path": ".planning/cpss_figures/fig_00_01_cpss_positioning.png",
+      "accessCount": 1,
+      "lastAccessed": 1774930440955,
+      "type": "file"
+    },
+    {
+      "path": ".planning/cpss_figures/fig_12_05b_hdc_cpss_timescale.png",
+      "accessCount": 1,
+      "lastAccessed": 1774930441032,
+      "type": "file"
+    },
+    {
+      "path": ".planning/cpss_figures/fig_13_02b_dt_projection.png",
+      "accessCount": 1,
+      "lastAccessed": 1774930441783,
+      "type": "file"
+    },
+    {
+      "path": ".planning/cpss_figures/fig_14_08b_closed_open_loop.png",
+      "accessCount": 1,
+      "lastAccessed": 1774930442639,
+      "type": "file"
+    },
+    {
+      "path": ".planning/cpss_figures/fig_06_05b_cross_domain_cascade.png",
+      "accessCount": 1,
+      "lastAccessed": 1774930443276,
+      "type": "file"
+    },
+    {
+      "path": ".planning/cpss_figures/fig_04_02b_wnal_determinism.png",
+      "accessCount": 1,
+      "lastAccessed": 1774930444086,
+      "type": "file"
+    },
+    {
+      "path": ".planning/cpss_figures/fig_14_01_four_prediction_cpss.png",
+      "accessCount": 1,
+      "lastAccessed": 1774930452034,
+      "type": "file"
+    },
+    {
+      "path": ".planning/cpss_figures/fig_14_02_degradation_ladder.png",
+      "accessCount": 1,
+      "lastAccessed": 1774930452621,
+      "type": "file"
+    }
+  ],
+  "userDirectives": []
+}
