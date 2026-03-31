@@ -9,10 +9,10 @@ See: .planning/PROJECT.md (updated 2026-03-31)
 
 ## Current Position
 
-Phase: Not started (defining requirements)
-Plan: —
-Status: Defining requirements
-Last activity: 2026-03-31 — Milestone v1.0 started
+Phase: 1
+Plan: T1理论卷CPSS重构
+Status: Ready to plan
+Last activity: 2026-03-31 — Roadmap created (7 phases, 33 requirements)
 
 ## Accumulated Context
 
