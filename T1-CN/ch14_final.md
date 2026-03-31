@@ -30,6 +30,31 @@ n## 本章学习目标
 
 > 图14-1: HydroOS 三层架构中 HydroCore 与 HydroClaw 的定位。设备抽象层（DAL）提供统一数据接口，物理AI引擎（HydroCore）位于运行智能层（HydroCore），负责水力计算、MPC 优化与安全包络约束；认知AI引擎（HydroClaw）位于系统自治层（HydroClaw），负责语义理解、因果诊断与策略解释。两引擎通过"提议—验证—执行"闭环协同，HydroCore 拥有安全否决权。
 
+### Cyber空间中的智能体谱系
+
+在深入HydroCore和HydroClaw的技术细节之前，有必要从CPSS框架（第八章§8.1.5）的视角建立一个统一认识：**HydroCore和HydroClaw不是两个独立的AI系统，而是Cyber空间中不同层面的智能体（Agent）。**
+
+第二章§2.6.6已经建立了智能体的统一定义：Agent = (Perception, Decision, Action, Objective, Environment)，PID控制器、MPC优化器、RL策略网络和LLM Agent都是同一范式的不同实现。在HydroOS的三层架构中，这些智能体按其在CPSS三空间中的位置形成一个完整的谱系：
+
+```
+确定性 ←─────────────────────────────────→ 灵活性
+快速                                        深思
+
+PLC硬逻辑  PID控制器  MPC/EKF     RL策略    LLM/KG
+  │           │      (HydroCore)   网络    (HydroClaw)
+  │           │          │          │          │
+Physical   P↔C界面    Cyber空间   Cyber空间  C↔S界面
+空间内部   reactive   model-based  learning   general
+           agent      planning     agent      agent
+                      agent
+```
+
+从左到右，**确定性递减、灵活性递增、决策复杂度递增**。PLC硬逻辑在毫秒级响应，不依赖任何模型，是Physical空间内部最后一道安全屏障；PID控制器在秒级响应，基于偏差信号做出reactive决策；HydroCore的MPC/EKF在秒至分钟级响应，基于机理模型做出预测性决策；RL策略网络从历史经验中学习长期最优策略；HydroClaw的LLM/KG在分钟至小时级响应，基于语义理解做出解释性决策，并直接面向Social空间中的调度员。
+
+这一谱系的工程含义是：**选择哪个层面的智能体，取决于任务所处的CPSS空间和所需的时间尺度，而非算法的"先进程度"。** 对于Physical空间的快速闭环（如水击压力波响应），PLC硬逻辑和PID是最优选择——它们的确定性和响应速度是MPC和LLM无法企及的。对于Cyber↔Social界面的语义交互（如向调度员解释"为什么建议降低供水量"），HydroClaw是唯一合适的选择——MPC能算出最优解，但无法解释"为什么"。
+
+**确定性与灵活性的工作流区分**　从工作流角度看，HydroCore的MPC控制回路是**确定性工作流**——每个控制周期严格执行"状态估计→模型预测→优化求解→约束校验→指令下发"的固定流程，任何步骤不可跳过或乱序。HydroClaw的语义推理则是**灵活工作流**——它可以根据场景复杂度调整推理深度，可以中断当前分析引入新信息，可以在需要时将决策权上交调度员。两者的协作遵循一条确定性规则：**HydroCore拥有安全否决权**。无论HydroClaw的语义推理给出什么建议，只要该建议违反安全包络，HydroCore可以单方面否决并执行安全降级——这是Physical空间硬约束对Cyber空间灵活决策的刚性约束，不可协商。
+
 ## 14.1 物理AI引擎（HydroCore）
 
 ### 14.1.1 核心职责与技术定位
