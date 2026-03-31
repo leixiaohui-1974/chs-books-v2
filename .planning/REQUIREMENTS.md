@@ -9,6 +9,7 @@
 - [ ] **CROSS-01**: 全系列术语统一（智能体、闭环控制、开环执行、确定性工作流、灵活工作流等标准定义）
 - [ ] **CROSS-02**: CPSS三空间定位图设计（每本书导论放同一张图，标注本卷覆盖区域）
 - [ ] **CROSS-03**: 各卷导论章增加"本卷在CPSS中的定位"段落
+- [ ] **CROSS-04**: 建立"AI工作流概念↔XIL闭环/控制论专业概念"的显式映射桥梁。在相关章节中显式对照：Sequential Chain=开环串行、Agent Loop(ReAct)=时间步内闭环、Tool Use=执行器+传感器、Human-in-the-Loop=OIL、Multi-Agent Orchestration=分层分布式控制、DAG Workflow=确定性工作流、Dynamic Routing=灵活工作流、Retry/Fallback=降级/四态机。目的是让读者在"AI workflow我懂"和"XIL闭环是什么"之间建立等价理解，不被概念名词割裂
 
 ## T1 — 理论卷
 
