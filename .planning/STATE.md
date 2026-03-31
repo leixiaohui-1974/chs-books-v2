@@ -9,10 +9,10 @@ See: .planning/PROJECT.md (updated 2026-03-31)
 
 ## Current Position
 
-Phase: 2 ✅ → Phase 3 ready
-Plan: Phase 1 T1理论卷 ✅ | Phase 2 T2b技术卷下 ✅
-Status: Phase 2 done, ready for Phase 3
-Last activity: 2026-03-31 — Phase 2 complete (6/6 requirements)
+Phase: 4 (in progress, 3/7 done)
+Plan: Phase 1 T1 ✅ | Phase 2 T2b ✅ | Phase 3 T4 ✅ | Phase 4 T2a 3/7
+Status: Phase 4 partial — ch01/ch05/ch07 done, ch09/ch12/ch13/ch14-15 remaining
+Last activity: 2026-03-31 — Phase 4 partial commit (T2A-01/02/03 done)
 
 ## Accumulated Context
 
