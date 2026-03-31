@@ -108,9 +108,7 @@ $P(s_{t+1}|s_t, a_t, s_{t-1}, a_{t-1}, \ldots) = P(s_{t+1}|s_t, a_t)$
 
 RL的目标是找到最优策略 $\pi^*$，使期望累积折扣奖励最大化：
 
-$$\pi^* = \arg\max_{\pi} \mathbb{E}_{\pi}\eft[\sum_{t=0}^{T} \gamma^t \mathcal{R}(s_t, a_t, s_{t+1})
-\
-\right]$$
+$$\pi^* = \arg\max_{\pi} \mathbb{E}_{\pi}\left[\sum_{t=0}^{T} \gamma^t \mathcal{R}(s_t, a_t, s_{t+1})\right]$$
 
 [插图：水利调度MDP建模框架图——智能体-环境交互循环，状态/动作/奖励/转移四要素及水利实例标注]
 
@@ -124,36 +122,27 @@ $$\pi^* = \arg\max_{\pi} \mathbb{E}_{\pi}\eft[\sum_{t=0}^{T} \gamma^t \mathcal{R
 
 **（3）时间与周期性特征**：为保持连续性，采用正弦/余弦编码：
 
-$$\phi_{\text{season}}(t) = \eft[\sin!\eft(\\frac{2\pi t}{365}
-\r
-\right), \cos!\eft(\\frac{2\pi t}{365}
-\r
-\right)
-\
-\right]$$
+$$\phi_{\text{season}}(t) = \left[\sin\left(\frac{2\pi t}{365}\right), \cos\left(\frac{2\pi t}{365}\right)\right]$$
 
 以及汛期标记 $I_{\text{flood}}(t) \in \{0,1\}$
 
-**（4）设备与约束状态**：各泵站运行状态 $\mathbf{b}_{\text{pump}}$、闸门实际开度 $\bboldsymbol{\theta}_{\text{gate}}$
+**（4）设备与约束状态**：各泵站运行状态 $\mathbf{b}_{\text{pump}}$、闸门实际开度 $\boldsymbol{\theta}_{\text{gate}}$
 
-完整状态向量 $s_t \in \mathbb{R}^d$（$d$ 通常为50～200）需经归一化处理：$\tilde{s}_t = (s_t - \mu_s)/(\sigma_s + \varepsilon)$，其中 $\varepsilon = 10^{-8}$ 防止除零。
+完整状态向量 $s_t \in \mathbb{R}^d$（$d$ 通常为50～200）需经归一化处理：$\tilde{s}_t = (s_t - \mu_s)/(\sigma_s + \varepsilon)$，其中 $\varepsilon = 10^{-8}$ 防止除零。
 
 ### 5.2.3 动作空间设计
 
 **离散动作空间**适用于闸门开/关、泵站启停等场景。对于单水库调度，可将出库流量离散化为 $K$ 个等级：
 
-$$a \in \left\{0, \\frac{Q_{max}}{K-1}, \ldots, Q_{max}
-\right\}$$
+$$a \in \left\{0, \frac{Q_{max}}{K-1}, \ldots, Q_{max}\right\}$$
 
 **连续动作空间**适用于闸门开度精细调节，动作向量经 Tanh 压缩后映射到物理范围：
 
-$$a_i^{\text{phys}} = a_i^{min} + \\frac{1 + \tanh(\tilde{a}_i)}{2} \cdot (a_i^{max} - a_i^{min})$$
+$$a_i^{\text{phys}} = a_i^{min} + \frac{1 + \tanh(\tilde{a}_i)}{2} \cdot (a_i^{max} - a_i^{min})$$
 
 **动作平滑约束**——为防止水锤效应，在奖励函数中加入：
 
-$$r_{\text{smooth}} = -\lambda_{\text{smooth}} \sum_{i=1}^{m} \eft(a_{i,t} - a_{i,t-1}
-\r
-\right)^2$$
+$$r_{\text{smooth}} = -\lambda_{\text{smooth}} \sum_{i=1}^{m} \left(a_{i,t} - a_{i,t-1}\right)^2$$
 
 ### 5.2.4 奖励函数设计
 
@@ -169,11 +158,7 @@ $$r_{\text{flood}} = -\alpha_1 \max(h_t - h_{\text{flood}}, 0)^2 - \alpha_2 \max
 
 **（2）供水奖励**——以供需比衡量，惩罚供水缺口：
 
-$$r_{\text{supply}} = \min!\eft(\\frac{Q_{\text{supply},t}}{D_{\text{demand},t}}, 1
-\r
-\right) - \eta \cdot \max!\eft(1 - \\frac{Q_{\text{supply},t}}{D_{\text{demand},t}}, 0
-\r
-\right)$$
+$$r_{\text{supply}} = \min\left(\frac{Q_{\text{supply},t}}{D_{\text{demand},t}}, 1\right) - \eta \cdot \max\left(1 - \frac{Q_{\text{supply},t}}{D_{\text{demand},t}}, 0\right)$$
 
 **（3）生态奖励**——维持河道最小生态流量 $Q_{\text{eco,min}}$：
 
@@ -200,6 +185,19 @@ $$s_{t+1} = f_{\text{phys}}(s_t, a_t) + \Delta f_{\text{NN}}(s_t, a_t; \theta)$$
 混合残差模型在保留物理一致性的同时修正参数误差，是目前工程实践中最受推荐的方案（Bai et al., 2023）。
 
 > **AI解读：** 奖励函数设计是RL水利应用中最需要领域知识的环节。一个常见的错误是将奖励函数设计得过于简单，导致策略产生奖励黑客（Reward Hacking）行为——找到了技术上满足奖励函数但违背调度意图的捷径。建议在设计后，通过蒙特卡洛仿真验证各目标的实际满足率，而非仅看总奖励值。
+
+### 5.2.6 RL调度与预报模型的闭环耦合
+
+上述三种环境模型构建路径均隐含一个假设：来水预报序列是**外生给定**的，即预报模型独立于调度策略运行，其输出作为环境状态的固定组成部分。然而如第2章§2.7所述，在实际水网中调度决策与预报结果之间存在双向因果关系——上游水库的泄洪动作会改变下游断面的流量过程，而下游流量恰恰是预报模型的预测目标。当RL智能体将预报视为不可干预的外生信号时，其策略优化实际上是在一个**状态转移函数被简化**的MDP上进行的，所得策略在真实闭环执行时可能产生次优甚至危险的决策。
+
+闭环耦合的核心思想是将预报模型嵌入RL环境的状态转移函数内部，使其成为**调度行为依赖的条件预测器**。具体而言，在每个时间步 $t$，环境模型的状态转移不再是 $s_{t+1} = f(s_t, a_t, \hat{Q}^{\text{fixed}})$，而是：
+
+$$s_{t+1} = f\bigl(s_t, a_t, \mathcal{F}(s_t, a_t)\bigr)$$
+
+其中 $\mathcal{F}(s_t, a_t)$ 为以当前状态和控制动作为条件的预报模型输出。这意味着RL智能体在探索过程中，每选择一个动作 $a_t$，预报模型都会据此更新未来来水的预测，从而使策略梯度的估计能够捕捉"调度→预报→状态"这一完整因果链。
+
+工程实现上，闭环耦合面临两个主要挑战：（1）**计算效率**——每步调用预报模型会显著增加环境交互成本，可通过§5.2.5中的数据驱动代理模型或预报模型的轻量化蒸馏版本缓解；（2）**训练稳定性**——预报模型参数与RL策略参数的联合优化容易产生振荡，建议采用交替冻结策略（alternating freeze），即在每个训练epoch内固定一方参数更新另一方，逐步逼近联合最优解。
+
 ---
 
 ## 5.3 主流RL算法的水利适配 [L2/L3]
@@ -208,15 +206,11 @@ $$s_{t+1} = f_{\text{phys}}(s_t, a_t) + \Delta f_{\text{NN}}(s_t, a_t; \theta)$$
 
 近端策略优化（Proximal Policy Optimization, PPO, Schulman et al., 2017）是on-policy的策略梯度算法，通过引入裁剪机制在单调性保证与计算稳定性之间取得平衡。定义重要性采样比：
 
-$$r_t(\theta) = \\frac{\pi_\theta(a_t|s_t)}{\pi_{\theta_{\text{old}}}(a_t|s_t)}$$
+$$r_t(\theta) = \frac{\pi_\theta(a_t|s_t)}{\pi_{\theta_{\text{old}}}(a_t|s_t)}$$
 
 PPO的裁剪目标函数：
 
-$$L^{\text{CLIP}}(\theta) = \mathbb{E}_t\eft[\min!\eft(r_t(\theta)\hat{A}_t, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon)\hat{A}_t
-\r
-\right)
-\
-\right]$$
+$$L^{\text{CLIP}}(\theta) = \mathbb{E}_t\left[\min\left(r_t(\theta)\hat{A}_t, \text{clip}(r_t(\theta), 1-\epsilon, 1+\epsilon)\hat{A}_t\right)\right]$$
 
 广义优势估计（Generalized Advantage Estimation, GAE）用于降低方差：
 
@@ -228,30 +222,15 @@ $$\hat{A}_t = \sum_{l=0}^{\infty}(\gamma\lambda)^l\delta_{t+l}^V, \qquad \delta_
 
 SAC（Soft Actor-Critic, Haarnoja et al., 2018）融合最大熵RL与off-policy方法，目标函数在最大化奖励的同时最大化策略熵：
 
-$$J(\pi) = \mathbb{E}_{s \sim 
-\rho^{\pi}\eft[\mathbb{E}_{a \sim \pi(\cdot|s)}\eft[Q(s,a) - \alpha \log \pi(a|s)
-\
-\right]
-\
-\right]$$
+$$J(\pi) = \mathbb{E}_{s \sim \rho^{\pi}}\left[\mathbb{E}_{a \sim \pi(\cdot|s)}\left[Q(s,a) - \alpha \log \pi(a|s)\right]\right]$$
 
 评论家网络更新（使用软目标 $\phi'$ 稳定训练）：
 
-$$L_Q(\phi) = \mathbb{E}\eft[\eft(Q_\phi(s,a) - \eft(r + \gamma\mathbb{E}_{a'}\eft[Q_{\phi'}(s',a') - \alpha \log \pi(a'|s')
-\
-\right]
-\r
-\right)
-\r
-\right)^2
-\
-\right]$$
+$$L_Q(\phi) = \mathbb{E}\left[\left(Q_\phi(s,a) - \left(r + \gamma\mathbb{E}_{a'}\left[Q_{\phi'}(s',a') - \alpha \log \pi(a'|s')\right]\right)\right)^2\right]$$
 
 温度参数 $\alpha$ 通过自适应调整保持目标熵：
 
-$$L_\alpha(\alpha) = -\alpha\,\mathbb{E}_{a \sim \pi}!\eft[\log \pi(a|s) + H_0
-\
-\right], \qquad H_0 = -\dim(\mathcal{A})$$
+$$L_\alpha(\alpha) = -\alpha\,\mathbb{E}_{a \sim \pi}\left[\log \pi(a|s) + H_0\right], \qquad H_0 = -\dim(\mathcal{A})$$
 
 SAC特别适合连续闸门开度调节，使用Tanh压缩将无界高斯输出映射到 $[0,1]$。最大熵项的存在使策略保持探索多样性，有助于发现非直觉的调度策略（如在某些场景下主动预泄以为后续洪峰腾库）。
 
@@ -259,11 +238,7 @@ SAC特别适合连续闸门开度调节，使用Tanh压缩将无界高斯输出�
 
 TD3（Twin Delayed Deep Deterministic Policy Gradient, Fujimoto et al., 2018）在DDPG基础上引入双评论家、延迟策略更新和目标策略平滑三项改进，双评论家目标值计算：
 
-$$y = r + \gamma\min_{i=1,2}Q_{\phi'_i}!\eft(s', \mu_{\theta'}(s') + \epsilon
-\r
-\right), \qquad \epsilon \sim \text{Clip}!\eft(\mathcal{N}(0, \sigma), -c, c
-\r
-\right)$$
+$$y = r + \gamma\min_{i=1,2}Q_{\phi'_i}\left(s', \mu_{\theta'}(s') + \epsilon\right), \qquad \epsilon \sim \text{Clip}\left(\mathcal{N}(0, \sigma), -c, c\right)$$
 
 确定性策略 $\mu_\theta(s)$ 推理计算量远低于随机策略的采样过程，适合泵站秒级响应的低延迟实时控制场景。延迟策略更新（每两步评论家更新对应一步演员更新）有效缓解了过估计偏差。
 
@@ -271,21 +246,11 @@ $$y = r + \gamma\min_{i=1,2}Q_{\phi'_i}!\eft(s', \mu_{\theta'}(s') + \epsilon
 
 多水库联合调度需要协调多个决策主体。**中心化训练-去中心化执行（Centralized Training with Decentralized Execution, CTDE）** 范式在训练阶段使用全局状态和联合动作，全局评论家：
 
-$$L_Q = \mathbb{E}!\eft[\eft(Q_{\text{global}}(\mathbf{s}, \mathbf{a}) - \eft(r + \gamma Q'_{\text{global}}(\mathbf{s}', \mathbf{a}')
-\r
-\right)
-\r
-\right)^2
-\
-\right]$$
+$$L_Q = \mathbb{E}\left[\left(Q_{\text{global}}(\mathbf{s}, \mathbf{a}) - \left(r + \gamma Q'_{\text{global}}(\mathbf{s}', \mathbf{a}')\right)\right)^2\right]$$
 
 执行阶段各智体仅依赖局部信息：$a_i = \pi_i(s_i^{\text{local}})$，无需全局通讯，适应水利现场通讯带宽受限的工程约束。**QMIX混合网络**（Rashid et al., 2018）保证个体-全局单调性（Individual-Global-Max, IGM）：
 
-$$Q_{\text{tot}}(\mathbf{s}, \mathbf{a}) = f_{\text{mix}}!\eft(Q_1(s_1,a_1), \ldots, Q_n(s_n,a_n); \mathbf{s}
-\r
-\right)$$
-
-近年来，**MAPPO（Multi-Agent PPO）** 因其稳定性和工程友好性，在水资源联合调度中获得广泛应用（Zhao et al., 2023）。
+$$Q_{\text{tot}}(\mathbf{s}, \mathbf{a}) = f_{\text{mix}}\left(Q_1(s_1,a_1), \ldots, Q_n(s_n,a_n); \mathbf{s}\right)$$
 
 [插图：水利RL算法选择决策树——根据动作类型（连续/离散）、水库数量（单/多）、延迟需求（秒级/分钟级）依次路由至PPO/SAC/TD3/MARL]
 
@@ -297,6 +262,27 @@ $$Q_{\text{tot}}(\mathbf{s}, \mathbf{a}) = f_{\text{mix}}!\eft(Q_1(s_1,a_1), \ld
 | MARL | 离散/连续 | 中 | 中 | 原生支持 | 多库联合调度 |
 
 > **AI解读：** 算法选择不是非此即彼的问题。实际工程中，常见的做法是**分层架构**：上层用MARL协调各水库的目标值，下层用SAC或TD3执行单水库的精细控制。这种粗调+精调的分层策略既保留了MARL的全局协调能力，又利用了SAC/TD3的样本效率优势。
+
+### 5.3.5 RL与MPC的时间尺度分工协作
+
+前述四类RL算法解决的是"学什么策略"的问题，但在工程落地中还需回答"RL策略与既有控制器如何共存"。答案的关键在于**时间尺度分工**：RL与MPC并非替代关系，而是在不同时间尺度上形成互补的协作架构。
+
+MPC基于物理模型的在线滚动优化（详见T2a第7章），擅长在分钟至小时级时域内精确处理水力约束与安全包络，但其性能高度依赖模型精度，且预测时域受限于模型可信度。RL基于数据与经验的策略学习，擅长在小时至天级时域内处理长时域多目标权衡与不确定性决策，但难以提供硬约束保证。两者的互补性天然适合分层架构：**RL在上层生成调度策略或目标参考值，MPC在下层跟踪执行并处理实时约束**。
+
+| **维度** | **RL（上层决策）** | **MPC（下层执行）** |
+|---------|-----------------|-------------------|
+| 时间尺度 | 小时级（跨日策略作为滚动边界条件） | 分钟～小时级 |
+| 决策内容 | 调度策略、目标设定值 $\mathbf{y}^*$ | 精确控制指令 $\mathbf{u}$ |
+| 核心能力 | 多目标权衡、不确定性适应 | 约束满足、滚动优化 |
+| 模型依赖 | 弱（数据驱动） | 强（物理模型） |
+| 约束处理 | 软约束（奖励惩罚） | 硬约束（显式求解） |
+| CPSS界面 | Cyber$\leftrightarrow$Social（需求预测、多目标权衡） | Cyber$\leftrightarrow$Physical（水力约束、安全包络） |
+| HDC层级对应 | L2协调层 | L1过程层 |
+
+从CPSS（Cyber-Physical-Social System）视角审视，这种分工具有深层逻辑：RL处理的是Cyber与Social界面的不确定性——用水需求波动、多利益方目标权衡、极端气候下的策略调整；MPC处理的是Cyber与Physical界面的确定性控制——水力方程约束、设备安全包络、实时流量跟踪。这一分层结构与T2a第12章所述的HDC（Hierarchical Distributed Control）分层架构高度一致：RL承担L2协调层的角色，负责跨时段、跨子系统的目标协调；MPC承担L1过程层的角色，负责单子系统内的实时最优控制。§5.6.2将进一步讨论该架构在HydroOS中的具体部署实现。
+
+> **AI解读：** RL与MPC的时间尺度分工是"让专业的模块做专业的事"。RL不需要精确处理每一个水力约束，MPC也不需要理解长期调度的全局目标——两者通过目标设定值接口解耦，既降低了各自的设计复杂度，也为工程审批提供了清晰的责任边界：MPC层的硬约束保证为整个系统提供安全兜底。
+
 ---
 
 ## 5.4 Sim-to-Real鸿沟：最核心的工程挑战 [L2/L3]
@@ -316,9 +302,7 @@ $$Q_{\text{tot}}(\mathbf{s}, \mathbf{a}) = f_{\text{mix}}!\eft(Q_1(s_1,a_1), \ld
 域随机化（Domain Randomization, DR）的核心思想是：在训练时将仿真参数从固定值替换为随机分布，使策略学会在参数不确定性下鲁棒工作。训练目标修改为：
 
 $$
-J_{\text{DR}}(\pi) = \mathbb{E}_{\xi \sim p(\xi)}\eft[\mathbb{E}_{(s,a) \sim \pi, \xi}\eft[\sum_t \gamma^t r(s_t, a_t)\
-\right]\
-\right]
+J_{\text{DR}}(\pi) = \mathbb{E}_{\xi \sim p(\xi)}\left[\mathbb{E}_{(s,a) \sim \pi, \xi}\left[\sum_t \gamma^t r(s_t, a_t)\right]\right]
 $$
 
 其中 $\xi \in \Xi$ 为仿真参数向量，$p(\xi)$ 为参数的随机化分布（通常取截断正态分布）。
@@ -354,8 +338,7 @@ $$
 **保守Q学习（Conservative Q-Learning, CQL, Kumar et al., 2020）** 通过在值函数更新中加入正则化，抑制策略在数据稀疏区域的Q值高估：
 
 $$
-L_{\text{CQL}}(Q) = L_{\text{Bellman}}(Q) + \alpha \eft(\mathbb{E}_{s \sim \mathcal{D}, a \sim \pi}[Q(s,a)] - \mathbb{E}_{s,a \sim \mathcal{D}}[Q(s,a)]\r
-\right)
+L_{\text{CQL}}(Q) = L_{\text{Bellman}}(Q) + \alpha \left(\mathbb{E}_{s \sim \mathcal{D}, a \sim \pi}[Q(s,a)] - \mathbb{E}_{s,a \sim \mathcal{D}}[Q(s,a)]\right)
 $$
 
 [插图：Sim-to-Real鸿沟示意图——左侧仿真状态分布，右侧真实系统分布，中间鸿沟区域，四种桥接策略以箭头标注]
@@ -373,38 +356,29 @@ $$
 \Pi_{\text{safe}} = \left\{\pi : J_{C_i}(\pi) \leq d_i,\ \forall i\right\}
 $$
 
-其中 $J_{C_i}(\pi) = \mathbb{E}\eft[\sum_t \gamma^t c_i(s_t, a_t)
-\right]$ 为约束期望累积成本，$d_i$ 为允许阈值。
+其中 $J_{C_i}(\pi) = \mathbb{E}\left[\sum_t \gamma^t c_i(s_t, a_t)\right]$ 为约束期望累积成本，$d_i$ 为允许阈值。
 
-**Lagrangian松弛方法的推导：** 引入非负Lagrange乘数 $\bboldsymbol{\lambda} \geq \mathbf{0}$，构造Lagrangian函数：
+**Lagrangian松弛方法的推导：** 引入非负Lagrange乘数 $\boldsymbol{\lambda} \geq \mathbf{0}$，构造Lagrangian函数：
 
-\mathcal{L}(\pi, \bboldsymbol{\lambda}) = J_R(\pi) - \sum_{i=1}^{m} \lambda_i \eft(J_{C_i}(\pi) - d_i\r
-\right)
-\mathcal{L}(\pi, \bboldsymbol{\lambda}) = J_R(\pi) - \sum_{i=1}^{m} \lambda_i \eft(J_{C_i}(\pi) - d_i\r
-\right)
+$$
+\mathcal{L}(\pi, \boldsymbol{\lambda}) = J_R(\pi) - \sum_{i=1}^{m} \lambda_i \left(J_{C_i}(\pi) - d_i\right)
 $$
 
 定义**增广奖励函数**（Augmented Reward Function）：
 
 $$
-\tilde{R}(s,a; \bboldsymbol{\lambda}) = R(s,a) - \sum_{i=1}^{m} \lambda_i c_i(s,a)
+\tilde{R}(s,a; \boldsymbol{\lambda}) = R(s,a) - \sum_{i=1}^{m} \lambda_i c_i(s,a)
 $$
 
 最优策略满足鞍点条件：
 
 $$
-\pi^* = \arg\max_{\pi} \min_{\bboldsymbol{\lambda} \geq \mathbf{0}} \mathcal{L}(\pi, \bboldsymbol{\lambda})
+\pi^* = \arg\max_{\pi} \min_{\boldsymbol{\lambda} \geq \mathbf{0}} \mathcal{L}(\pi, \boldsymbol{\lambda})
 $$
 
 在线训练中，Lagrange乘数通过梯度上升更新：
 
-\lambda_i^{(k+1)} = \eft[\lambda_i^{(k)} + \alpha_\lambda \eft(\hat{J}_{C_i}(\pi^{(k)}) - d_i\r
-\right)\
-\right]_+
-\lambda_i^{(k+1)} = \eft[\lambda_i^{(k)} + \alpha_\lambda \eft(\hat{J}_{C_i}(\pi^{(k)}) - d_i\r
-\right)\
-\right]_+
-$$
+$$\lambda_i^{(k+1)} = \left[\lambda_i^{(k)} + \alpha_\lambda \left(\hat{J}_{C_i}(\pi^{(k)}) - d_i\right)\right]_+$$
 
 水网约束的典型编码形式：
 
@@ -449,8 +423,7 @@ $$
 **（2）预测不确定性**（集成网络方差）：
 
 $$
-\sigma_{\text{ens}}^2(s,a) = \text{Var}\!\eft[\{Q_\theta^{(i)}(s,a)\}_{i=1}^K\
-\right]
+\sigma_{\text{ens}}^2(s,a) = \text{Var}\!\left[\{Q_\theta^{(i)}(s,a)\}_{i=1}^K\right]
 $$
 
 **（3）约束裕量**：$\delta_{\text{margin}} = \min_i (d_i - J_{C_i}(\pi, s_t)) / d_i$
@@ -458,7 +431,7 @@ $$
 降级决策逻辑采用三级阈值机制：
 
 $$
-\text{Control Mode} = \b\begin{cases} \text{RL Full Control} & d_{\text{ODD}} \leq \theta_1 \text{ and } \delta_{\text{margin}} \geq \delta_{\text{safe}} \\ \text{RL + Human Supervision} & \theta_1 < d_{\text{ODD}} \leq \theta_2 \\ \text{Rule Engine Fallback} & d_{\text{ODD}} > \theta_2 \text{ or } \delta_{\text{margin}} < 0 \end{cases}
+\text{Control Mode} = \begin{cases} \text{RL Full Control} & d_{\text{ODD}} \leq \theta_1 \text{ and } \delta_{\text{margin}} \geq \delta_{\text{safe}} \\ \text{RL + Human Supervision} & \theta_1 < d_{\text{ODD}} \leq \theta_2 \\ \text{Rule Engine Fallback} & d_{\text{ODD}} > \theta_2 \text{ or } \delta_{\text{margin}} < 0 \end{cases}
 $$
 
 降级切换必须是无扰切换，防止水锤效应。所有切换事件需完整记录，作为后续模型改进的数据来源。
@@ -508,8 +481,7 @@ RL（L3层）与MPC（L2层）形成双层控制架构，实现战略决策与�
 L2层MPC的滚动优化问题（预测步长 $H$）：
 
 $$
-\min_{\mathbf{u}_{0:H}} \sum_{k=0}^{H} \eft(\|\mathbf{y}_{t+k} - \mathbf{y}^*\|_Q^2 + \|\mathbf{u}_k - \mathbf{u}_{k-1}\|_R^2\r
-\right)
+\min_{\mathbf{u}_{0:H}} \sum_{k=0}^{H} \left(\|\mathbf{y}_{t+k} - \mathbf{y}^*\|_Q^2 + \|\mathbf{u}_k - \mathbf{u}_{k-1}\|_R^2\right)
 $$
 
 $$
@@ -572,7 +544,7 @@ $$
 4. 泵站额定功率：$P_i(t) \leq P_i^{\text{rated}}$，保护设备安全
 5. 汛期汛限水位：汛期（5-9月）$h_i(t) \leq h_i^{\text{flood}}$
 
-Lagrangian增广奖励（参见5.5.1节推导）：$	ilde{R}(s,a;boldsymbol{\lambda}) = R(s,a) - \sum_{k=1}^{5} \lambda_k c_k(s,a)$。乘数更新轨迹：训练前200万步 $\lambda_k$ 快速上升，700万步后稳定收敛于区间 $[0.3, 1.8]$。
+Lagrangian增广奖励（参见5.5.1节推导）：$	ilde{R}(s,a;boldsymbol{\lambda}) = R(s,a) - \sum_{k=1}^{5} \lambda_k c_k(s,a)$。乘数更新轨迹：训练前200万步 $\lambda_k$ 快速上升，700万步后稳定收敛于区间 $[0.3, 1.8]$。
 
 **训练规模**：1000万步，8×NVIDIA A100 GPU并行，历时约3个月；策略与价值网络均为3层MLP（256-256-128），超参数 $\gamma=0.99$，$\epsilon=0.2$，GAE $\lambda=0.95$。
 
@@ -606,9 +578,9 @@ Lagrangian增广奖励（参见5.5.1节推导）：$	ilde{R}(s,a;boldsymbol{\la
 
 **在线微调**采用学习率衰减与KL散度双重约束：
 
-$$lpha_t = \frac{lpha_0}{\sqrt{t}} = \frac{3 	imes 10^{-4}}{\sqrt{t}}$$
+$$\alpha_t = \frac{\alpha_0}{\sqrt{t}} = \frac{3 	imes 10^{-4}}{\sqrt{t}}$$
 
-$$D_{\text{KL}}(P_t \| P_0) = \sum_{s,a} P_t(s,a) \log \frac{P_t(s,a)}{P_0(s,a)} < 0.1 \quad \text{（上限约束）}$$
+$$D_{\text{KL}}(P_t \| P_0) = \sum_{s,a} P_t(s,a) \log \frac{P_t(s,a)}{P_0(s,a)} < 0.1 \quad \text{（上限约束）}$$
 
 经过500步在线fine-tuning，约束违反率降至0.38%，接近仿真水平。运行6个月内共触发1次自动降级（上游雨量传感器故障，持续30分钟），故障排除后系统自动恢复RL模式。
 

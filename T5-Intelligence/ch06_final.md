@@ -54,6 +54,27 @@
 
 ## 6.1 知识图谱基础：本体、实体与关系
 
+### 知识图谱的CPSS定位：Social空间知识的Cyber化
+
+从CPSS（Cyber-Physical-Social Systems）框架审视，知识图谱在水利智能系统中扮演着独特且不可替代的角色。第3章的预报模型建立了Physical空间与Cyber空间之间的映射——将物理世界的水文过程转化为数字孪生中的状态方程；第4章的控制器则实现了Cyber空间向Physical空间的反馈——将优化计算的调度指令作用于闸门、泵站等物理设施。然而，CPSS三空间中的第三条通道——Social空间与Cyber空间之间的桥梁——尚未打通。
+
+知识图谱的本质，正是将Social空间中长期积淀的隐性知识显式转化为Cyber空间中的可计算表示。水利领域的Social空间蕴含着丰富而复杂的知识形态：调度规程体现了制度化的集体智慧，工程经验承载着一线人员的默会知识，管理规范反映了合规治理的约束框架，利益协调则编码了多方博弈的均衡机制。这些知识长期存在于文件柜、会议纪要和专家头脑中，无法被数值模型直接消化。知识图谱将其投影为Cyber空间中的结构化表示，完成了Social→Cyber的关键转化。
+
+**表6.0 Social空间知识的Cyber化映射**
+
+| Social空间知识形态 | 典型载体 | Cyber化表示 | 知识图谱中的实现 |
+|:---|:---|:---|:---|
+| 调度规程（制度化知识） | 法律法规、操作手册 | IF-THEN规则 | 规则引擎中的产生式规则 |
+| 工程经验（默会知识） | 专家口述、案例记录 | 实体-关系-属性三元组 | 本体层的概念网络与实例层的事实库 |
+| 管理规范（合规要求） | 审批流程、权限矩阵 | 约束条件与优先级序 | OWL公理与SHACL约束 |
+| 利益协调（多方博弈） | 协商纪要、分水协议 | 多目标权重与仲裁逻辑 | 冲突消解策略与优先级推理 |
+
+![图6-0b 知识图谱在CPSS三空间信息回路中的定位](assets/ch06/fig_06_00b_kg_cpss_triangle.png)
+
+这一定位揭示了知识图谱在CPSS架构中的结构性价值：预报模型连接Physical↔Cyber，控制器连接Cyber↔Physical，而知识图谱连接Social↔Cyber。三者共同构成了CPSS三空间的完整信息回路。正因如此，开篇故事中王主任"35年经验"的困境才有了技术层面的精确诊断——那些经验本质上是Social空间的隐性知识，缺乏向Cyber空间投影的通道。知识图谱要做的，就是为这些知识建立从Social到Cyber的形式化映射，使其可存储、可检索、可推理、可追溯。
+
+---
+
 ### 6.1.1 为什么水利知识需要结构化
 
 水利领域是一个典型的知识密集型产业，但这些知识往往面临严重的碎片化问题。
@@ -72,21 +93,21 @@
 
 ### 6.1.2 知识图谱的数学定义
 
-知识图谱在数学上可以形式化为一个有向图。设知识图谱为  = (E, R, T)$，其中：
+知识图谱在数学上可以形式化为一个有向图。设知识图谱为 $\mathcal{G} = (E, R, T)$，其中：
 
-- **实体集**  = \{e_1, e_2, \ldots, e_n\}$：表示现实世界中的对象或概念。
-- **关系集**  = \{r_1, r_2, \ldots, r_m\}$：表示实体之间的语义关系。
-- **三元组集**  \subseteq E 	imes R 	imes E$：每个三元组  \in T$ 表示实体 $ 和 $ 之间存在关系 $。
+- **实体集** $E = \{e_1, e_2, \ldots, e_n\}$：表示现实世界中的对象或概念。
+- **关系集** $R = \{r_1, r_2, \ldots, r_m\}$：表示实体之间的语义关系。
+- **三元组集** $T \subseteq E \times R \times E$：每个三元组 $(h, r, t) \in T$ 表示实体 $h$ 和 $t$ 之间存在关系 $r$。
 
 知识图谱完备性度量（公式6.2）：
 
-712572P(KG) = \frac{|T_{extracted}|}{|T_{total}|} 	ag{6.2}712572
+$$P(KG) = \frac{|T_{extracted}|}{|T_{total}|} \tag{6.2}$$
 
 知识图谱的本体一致性条件（公式6.1）：
 
-712572C(O) = 1 \iff orall a \in A: O \models a 	ag{6.1}712572
+$$C(O) = 1 \iff \forall a \in A: O \models a \tag{6.1}$$
 
-其中 $ 为本体，$ 为公理集。
+其中 $O$ 为本体，$A$ 为公理集。
 
 【AI解读】三元组的结构直接对应了数据库中的表（主语-谓词-害语）。本体一致性条件则保证了知识图谱的逻辑健壮性。
 
@@ -116,9 +137,9 @@
 
 **专家共识度量**：本研究采用Fleiss’s kappa系数衡量多专家共识度：
 
-712983\kappa = \\frac{P_o - P_e}{1 - P_e}712983
+$$\kappa = \frac{P_o - P_e}{1 - P_e}$$
 
-其中 $ 为观测一致率，$ 为期望一致率。kappa > 0.75表示优秀一致性，0.40-0.75表示中等一致性，<0.40表示较差一致性（Noy & McGuinness, 2001）。在防洪调度规则提取中，对十五名专家的八项关键决策因素进行评估，平均kappa値为0.82。
+其中 $P_o$ 为观测一致率，$P_e$ 为期望一致率。kappa > 0.75表示优秀一致性，0.40-0.75表示中等一致性，<0.40表示较差一致性（Noy & McGuinness, 2001）。在防洪调度规则提取中，对十五名专家的八项关键决策因素进行评估，平均kappa値为0.82。
 
 【AI解读】结构化访谈与知识卡片模板的结合，将隐性的专家经验转化为显性、可追溯的知识资产。Fleiss’s kappa的引入提供了量化的质量保证机制。
 
@@ -130,7 +151,7 @@
 
 关联规则置信度（公式6.3）：
 
-713042\text{conf}(X \to Y) = \\frac{\text{sup}(X \cup Y)}{\text{sup}(X)} \tag{6.3}713042
+$$\text{conf}(X \to Y) = \frac{\text{sup}(X \cup Y)}{\text{sup}(X)} \tag{6.3}$$
 
 只有conf > 0.7且lift > 1.2的规则才被纳入知识图谱。
 
@@ -213,12 +234,11 @@
 
 **规则一致性验证**：规则冲突的形式化验证通过物理约束来实施。水流运动遵循圣维南方程组（公式6.4），这是规则验证的物理基础：
 
-713146\\frac{\partial A}{\partial t} + \\frac{\partial Q}{\partial x} = q \tag{6.4a}713146
+$$\frac{\partial A}{\partial t} + \frac{\partial Q}{\partial x} = q \tag{6.4a}$$
 
-713146\\frac{\partial Q}{\partial t} + \\frac{\partial (Q^2/A)}{\partial x} + gA\eft(\\frac{\partial h}{\partial x} + S_f - S_0\r
-\right) = 0 \tag{6.4b}713146
+$$\frac{\partial Q}{\partial t} + \frac{\partial (Q^2/A)}{\partial x} + gA\left(\frac{\partial h}{\partial x} + S_f - S_0\right) = 0 \tag{6.4b}$$
 
-其中 $ 为过水面积，$ 为流量，$ 为旁侧入流，$ 为重力加速度，$ 为水深，$ 为摩擦坡降，$ 为底坡。任何违反圣维南方程物理约束的规则（如允许超过物理极限的流量）将被标记为无效规则，从规则库中剔除。
+其中 $A$ 为过水面积，$Q$ 为流量，$q$ 为旁侧入流，$g$ 为重力加速度，$h$ 为水深，$S_f$ 为摩擦坡降，$S_0$ 为底坡。任何违反圣维南方程物理约束的规则（如允许超过物理极限的流量）将被标记为无效规则，从规则库中剔除。
 
 【AI解读】圣维南方程作为物理约束引入规则验证体系，体现了“物理信息驱动的AI”（Physics-Informed AI）思想。规则系统不再是纯粹的逻辑演绤，而是被嵌入了真实的物理规律。
 
@@ -232,9 +252,9 @@
 
 RAG系统采用**双通道检索机制**，整合向量检索与图结构检索的优势。融合检索的总相关性分数定义为：
 
-713211S_{fusion}(q, d) = \alpha \cdot S_{vector}(q, d) + (1-\alpha) \cdot S_{graph}(q, d)713211
+S_{fusion}(q, d) = \alpha \cdot S_{vector}(q, d) + (1-\alpha) \cdot S_{graph}(q, d)
 
-其中 {vector}$ 为向量相似度，{graph}$ 为图遍历得分，$lpha \in [0,1]$ 为权重参数。
+其中 $S_{\text{vector}}$ 为向量相似度，$S_{\text{graph}}$ 为图遍历得分，$\alpha \in [0,1]$ 为权重参数。
 
 [插图：RAG双通道检索架构图，包含向量数据库和知识图谱两个检索源]
 
@@ -258,13 +278,13 @@ SPARQL（SPARQL Protocol and RDF Query Language）是W3C标准化的RDF查询语
 
 决策可解释性包含三个维度（公式6.5）：
 
-713211Fidelity = \\frac{|\text{正确解释的决策数}|}{|\text{总决策数}|} \tag{6.5a}713211
+$$Fidelity = \frac{|\text{正确解释的决策数}|}{|\text{总决策数}|} \tag{6.5a}$$
 
-713211Completeness = \\frac{|\text{有解释的决策数}|}{|\text{总决策数}|} \tag{6.5b}713211
+$$Completeness = \frac{|\text{有解释的决策数}|}{|\text{总决策数}|} \tag{6.5b}$$
 
-713211Compactness = 1 - \\frac{\bar{s}}{s_{max}} \tag{6.5c}713211
+$$Compactness = 1 - \frac{\bar{s}}{s_{max}} \tag{6.5c}$$
 
-其中 $ar{s}$ 为平均解释步骤数，{max}$ 为最大允许步骤数。在水库调度中，目标为Fidelity > 0.95、Completeness = 1.0、Compactness > 0.8。
+其中 $\bar{s}$ 为平均解释步骤数，$s_{\max}$ 为最大允许步骤数。在水库调度中，目标为Fidelity > 0.95、Completeness = 1.0、Compactness > 0.8。
 
 决策审计日志采用JSON格式记录完整的决策链路：
 
@@ -342,22 +362,21 @@ PROV-O溯源本体记录知识的来源，包含：知识由谁产生（wasAttri
 
 在水库分流方案决策中，历史调度模式可能涉及敏感的工程运行参数。本研究引入差分隐私（Differential Privacy, DP）对共享模式进行隐私保护。
 
-713600\Pr[\mathcal{M}(D)\in S] \leq e^{\varepsilon} \cdot \Pr[\mathcal{M}(D^{\prime})\in S]713600
+$$\Pr[\mathcal{M}(D)\in S] \leq e^{\varepsilon} \cdot \Pr[\mathcal{M}(D^{\prime})\in S]$$
 
-式中，$\mathcal{M}$为随机化机制，$和^{\prime}$为相邑数据集（仅差一条记录），$arepsilon$为隐私预算。$arepsilon$越小隐私保护越强但查询精度越低。在防洪调度场景中，对历史分流量数据加入Laplace噪声：
+式中，$\mathcal{M}$为随机化机制，$D$和$D^{\prime}$为相邑数据集（仅差一条记录），$\varepsilon$为隐私预算。$\varepsilon$越小隐私保护越强但查询精度越低。在防洪调度场景中，对历史分流量数据加入Laplace噪声：
 
-713600\mathcal{M}(q) = q(D) + \text{Lap}\!\eft(\\frac{\Delta q}{\varepsilon}\r
-\right)713600
+$$\mathcal{M}(q) = q(D) + \text{Lap}\!\left(\frac{\Delta q}{\varepsilon}\right)$$
 
-其中$\Delta q$为查询的全局敏感度。实验表明，当$arepsilon=1.0$时，历史模式挖掘精度保持在合理范围，同时防止了未授权第三方推断具体工程参数（Dwork & Roth, 2014）。
+其中$\Delta q$为查询的全局敏感度。实验表明，当$\varepsilon=1.0$时，历史模式挖掘精度保持在合理范围，同时防止了未授权第三方推断具体工程参数（Dwork & Roth, 2014）。
 
 ### 6.6.3 基于ABAC的访问控制
 
 知识图谱的访问控制采用属性基础访问控制（Attribute-Based Access Control, ABAC）模型。访问决策函数定义为：
 
-713600\text{permit}(s, o, a) \iff \exists r \in R: \text{cond}(s.\text{attr}, o.\text{attr}, a, r.\text{env})713600
+$$\text{permit}(s, o, a) \iff \exists r \in R: \text{cond}(s.\text{attr}, o.\text{attr}, a, r.\text{env})$$
 
-其中$为主体（用户/系统），$为客体（知识节点），$为操作（读/写/删），.\text{env}$为环境属性（如当前局势级别）。
+其中$s$为主体（用户/系统），$o$为客体（知识节点），$a$为操作（读/写/删），$r.\text{env}$为环境属性（如当前局势级别）。
 
 在防洪预警场景，局势级别属性动态调整访问权限：当水位超过警戒水位时，基层调度员可临时获得流域知识的读取权限，无需单独申请，实现“急时开放”的安全协同机制。
 
@@ -523,19 +542,19 @@ hydro:XinAnJiangRes a hydro:Reservoir ;
 
 公式（6.5）中的忽度度采用Jaccard相似度袑式进行定义：
 
-$$\text{Fidelity}(e,\hat{e}) = \\frac{|F(e)\cap F(\hat{e})|}{|F(e)\cup F(\hat{e})|}$$
+$$\text{Fidelity}(e,\hat{e}) = \frac{|F(e)\cap F(\hat{e})|}{|F(e)\cup F(\hat{e})|}$$
 
 其中 $e$ 为原始输入实体， $\hat{e}$ 为可解释替代实体， $F(\cdot)$ 为该实体在知识图谱中的一阶邻居集合。忽度度衡量的是替代实体能否完整保留原始上下文关系。
 
 完整度（Completeness）衡量检索片段覆盖了多少证据节点：
 
-$$\text{Completeness} = \\frac{|\mathcal{R}\cap\mathcal{E}|}{|\mathcal{E}|}$$
+$$\text{Completeness} = \frac{|\mathcal{R}\cap\mathcal{E}|}{|\mathcal{E}|}$$
 
 其中 $\mathcal{R}$ 为检索结果节点集，$\mathcal{E}$ 为专家标注的证据节点集。
 
 简洁度（Compactness）衡量推理链长度：
 
-$$\text{Compactness} = 1 - \\frac{L_{\text{chain}} - 1}{L_{\max}}$$
+$$\text{Compactness} = 1 - \frac{L_{\text{chain}} - 1}{L_{\max}}$$
 
 三个指标共同决定审计踪迹中的自动验证等级：全部大于0.8为“高可信度自动批准”，三项均大于0.7为“人机协同确认”，否则退回专家审查。在HFCKG2021年案例中，三项指标分别为0.91/0.93/0.82，全部达到自动批准阈值。
 
@@ -641,7 +660,7 @@ LIMIT 10
 
 设事务数据库 $D$ 包含 $n$ 条历史调度记录。第一步扫描 $D$，统计各项的支持度 $\text{sup}(x) = |\{T\in D: x\in T\}|/|D|$，保留满足 $\text{sup}(x)\geq\text{minsup}$ 的频繁项。第二步按支持度降序对频繁项排序，并将每条事务按排序后的项插入FP-树。
 
-FP-树的存储复杂度为 $O(n \cdot ar{l})$，其中 $ar{l}$ 为事务平均长度。相比Apriori算法的 $O(2^k)$（$k$为频繁项数），FP-Growth内存占用显著减少。在淮河500条防洪调度事务库中，设定 $\text{minsup}=0.15$， $\text{minconf}=0.60$，共挖掘出247条有效关联规则。
+FP-树的存储复杂度为 $O(n \cdot \bar{l})$，其中 $\bar{l}$ 为事务平均长度。相比Apriori算法的 $O(2^k)$（$k$为频繁项数），FP-Growth内存占用显著减少。在淮河500条防洪调度事务库中，设定 $\text{minsup}=0.15$， $\text{minconf}=0.60$，共挖掘出247条有效关联规则。
 
 其中最具代表性的五条规则如表6-1所示：
 
@@ -719,9 +738,9 @@ INSERT DATA {
 
 差分隐私预算实验结果如表6-6：
 
-**表6-6 不同$arepsilon$下历史分流量查询精度**
+**表6-6 不同$\varepsilon$下历史分流量查询精度**
 
-| $arepsilon$ | 平均绝对误差(m3/s) | 隐私保护等级 | 实用性 |
+| $\varepsilon$ | 平均绝对误差(m3/s) | 隐私保护等级 | 实用性 |
 |-------|--------------|----------|----------|
 | 0.1 | 501.2 | 极强 | 查询无意义 |
 | 0.5 | 100.2 | 强 | 仅适合历史统计 |
@@ -754,16 +773,15 @@ Berners-Lee等人提出的Linked Data和W3C RDF标准（2001）奖决了异构�
 
 水利调度规则必须满足圣文南方程组的物理约束。一维非恒流的圣文南方程组包含连续方程和动量方程：
 
-$$\\frac{\partial A}{\partial t} + \\frac{\partial Q}{\partial x} = q_l$$
+$$\frac{\partial A}{\partial t} + \frac{\partial Q}{\partial x} = q_l$$
 
-$$\\frac{\partial Q}{\partial t} + \\frac{\partial}{\partial x}\!\eft(\\frac{Q^2}{A}\r
-\right) + gA\\frac{\partial h}{\partial x} + gA(S_f - S_0) = 0$$
+$$\frac{\partial Q}{\partial t} + \frac{\partial}{\partial x}\!\left(\frac{Q^2}{A}\right) + gA\frac{\partial h}{\partial x} + gA(S_f - S_0) = 0$$
 
 其中：$A$为湁面面积，$Q$为流量，$q_l$为峧参汇入，$g$为重力加速度，$h$为水位，$S_f$为摩擦坡，$S_0$为河底坡度。
 
 对于知识图谱调度规则的物理验证，需将Drools输出的泯量方案 $(Q_1, Q_2, \ldots, Q_n)$ 带入忽略二阶小量的简化形式（不考虚拟项和侧常项）：
 
-$$\\frac{\partial Q_i}{\partial x} = -\\frac{\partial A_i}{\partial t}, \quad S_{f,i} = \\frac{n^2 Q_i |Q_i|}{A_i^2 R_i^{4/3}}$$
+$$\frac{\partial Q_i}{\partial x} = -\frac{\partial A_i}{\partial t}, \quad S_{f,i} = \frac{n^2 Q_i |Q_i|}{A_i^2 R_i^{4/3}}$$
 
 其中 $n$ 为曼安系数， $R$ 为水力半径。在HFCKG规则引擎中，就海河干流泯量不超过该公式计算的洗屏能力上限进行评测；如验证失败，该规则将被自动降级为廻候建议并请求专家复核。
 
