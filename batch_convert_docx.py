@@ -69,9 +69,9 @@ def discover_books(base_dir: Path) -> dict[str, BookSpec]:
         ("T1-CN",           base_dir / "T1-CN",                "ch*_final.md"),
         ("T2a",             base_dir / "T2a",                  "ch*_final.md"),
         ("T2b",             base_dir / "T2b",                  "ch*_final.md"),
-        ("T2-CN",           base_dir / "T2-CN",                "ch*_revised.md"),
+        ("T2-CN",           base_dir / "T2-CN",                "ch*_final.md"),
         ("T3-Engineering",  base_dir / "T3-Engineering",        "ch*.md"),
-        ("T4-Platform",     base_dir / "T4-Platform",           "ch*_draft.md"),
+        ("T4-Platform",     base_dir / "T4-Platform",           "ch*_final.md"),
         ("T5-Intelligence", base_dir / "T5-Intelligence",       "ch*_draft.md"),
         ("ModernControl",   base_dir / "ModernControl" / "md", "ch*_v2.md"),
     ]

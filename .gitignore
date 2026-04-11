@@ -10,3 +10,4 @@ dispatch_log.json
 gen_nano_*.py
 *.bak
 tri_engine.py
+.gitnexus
