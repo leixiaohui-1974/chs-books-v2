@@ -11,3 +11,10 @@ gen_nano_*.py
 *.bak
 tri_engine.py
 .gitnexus
+.omx/
+
+# FUSE filesystem temporary lock files
+.fuse_hidden*
+
+# macOS metadata
+.DS_Store

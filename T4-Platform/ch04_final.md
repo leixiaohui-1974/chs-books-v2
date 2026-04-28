@@ -1,12 +1,18 @@
+<!-- 变更日志
+v1 2026-03-20: 初稿（DeepSeek 36周修改方案产出）
+v2 2026-04-28: 阶段二格式刷齐——\tag公式编号统一为连字符格式（45处）
+v3 2026-04-28: 阶段三格式刷齐——补充本变更日志
+-->
+
 # 第4章 步长级仿控耦合：实时内核的设计原理 [L1]
 
 > **知识依赖**
 >
-> 本章内容建立在读者对水动力学基本方程（圣维南方程组）、数值计算方法（有限差分法、有限体积法）、控制系统理论以及T4第3章水利系统仿真核心原理具备扎实理解的基础上。
+> 本章内容建立在读者对水动力学基本方程（圣维南方程组）、数值计算方法（有限差分法、有限体积法）、控制系统理论以及《平台》第3章水利系统仿真核心原理具备扎实理解的基础上。
 >
 > **预设知识点**
-> - T1《水动力学控制论基础》：圣维南方程组推导、有限体积法基础、波速与Froude数
-> - T4 第3章：Skill系统架构、L3/L4层四预体系
+> - 《水控》《水动力学控制论基础》：圣维南方程组推导、有限体积法基础、波速与Froude数
+> - 《平台》第3章：Skill系统架构、L3/L4层四预体系
 > - 控制系统基础：PID控制、状态反馈、最优控制概念
 
 > **学习目标**
@@ -17,6 +23,8 @@
 > 3. 掌握实时内核设计中，实现水动力模型与控制策略紧耦合的核心技术；
 > 4. 分析并评估不同耦合策略对系统仿真精度、计算效率及控制鲁棒性的影响；
 > 5. 为大型水网操作系统设计具备实时响应能力的仿控耦合架构。
+
+> **本章前置阅读**：《水控》第 4 章 Saint-Venant方程组——本章耦合模式的物理基础；《建模》第 3 章 明渠水动力学——Preissmann格式和CFL条件的工程应用；《建模》第 7 章 MPC——L2内核层步长级MPC的数学框架。
 
 > **[管理层速览]**
 >
@@ -72,13 +80,13 @@ $$T_{\text{propagate}} = \frac{L_{AB}}{c_{\text{wave}}} \leq \Delta t \quad \Rig
 
 **连续方程**描述质量守恒：
 
-$$\frac{\partial A}{\partial t} + \frac{\partial Q}{\partial x} = q_l \tag{4.2}$$
+$$\frac{\partial A}{\partial t} + \frac{\partial Q}{\partial x} = q_l \tag{4-2}$$
 
 其中，$A(x,t)$ 为过水断面面积（m²），$Q(x,t)$ 为流量（m³/s），$q_l$ 为单位渠长侧向入流量（m²/s）。
 
 **动量方程**描述动量守恒：
 
-$$\frac{\partial Q}{\partial t} + \frac{\partial}{\partial x}\!\l\left(\frac{Q^2}{A}\r\right) + gA\frac{\partial h}{\partial x} + gA(S_f - S_0) = 0 \tag{4.3}$$
+$$\frac{\partial Q}{\partial t} + \frac{\partial}{\partial x}\!\l\left(\frac{Q^2}{A}\r\right) + gA\frac{\partial h}{\partial x} + gA(S_f - S_0) = 0 \tag{4-3}$$
 
 其中，$h(x,t)$ 为水位（m），$S_0$ 为渠底坡度，$S_f = n^2 Q^2 / (A^2 R^{4/3})$ 为摩擦坡降（Manning公式），$n$ 为糙率系数，$R$ 为水力半径。Saint-Venant方程组属于双曲型偏微分方程组，其特征速度为 $V \pm c_{\text{wave}}$（Chaudhry, 2008）。
 
@@ -88,37 +96,37 @@ Preissmann格式（Preissmann, 1961）是目前工程水力学软件中应用最
 
 **时间导数差分近似**：
 
-$$\frac{\partial Q}{\partial t}\bigg|_{i+1/2}^{j+\theta} \approx \frac{1}{2\Delta t}\l\left[(Q_{i+1}^{j+1} - Q_{i+1}^{j}) + (Q_i^{j+1} - Q_i^{j})\r\right] \tag{4.4}$$
+$$\frac{\partial Q}{\partial t}\bigg|_{i+1/2}^{j+\theta} \approx \frac{1}{2\Delta t}\l\left[(Q_{i+1}^{j+1} - Q_{i+1}^{j}) + (Q_i^{j+1} - Q_i^{j})\r\right] \tag{4-4}$$
 
 **空间导数加权差分**：
 
-$$\frac{\partial Q}{\partial x}\bigg|_{i+1/2}^{j+\theta} \approx \frac{\theta}{\Delta x}(Q_{i+1}^{j+1} - Q_i^{j+1}) + \frac{1-\theta}{\Delta x}(Q_{i+1}^{j} - Q_i^{j}) \tag{4.5}$$
+$$\frac{\partial Q}{\partial x}\bigg|_{i+1/2}^{j+\theta} \approx \frac{\theta}{\Delta x}(Q_{i+1}^{j+1} - Q_i^{j+1}) + \frac{1-\theta}{\Delta x}(Q_{i+1}^{j} - Q_i^{j}) \tag{4-5}$$
 
 **函数值加权插值**：
 
-$$Q\bigg|_{i+1/2}^{j+\theta} \approx \frac{\theta}{2}(Q_{i+1}^{j+1} + Q_i^{j+1}) + \frac{1-\theta}{2}(Q_{i+1}^{j} + Q_i^{j}) \tag{4.6}$$
+$$Q\bigg|_{i+1/2}^{j+\theta} \approx \frac{\theta}{2}(Q_{i+1}^{j+1} + Q_i^{j+1}) + \frac{1-\theta}{2}(Q_{i+1}^{j} + Q_i^{j}) \tag{4-6}$$
 
 将公式(4.4)-(4.6)代入连续方程(4.2)和动量方程(4.3)，形成**块三对角线性方程组**：
 
-$$\mathbf{M} \cdot \mathbf{u}^{j+1} = \mathbf{r}^j \tag{4.7}$$
+$$\mathbf{M} \cdot \mathbf{u}^{j+1} = \mathbf{r}^j \tag{4-7}$$
 
 可采用**追赶法**（Thomas Algorithm）以 $O(N)$ 复杂度求解（Abbott & Ionescu, 1967）：
 
-$$\mathbf{u}^{j+1} = \mathbf{M}^{-1} \mathbf{r}^j \tag{4.8}$$
+$$\mathbf{u}^{j+1} = \mathbf{M}^{-1} \mathbf{r}^j \tag{4-8}$$
 
 ### 4.2.3 CFL稳定性条件与自适应步长
 
 对于Godunov型显式求解器，CFL条件给出了稳定性约束：
 
-$$Cr = \frac{(|V| + c)\cdot\Delta t}{\Delta x} \leq CFL_{\max} \tag{4.9}$$
+$$Cr = \frac{(|V| + c)\cdot\Delta t}{\Delta x} \leq CFL_{\max} \tag{4-9}$$
 
 其中 $Cr$ 为Courant数，$CFL_{\max} = 0.9$（Toro, 2001; LeVeque, 2002）。**自适应步长更新策略**：
 
-$$\Delta t_{k+1} = CFL_{\text{target}} \times \frac{\Delta x}{\max_i(|V_i| + c_i)} \tag{4.10}$$
+$$\Delta t_{k+1} = CFL_{\text{target}} \times \frac{\Delta x}{\max_i(|V_i| + c_i)} \tag{4-10}$$
 
 其中 $CFL_{\text{target}} = 0.8$。**Froude数分级安全系数**：
 
-$$\alpha_{Fr} = \b\begin{cases} 1.00, & Fr < 0.5 \ 0.90, & 0.5 \leq Fr < 0.8 \ 0.75, & 0.8 \leq Fr < 1.0 \ 0.50, & Fr \geq 1.0 \end{cases} \tag{4.11}$$
+$$\alpha_{Fr} = \b\begin{cases} 1.00, & Fr < 0.5 \ 0.90, & 0.5 \leq Fr < 0.8 \ 0.75, & 0.8 \leq Fr < 1.0 \ 0.50, & Fr \geq 1.0 \end{cases} \tag{4-11}$$
 
 **Python自适应步长实现**：
 
@@ -155,37 +163,37 @@ EnKF（Evensen, 1994）以 $N_e$ 个状态样本（集合成员）近似表示�
 
 **集合成员预测**：
 
-$$\mathbf{x}^f_{k,i} = \mathcal{M}(\mathbf{x}^a_{k-1,i},\, \mathbf{u}_k) + \boldsymbol{\varepsilon}_i, \quad \boldsymbol{\varepsilon}_i \sim \mathcal{N}(\mathbf{0},\, \mathbf{Q}_{\text{noise}}) \tag{4.12}$$
+$$\mathbf{x}^f_{k,i} = \mathcal{M}(\mathbf{x}^a_{k-1,i},\, \mathbf{u}_k) + \boldsymbol{\varepsilon}_i, \quad \boldsymbol{\varepsilon}_i \sim \mathcal{N}(\mathbf{0},\, \mathbf{Q}_{\text{noise}}) \tag{4-12}$$
 
 **集合均值**：
 
-$$\bar{\mathbf{x}}^f_k = \frac{1}{N_e} \sum_{i=1}^{N_e} \mathbf{x}^f_{k,i} \tag{4.13}$$
+$$\bar{\mathbf{x}}^f_k = \frac{1}{N_e} \sum_{i=1}^{N_e} \mathbf{x}^f_{k,i} \tag{4-13}$$
 
 **预测协方差矩阵**（无偏估计，Burgers et al., 1998）：
 
-$$\mathbf{P}^f_k = \frac{1}{N_e - 1} \sum_{i=1}^{N_e} \l\left(\mathbf{x}^f_{k,i} - \bar{\mathbf{x}}^f_k\r\right)\l\left(\mathbf{x}^f_{k,i} - \bar{\mathbf{x}}^f_k\r\right)^T \tag{4.14}$$
+$$\mathbf{P}^f_k = \frac{1}{N_e - 1} \sum_{i=1}^{N_e} \l\left(\mathbf{x}^f_{k,i} - \bar{\mathbf{x}}^f_k\r\right)\l\left(\mathbf{x}^f_{k,i} - \bar{\mathbf{x}}^f_k\r\right)^T \tag{4-14}$$
 
 **虚拟观测扰动**：
 
-$$\mathbf{y}^f_{k,i} = \mathbf{H}\mathbf{x}^f_{k,i} + \boldsymbol{\delta}_i, \quad \boldsymbol{\delta}_i \sim \mathcal{N}(\mathbf{0},\, \mathbf{R}_{\text{noise}}) \tag{4.15}$$
+$$\mathbf{y}^f_{k,i} = \mathbf{H}\mathbf{x}^f_{k,i} + \boldsymbol{\delta}_i, \quad \boldsymbol{\delta}_i \sim \mathcal{N}(\mathbf{0},\, \mathbf{R}_{\text{noise}}) \tag{4-15}$$
 
 ### 4.3.3 EnKF分析步
 
 **卡尔曼增益**：
 
-$$\mathbf{K}_k = \mathbf{P}^f_k \mathbf{H}^T \l\left(\mathbf{H} \mathbf{P}^f_k \mathbf{H}^T + \mathbf{R}_{\text{noise}}\r\right)^{-1} \tag{4.16}$$
+$$\mathbf{K}_k = \mathbf{P}^f_k \mathbf{H}^T \l\left(\mathbf{H} \mathbf{P}^f_k \mathbf{H}^T + \mathbf{R}_{\text{noise}}\r\right)^{-1} \tag{4-16}$$
 
 **状态更新**（分析步）：
 
-$$\mathbf{x}^a_{k,i} = \mathbf{x}^f_{k,i} + \mathbf{K}_k\!\l\left(\mathbf{y}_k + \boldsymbol{\varepsilon}^o_i - \mathbf{H}\mathbf{x}^f_{k,i}\r\right) \tag{4.17}$$
+$$\mathbf{x}^a_{k,i} = \mathbf{x}^f_{k,i} + \mathbf{K}_k\!\l\left(\mathbf{y}_k + \boldsymbol{\varepsilon}^o_i - \mathbf{H}\mathbf{x}^f_{k,i}\r\right) \tag{4-17}$$
 
 **分析协方差**：
 
-$$\mathbf{P}^a_k = (\mathbf{I} - \mathbf{K}_k \mathbf{H})\mathbf{P}^f_k \tag{4.18}$$
+$$\mathbf{P}^a_k = (\mathbf{I} - \mathbf{K}_k \mathbf{H})\mathbf{P}^f_k \tag{4-18}$$
 
 **同化效果评估**（均方根误差）：
 
-$$RMSE_k = \frac{\|\bar{\mathbf{x}}^a_k - \mathbf{x}_{true,k}\|_2}{\sqrt{n_x}} \tag{4.19}$$
+$$RMSE_k = \frac{\|\bar{\mathbf{x}}^a_k - \mathbf{x}_{true,k}\|_2}{\sqrt{n_x}} \tag{4-19}$$
 
 **Table 4.3 EnKF数据同化引擎性能指标**（$N_e = 50$，$n_x = 200$，灌区渠道测试床）
 
@@ -202,7 +210,7 @@ $$RMSE_k = \frac{\|\bar{\mathbf{x}}^a_k - \mathbf{x}_{true,k}\|_2}{\sqrt{n_x}} \
 
 ### 4.3.5 步长级仿控耦合与闭环四预
 
-§4.3所建立的"EnKF同化→降阶模型更新→MPC消费"链路，不仅是一个实时控制管线，更是T1第八章§8.1.8所述**闭环四预在HydroOS中的工程实现**。在每个控制步长Δt内，这条管线实际上完成了四预的完整闭环：
+§4.3所建立的"EnKF同化→降阶模型更新→MPC消费"链路，不仅是一个实时控制管线，更是《水控》第八章§8.1.8所述**闭环四预在HydroOS中的工程实现**。在每个控制步长Δt内，这条管线实际上完成了四预的完整闭环：
 
 1. **预报**：EnKF同化最新观测后，降阶模型在预测时域$N_p$内前向推演，输出未来状态轨迹——这是步长级的实时预报，而非离线跑完全时段的批量预报。
 2. **预警**：MPC求解器在构造约束集时，实时检查预报轨迹是否逼近ODD边界（水位限值、变化率限值、设备健康度阈值），逼近即触发预警状态跳转。
@@ -223,7 +231,7 @@ $$RMSE_k = \frac{\|\bar{\mathbf{x}}^a_k - \mathbf{x}_{true,k}\|_2}{\sqrt{n_x}} \
 
 **目标函数**：
 
-$$J = \sum_{j=1}^{N_p} \left\|\mathbf{x}_{k+j|k} - \mathbf{r}_{k+j}\right\|^2_{\mathbf{Q}} + \sum_{j=0}^{N_c-1} \left\|\Delta\mathbf{u}_{k+j}\right\|^2_{\mathbf{R}} \tag{4.20}$$
+$$J = \sum_{j=1}^{N_p} \left\|\mathbf{x}_{k+j|k} - \mathbf{r}_{k+j}\right\|^2_{\mathbf{Q}} + \sum_{j=0}^{N_c-1} \left\|\Delta\mathbf{u}_{k+j}\right\|^2_{\mathbf{R}} \tag{4-20}$$
 
 其中 $\mathbf{r}_{k+j}$ 为参考轨迹（目标水位），$\mathbf{Q} \succeq 0$ 为状态跟踪权重矩阵，$\mathbf{R} \succ 0$ 为控制增量惩罚矩阵，$\Delta\mathbf{u}_{k+j} = \mathbf{u}_{k+j} - \mathbf{u}_{k+j-1}$ 为控制增量（抑制闸门频繁动作）。
 
@@ -231,27 +239,27 @@ $$J = \sum_{j=1}^{N_p} \left\|\mathbf{x}_{k+j|k} - \mathbf{r}_{k+j}\right\|^2_{\
 
 **水位约束**：
 
-$$h_{\min} \leq h_{k+j|k} \leq h_{\max}, \quad j = 1, \ldots, N_p \tag{4.21}$$
+$$h_{\min} \leq h_{k+j|k} \leq h_{\max}, \quad j = 1, \ldots, N_p \tag{4-21}$$
 
 **闸门开度约束**：
 
-$$0 \leq g_{k+j} \leq g_{\max}, \quad j = 0, \ldots, N_c-1 \tag{4.22}$$
+$$0 \leq g_{k+j} \leq g_{\max}, \quad j = 0, \ldots, N_c-1 \tag{4-22}$$
 
 **闸门变化率约束**（保护闸门机构）：
 
-$$|\Delta g_{k+j}| \leq \Delta g_{\max}, \quad j = 0, \ldots, N_c-1 \tag{4.23}$$
+$$|\Delta g_{k+j}| \leq \Delta g_{\max}, \quad j = 0, \ldots, N_c-1 \tag{4-23}$$
 
 **物理可行性约束**（质量守恒）：
 
-$$A_{k+j} \cdot V_{k+j} = Q_{k+j}, \quad \forall j \tag{4.24}$$
+$$A_{k+j} \cdot V_{k+j} = Q_{k+j}, \quad \forall j \tag{4-24}$$
 
 ### 4.4.3 QP标准形式
 
 引入增广决策变量 $\mathbf{z} = [\Delta\mathbf{u}_k^T, \ldots, \Delta\mathbf{u}_{k+N_c-1}^T]^T$，得到标准二次规划形式：
 
-$$\min_{\mathbf{z}} \quad \frac{1}{2}\mathbf{z}^T \mathbf{P}_{\text{qp}} \mathbf{z} + \mathbf{q}^T \mathbf{z} \tag{4.25}$$
+$$\min_{\mathbf{z}} \quad \frac{1}{2}\mathbf{z}^T \mathbf{P}_{\text{qp}} \mathbf{z} + \mathbf{q}^T \mathbf{z} \tag{4-25}$$
 
-$$\text{s.t.} \quad \mathbf{l} \leq \mathbf{A}_{\text{qp}} \mathbf{z} \leq \mathbf{u} \tag{4.26}$$
+$$\text{s.t.} \quad \mathbf{l} \leq \mathbf{A}_{\text{qp}} \mathbf{z} \leq \mathbf{u} \tag{4-26}$$
 
 其中 $\mathbf{P}_{\text{qp}}$ 为块对角正定Hessian矩阵，可直接输入OSQP求解器（Stellato et al., 2020）。
 
@@ -287,7 +295,7 @@ SCP的**时间步长共享原则**：在同一离散时间步长 $\Delta t$ 内�
 
 SCP的可行性由**时间预算不等式**约束：
 
-$$T_{\text{sense}} + T_{\text{model}} + T_{\text{mpc}} + T_{\text{act}} \leq \Delta t \tag{4.27}$$
+$$T_{\text{sense}} + T_{\text{model}} + T_{\text{mpc}} + T_{\text{act}} \leq \Delta t \tag{4-27}$$
 
 各项含义：$T_{\text{sense}}$ 为感知时延（传感器数据采集、传输及预处理）；$T_{\text{model}}$ 为建模时延（水力模型状态估计与仿真）；$T_{\text{mpc}}$ 为MPC求解时延（整个预算中计算代价最高的环节）；$T_{\text{act}}$ 为执行时延（控制指令下发至执行机构并完成响应确认）。
 
@@ -305,13 +313,13 @@ $$T_{\text{sense}} + T_{\text{model}} + T_{\text{mpc}} + T_{\text{act}} \leq \De
 
 SCP定义了控制器与物理模型之间的严格**接口契约**：
 
-$$\mathbf{x}_k \in \mathbb{R}^{n_x} \tag{4.28}$$
+$$\mathbf{x}_k \in \mathbb{R}^{n_x} \tag{4-28}$$
 
-$$\mathbf{y}_k \in \mathbb{R}^{n_y} \tag{4.29}$$
+$$\mathbf{y}_k \in \mathbb{R}^{n_y} \tag{4-29}$$
 
-$$\mathbf{u}_k \in \mathbb{R}^{n_u} \tag{4.30}$$
+$$\mathbf{u}_k \in \mathbb{R}^{n_u} \tag{4-30}$$
 
-$$\mathcal{F}_k = \{\mathbf{x}_k,\, \mathbf{y}_k,\, \mathbf{u}_k,\, r_k,\, t_k^{\text{ns}}\} \tag{4.31}$$
+$$\mathcal{F}_k = \{\mathbf{x}_k,\, \mathbf{y}_k,\, \mathbf{u}_k,\, r_k,\, t_k^{\text{ns}}\} \tag{4-31}$$
 
 其中：$\mathbf{x}_k$ 为状态向量（节点压力水头、管段流量等），$\mathbf{y}_k$ 为传感器直接可测量的观测向量，$\mathbf{u}_k$ 为MPC输出的执行指令，$\mathcal{F}_k$ 为单步完整数据交换帧（含模型残差标量 $r_k$ 与纳秒级时间戳 $t_k^{\text{ns}}$）。
 
@@ -343,7 +351,7 @@ SCP的执行逻辑由三状态有限状态机（FSM）管理，三个状态为 *
 
 **定义4.6.1（步长级预报）** 给定当前系统状态 $\mathbf{x}_k \in \mathbb{R}^n$ 及未来控制输入序列，步长级预报定义为：
 
-$$\mathbf{x}_{k+N_p|k} = f^{N_p}(\mathbf{x}_k,\, \mathbf{U}_k) \tag{4.32}$$
+$$\mathbf{x}_{k+N_p|k} = f^{N_p}(\mathbf{x}_k,\, \mathbf{U}_k) \tag{4-32}$$
 
 其中 $f^{N_p}$ 表示非线性状态转移函数的 $N_p$ 次复合。预测步数 $N_p$ 应不小于系统最大时间常数与 $\Delta t$ 之比（Camacho & Bordons, 2004）。
 
@@ -351,11 +359,11 @@ $$\mathbf{x}_{k+N_p|k} = f^{N_p}(\mathbf{x}_k,\, \mathbf{U}_k) \tag{4.32}$$
 
 **定义4.6.2（水位越限告警函数）**
 
-$$W(\mathbf{x}_k) = \max_{i \in \mathcal{N},\, j \in [1, N_p]} \left\{ \max\!\l\left(h_{i,k+j|k} - h_i^{\max},\, h_i^{\min} - h_{i,k+j|k},\, 0 \r\right) \right\} \tag{4.33}$$
+$$W(\mathbf{x}_k) = \max_{i \in \mathcal{N},\, j \in [1, N_p]} \left\{ \max\!\l\left(h_{i,k+j|k} - h_i^{\max},\, h_i^{\min} - h_{i,k+j|k},\, 0 \r\right) \right\} \tag{4-33}$$
 
 当 $W(\mathbf{x}_k) > 0$ 时，系统触发预警信号，响应时间约束要求：
 
-$$t_{\text{warn}} \leq T_{\text{react}} \tag{4.34}$$
+$$t_{\text{warn}} \leq T_{\text{react}} \tag{4-34}$$
 
 其中 $t_{\text{warn}} = (k^* - k)\Delta t$ 为预警提前量，$T_{\text{react}}$ 为最大响应时间阈值（典型值为2-4个 $\Delta t$）（Vermuyten et al., 2018）。
 
@@ -363,11 +371,11 @@ $$t_{\text{warn}} \leq T_{\text{react}} \tag{4.34}$$
 
 **定义4.6.3（反事实轨迹）**
 
-$$\mathbf{x}^{cf}_{k+j} = f\!\l\left(\mathbf{x}_{k+j-1},\, u^{cf}_j\r\right),\quad j = 1, 2, \ldots, N_p \tag{4.35}$$
+$$\mathbf{x}^{cf}_{k+j} = f\!\l\left(\mathbf{x}_{k+j-1},\, u^{cf}_j\r\right),\quad j = 1, 2, \ldots, N_p \tag{4-35}$$
 
 情景库 $\mathcal{S}_k$ 定义为：
 
-$$\mathcal{S}_k = \left\{ \l\left(\mathbf{U}^{(s)},\, \mathbf{X}^{(s)}\r\right) : \mathbf{U}^{(s)} \in \mathcal{U}_{\text{sample}} \right\} \tag{4.36}$$
+$$\mathcal{S}_k = \left\{ \l\left(\mathbf{U}^{(s)},\, \mathbf{X}^{(s)}\r\right) : \mathbf{U}^{(s)} \in \mathcal{U}_{\text{sample}} \right\} \tag{4-36}$$
 
 情景采样数量 $|\mathcal{U}_{\text{sample}}|$ 在线计算时取50至500（Giuliani et al., 2016）。
 
@@ -375,7 +383,7 @@ $$\mathcal{S}_k = \left\{ \l\left(\mathbf{U}^{(s)},\, \mathbf{X}^{(s)}\r\right) 
 
 **定义4.6.4（步长级最优预案）**
 
-$$\pi^* = \underset{\pi \in \Pi}{\arg\min}\ J(\pi,\, \mathbf{x}_k) \tag{4.37}$$
+$$\pi^* = \underset{\pi \in \Pi}{\arg\min}\ J(\pi,\, \mathbf{x}_k) \tag{4-37}$$
 
 其解对应控制序列中的第一个元素（滚动时域原则，Rawlings et al., 2017）。
 
@@ -409,7 +417,7 @@ $$\pi^* = \underset{\pi \in \Pi}{\arg\min}\ J(\pi,\, \mathbf{x}_k) \tag{4.37}$$
 
 上述改造的量化效果（数据来自Cyclictest基准测量，负载：stress-ng全核满载）：
 
-$$J_{\text{standard}} \approx 500\ \text{ms} \quad \xrightarrow{\text{RT-PREEMPT}} \quad J_{\text{RT}} \leq 42\ \mu\text{s} \tag{4.38}$$
+$$J_{\text{standard}} \approx 500\ \text{ms} \quad \xrightarrow{\text{RT-PREEMPT}} \quad J_{\text{RT}} \leq 42\ \mu\text{s} \tag{4-38}$$
 
 降幅超过四个数量级，表明RT-PREEMPT补丁对水网嵌入式控制节点具有根本性意义。
 
@@ -417,11 +425,11 @@ $$J_{\text{standard}} \approx 500\ \text{ms} \quad \xrightarrow{\text{RT-PREEMPT
 
 实时任务的端到端调度延迟 $T_{\text{latency}}$ 由三个分量叠加构成：
 
-$$T_{\text{latency}} \leq T_{\text{preempt}} + T_{\text{irq}} + T_{\text{context}} \tag{4.39}$$
+$$T_{\text{latency}} \leq T_{\text{preempt}} + T_{\text{irq}} + T_{\text{context}} \tag{4-39}$$
 
 在RT-PREEMPT内核上，上述三项的典型上界为：
 
-$$T_{\text{preempt}} \leq 15\ \mu\text{s},\quad T_{\text{irq}} \leq 8\ \mu\text{s},\quad T_{\text{context}} \leq 12\ \mu\text{s} \tag{4.40}$$
+$$T_{\text{preempt}} \leq 15\ \mu\text{s},\quad T_{\text{irq}} \leq 8\ \mu\text{s},\quad T_{\text{context}} \leq 12\ \mu\text{s} \tag{4-40}$$
 
 由此得到调度延迟理论上界 $T_{\text{latency}} \leq 35\ \mu\text{s}$，与式(4.38)实测值42 μs吻合。
 
@@ -429,9 +437,9 @@ $$T_{\text{preempt}} \leq 15\ \mu\text{s},\quad T_{\text{irq}} \leq 8\ \mu\text{
 
 最坏情况执行时间（Worst-Case Execution Time, WCET）是实时任务可调度性分析的核心参数：
 
-$$\text{WCET} = T_{\text{nominal}} \times k_{\text{safety}} \tag{4.41}$$
+$$\text{WCET} = T_{\text{nominal}} \times k_{\text{safety}} \tag{4-41}$$
 
-$$k_{\text{safety}} = 1.5,\quad \text{WCET}_{\text{MPC}} = 40\ \text{ms} \times 1.5 = 60\ \text{ms} \tag{4.42}$$
+$$k_{\text{safety}} = 1.5,\quad \text{WCET}_{\text{MPC}} = 40\ \text{ms} \times 1.5 = 60\ \text{ms} \tag{4-42}$$
 
 在控制周期 $T_s = 300\ \text{ms}$ 下，调度利用率 $U = \text{WCET}/T_s = 0.20$，满足单任务可调度性约束。
 
@@ -483,11 +491,11 @@ HIL系统三层架构：
 
 HIL闭环仿真的时间一致性是保证测试有效性的前提。仿真节点与被测控制器之间的时钟偏差须满足：
 
-$$|t_{\text{HIL}} - t_{\text{DUT}}| \leq 1\ \mu\text{s} \tag{4.43}$$
+$$|t_{\text{HIL}} - t_{\text{DUT}}| \leq 1\ \mu\text{s} \tag{4-43}$$
 
 采用**精确时间协议**（PTP，IEEE 1588-2019）实现跨节点时钟同步。PTP同步误差模型为：
 
-$$\varepsilon_{\text{sync}} = \frac{(t_2 - t_1) - (t_4 - t_3)}{2} + \delta_{\text{asym}} \tag{4.44}$$
+$$\varepsilon_{\text{sync}} = \frac{(t_2 - t_1) - (t_4 - t_3)}{2} + \delta_{\text{asym}} \tag{4-44}$$
 
 在千兆以太网环境下，采用硬件时间戳（NIC级PTP）可将 $|\varepsilon_{\text{sync}}|$ 稳定控制在100 ns以内，满足式(4.43)要求。
 
@@ -495,9 +503,9 @@ $$\varepsilon_{\text{sync}} = \frac{(t_2 - t_1) - (t_4 - t_3)}{2} + \delta_{\tex
 
 RT-SVS的仿真精度验收准则（对应IEC 61511 SIL-2级要求，IEC 61511, 2016）：
 
-$$|\eta_{\text{sim}}(x, t) - \eta_{\text{real}}(x, t)| \leq 0.05\ \text{m} \tag{4.45}$$
+$$|\eta_{\text{sim}}(x, t) - \eta_{\text{real}}(x, t)| \leq 0.05\ \text{m} \tag{4-45}$$
 
-$$\epsilon_Q = \frac{\|Q_{\text{sim}} - Q_{\text{real}}\|_2}{\|Q_{\text{real}}\|_2} \leq 5\% \tag{4.46}$$
+$$\epsilon_Q = \frac{\|Q_{\text{sim}} - Q_{\text{real}}\|_2}{\|Q_{\text{real}}\|_2} \leq 5\% \tag{4-46}$$
 
 其中式(4.45)为水位精度约束，式(4.46)为流量相对误差约束。
 
@@ -603,6 +611,8 @@ $$\epsilon_Q = \frac{\|Q_{\text{sim}} - Q_{\text{real}}\|_2}{\|Q_{\text{real}}\|
 4. **MPC滚动优化与RT-PREEMPT实时内核**：模型预测控制（MPC）在每个控制周期求解有限时域最优化问题，利用OSQP二次规划求解器实现亚秒级（≤100ms）的滚动优化。RT-PREEMPT内核补丁将Linux进程调度抖动从常规内核的~500ms压缩至~42μs，满足步长级紧耦合对时间确定性的硬约束。实时内核的引入是将"高性能计算"转变为"可信实时控制"的关键工程步骤。
 
 5. **HIL测试作为强制验收门槛**：硬件在环（HIL）仿真将水动力模型和真实PLC/执行器组成闭环测试回路，在不操作真实水利工程的前提下验证仿控耦合系统的时序正确性、安全联锁行为和降级机制。HIL测试不是可选优化项，而是高WNAL等级系统在交付前必须通过的安全验证门槛。
+
+> **本章后续进阶**：《认知》第 3 章（RL与MPC的机制互补——步长级耦合中RL如何增强MPC适应性）、《认知》第 4 章（深度学习非线性状态估计——替代EnKF的工程方法）、《平台》第 12 章（部署运维——HIL测试的流水线集成）。
 
 ---
 

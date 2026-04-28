@@ -17,6 +17,8 @@ v1 2026-02-16: 初稿骨架
 4. 运用频率域辨识方法从试验数据中估计 IDZ 模型参数，掌握 PRBS 激励设计、频响拟合和模型验证的完整流程；
 5. 比较机理降阶与数据驱动降阶（子空间辨识、DMD、PINN-ROM）在可解释性、泛化性与上线风险上的差异，理解双轨切换策略的工程意义。
 
+> **本章前置阅读**：建议先阅读 [《水控》第 4 章, ch07 P1] 了解传递函数化的思想（八原理P1）和IDZ模型的基本概念——本章将降阶建模系统化为一套方法论。
+
 ---
 
 > **章首衔接（承接 ch03）**
@@ -1357,6 +1359,8 @@ ROM 精度越高，$\delta_{\text{robust}}$ 越小，绿区越宽——可用的
 6. Schmid, P.J. (2010). Dynamic mode decomposition of numerical and experimental data. *Journal of Fluid Mechanics*, 656: 5-28. [DMD 方法的奠基性论文]
 
 7. Raissi, M., Perdikaris, P., & Karniadakis, G.E. (2019). Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations. *Journal of Computational Physics*, 378: 686-707. [PINN 方法的奠基性论文]
+
+> **本章后续进阶**：本章建立的降阶建模方法论在《认知》第 2 章中扩展到数据驱动的系统辨识和PINN-ROM方法——参见《认知》§2.1-2.3。
 
 ---
 

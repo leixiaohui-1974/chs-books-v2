@@ -21,6 +21,8 @@ v1 2026-02-16: 初稿
 5. 识别"稳态可行"与"瞬态安全"之间的差异，建立联合校核思路；
 6. 将管网动态模型与后续章节的降阶建模（ch04）、模型预测控制（ch07）和安全包络（ch10）接口对齐。
 
+> **本章前置阅读**：建议先阅读 [《水控》第 4 章（补充）] 了解水锤瞬变流的基本物理机制——本章将Saint-Venant的明渠框架扩展到有压管网的瞬态分析。
+
 ---
 
 > **章首衔接（承接 ch02）**
@@ -1294,6 +1296,8 @@ $$
 3. Ghidaoui, M.S., Zhao, M., McInnis, D.A., & Axworthy, D.H. (2005). A review of water hammer theory and practice. *Applied Mechanics Reviews*, 58(1): 49-76. [水锤理论与实践的综合评述]
 4. Todini, E., & Pilati, S. (1988). A gradient algorithm for the analysis of pipe networks. In: *Computer Applications in Water Supply, Vol. 1*. Research Studies Press. [EPANET 核心算法 GGA 的原始文献]
 5. Litrico, X., & Fromion, V. (2009). *Modeling and Control of Hydrosystems*. Springer. [虽以明渠为主，传递函数方法同样适用于管网]
+
+> **本章后续进阶**：本章的管网瞬变流分析与《认知》第 2 章中基于图神经网络(GNN)的管网状态预测形成机理-数据互补——参见《认知》§2.3。
 
 ---
 

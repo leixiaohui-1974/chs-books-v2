@@ -1,4 +1,12 @@
+<!-- 变更日志
+v1 2026-03-20: 初稿（DeepSeek 36周修改方案产出）
+v2 2026-04-28: 阶段二格式刷齐——修复\tag公式编号TAB转义bug（20处）
+v3 2026-04-28: 阶段三格式刷齐——补充本变更日志
+-->
+
 # 第4章 计算机视觉在水利中的应用：测流、巡检、泥沙识别
+
+> **本章前置阅读**：《水控》第 13 章 HydroOS感知层——视觉感知在感知层中的定位；《平台》第 6 章 三网架构——视频专网的结构化事件上传机制与安全单向传输原则；《认知》第 4 章 深度学习基础——CNN/Transformer在视觉中的理论基础。
 
 ---
 
@@ -7,7 +15,7 @@
 > 本章建立在以下前置知识之上：
 > - **第1章 PIA方法论**：物理约束驱动的AI设计原则，物理方程作为后处理约束的实施方式
 > - **第3章 时序异常检测**：DQC四级流水线，用于理解视觉水质感知与DQC模块的接口设计
-> - **T4 HydroOS视频专网**（T4第6章）：视频专网智能上位机的架构，是理解本章4.5节的必要背景
+> - **《平台》 HydroOS视频专网**（《平台》第6章）：视频专网智能上位机的架构，是理解本章4.5节的必要背景
 > - **图像处理基础**：图像滤波、特征提取（SIFT/ORB）、光流基本概念
 > - **流体力学基础**：连续性方程、Froude数、明渠水流基本规律
 
@@ -60,13 +68,13 @@
 
 **层次一：物理门控（Physical Gating）。** 对视觉模型的原始输出施加物理可行性检查，拒绝违反基本物理规律的结果。例如，LSPIV测得的表面流速 $v_s$ 必须满足亚临界流Froude约束：
 
-$$Fr = \frac{v_s}{\sqrt{g h}} \leq 1 	ag{4.1}$$
+$$Fr = \frac{v_s}{\sqrt{g h}} \leq 1 \tag{4-1}$$
 
 其中 $h$ 为水深（来自水位传感器），$g$ 为重力加速度。若某测量点输出 $Fr > 1.2$，该点结果被标记为异常并触发重测。
 
 **层次二：物理一致性检验（Physical Consistency Check）。** 跨测量点的流速场必须满足质量守恒（连续性方程）：
 
-$$\frac{\partial (h u)}{\partial x} + \frac{\partial (h v)}{\partial y} = 0 	ag{4.2}$$
+$$\frac{\partial (h u)}{\partial x} + \frac{\partial (h v)}{\partial y} = 0 \tag{4-2}$$
 
 对离散化的LSPIV网格，若某网格节点的散度 $|
 abla \cdot (h \mathbf{v})|$ 超过阈值（通常取平均值的3倍标准差），该节点结果被标记为疑问值，由相邻节点插值替代。
@@ -85,17 +93,17 @@ abla \cdot (h \mathbf{v})|$ 超过阈值（通常取平均值的3倍标准差）
 
 [L2] 粒子图像测速（Particle Image Velocimetry，PIV）的核心思想是：在两帧间隔为 $\Delta t$ 的图像中，通过匹配示踪粒子的位移来推断流速。PIV将图像划分为若干**询问窗口**（interrogation window，典型尺寸32×32或64×64像素），在每个窗口内计算帧间归一化互相关（Normalized Cross-Correlation，NCC）：
 
-$$R(\Delta x, \Delta y) = \frac{\sum_{m,n} [I_1(m,n) - ar{I}_1][I_2(m+\Delta x, n+\Delta y) - ar{I}_2]}{\sqrt{\sum_{m,n}(I_1-ar{I}_1)^2 \cdot \sum_{m,n}(I_2-ar{I}_2)^2}} 	ag{4.4}$$
+$$R(\Delta x, \Delta y) = \frac{\sum_{m,n} [I_1(m,n) - ar{I}_1][I_2(m+\Delta x, n+\Delta y) - ar{I}_2]}{\sqrt{\sum_{m,n}(I_1-ar{I}_1)^2 \cdot \sum_{m,n}(I_2-ar{I}_2)^2}} \tag{4-4}$$
 
 互相关峰值位置 $(\Delta x^*, \Delta y^*)$ 对应最可能的粒子位移，流速为：
 
-$$\mathbf{u} = \frac{(\Delta x^*, \Delta y^*)}{\Delta t} 	ag{4.3}$$
+$$\mathbf{u} = \frac{(\Delta x^*, \Delta y^*)}{\Delta t} \tag{4-3}$$
 
 **亚像素精度提升。** 整像素精度（±1 pixel）通常对应流速误差±0.05至0.2 m/s，难以满足水文测量精度要求（通常为±2至5%）。亚像素插值通过对互相关峰值及其8邻域进行高斯曲面拟合，可将定位精度提升至0.1至0.2像素，对应流速误差降至±0.01至0.04 m/s（Adrian, 1991）。
 
 **询问窗口大小的权衡。** 较大窗口（64×64）空间分辨率低但抗噪性强；较小窗口（16×16）空间分辨率高但要求粒子密度更高。Keane & Adrian（1992）给出粒子图像密度准则：每个询问窗口内有效粒子对数 $N_s$ 需满足：
 
-$$N_s = C \cdot Z_0 \cdot d	au^2 \geq 7 	ag{4.5}$$
+$$N_s = C \cdot Z_0 \cdot d	au^2 \geq 7 \tag{4-5}$$
 
 其中 $C$ 为粒子浓度，$Z_0$ 为激光片厚度，$d	au$ 为粒子图像直径。
 
@@ -117,13 +125,13 @@ PTV与PIV的选择边界由粒子源密度（Source Density）决定：当每个
 
 **单应矩阵（Homography）正射校正。** 设地面控制点（GCP）在图像坐标系中的齐次坐标为 $\mathbf{x} = [u, v, 1]^T$，在世界坐标系中的坐标为 $\mathbf{X} = [X, Y, 1]^T$，则单应矩阵 $H$（3×3）满足：
 
-$$\mathbf{x} \sim H \cdot \mathbf{X} 	ag{4.6}$$
+$$\mathbf{x} \sim H \cdot \mathbf{X} \tag{4-6}$$
 
 已知4个以上GCP对即可通过直接线性变换（DLT）求解 $H$。实际工程中，GCP通常布设在河岸固定标志物（桩号标识、建筑角点）上，每帧图像利用 $H$ 变换至地理坐标系后再进行PIV互相关计算。
 
 **断面流量积分。** LSPIV直接测量的是水面流速 $u_s(y)$（沿断面横坐标 $y$ 分布），而水文站需要的是断面平均流量 $Q$。将水面流速转换为断面平均流速需引入**表面-平均流速比** $lpha$（Rantz, 1982），通常取 $lpha pprox 0.85$（对数流速分布假设下的理论值）：
 
-$$Q = \int_0^B lpha \cdot u_s(y) \cdot h(y) \, dy pprox \sum_i lpha \cdot u_{s,i} \cdot h_i \cdot \Delta y_i 	ag{4.7}$$
+$$Q = \int_0^B lpha \cdot u_s(y) \cdot h(y) \, dy pprox \sum_i lpha \cdot u_{s,i} \cdot h_i \cdot \Delta y_i \tag{4-7}$$
 
 其中 $B$ 为断面宽度，$h(y)$ 为各点水深（来自断面实测或多波束测深）。
 
@@ -154,7 +162,7 @@ $$Q = \int_0^B lpha \cdot u_s(y) \cdot h(y) \, dy pprox \sum_i lpha \cdot u_{
 
 [L2] 无人机（UAV）巡检的核心工程设计问题是：在给定任务时间和电池容量约束下，如何规划航线以最大化**有效覆盖率** $C$？设单架次无人机覆盖面积为 $S_l$（与飞行高度和相机视场角相关），坝面总面积为 $S_{total}$，单架次飞行时间为 $T_{flight}$，则 $n$ 架次的联合覆盖率为：
 
-$$C = 1 - (1 - p_l)^n \cdot (1 - p_s)^m 	ag{4.8}$$
+$$C = 1 - (1 - p_l)^n \cdot (1 - p_s)^m \tag{4-8}$$
 
 其中 $p_l$（纵向覆盖概率）和 $p_s$（横向覆盖概率）由航线重叠率（通常纵向70%、横向60%）决定。实际工程中，单次作业可覆盖2000至5000 m² 坝面，相当于人工巡检效率的8至12倍。
 
@@ -164,7 +172,7 @@ $$C = 1 - (1 - p_l)^n \cdot (1 - p_s)^m 	ag{4.8}$$
 
 **DeepCrack架构。** DeepCrack（Zou et al., 2019）采用编码器-解码器结构（类U-Net），在跳跃连接中引入多尺度边缘特征融合，专为细长结构分割设计。其损失函数将二元交叉熵（BCE）与Dice损失加权组合：
 
-$$\mathcal{L}_{crack} = \mathcal{L}_{BCE} + \lambda \cdot \mathcal{L}_{Dice} 	ag{4.9}$$
+$$\mathcal{L}_{crack} = \mathcal{L}_{BCE} + \lambda \cdot \mathcal{L}_{Dice} \tag{4-9}$$
 
 其中 $\lambda = 0.5$（经验值），Dice损失 $\mathcal{L}_{Dice} = 1 - 2|P \cap G| / (|P| + |G|)$ 对正负样本极度不均衡（裂缝像素占比通常<1%）的场景有显著改善。
 
@@ -172,7 +180,7 @@ $$\mathcal{L}_{crack} = \mathcal{L}_{BCE} + \lambda \cdot \mathcal{L}_{Dice} 	ag
 
 **混凝土碳化深度PIA修正。** 不同坝龄的混凝土具有不同的表面特征和裂缝形态。碳化深度 $x_c$ 随时间的演化满足：
 
-$$x_c = k \sqrt{t} 	ag{4.10}$$
+$$x_c = k \sqrt{t} \tag{4-10}$$
 
 其中 $t$ 为服役年限，$k$ 为碳化系数（取决于水灰比和环境湿度，典型值1至3 mm/year^0.5）。PIA修正策略：对服役年限>30年的大坝，将裂缝检测的判定阈值从0.2 mm下调至0.15 mm（因碳化层使裂缝更容易扩展），并对检测结果附加"老龄化风险"标签。
 
@@ -205,7 +213,7 @@ $$x_c = k \sqrt{t} 	ag{4.10}$$
 
 **可见光与热成像融合。** 采用加权融合策略：
 
-$$I_{fusion} = w_{vis} \cdot I_{vis} + w_{ir} \cdot I_{ir} 	ag{4.11}$$
+$$I_{fusion} = w_{vis} \cdot I_{vis} + w_{ir} \cdot I_{ir} \tag{4-11}$$
 
 融合权重 $w_{ir}$ 在夜间或雨天自适应提升至0.7至0.8，白天降至0.3至0.4。渗漏判定阈值：热像图中连续区域温差 $\Delta T > 2$ 摄氏度，且面积>0.1 m²，触发渗漏疑似告警。
 
@@ -234,17 +242,17 @@ $$I_{fusion} = w_{vis} \cdot I_{vis} + w_{ir} \cdot I_{ir} 	ag{4.11}$$
 
 [L2] 水体悬浮泥沙浓度（Suspended Sediment Concentration，SSC）与水体浑浊度（NTU）之间存在经验幂律关系：
 
-$$SSC = a \cdot NTU^b 	ag{4.12}$$
+$$SSC = a \cdot NTU^b \tag{4-12}$$
 
 其中系数 $a$、$b$ 依赖于泥沙矿物组成和粒径分布，需通过现场标定获得（典型值：黄河 $a pprox 1.8$，$b pprox 0.95$）。NTU可从图像中估算：水体图像的亮度分布与浊度正相关，但受光照条件影响显著。为消除光照影响，引入**图像浊度指数（Image Turbidity Index，ITI）**：
 
-$$ITI = w_R \cdot ar{R} + w_G \cdot ar{G} + w_B \cdot ar{B} - \gamma \cdot \sigma_{RGB} 	ag{4.13}$$
+$$ITI = w_R \cdot ar{R} + w_G \cdot ar{G} + w_B \cdot ar{B} - \gamma \cdot \sigma_{RGB} \tag{4-13}$$
 
 其中 $ar{R}, ar{G}, ar{B}$ 为水面ROI区域各通道均值，$\sigma_{RGB}$ 为颜色标准差（用于抑制水面波动噪声），权重 $w_R = 0.60, w_G = 0.30, w_B = 0.10$（红光对泥沙散射最敏感），$\gamma = 0.15$。
 
 **时空一致性验证（PIA）。** 单帧ITI估算误差较大，需通过对流扩散方程进行时空一致性检验：
 
-$$\frac{\partial C}{\partial t} + u \frac{\partial C}{\partial x} + v \frac{\partial C}{\partial y} = D_x \frac{\partial^2 C}{\partial x^2} + D_y \frac{\partial^2 C}{\partial y^2} + S_c 	ag{4.14}$$
+$$\frac{\partial C}{\partial t} + u \frac{\partial C}{\partial x} + v \frac{\partial C}{\partial y} = D_x \frac{\partial^2 C}{\partial x^2} + D_y \frac{\partial^2 C}{\partial y^2} + S_c \tag{4-14}$$
 
 其中 $C$ 为含沙量，$u, v$ 为流速场（由LSPIV提供），$D_x, D_y$ 为扩散系数（量级 $10^{-2}$ 至 $10^{-1}$ m²/s），$S_c$ 为泥沙源汇项。若某时刻某空间点的估算 $C_{est}$ 与方程预测值 $C_{pred}$ 偏差超过30%，该估算值被标记为疑问值，进入DQC（数据质量控制，见第3章）流水线的第二级人工复核。
 
@@ -255,7 +263,7 @@ $$\frac{\partial C}{\partial t} + u \frac{\partial C}{\partial x} + v \fra
 $$\text{Chl-a} = lpha \eft[ \eft( R_{rs}^{-1}(665) - R_{rs}^{-1}(705) 
 
 \right) \cdot R_{rs}(753) 
-\right] + eta 	ag{4.15}$$
+\right] + eta \tag{4-15}$$
 
 其中 $R_{rs}(\lambda)$ 为 $\lambda$ 波段的遥感反射率，系数 $lpha, eta$ 需按水体类型进行区域标定。对于内陆水体（光学复杂水体），大气校正是遥感水质反演的关键前处理步骤，推荐采用ACOLITE处理器（Dark Spectrum Fitting方法）（Chen et al., 2023），可将大气程辐射引起的误差降至15%以内。
 
@@ -288,7 +296,7 @@ $$\text{Chl-a} = lpha \eft[ \eft( R_{rs}^{-1}(665) - R_{rs}^{-1}(705)
 
 [L2] 视频异常检测的基础层是运动检测，将动态前景（异常目标）从静态背景（水面、大坝）中分离。高斯混合模型（Gaussian Mixture Model，GMM）是水利场景背景建模的主流方法（Stauffer & Grimson, 1999），它将每个像素的灰度値建模为 $ 个高斯分量的混合：
 
-698551P(X_t) = \sum_{k=1}^{K} \omega_k \mathcal{N}(X_t; \mu_k, \Sigma_k) 	ag{4.16}698551
+698551P(X_t) = \sum_{k=1}^{K} \omega_k \mathcal{N}(X_t; \mu_k, \Sigma_k) \tag{4-16}698551
 
 其中 $\omega_k, \mu_k, \Sigma_k$ 分别为第 $ 个分量的权重、均値和协方差，通过在线EM算法随时间更新（背景自适应更新速率通常设为0.005至0.02/帧）。水面波动在GMM中被建模为背景高斯分量的正常方差，真实入侵目标因其灰度値落在所有背景分量 \sigma$ 之外而被判定为前景。
 
@@ -299,7 +307,7 @@ $$\text{Chl-a} = lpha \eft[ \eft( R_{rs}^{-1}(665) - R_{rs}^{-1}(705)
 [L2] 单帧检测结果易受噪声干扰（水面反射突变、飞鸟掠过等），直接以单帧结果告警会产生大量误报。采用滑动窗口确认策略：在最近 $ 帧窗口内，若触发帧数比例超过阈値 $	heta$，才确认告警：
 
 698551\text{Alert}_t = \mathbf{1}\eft[ \sum_{	au=t-N+1}^{t} f(	au) \geq 	heta \cdot N 
-\right] 	ag{4.17}698551
+\right] \tag{4-17}698551
 
 其中 (	au) \in \{0,1\}$ 为第 $	au$ 帧的检测结果，=5$，$	heta=0.6$（匷5帧中至3帧触发）。对于E5（溃大险情前兆）等高危事件，$	heta$ 降至0.4（2/5帧即触发），牺牲精确率以换取近零漏报。
 
@@ -365,11 +373,11 @@ $$\text{Chl-a} = lpha \eft[ \eft( R_{rs}^{-1}(665) - R_{rs}^{-1}(705)
 
 **第一层：算法精度验证（离线）。** 在持保留集（hold-out test set）上评估检测/分割/估算精度，采用NSE（Nash-Sutcliffe效率系数）评估流速/流量序列：
 
-699844NSE = 1 - \frac{\sum_t (Q_{obs,t} - Q_{sim,t})^2}{\sum_t (Q_{obs,t} - ar{Q}_{obs})^2} 	ag{4.18}699844
+699844NSE = 1 - \frac{\sum_t (Q_{obs,t} - Q_{sim,t})^2}{\sum_t (Q_{obs,t} - ar{Q}_{obs})^2} \tag{4-18}699844
 
 NSE>0.75为良好，NSE<0.5为不可接受。对于裂缝检测，采用 eta$（$eta=2$）作为主指标：
 
-699844F_eta = \frac{(1+eta^2) \cdot P \cdot R}{eta^2 \cdot P + R} 	ag{4.19}699844
+699844F_eta = \frac{(1+eta^2) \cdot P \cdot R}{eta^2 \cdot P + R} \tag{4-19}699844
 
 **第二层：物理一致性验证（在线）。** 实时监控视觉输出是否满足公式（4.1）和（4.2）的物理约束。每日生成物理违反率（Physical Violation Rate，PVR）报告，PVR>5%表明模型在当前环境条件下已退化，需触发重标定流程。
 
@@ -377,7 +385,7 @@ NSE>0.75为良好，NSE<0.5为不可接受。对于裂缝检测，采用 eta$�
 
 699844\hat{\sigma}^2_{pred} pprox \frac{1}{T} \sum_{t=1}^{T} f^2_{\hat{	heta}_t}(\mathbf{x}) - \eft( \frac{1}{T} \sum_{t=1}^{T} f_{\hat{	heta}_t}(\mathbf{x}) 
 
-\right)^2 	ag{4.20}699844
+\right)^2 \tag{4-20}699844
 
 当 $\hat{\sigma}_{pred} > 0.3$（归一化），输出结果自动标记为“低可信度”，进入人工审核队列。
 
@@ -398,6 +406,8 @@ NSE>0.75为良好，NSE<0.5为不可接受。对于裂缝检测，采用 eta$�
 贯穿全章的核心方法论是**物理约束驱动的AI（PIA）**，具体体现在：Froude数约束（公式4.1）和连续性方程约束（公式4.2）作为流速场的物理门控；碳化深度先验（公式4.10）对裂缝检测阈値的动态修正；对流扩散方程（公式4.14）对含沙量时序估算的一致性验证。这些物理约束的共同作用，是将视觉模型从“产生数字”提升为“产生可信物理量”。
 
 工程验证体系（4.6节）构建了离线精度、在线物理一致性、运行时不确定性量化的三层防护，确保视觉系统在真实水利部署环境中的可靠性。边缘部署的知识蜗馏与OTA更新机制解决了模型精度与算力约束的矛盾，以及模型随环境变化的持续适应问题。
+
+> **本章后续进阶**：《平台》第 6 章（三网架构——视频专网的结构化事件单向传输与安全分区）、《平台》第 12 章（部署运维——视觉模型的灰度发布与A/B测试）、《标治》第 5 章（ODD拓扑——视觉感知的ODD边界声明）。
 
 ---
 

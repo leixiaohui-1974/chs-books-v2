@@ -1,6 +1,12 @@
+<!-- 变更日志
+v1 2026-03-20: 初稿（DeepSeek 36周修改方案产出）
+v2 2026-04-28: 阶段二格式刷齐——修复\tag公式编号TAB转义bug（24处）
+v3 2026-04-28: 阶段三格式刷齐——补充本变更日志
+-->
+
 # 第7章 平台集成：与GIS、气象、农业、数字孪生平台的对接
 
-**[知识依赖]** T4第2章五层架构（L0-L4）；T4第5章硬件集成层；T6《水利CPS》数字孪生技术（本章为T6提供模型引擎基础）。
+**[知识依赖]** 《平台》第2章五层架构（L0-L4）；《平台》第5章硬件集成层；T6《水利CPS》数字孪生技术（本章为T6提供模型引擎基础）。
 
 **[学习目标]**
 - 理解HydroOS作为数字孪生流域平台底层模型引擎的定位（不是数字孪生平台本身）
@@ -9,6 +15,8 @@
 - 掌FAO-56 Penman-Monteith参考蒸散发公式及农业需水估算
 - 理解目标导向（Target-Oriented）vs 指令导向（Instruction-Oriented）的AI-NPC接口设计
 - 掌跨区域多级集成的分层架构与数据主权管理
+
+> **本章前置阅读**：《水控》§13.2 HydroOS三层架构——感知层与核心引擎层的数据流；《水控》第 8 章 CPSS框架——平台集成本质上是CPSS三空间的信息转化；《建模》第 13 章 数字孪生——本章为其提供模型引擎基础。
 
 ---
 
@@ -68,7 +76,7 @@ MESA架构包含五个分层：
 
 **D8流向算法**是HydroOS采用的标准算法。该算法将每个栅格单元的流向限制在8个方向中，流向指向邻近8个栅格中海拔最低的那个：
 
-$$\text{flow\_direction}_{i,j} = rg\min_{(i'',j'') \in N_8(i,j)} \text{DEM}_{i'',j''}  	ag{7.1}$$
+$$\text{flow\_direction}_{i,j} = rg\min_{(i'',j'') \in N_8(i,j)} \text{DEM}_{i'',j''}  \tag{7-1}$$
 
 其中(i,j)$表示$的8邻域。基于流向分析，HydroOS可以自动提取河道断面。
 
@@ -86,9 +94,9 @@ $$\text{flow\_direction}_{i,j} = rg\min_{(i'',j'') \in N_8(i,j)} \text{DEM}_{i'
 
 HydroOS集成了PROJ库，支持任意两个坐标系之间的转换。对于从 WGS84到高斯-克吕格投影的转换：
 
-$$x = N(\phi) \cos(\phi) \lambda + \frac{1}{6} N(\phi) \cos^3(\phi) \lambda^3 [1 - 	an^2(\phi) + \eta^2] + \cdots 	ag{7.2}$$
+$$x = N(\phi) \cos(\phi) \lambda + \frac{1}{6} N(\phi) \cos^3(\phi) \lambda^3 [1 - 	an^2(\phi) + \eta^2] + \cdots \tag{7-2}$$
 
-$$y = A(\phi) + \frac{1}{2} N(\phi) \cos(\phi) \lambda^2 + \frac{1}{24} N(\phi) \cos^3(\phi) \lambda^4 [5 - 	an^2(\phi) + 9\eta^2 + 4\eta^4] + \cdots 	ag{7.3}$$
+$$y = A(\phi) + \frac{1}{2} N(\phi) \cos(\phi) \lambda^2 + \frac{1}{24} N(\phi) \cos^3(\phi) \lambda^4 [5 - 	an^2(\phi) + 9\eta^2 + 4\eta^4] + \cdots \tag{7-3}$$
 
 其中$\phi$为纬度，$\lambda$为经度与中央子午线的差値，(\phi) = \frac{a}{\sqrt{1-e^2\sin^2(\phi)}}$为卯酉圈曲率半径。
 
@@ -96,7 +104,7 @@ $$y = A(\phi) + \frac{1}{2} N(\phi) \cos(\phi) \lambda^2 + \frac{1}{24} N(
 
 水利工程具有长生命周期特征，治水渠道、堡防等基础设施会经历多次改造。HydroOS采用“版本化”的空间数据库设计，记录每个地物的生命周期。版本化空间数据库的核心是在每个地物记录中增加时间维度：
 
-$$\text{Active Version} = \{(f, v) \in \text{DB} : f.\text{feature\_id} = \text{target\_id} \wedge v.\text{valid\_from} \leq t \leq v.\text{valid\_to}\} 	ag{7.4}$$
+$$\text{Active Version} = \{(f, v) \in \text{DB} : f.\text{feature\_id} = \text{target\_id} \wedge v.\text{valid\_from} \leq t \leq v.\text{valid\_to}\} \tag{7-4}$$
 
 当查询特定时刻的空间数据时，HydroOS会自动选择满足的版本。
 
@@ -152,27 +160,27 @@ OGC STA（OGC 15-078r6）核心实体为Thing-Sensor-ObservedProperty三元组�
 
 **下采样（Downsampling）**：对于时间分辨率高于模型步长的数据（如6分钟的雷达数据），采用分段常数方法：
 
-$$P_{\text{model}}(t) = P_{\text{radar}}(t_{\text{floor}}) \quad \text{for} \quad t_{\text{floor}} \leq t < t_{\text{floor}} + \Delta t_{\text{model}} 	ag{7.5}$$
+$$P_{\text{model}}(t) = P_{\text{radar}}(t_{\text{floor}}) \quad \text{for} \quad t_{\text{floor}} \leq t < t_{\text{floor}} + \Delta t_{\text{model}} \tag{7-5}$$
 
 **上采样（Upsampling）**：对于时间分辨率低于模型步长的数据（如1小时的雨量站数据），采用线性插値：
 
-$$P_{\text{model}}(t) = P_{\text{met}}(t_k) + \frac{t - t_k}{t_{k+1} - t_k}igl[P_{\text{met}}(t_{k+1}) - P_{\text{met}}(t_k)igr] 	ag{7.6}$$
+$$P_{\text{model}}(t) = P_{\text{met}}(t_k) + \frac{t - t_k}{t_{k+1} - t_k}igl[P_{\text{met}}(t_{k+1}) - P_{\text{met}}(t_k)igr] \tag{7-6}$$
 
 **扩展卡尔曼滤波（EKF）数据同化**：水文状态变量的估计问题可形式化为离散时间状态空间模型。EKF通过一阶泰勒展开将非线性系统线性化，实现预报步骤和分析步骤的迭代更新。
 
 预报步骤：
 
-$$boldsymbol{x}_k^f = boldsymbol{F}_k boldsymbol{x}_{k-1}^a 	ag{7.7}$$
+$$boldsymbol{x}_k^f = boldsymbol{F}_k boldsymbol{x}_{k-1}^a \tag{7-7}$$
 
-$$boldsymbol{P}_k^f = boldsymbol{F}_k boldsymbol{P}_{k-1}^a boldsymbol{F}_k^	op + boldsymbol{Q}_k 	ag{7.8}$$
+$$boldsymbol{P}_k^f = boldsymbol{F}_k boldsymbol{P}_{k-1}^a boldsymbol{F}_k^	op + boldsymbol{Q}_k \tag{7-8}$$
 
 分析步骤：
 
-$$boldsymbol{K}_k = boldsymbol{P}_k^f boldsymbol{H}_k^	op igl(boldsymbol{H}_k boldsymbol{P}_k^f boldsymbol{H}_k^	op + boldsymbol{R}_kigr)^{-1} 	ag{7.9}$$
+$$boldsymbol{K}_k = boldsymbol{P}_k^f boldsymbol{H}_k^	op igl(boldsymbol{H}_k boldsymbol{P}_k^f boldsymbol{H}_k^	op + boldsymbol{R}_kigr)^{-1} \tag{7-9}$$
 
-$$boldsymbol{x}_k^a = boldsymbol{x}_k^f + boldsymbol{K}_kigl(boldsymbol{y}_k - boldsymbol{H}_k boldsymbol{x}_k^figr) 	ag{7.10}$$
+$$boldsymbol{x}_k^a = boldsymbol{x}_k^f + boldsymbol{K}_kigl(boldsymbol{y}_k - boldsymbol{H}_k boldsymbol{x}_k^figr) \tag{7-10}$$
 
-$$boldsymbol{P}_k^a = (boldsymbol{I} - boldsymbol{K}_k boldsymbol{H}_k)boldsymbol{P}_k^f 	ag{7.11}$$
+$$boldsymbol{P}_k^a = (boldsymbol{I} - boldsymbol{K}_k boldsymbol{H}_k)boldsymbol{P}_k^f \tag{7-11}$$
 
 其中$boldsymbol{x}_k^f$为预报状态，$boldsymbol{x}_k^a$为分析状态，$boldsymbol{K}_k$为卡尔曼增益，$boldsymbol{y}_k$为观测向量，$boldsymbol{H}_k$为观测算子。
 
@@ -189,20 +197,20 @@ Innovation QC质量控制准则：当$|boldsymbol{y}_k - boldsymbol{H}_k bold
 
 降采样采用分段常数均值聚合，将连续 $ 个细尺度样本取均值：
 
-$$x_{coarse}[k] = \frac{1}{M}\sum_{i=0}^{M-1} x_{fine}[kM+i] 	ag{7.5}$$
+$$x_{coarse}[k] = \frac{1}{M}\sum_{i=0}^{M-1} x_{fine}[kM+i] \tag{7-5}$$
 
 该操作等价于以截止频率  = 1/(2M\Delta t_{fine})$ 的低通滤波器对细尺度信号滤波后抄取，可有效抑制混叠失真（Oppenheim & Schafer，2010）。对于非均匀采样数据，采用加权均倦式，权重取对应子区间长度。
 
 升采样使用线性插分：
 
-$$\hat{x}_{fine}(t) = x_{coarse}[k] + \frac{t - t_k}{t_{k+1} - t_k}(x_{coarse}[k+1] - x_{coarse}[k]), \quad t_k \le t < t_{k+1} 	ag{7.6}$$
+$$\hat{x}_{fine}(t) = x_{coarse}[k] + \frac{t - t_k}{t_{k+1} - t_k}(x_{coarse}[k+1] - x_{coarse}[k]), \quad t_k \le t < t_{k+1} \tag{7-6}$$
 
 **EKF观测矩阵 $ 的动态构建**
 
 在多率框架下，EKF的观测矩阵  \in \mathbb{R}^{m_k 	imes n}$ 需根据当前时间步的传感器可用性动态构建，第 $ 行为传感器 $ 观测方程对状态向量的雅可比备导：
 
 713807H_k = \left.\frac{\partial \mathbf{h}(\mathbf{x})}{\partial \mathbf{x}}
-ight|_{\hat{\mathbf{x}}_k^f} 	ag{7.7}713807
+ight|_{\hat{\mathbf{x}}_k^f} \tag{7-7}713807
 
 高频时间步仅水位计和流量计激活，$ 维度较小；遥感过境时土壤水分和蒸散行被激活，$ 维度扩展。
 
@@ -225,7 +233,7 @@ u}_k \sim \chi^2(N \cdot m) 	ag{7.7c}713807
 
 参考蒸散发（Reference Evapotranspiration, ET₀）是农业需水计算的核心基准量。FAO-56推荐的Penman-Monteith公式（Allen et al., 1998）综合考虑了辐射、气温、湿度与风速的影响：
 
-$$ET_0 = \frac{0.408\Delta(R_n - G) + \gamma\df\frac{900}{T+273}u_2(e_s - e_a)}{\Delta + \gamma(1 + 0.34u_2)} 	ag{7.12}$$
+$$ET_0 = \frac{0.408\Delta(R_n - G) + \gamma\df\frac{900}{T+273}u_2(e_s - e_a)}{\Delta + \gamma(1 + 0.34u_2)} \tag{7-12}$$
 
 各变量含义：
 
@@ -245,11 +253,11 @@ $$ET_0 = \frac{0.408\Delta(R_n - G) + \gamma\df\frac{900}{T+273}u_2(e_s - e
 
 712628e_s = 0.6108 \exp\!\l\left(\frac{17.27\,T}{T + 237.3}
 
-\right) 	ag{7.13}712628
+\right) \tag{7-13}712628
 
 饱和水汽压曲线斜率$\Delta$：
 
-$$\Delta = \frac{4098\,e_s}{(T + 237.3)^2} 	ag{7.14}$$
+$$\Delta = \frac{4098\,e_s}{(T + 237.3)^2} \tag{7-14}$$
 
 > **AI解读**：在水网操作系统中，ET₀计算模块每日自动从气象数据层拉取$、$、相对湿度和辐射数据，经质量控制后批量执行式（7.12）至（7.14）。当某炙区气象站数据缺失时，系统优先采用邻近气象站的克里金插値结果；若辐射数据不可用，则以Hargreaves-Samani公式作为备用估算方案。
 
@@ -257,11 +265,11 @@ $$\Delta = \frac{4098\,e_s}{(T + 237.3)^2} 	ag{7.14}$$
 
 实际作物蒸散发（ETc）通过作物系数（Kc）对ET₀进行修正：
 
-$$ET_c = K_c 	imes ET_0 	ag{7.15}$$
+$$ET_c = K_c 	imes ET_0 \tag{7-15}$$
 
 净治水需求量（NIR）定义为作物蒸散发需求扣除有效降雨量与土壤储水变化量后的差额：
 
-$$NIR = ET_c - P_e - \Delta W 	ag{7.16}$$
+$$NIR = ET_c - P_e - \Delta W \tag{7-16}$$
 
 其中$为有效降雨量（mm），$\Delta W$为计算时段内土壤储水变化量（mm）。当 > 0$时，需实施治水；当 \leq 0$时，降雨与土壤储水足以满足作物需求。
 
@@ -357,11 +365,11 @@ MPC的标准目标函数为：
 
 712890\min_{boldsymbol{u}_{k:k+N-1}} J = \sum_{i=0}^{N-1} \l\left[ \|boldsymbol{x}_{k+i+1} - boldsymbol{x}_{\text{ref},k+i+1}\|_{boldsymbol{Q}}^2 + \|boldsymbol{u}_{k+i}\|_{boldsymbol{R}}^2 
 
-\right] + \lambda_s \sum_{i=0}^{N-1} boldsymbol{s}_{k+i} 	ag{7.17}712890
+\right] + \lambda_s \sum_{i=0}^{N-1} boldsymbol{s}_{k+i} \tag{7-17}712890
 
 约束条件：
 
-$$b\begin{aligned} boldsymbol{x}_{k+i+1} &= boldsymbol{f}(boldsymbol{x}_{k+i}, boldsymbol{u}_{k+i}) \quad \text{(系统动力学)} \ boldsymbol{u}_{\min} &\leq boldsymbol{u}_{k+i} \leq boldsymbol{u}_{\max} \quad \text{(控制量约束)} \ \Delta boldsymbol{u}_{\min} &\leq boldsymbol{u}_{k+i} - boldsymbol{u}_{k+i-1} \leq \Delta boldsymbol{u}_{\max} \quad \text{(控制增量约束)} \ boldsymbol{x}_{k+i} + boldsymbol{s}_{k+i} &\geq boldsymbol{x}_{\min}, \quad boldsymbol{s}_{k+i} \geq boldsymbol{0} \quad \text{(软约束)} \end{aligned} 	ag{7.18}$$
+$$b\begin{aligned} boldsymbol{x}_{k+i+1} &= boldsymbol{f}(boldsymbol{x}_{k+i}, boldsymbol{u}_{k+i}) \quad \text{(系统动力学)} \ boldsymbol{u}_{\min} &\leq boldsymbol{u}_{k+i} \leq boldsymbol{u}_{\max} \quad \text{(控制量约束)} \ \Delta boldsymbol{u}_{\min} &\leq boldsymbol{u}_{k+i} - boldsymbol{u}_{k+i-1} \leq \Delta boldsymbol{u}_{\max} \quad \text{(控制增量约束)} \ boldsymbol{x}_{k+i} + boldsymbol{s}_{k+i} &\geq boldsymbol{x}_{\min}, \quad boldsymbol{s}_{k+i} \geq boldsymbol{0} \quad \text{(软约束)} \end{aligned} \tag{7-18}$$
 
 [插图：MPC滚动时域示意图，显示预测步骤N=12，控制步骤M=4]
 
@@ -377,7 +385,7 @@ $$\text{P0（系统安全）} > \text{P1（防洪/生态基流）} > \text{P2（
 
 **多平台聚合目标函数**：
 
-$$J_{\text{total}} = w_{\text{flood}} \cdot J_{\text{flood}} + w_{\text{eco}} \cdot J_{\text{eco}} + w_{\text{irr}} \cdot J_{\text{irr}} + w_{\text{power}} \cdot J_{\text{power}} 	ag{7.19}$$
+$$J_{\text{total}} = w_{\text{flood}} \cdot J_{\text{flood}} + w_{\text{eco}} \cdot J_{\text{eco}} + w_{\text{irr}} \cdot J_{\text{irr}} + w_{\text{power}} \cdot J_{\text{power}} \tag{7-19}$$
 
 其中权重满足：{\text{flood}} \gg w_{\text{eco}} \gg w_{\text{irr}} \geq w_{\text{power}}$，权重可根据季节、气象预报、水情等动态调整。例如汛期时{\text{flood}}=0.60$，干旱期可调整为{\text{irr}}=0.40$。
 
@@ -481,7 +489,7 @@ WaterML 2.0时序数据：
 
 **预报技巧评分（Skill Score）**：
 
-$$SS = 1 - \frac{MSE_{\text{forecast}}}{MSE_{\text{climatology}}} 	ag{7.20}$$
+$$SS = 1 - \frac{MSE_{\text{forecast}}}{MSE_{\text{climatology}}} \tag{7-20}$$
 
  > 0$表明预报性能优于气候均値基准， = 1$对应完美预报， < 0$则表明预报性能劣于气候均値。
 
@@ -496,7 +504,7 @@ $$SS = 1 - \frac{MSE_{\text{forecast}}}{MSE_{\text{climatology}}} 	ag{7.20}$$
 
 量化气象、水文预报相对于气候平均基准的改进程度（Murphy，1973）：
 
-$$SS = 1 - \frac{MSE_{forecast}}{MSE_{climatology}} 	ag{7.20}$$
+$$SS = 1 - \frac{MSE_{forecast}}{MSE_{climatology}} \tag{7-20}$$
 
 其中 {forecast} = \frac{1}{N}\sum_{k=1}^{N}(\hat{y}_k - y_k)^2$ 为预报均方误差，{climatology} = \frac{1}{N}\sum_{k=1}^{N}(ar{y} - y_k)^2$ 为气候平均基准的均方误差。 > 0$ 表示预报優于气候平均， = 1$ 表示完美预报， < 0$ 表示预报不如气候平均。考虑到不同平台的数据质量差异，建议将  \ge 0.3$ 作为接口数据质量合格的最低阈値。
 
@@ -605,6 +613,8 @@ $$SS = 1 - \frac{MSE_{forecast}}{MSE_{climatology}} 	ag{7.20}$$
 4. **FAO-56 Penman-Monteith公式与农业需水集成**：ET₀计算综合考虑净辐射、气温、相对湿度和风速，通过作物系数Kc（分初期/中期/末期三阶段）修正得到实际作物蒸散发ETc，扣除有效降雨和土壤储水变化后得到净灌水需求量NIR。遥感手段（SEBS模型）在地面气象站密度不足时提供区域蒸散发的面状估算。农业需水模块与MPC灌溉调度深度集成，实现从田间作物状态到闸门开度指令的端到端自动化链路。
 
 5. **目标导向接口与跨区域多级集成**：TSL（目标规范语言）允许农业部门以业务目标（"30天内完成灌水，库存不低于5天储备"）而非控制指令的形式向MPC控制器下达任务，体现了目标导向（Target-Oriented）vs指令导向（Instruction-Oriented）的接口设计哲学。跨区域多级集成须处理数据主权（隐私数据本地处理，仅共享聚合统计量）和事件驱动架构（基于发布/订阅替代高频轮询）两个核心问题。
+
+> **本章后续进阶**：《认知》第 9 章（数字孪生+知识图谱融合——为本章的模型引擎提供知识层扩展）、《平台》第 10 章（MCP工具生态——平台间集成的标准工具接口）、《平台》第 11 章（WorkProxy——跨平台工作流的委派式执行）。
 
 ---
 
